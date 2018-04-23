@@ -1,0 +1,63 @@
+<!-- Main content -->
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<div class="wrapper row-offcanvas row-offcanvas-left">
+		<div class="row"></div>
+<!-- <div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div> -->
+<div class="row">
+		<div class="col-md-10" style="float:right;">
+<label>Employee Hierarchy Chart</label>
+<!-- <autocomplete ng-model="result"
+	attr-placeholder="type to search employee" click-activation="true"
+	data="employee" on-type="doSomething" on-select="doSomethingElse"></autocomplete> -->
+<div style="float: right;margin-right: 1%;">
+	<!-- 						<button class="btn btn-primary" style="padding-top:1px;padding-bottom:3px;" ng-click="#epmsDashBoard">EPMS<span class="fa fa-cog" style="margin-left:16%;"></span></button>
+-->
+	<button class="btn btn-primary"
+		style="padding-top: 1px; padding-bottom: 3px;"
+		ng-click="orgList()">
+		Org-list<span class="fa fa-list-alt" style="margin-left: 16%;"></span>
+	</button>
+</div>
+</div>
+</div>
+<section class="content" style="margin-left: 16%;max-height:585px;overflow-y: auto;overflow-x: hidden;"><!--" -->
+	<div class="row"></div>
+	<div class="row"></div>
+	<div class="row">
+			<div class="col-lg-12">
+				<div class="col-md-12 no-padding">
+					<div ng-controller="employeeModalController"></div>
+					<div id="employeeProfile">
+						<div ng-include="'views/view-profile-orgChart.html'"></div>
+					</div>
+						<tt width=100% height="100%" marginwidth=0
+							marginheight=0 frameborder=0> </tt>
+				</div>
+				</div>
+	</div>
+</section>
+</div>
+<style>
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+</style>

@@ -1,0 +1,276 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <div class="right-side">
+        <div>
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="row" style="margin-right: 0px;">
+                    <div class="col-sm-6">
+                        <h4>Segment Structure</h4>
+                    </div>
+                </div>
+                <div class="alert alert-success" ng-show="showSuccessAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{successTextAlert}}
+                </div>
+                <div class="alert alert-danger" ng-show="showFailureAlert"
+                    style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{failureTextAlert}}
+                </div>
+            </section>
+            <section class="content">
+                <div class="col-sm-12 no-padding">
+                    <div class="panel panel-default" style="min-height: auto;">
+                        <div class="panel-body">
+                            <div role="form">
+                            	<div class="row" ng-if="isTrascErr">
+                                    <div
+                                        ng-class="{'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                                        ng-if="flash" ng-bind="flash.message"></div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input class="form-control input-height" ng-model="segmentName"
+                                           name="segmentName" placeholder="Segment Name" type="text">
+                                </div>
+                                <div class="col-lg-6">
+                                    <button type="button" class="btn btn-primary btn-width"ng-click="searchSegments()">Search</button>
+                                    <button type="button" class="btn btn-defaul btn-width" ng-click="clearSearch()">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!--MAIN BODY START-->
+                <div class="box1">
+                    <div class="box-body table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead_bg">
+                                <tr>
+                                    <th ng-click="sort('segmentStructureHdrDesc')">Segment
+                                        Header<span class="glyphicon sort-icon"
+                                                    ng-show="sortKey == 'segmentStructureHdrDesc'"
+                                                    ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                    </th>
+                                    <!-- <th>Action</th> -->
+                                </tr>
+                            </thead>
+                            <tr dir-paginate="segment in segmentdata|orderBy:sortKey:!reverse|itemsPerPage:rowSize"
+                                ng-class="{selected: segment.segmentStructureHdrId == isSelectedRow}"
+                                ng-click="selectRow(segment)"
+                                ng-dblclick="editSelectedRowDetails(segment, segmentdata)"
+                                ng-init="myIndex = $index">
+                                <td>{{segment.segmentStructureHdrDesc}}</td>
+                                <!-- <td>
+                                        <div class="col-sm-12 lookup-action">
+                                                <i class="fa fa-eye" ng-click="viewSegment(segment)"></i>&nbsp;
+                                                &nbsp; <i class="fa fa-pencil-square-o"
+                                                        ng-click="editSegment(segment)"></i>
+                                        </div>
+                                </td> -->
+                            </tr>
+                        </table>
+                        <div ng-if="segmentdata.length == 0">								
+                            <h6 style="text-align: center; color: red;">No Records Found</h6>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <br>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div style="float: left; margin-top: -10px;">
+                                <dir-pagination-controls max-size="8" direction-links="true"
+                                                         boundary-links="true" on-page-change="clearSelectedRow()"> 
+                                </dir-pagination-controls>
+                            </div>
+                        </div>
+                        <div style="float: right;">
+                            <!-- <button class="btn btn-primary pull-right"
+                                    ng-click="opensegmentmodal($event)">Add Segment</button> -->
+                            <span ng-repeat="availOperations in availOperations"> <i
+                                    style="cursor: pointer;"
+                                    ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create', 
+                                               'glyphicon glyphicon-eye-open' : availOperations.name == 'View', 
+                                               'glyphicon glyphicon-pencil' : availOperations.name == 'Edit', 
+                                               'glyphicon glyphicon-trash' : availOperations.name == 'Delete', 
+                                               'disabled': disable_{{availOperations.name}}}"
+                                    ng-disabled="disable_{{availOperations.name}}"
+                                    ng-click="operationsGenericFunction(availOperations.name, availOperations.url, segmentdata)"></i>&nbsp;&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+    <!-- /.right-side -->
+</div>
+<!-- ./wrapper -->
+<div class="modal fade" id="segment_model" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 900px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{heading}}</h4>
+            </div>
+            <div class="modal-body" style="height:auto; overflow: scroll;">
+                <div class="form-horizontal" role="form">
+                    <div class="row" ng-if="isTrascError">
+                        <div
+                            ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                            ng-if="flash" ng-bind="flash.message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="control-label col-sm-3">Segment
+                            Header<font color="red">*</font></label>
+                        <div class="col-sm-7">
+                            <select autofocus class="form-control" ng-model="headername"
+                                    ng-options="segmentHeader.name  for segmentHeader in segmentHeaderData | orderBy:'name'  track by segmentHeader.value"
+                                    ng-disabled="!iseditable" ng-disabled="disableduringedit">
+                                <option value="" selected>Select Segment Header</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+                    <div class="col-sm-12" style="padding-left: 27px;">
+                        <table class="table1">
+                            <thead>
+                                <tr style="height: 35px; font-size: 14px;">
+                                    <td class="td_font" ng-show="iseditable">
+                                        <div style="width: 50px; margin-left: 25px; width: 45px;"
+                                             ng-show="iseditable">
+                                            <input type="checkbox" ng-model="allbox.selected" ng-disabled="!selectAll"
+                                                    ng-click="removeselected()" id="allSelect">
+                                        </div>
+                                    </td>
+                                    <th><div style="margin-left: 6px; width: 180px;">Sequence No.<font color="red">*</font></div></th>
+                                    <th><div style="margin-left: 6px; width: 180px;">Segment Name<font color="red">*</font></div></th>
+                                    <th><div style="margin-left: 31px;width:108px">SQL Required?<font color="red">*</font></div></th>
+                                    <th style="width: 305px;">
+                                        <div style="margin-left: 10px; width: 100px; float: left;">Lookup/SQL Query<font color="red">*</font></div>
+                                        <div ng-show="iseditable"
+                                             style="margin-left: 43px; float: left;">
+                                            <i class="fa fa-plus" ng-disabled="!iseditable"
+                                               ng-click="addRow()"></i>&nbsp;&nbsp;&nbsp; <i
+                                               class="fa fa-minus" ng-disabled="!iseditable"
+                                               ng-click="removeRow()" /></i>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <table class="table borderless">
+                            <tbody ng-if="valuedata.length > 0">
+                                <tr ng-repeat="datum in valuedata"
+                                    ng-init="myIndex = $index">
+                                    <td class="td_font" ng-show="iseditable"
+                                        ng-if="datum.isselected == 'Y'">
+                                        <div style="width: 40px; margin-left: 18px;">
+                                            <input type="checkbox" ng-model="datum.selected"
+                                                   ng-init="datum.selected = true">
+                                        </div>
+                                    </td>
+                                    <td class="td_font" ng-show="iseditable"
+                                        ng-if="datum.isselected == 'N' && datum.isCbkeditable =='N'">
+                                        <div style="width: 40px; margin-left: 18px;">
+                                            <input type="checkbox" ng-model="datum.selected"
+                                                   ng-init="datum.selected = false" ng-disabled="true">
+                                        </div>
+                                    </td>
+                                    <td class="td_font" ng-show="iseditable"
+                                        ng-if="datum.isselected == 'N' && datum.isCbkeditable =='Y'">
+                                        <div style="width: 40px; margin-left: 18px;">
+                                            <input type="checkbox" ng-model="datum.selected"
+                                                   ng-init="datum.selected = false" ng-disabled="false">
+                                        </div>
+                                    </td>
+                                    <td width="30%" style="padding: 0px;">
+                                        <div style="width: 180px; margin-top: 5px;">
+                                            <input type="text" ng-disabled="!iseditable"
+                                                   class="form-control" ng-model="datum.seqno" maxlength="10"
+                                                   placeholder="Sequence No." onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = 'Sequence No.'" valid-onlynumber>
+                                        </div>
+                                    </td>
+                                    <td width="30%" style="padding: 0px;">{{index}}
+                                        <div style="width: 180px; margin-top: 5px;">
+                                            <input type="text" ng-disabled="!iseditable"
+                                                   class="form-control" ng-model="datum.segname"
+                                                   placeholder="Segment Name" maxlength="50" onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = 'Segment Name'" no-special-char only-alphabets>
+                                        </div>
+                                    </td>
+                                    <td width="30%" style="padding: 0px;">
+                                        <div style="width: 20%; margin-left: 30px;">
+                                            <input type="checkbox" ng-disabled="!iseditable" id="isSqlReq{{myIndex}}"
+                                                   class="form-control" ng-model="datum.isSqlReqdForValidation" ng-click="showLookup(myIndex)">
+                                        </div>
+                                    </td>
+                                    <td width="30%" style="padding: 0px;">
+                                        <div style="width: 200px; margin-top: 5px;" id="lookupD{{myIndex}}" ng-if="valuedata[myIndex].isSqlReqdForValidations===0">
+                                            <select autofocus class="form-control"
+                                                    ng-model="datum.lookup"
+                                                    ng-options="lookups.lookupCode as (lookups.lookupName+' - '+lookups.lookupCode)  for lookups in lookupdata | orderBy:'lookupName'"
+                                                    ng-disabled="!iseditable">
+                                                <option value="" selected disabled>Select Lookup</option>
+                                            </select>
+                                        </div>
+                                        <div style="width: 200px; margin-top: 5px;" id="sqlD{{myIndex}}">
+                                           <input type="text" ng-disabled="!iseditable"  ng-if="valuedata[myIndex].isSqlReqdForValidations===1"
+                                            class="form-control" ng-model="datum.sqlQuery" maxlength="1000"
+                                            placeholder="SQL Query" onFocus="this.placeholder = ''"
+                                            onBlur="this.placeholder = 'SQL Query'">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                    
+                     <div class="modal-foot" align="right" style="margin-top: 10px; float: left; width: 100%; margin-left: -15px;">
+                           <button type="button" class="btn btn-default btn-space pull-right"  data-dismiss="modal">Close</button>
+                           <div ng-if="isUpdatable">
+                                <button class="btn btn-primary modalButton"
+                                        ng-click="savesegment()" ng-disabled="!iseditable">Update</button>
+                            </div>
+                            <div ng-if="!isUpdatable">
+                                <button type="button" class="btn btn-primary modalButton" ng-hide="!iseditable" ng-click="savesegment()">Save</button>
+                            </div>
+                    </div>
+                   
+               
+            </div>
+        </div>
+    </div>
+</div>
+<!-- delete confirmation modal -->
+<div class="modal fade" id="segment-delete-model" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Are you sure you want to delete?</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal" role="form">
+                    <div class="modal-foot" align="center">
+                        <button type="button" class="btn btn-primary"
+                                ng-click="deleteSegment()">Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

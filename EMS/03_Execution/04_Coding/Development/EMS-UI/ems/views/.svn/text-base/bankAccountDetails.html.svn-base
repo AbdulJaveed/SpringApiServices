@@ -1,0 +1,121 @@
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<div>
+	<form name="vm.osiUserBankDetails" novalidate="">
+		<fieldset>
+		<div class="row">
+				<div class="col-md-5">
+					<div class="row" ><!-- ng-repeat="data in vm.osiUser.osiEmpBankDetails" -->
+							<div class="col-md-4 no-padding">
+								<label for="name"
+									class=" control-label no-padding pull-right"> Name <font color="red">*</font>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<input class="form-control" name="name"
+									ng-model="vm.osiUser.bankDetails.name" 
+									style="text-transform: uppercase" placeholder='Name as per Bank records'
+									type="text" maxlength="25" no-special-char 
+									required>
+								
+								<div class="validation-error" style="color: red" 
+									ng-show="(vm.osiUserBankDetails.name.$dirty || vm.submitted) && vm.osiUserBankDetails.name.$error.required">
+									Name is required.</div>
+								<br />
+							</div>
+					</div>
+					<div class="row" >
+							<div class="col-md-4 no-padding">
+								<label for="accountNo"
+									class=" control-label no-padding pull-right"> Account Number <font color="red">*</font>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<input class="form-control" name="accountNo"
+									ng-model="vm.osiUser.bankDetails.accountNumber" 
+									style="text-transform: uppercase" placeholder='Account Number'
+									type="text" maxlength="25" valid-onlynumber 
+									required>
+								
+								<div class="validation-error" style="color: red" 
+									ng-show="(vm.osiUserBankDetails.accountNo.$dirty || vm.submitted) && vm.osiUserBankDetails.accountNo.$error.required">
+									Account Number is required.</div>
+								<br />
+							</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+								<label for="bankName"
+									class=" control-label no-padding pull-right"> Bank Name <font color="red">*</font>
+								</label>
+						</div>
+						<div class="col-md-6">
+								<input class="form-control" name="bankName"
+									ng-model="vm.osiUser.bankDetails.bankName" 
+									style="text-transform: uppercase" placeholder='Bank Name'
+									type="text" maxlength="25" no-special-char 
+									required>
+								
+								<div class="validation-error" style="color: red" 
+									ng-show="(vm.osiUserBankDetails.bankName.$dirty || vm.submitted) && vm.osiUserBankDetails.bankName.$error.required">
+									Bank Name is required.</div>
+								<br />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-4 no-padding">
+								<label for="branchName"
+									class=" control-label no-padding pull-right"> Branch Name <font color="red">*</font>
+								</label>
+						</div>		
+						<div class="col-md-6">
+							<input class="form-control" name="branchName"
+								ng-model="vm.osiUser.bankDetails.branchName" 
+								style="text-transform: uppercase" placeholder='Branch Name'
+								type="text" maxlength="25" no-special-char 
+								required>
+							
+							<div class="validation-error" style="color: red" 
+								ng-show="(vm.osiUserBankDetails.branchName.$dirty || vm.submitted) && vm.osiUserBankDetails.branchName.$error.required">
+								Branch Name is required.</div>
+							<br />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+								<label for="ifscName"
+									class=" control-label no-padding pull-right"> IFSC Code <font color="red">*</font>
+								</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="ifsc"
+								ng-model="vm.osiUser.bankDetails.ifsc" 
+								style="text-transform: uppercase" placeholder='IFSC Code'
+								type="text" maxlength="25" no-special-char-space 
+								required>
+							
+							<div class="validation-error" style="color: red" 
+								ng-show="(vm.osiUserBankDetails.ifsc.$dirty || vm.submitted) && vm.osiUserBankDetails.ifsc.$error.required">
+								IFSC Code is required.</div>
+							<br />
+						</div>
+					</div>
+				</div>				
+			</div>
+		</fieldset>
+	</form>
+	<br>
+	<div class="row pull-right">
+		<button type="button" class="btn btn-primary"
+			ng-click="vm.previous('tab3');vm.submitted=true">
+			<span>Previous</span>
+		</button>
+		<button type="button" class="btn btn-primary"
+        	ng-click="vm.saveOsiUser();">
+            <span>Submit</span>
+        </button>
+	</div>
+</div>

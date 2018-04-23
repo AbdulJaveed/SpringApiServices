@@ -1,0 +1,25 @@
+<div id="ErrorDisplayModal" tabindex="-1" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<form class="form-group" ng-submit="closeModal() "role="form">
+							<div class="panel panel-danger">
+								<div class="panel-heading" align="center">
+									<h3 class="panel-title" >{{errorMessage}}</h3>
+								</div>
+								<div class="panel-body">
+									<div class="row" align="center">
+										<button type="submit" class="btn btn-danger" autofocus>OK</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

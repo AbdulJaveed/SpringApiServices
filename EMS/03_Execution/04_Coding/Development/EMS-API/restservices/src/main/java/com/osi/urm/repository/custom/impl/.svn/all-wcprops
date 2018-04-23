@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/osi-repos/testing_svn/!svn/ver/2411/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl
+END
+OsiOperationsRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/osi-repos/testing_svn/!svn/ver/2369/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiOperationsRepositoryImpl.java
+END
+OsiMenuRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiMenuRepositoryImpl.java
+END
+OsiFunctionRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/osi-repos/testing_svn/!svn/ver/2411/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiFunctionRepositoryImpl.java
+END
+OsiRptGroupsRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiRptGroupsRepositoryImpl.java
+END
+OsiLoginRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/osi-repos/testing_svn/!svn/ver/2411/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiLoginRepositoryImpl.java
+END
+OsiLookupRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/osi-repos/testing_svn/!svn/ver/1043/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiLookupRepositoryImpl.java
+END
+OsiSkillRepositryCustomImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiSkillRepositryCustomImpl.java
+END
+OsiMenuEntriesRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiMenuEntriesRepositoryImpl.java
+END
+OsiUserRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/osi-repos/testing_svn/!svn/ver/297/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiUserRepositoryImpl.java
+END
+ContactsRepositryCustomImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/osi-repos/testing_svn/!svn/ver/1038/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/ContactsRepositryCustomImpl.java
+END
+OsiResponsibilityRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/osi-repos/testing_svn/!svn/ver/2092/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiResponsibilityRepositoryImpl.java
+END
+OsiCerticationRepositryCustomImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiCerticationRepositryCustomImpl.java
+END
+OsiSegmentStructureHdrRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/osi-repos/testing_svn/!svn/ver/658/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/repository/custom/impl/OsiSegmentStructureHdrRepositoryImpl.java
+END

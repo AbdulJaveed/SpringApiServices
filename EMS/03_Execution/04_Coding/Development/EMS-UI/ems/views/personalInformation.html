@@ -1,0 +1,276 @@
+<style>
+  .custom-button {
+    border-radius: 13px;
+    width: 90px;
+    margin-bottom: -10px;
+  }
+</style>
+
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<script>
+    setTimeout(function(){ $("#add").toggleClass("active"); }, 100);
+        </script>
+<div class="wrapper row-offcanvas row-offcanvas-left ">
+    <div data-ng-include="'views/employeeMenu.html'"></div>
+  <div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+  <div class="right-side">
+	   <div class="row" ng-if="isTrascErrorForPersonal">
+          <div ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}" ng-if="flash" ng-bind="flash.message"></div>
+      </div>
+  <div>
+      <section class="content" style="width: 81%;float: left;width: 100%;overflow-y: auto;height: auto;">
+ <h4>Personal Information</h4><br>
+
+
+        <div class="row">
+          <form name="vm.personalInfoForm" style="margin-left: 30px;">
+            <!--
+            <div class="form-group custom-group">
+              <div class="col-lg-2">
+                <label class="custom-label">Date Of Birth <font color="red">*</font></label>
+              </div>
+              <div class="col-lg-4">
+                <div class="col-md-10" style="padding:unset;">
+                  <datepicker date-format="yyyy-MM-dd" selector="form-control" date-max-limit="{{vm.today}}" >
+                    <input ng-change = "vm.calculateAge()" class="form-control" required ng-model="vm.personalInfo.dateOfBirth" style="text-transform: uppercase" placeholder='Date of Birth'> <br>
+                  </datepicker>
+                </div>
+                <div class="col-md-1" style="padding:unset;">
+                  <span class="input-group-addon" style="cursor: pointer;height: 34px;">
+                    <i class="fa fa-lg fa-calendar" onclick="getDatePicker('dob')"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-lg-2">
+                <label class="custom-label">Age</label>
+              </div>
+              <div class="col-lg-4" style="margin-top: -13px;">
+                <div class="form-group col-lg-6">
+                  <label> Years</label>
+                  <input only-number type="text" maxlength="3" minlength="1" class="form-control" ng-model="vm.personalInfo.ageYears">
+                </div>
+                </div></div>
+                -->
+                <!-- <div class="form-group col-lg-6">
+                  <label> Months</label>
+                  <input only-number type="text" class="form-control" maxlength="2" minlength="1" ng-model="vm.personalInfo.ageMonths">
+                </div> -->
+
+            <div class="form-group custom-group">
+              <!--
+              <div class="col-lg-2">
+                <label class="custom-label" for="maritialStatus">Maritial
+										Status  <font color="red">*</font></label>
+              </div>
+
+              <div class="col-lg-4">
+
+                  <select class="form-control" id="maritialStatus" data-style="btn" name="maritialStatus"
+                  ng-model="vm.personalInfo.maritalStatus"
+                    ng-options="lookup.lookupValue as lookup.lookupValue for lookup in vm.maritialstatusList">
+
+                </select>
+              </div>
+            -->
+            <div  ng-show="{{usOrgCode!=orgCode}}">
+              <div class="col-lg-2">
+                <label class="custom-label" for="personalEmail">Personal
+										Email<font color="red">*</font></label>
+              </div>
+              <div class="col-lg-4">
+                <input type="email" style="width: 96%;" class="form-control" maxlength="50" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" id="personalEmail" name="personalEmail" ng-model="vm.personalInfo.personalEmail">
+              </div>
+              <div class="col-lg-2">
+                  <label class="custom-label" for="bloodGroup">Blood Group</label>
+                </div>
+  
+                <div class="col-lg-4">
+                  <select class="form-control" name="bloodGroup" ng-model="vm.personalInfo.bloodType" placeholder="Blood Group"
+                  ng-options="osiBloodGroup.title as osiBloodGroup.title for osiBloodGroup in osiBloodGroups | orderBy:'title'" required
+                  ng-disabled="!iseditable"
+                  ><option value="">-- Select Blood Group --</option></select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group custom-group">
+
+              <div class="col-lg-2">
+                <label class="custom-label" for="mobileNumber">Mobile
+										Number<font color="red">*</font></label>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="col-lg-3 custom-group0" style="padding-left: 0px;">
+                <select class="selectpicker form-control" ng-model="vm.personalInfo.countryCodeforMobile" style="width: 96px;"
+			         id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as state.countryCallingCode for state in vm.countryCodeList | unique:'countryCallingCode' | orderBy:'countryCallingCode'">
+			     <option value="">--Select--</option>
+			      </select>
+                 <!--  <input type="text" maxlength="4" minlength="2" class="form-control" id="countryCode" name="countryCode" ng-model="vm.personalInfo.countryCodeforMobile"> -->
+                </div>
+                <div class="col-lg-9 custom-group">
+                  <input only-number type="text" maxlength="15" minlength="10" class="form-control col-lg-10" id="mobileNumber" name="mobileNumber" ng-model="vm.personalInfo.mobileNumber">
+                </div>
+              </div>
+              <div class="col-lg-2">
+                  <label class="custom-label" for="homeNumber">Home
+                      Number<!-- <font color="red">*</font> --></label>
+                </div>
+  
+                <div class="col-lg-4">
+                 <!--  <div class="col-lg-4" style="padding-left: 0px;">
+                    <input type="text" maxlength="4" minlength="2" class="form-control" id="countryCode" name="countryCode" ng-model="vm.personalInfo.countryCodeforHome">
+                  </div> -->
+                  <div class="col-lg-3 custom-group0" style="padding-left: 0px;">
+                  <select class="selectpicker form-control" ng-model="vm.personalInfo.countryCodeforHome" style="width: 96px;"
+                 id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as state.countryCallingCode for state in vm.countryCodeList | unique:'countryCallingCode' | orderBy:'countryCallingCode'">
+             <option value="">--Select--</option>
+              </select>
+                   <!--  <input type="text" maxlength="4" minlength="2" class="form-control" id="countryCode" name="countryCode" ng-model="vm.personalInfo.countryCodeforMobile"> -->
+                  </div>
+                  <div class="col-lg-9 custom-group">
+                    <input only-number maxlength="15" minlength="10" type="text" class="form-control col-lg-10" id="homeNumber" name="homeNumber" ng-model="vm.personalInfo.homeNumber">
+                  </div>
+                </div>
+            </div>
+            <div class="form-group custom-group">
+                <div class="col-lg-2">
+                    <label class="custom-label" for="alternateNumber">Alternate
+                        Number</label>
+                  </div>
+    
+                  <div class="col-lg-4">
+                   <!--  <div class="col-lg-4 " style="padding-left: 0px;">
+                      <input type="text" class="form-control" id="alternateNumberCode" name="altNumCountryCode" ng-model="vm.personalInfo.countryCodeforAlternateNumber">
+                    </div> -->
+                    <div class="col-lg-4" style="padding-left: 0px;">
+                    <select class="selectpicker form-control" ng-model="vm.personalInfo.countryCodeforAlternateNumber" style="width: 96px;"
+                   id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as state.countryCallingCode for state in vm.countryCodeList">
+               <option value="">--Select--</option>
+                </select>
+                     <!--  <input type="text" maxlength="4" minlength="2" class="form-control" id="countryCode" name="countryCode" ng-model="vm.personalInfo.countryCodeforMobile"> -->
+                    </div>
+                    <div class="col-lg-8 ">
+                      <input only-number type="text" class="form-control col-lg-10" maxlength="15" id="alternateNumber" name="alternateNumber" ng-model="vm.personalInfo.alternateNumber">
+                    </div>
+    
+                </div>
+                <div class="col-lg-2">
+                    <label class="custom-label" for="knownAs">Known As</label>
+                  </div>
+    
+                  <div class="col-lg-4">
+                    <input type="text" style="width: 95%;" title-case class="form-control col-lg-10" maxlength="50" id="knownAs" name="knownAs" ng-model="vm.personalInfo.knownAs">
+                  </div>
+              
+                </div>
+             
+            <div class="form-group custom-group">
+                <div ng-show="{{usOrgCode!=orgCode}}">
+                <div class="col-lg-2">
+                    <label class="custom-label" for="previousLastName">Previous Last Name</label>
+                  </div>
+                  <div class="col-lg-4">
+                    <input type="text" style="width: 96%;" title-case class="form-control col-lg-10" maxlength="50" id="previousLastName" name="previousLastName" ng-model="vm.personalInfo.previousLastName">
+                  </div>
+                  </div>
+              <div class="col-lg-2">
+                <label class="custom-label" for="addressLink">Address</label>
+              </div>
+
+              <div class="col-lg-4" style="margin-top: 9px;">
+                <a data-toggle="modal" data-target="#addressModal" id="addressLink" name="addressLink"><b>Address</b></a>
+              </div>
+            </div>
+            <div class="form-group custom-group"  ng-show="{{usOrgCode!=orgCode}}">
+              
+                <div class="col-lg-2">
+                  <label class="custom-label" for="totalExp">Total Experience<font color="red">*</font></label>
+                </div>
+                <div class="col-lg-4">
+                  <input type="text" style="width: 96%;" valid-decimal-number class="form-control col-lg-10" maxlength="50" id="totalExp" name="totalExp" ng-model="vm.personalInfo.totalExp">
+                </div>
+                <div class="col-lg-2" style="width: 11.666667%;">
+                    <label class="custom-label" for="resume">Resume</label>
+                  </div>
+                  <div class="col-lg-2">
+                      <div class="card" style="text-align: center;width:100%">        
+                        <div class="card-block" style="padding: 0px; margin-left: 58px;">
+                                <div ngf-change="vm.load(picFile)" ngf-select ngf-drop ng-model="picFile" required="" id="image"
+                                    ngf-pattern="'.pdf,.doc,.docx'"
+                                    class="drop-box" ngf-drop-available="dropAvailable" ngf-keep="false" ngf-multiple="false"
+                                    style="height: 60px;border: dashed; color: #203b8a;" class="drop-box" ng-disabled="!iseditable">
+                                  <span ng-show="dropAvailable"> Drag & Drop Here
+                                  </span>
+                                    <!-- <img ngf-src="vm.preview.content" class="thumb" style="margin-top: -34px;width: 100%; height: 100%"> -->
+                                </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-2">
+                      <a id='resume' style="display:none;" />
+                    <a ng-click="downloadResume();" title='Resume.docx'>{{vm.preview.name}}</a></div>
+            </div>
+          <div class="form-group custom-group">
+              <div class="col-lg-4">
+                <button type="button" style="float: right;margin-left: 14px;" class="btn btn-primary" ng-disabled="!nonEditable" ng-click="vm.checkForValidData();">
+                    <span>Save</span>
+                </button>
+                <button type="button" style="float: right;margin-left: 14px;" ng-click="vm.clearForm()" class="btn btn-primary">
+                    <span>Cancel</span>
+                </button>
+              </div>
+          </div>
+
+            <!--
+            <div class="form-group custom-group">
+
+              <div class="col-lg-4">
+                <div class="form-check">
+                  <label class="form-check-label"> <input
+											class="form-check-input" type="checkbox" ng-model = "vm.onMilitaryService"
+											ng-change="vm.isChecked()"> On Military Service
+									</label>
+                </div>
+              </div>
+            </div>
+          -->
+          </form>
+        </div>
+
+<!-- Address POPUP starts-->
+        <div class="modal fade" id="addressModal" style="margin-top: -16px;overflow-y: unset;" tabindex="-1" role="dialog" aria-labelledby="Address">
+          <div class="modal-dialog" role="document" style="margin-bottom: 0px;margin-top: 20px;">
+            <div class="modal-content" style="height: auto;width:558px">
+              <div class="modal-header" style="    padding: 7px;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+
+                <h4 class="modal-title" id="exampleModalLabel" style="text-align: left;"><b>Address</b></h4>
+              </div>
+
+              <div class="modal-body">
+				            <div class="row" ng-if="isTrascError">
+							               <div ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+								                     ng-if="flash" ng-bind="flash.message">
+                             </div>
+						        </div>
+                <div ng-include="'views/common/address.html'"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- Address POPUP ends-->
+      </section>
+    </div>
+    <div class="modal fade" id="confirmationModal" aria-hidden="true" tabindex="-1" role="dialog" aria-labelledby="confirmationModal">
+      <div ng-include="'views/confirmationPopup.html'"></div>
+    </div>
+<script>
+  function getDatePicker(thiz) {
+    document.getElementById(thiz).focus();
+  }
+</script>

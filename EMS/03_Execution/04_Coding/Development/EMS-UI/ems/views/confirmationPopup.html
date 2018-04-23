@@ -1,0 +1,23 @@
+<!-- Confirmation Modal -->
+<div class="modal-dialog" style="width: fit-content;margin: auto;">
+	<div class="modal-content" style="margin-top: 30%;">
+		<div class="modal-header">
+			<button type="button" class="close modelCloseButton" data-dismiss="modal"
+				ng-click="">&times;</button>
+			<h4 class="modal-title">Confirmation</h4>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-lg-8">
+					Do you want to Correct or Update the record?
+				</div>
+				<div class="col-lg-6" style="margin-left:50%">
+					<button type="button" class="btn btn-primary" ng-click="vm.save('correction')" data-dismiss="modal">Correct</button>
+					&nbsp;
+					<button type="button" class="btn btn-primary" ng-click="vm.save('update');" data-dismiss="modal">Update</button>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
+</div>

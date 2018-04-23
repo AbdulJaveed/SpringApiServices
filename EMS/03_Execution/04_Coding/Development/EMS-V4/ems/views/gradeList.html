@@ -1,0 +1,337 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<div class="breadcrumb-holder">
+		<div class="container-fluid">
+			<ul class="breadcrumb">
+				<h1 class="h3 display">Grade List</h1>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<header> </header>
+		<section class="forms">
+			<div class="row">
+				<div class="alert alert-success" ng-show="showSuccessAlert">
+					{{successTextAlert}}</div>
+				<div class="alert alert-danger" ng-show="showFailureAlert">
+					{{failureTextAlert}}</div>
+
+			</div>
+
+			<div class="col-sm-12 no-padding adjust-search-box">
+				<div class="card">
+					<div class="card-body">
+						<div class="row" role="form">
+							<div class="col-lg-4">
+								<input class="form-control" name="gradeName"
+									ng-Model="gradeName" placeholder="Grade" type="text">
+							</div>
+							<div class="col-lg-4">
+								<button class="btn btn-primary" ng-click="searchOsiGradess()">Search</button>
+								<button type="button" class="btn btn-defaul btn-width"
+									ng-click="clearSearch()">Clear</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="content">
+			<div class='card'>
+				<div class="box-body table-responsive" style="">
+					<table class="table table-striped table-sm">
+						<thead class="thead_bg">
+							<tr>
+								<th ng-click="sort('gradeName')">Grade Name<span
+									class="glyphicon sort-icon" ng-show="sortKey == 'gradeName'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('gradeDescription')">Grade Description<span
+									class="glyphicon sort-icon"
+									ng-show="sortKey == 'gradeDescription'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('orgName')">Organization<span
+									class="glyphicon sort-icon" ng-show="sortKey == 'orgName'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr
+								dir-paginate="item in gradeList |orderBy:sortKey:reverse|itemsPerPage:rowSize "
+								ng-class="{selected: item.gradeId== isSelectedRow}"
+								ng-click="selectRow(item)"
+								ng-dblclick="editSelectedRowDetails(item)"
+								ng-init="myIndex = $index">
+								<input type="hidden" ng-model="id" value="{{item.id}}" />
+								<td>{{item.gradeName|uppercase}}</td>
+								<td>{{item.gradeDescription|uppercase}}</td>
+								<td>{{item.orgName|uppercase}}</td>
+							</tr>
+						</tbody>
+
+					</table>
+					<div ng-if="gradeList.length == 0">
+						<h6 style="text-align: center; color: red;">No Records Found</h6>
+					</div>
+
+
+				</div>
+				<!-- /.box-body -->
+				<div class="col-sm-13 row">
+					<div class="col-sm-10">
+						<dir-pagination-controls max-size="8" direction-links="true"
+							boundary-links="true" on-page-change="clearSelectedRow()">
+						</dir-pagination-controls>
+					</div>
+					<div class="col-sm-2 adjust-crud-op">
+						<span ng-repeat="availOperations in availOperations"> <i
+							style="cursor: pointer;"
+							ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',
+                                                'glyphicon glyphicon-eye-open' : availOperations.name == 'View',
+                                                'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',
+                                                'disabled': disable_{{availOperations.name}}}"
+							ng-disabled="disable_{{availOperations.name}}"
+							ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+						</span>
+					</div>
+				</div>
+		</section>
+	</div>
+</div>
+<div class="modal fade" id="OsiGrades-model" tabindex="-1" role="dialog"
+	aria-labelledby="gradesModal" aria-hidden="true">
+	<div class="modal-dialog " style="width: 900px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close modelCloseButton"
+					data-dismiss="modal" ng-click="closeModal()">&times;</button>
+				<h4 class="modal-title">{{headername}}</h4>
+			</div>
+			<div class="modal-body">
+				<form name="menuForm" autocomplete="off">
+					<div class="row" ng-if="isTrascError">
+						<div
+							ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+							ng-if="flash" ng-bind="flash.message"></div>
+					</div>
+					<div class="row">
+						<div class="col-md-0">
+							<input class="form-control" ng-disabled="!iseditable" name="item"
+								ng-model="OsiGrades.id" placeholder="Enter ID" type="hidden">
+						</div>
+						<div class="col-md-2 text-align-right">
+							<label for="address">Grade</label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control form-field-border"
+								ng-disabled="!iseditable" name="item" uppercase no-special-char 
+								ng-model="OsiGrades.gradeName" placeholder="Enter Grade"
+								maxlength="20" type="text">
+						</div>
+
+						<div class="col-md-2 text-align-right">
+							<label  for="address">Description</label>
+						</div>
+						<div class="col-md-4">
+							<textarea class="form-control" ng-disabled="!iseditable"
+								name="item" uppercase ng-model="OsiGrades.gradeDescription"
+								maxlength="200" placeholder="Enter Description"></textarea>
+							<br />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 text-align-right">
+							<label  for="address">Sequence</label>
+						</div>
+						<div class="col-md-4">
+							<input type="text" maxlength="11" ng-maxlength="10"
+								class="form-control form-field-border" ng-disabled="!iseditable"
+								name="item" ng-model="OsiGrades.seq"
+								placeholder="Enter Sequence" only-Number><br />
+						</div>
+						<div class="col-md-2 text-align-right">
+							<label  for="address">Cost Per Hour
+							</label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control form-field-border"
+								ng-disabled="!iseditable" name="item"
+								ng-model="OsiGrades.costPerHour"
+								placeholder="Enter Cost Per Hour" type="text"
+								convert-decimal-number><br />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-2 text-align-right">
+							<label  for="address">Cost Per Month
+							</label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control form-field-border"
+								ng-disabled="!iseditable" name="costPerMonth"
+								ng-model="OsiGrades.costPerMonth"
+								placeholder="Enter Cost Per Month" type="text"
+								convert-decimal-number><br />
+						</div>
+						<div class="col-md-2 text-align-right">
+							<label  for="address">Revenue Per
+								Hour </label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control form-field-border"
+								ng-disabled="!iseditable" name="revPerHour"
+								ng-model="OsiGrades.revPerHour"
+								placeholder="Enter Revenue Per Hour" type="text"
+								convert-decimal-number><br />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 text-align-right">
+							<label  for="address">Revenue Per
+								Month </label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control form-field-border"
+								ng-disabled="!iseditable" name="revPerMonth"
+								ng-model="OsiGrades.revPerMonth"
+								placeholder="Enter Revenue Per Month" type="text"
+								convert-decimal-number><br />
+						</div>
+						<div class="col-sm-2 text-align-right">
+							<label  for="orgId">Organization</label>
+						</div>
+						<div class="col-md-4">
+							<!-- <select name="orgId" uppercase
+								ng-disabled="!iseditable"
+								ng-model="OsiGrades.orgId"
+								class="form-control input input-sm" required>
+								<option ng-repeat="org  in organizations"
+									ng-selected="org.orgId == OsiGrades.orgId"
+									value="{{org.orgId}}">{{org.orgName|uppercase}}</option>
+							</select> -->
+							<select name="orgId" ng-disabled="!iseditable"
+								ng-model="OsiGrades.orgId"
+								ng-options="org.orgId as (org.orgName|uppercase) for org  in organizations"
+								class="form-control form-field-border" required>
+								<option value="" label="-- Select organization --"></option>
+							</select><br />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-2 text-align-right">
+							<label  for="titleId">Job Code</label>
+						</div>
+						<div class="col-md-4">
+
+							<select name="titleId" ng-disabled="!iseditable"
+								ng-model="OsiGrades.titleId"
+								ng-options="title.titleId as (title.titleShortName|uppercase) for title  in titles"
+								class="form-control form-field-border" required>
+								<option value="" label="-- Select Title --"></option>
+							</select><br />
+						</div>
+						<div class="col-sm-2 text-align-right">
+							<label for="active">Active</label>
+						</div>
+						<div class="col-md-4">
+							<input type="checkbox" class="form-field-border"
+								ng-disabled="!iseditable" name="active"
+								ng-model="OsiGrades.active" ng-true-value=1 ng-false-value=0>
+						</div>
+
+					</div>
+				</form>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-space pull-right"
+					data-dismiss="modal" ng-click="closeModal()">Close</button>
+				<div ng-if="isUpdatable">
+					<button class="btn btn-primary modalButton"
+						ng-click="saveOsiGrades(OsiGrades)" ng-disabled="!iseditable">Update</button>
+				</div>
+				<div ng-if="!isUpdatable">
+					<button type="button" class="btn btn-primary modalButton"
+						ng-hide="!iseditable" ng-click="saveOsiGrades(OsiGrades)">Save</button>
+				</div>
+				<div ng-if="isUpdatable">
+						<button type="button" class="btn btn-primary modalButton"
+							ng-hide="!iseditable" ng-click="getGradesHistory()">History</button>
+				</div>
+			</div>
+		</div>
+
+
+<div class="modal fade" id="GradeHistModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document" style="width: 900px">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="row">
+						<div class="col-lg-6">
+							<h4 class="modal-title">{{locModelHeading}} </h4>
+						</div>
+						<button type="button" class="close modelCloseButton"
+							ng-click="closeGradeHistModal()">&times;</button>
+					</div>
+				</div>
+				<div class="modal-body">
+		<div class="box-body table-responsive" style="">
+				<table class="table table-striped table-sm">
+					<thead class="thead_bg">
+						<tr>
+							<th ng-click="sort('gradeName')">Grade Name<span
+								class="glyphicon sort-icon" ng-show="sortKey == 'gradeName'"
+								ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('gradeDescription')">Grade Description<span
+								class="glyphicon sort-icon"
+								ng-show="sortKey == 'gradeDescription'"
+								ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('orgName')">Organization<span
+								class="glyphicon sort-icon" ng-show="sortKey == 'orgName'"
+								ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('costPerHour')">Cost Per Hour<span
+								class="glyphicon sort-icon" ng-show="sortKey == 'costPerHour'"
+								ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('costPerMonth')">Cost Per Month<span
+								class="glyphicon sort-icon" ng-show="sortKey == 'costPerMonth'"
+								ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('revPerHour')">Rev Per Hour<span
+								class="glyphicon sort-icon" ng-show="sortKey == 'revPerHour'"
+								ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('revPerMonth')">Rev Per Month<span
+								class="glyphicon sort-icon" ng-show="sortKey == 'revPerMonth'"
+								ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('creationDate')">Effected Date<span
+								class="glyphicon sort-icon" ng-show="sortKey == 'creationDate'"
+								ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr
+							dir-paginate="item in gradeHistList |orderBy:sortKey:reverse|itemsPerPage:rowSize "
+							>
+							<td>{{item.gradeName|uppercase}}</td>
+							<td>{{item.gradeDescription|uppercase}}</td>
+							<td>{{item.orgName|uppercase}}</td>
+							<td>{{item.costPerHour|uppercase}}</td>
+							<td>{{item.costPerMonth|uppercase}}</td>
+							<td>{{item.revPerHour|uppercase}}</td>
+							<td>{{item.revPerMonth|uppercase}}</td>
+							<td>{{item.creationDate| date : "yyyy-MM-dd hh:mm:ss"}}</td>
+						</tr>
+					</tbody>
+
+				</table>
+				<div ng-if="gradeList.length == 0">
+					<h6 style="text-align: center; color: red;">No Records Found</h6>
+				</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+	</div>

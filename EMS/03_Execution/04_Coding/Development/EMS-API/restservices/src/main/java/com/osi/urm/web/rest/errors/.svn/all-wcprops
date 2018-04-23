@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/errors
+END
+FieldErrorVM.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/errors/FieldErrorVM.java
+END
+CustomParameterizedException.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/errors/CustomParameterizedException.java
+END
+ErrorConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/errors/ErrorConstants.java
+END
+ExceptionTranslator.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/errors/ExceptionTranslator.java
+END
+ParameterizedErrorVM.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/errors/ParameterizedErrorVM.java
+END
+ErrorVM.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/errors/ErrorVM.java
+END

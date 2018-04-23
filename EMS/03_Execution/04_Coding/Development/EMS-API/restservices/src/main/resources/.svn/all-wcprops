@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/2411/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/resources
+END
+errorOrSuccessMsg.properties
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/osi-repos/testing_svn/!svn/ver/2411/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/resources/errorOrSuccessMsg.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/osi-repos/testing_svn/!svn/ver/646/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/resources/log4j.properties
+END
+application.properties
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/osi-repos/testing_svn/!svn/ver/2297/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/resources/application.properties
+END

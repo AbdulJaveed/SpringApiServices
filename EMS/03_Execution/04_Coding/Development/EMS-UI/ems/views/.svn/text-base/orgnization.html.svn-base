@@ -1,0 +1,646 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <div class="right-side">
+        <div>
+            <!-- Content Header (Page header) -->
+            <div>
+                <div>
+
+                	  <section class="content">
+                        <div class="row" style="margin-right: 0px;">
+                            <div class="col-sm-6">
+                                <h4>&nbsp;Organization</h4>
+                            </div>
+                        </div>
+                        <div class="alert alert-success" ng-show="showSuccessAlert"
+                             style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                            <strong></strong> {{successTextAlert}}
+                        </div>
+                        <div class="alert alert-danger" ng-show="showErrorAlert"
+                             style="margin: 0px 500px 15px 300px; padding: 0px; text-align: center;">
+                            <strong></strong> {{ErrorTextAlert}}
+                        </div>					
+                        <div class="col-sm-12 no-padding">
+                            <div class="panel panel-default" style="min-height:auto;">
+                                <div class="panel-body" style="padding-left:0">
+                                <form name="menuForm" class="form-inline col-md-12" style="padding-left:0;margin-top:8px;margin-bottom:8px;">
+                                    <div class="col-md-12 col-lg-12" style="padding-left:0"
+                                         role="form">
+                                        <div class="col-lg-7">
+                                        	<div class="form-group col-lg-4">
+                                        	<input class="form-control" type="text" id="search_org_name" name="search_org_name"  ng-model="org.search.orgName"  placeholder="Orgnization Name" class="input input-sm" only-Alphabets no-special-char>
+                                        	</div>
+                                        	<div class="form-group col-lg-4">
+                                        	<input class="form-control" type="text" id="search_org_country" name="search_org_country"   placeholder="Country" ng-model="org.search.country"  class="input input-sm" only-Alphabets no-special-char>
+                                        	</div>
+                                        	<div class="form-group col-lg-4">
+                                        	<input class="form-control"  type="text" id="search_org_city" name="search_org_city" placeholder="Location" ng-model="org.search.location"  class="input input-sm" only-Alphabets no-special-char>
+                                        </div>
+
+                                       <!--      <input class="form-control" name="menuname" ng-model="searchMenu.menuName"
+                                                   placeholder="Menu Name" onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = 'Menu Name'" type="text"  maxlength="100"
+                                                   only-Alphabets no-special-char /> -->
+                                        </div>
+
+                                        <div class="col-lg-2" style="padding-left:0;">
+                                        	<button type="submit" class="btn btn-primary" ng-click="orgSearch(org.search)"> Search </button>
+
+                                        	  <button type="button" class="btn btn-defaul btn-width" ng-click="init();org ={}">Clear</button>
+
+					
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+                    </section>
+
+                </div>
+
+
+<section class="content">
+<div class="row" style="margin-right: 0px;">
+	<div class="col-sm-12" style="height: 1220px;">
+		<div class="container-fluid">
+			
+			<div class="row">
+				<div class="col-md-12">
+					<br/>
+					<br/>
+					<table class="table table-bordered">
+						<thead>
+							<tr class="thead_bg">
+							<th ng-click="sort('orgName')">Name<span
+										class="glyphicon sort-icon" ng-show="sortKey == 'orgName'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> </th>
+							<th ng-click="sort('orgEmail')">Email<span
+										class="glyphicon sort-icon" ng-show="sortKey == 'orgEmail'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('orgWebsite')">Website<span
+										class="glyphicon sort-icon" ng-show="sortKey == 'orgWebsite'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('orgPhoneNumber')">Phone Number<span
+										class="glyphicon sort-icon" ng-show="sortKey == 'orgPhoneNumber'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('orgLocation')">Locations<span
+										class="glyphicon sort-icon" ng-show="sortKey == 'orgLocation'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<th ng-click="sort('orgCountry')">Country<span
+										class="glyphicon sort-icon" ng-show="sortKey == 'orgCountry'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							<!-- <th ng-click="sort('org')">Edit</th> -->
+							</tr>
+						</thead>
+						<tbody>
+
+					
+
+							<tr
+								dir-paginate="item in vm.orgLists|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+								ng-class="{selected: item.orgId == isSelectedRow}"
+								ng-click="selectRow(item)"
+								ng-dblclick="editSelectedRowDetails(item)"
+								ng-init="myIndex = $index">
+								<td>{{item.orgName|uppercase}}</td>
+								<td>{{item.emailId|uppercase}}</td>
+								<td>{{item.website|uppercase}}</td>
+								<td>{{item.phoneNumber|uppercase}}</td>
+								<td>{{item.locations|uppercase}}</td>
+								<td>{{item.countryName|uppercase}}</td>
+								
+							</tr>
+
+						</tbody>
+					</table>
+					<div ng-if="vm.orgLists.length == 0">
+							<h6 style="text-align: center; color: red;">No Records Found</h6>
+						</div>
+
+					<div class="col-sm-12">
+						
+						<div class="col-sm-6">
+							<div style="float: left; margin-top: -10px;">
+								<dir-pagination-controls max-size="8" direction-links="true"
+									boundary-links="true" on-page-change="clearSelectedRow()">
+								</dir-pagination-controls>
+							</div>
+						</div>
+						<div style="float: right;">
+							<span class="alert alert-info" ng-show="toolTipMsg" style="margin:0px;padding:2px">
+							  <strong>Please Select Row</strong>
+							</span>
+							<!--  'glyphicon glyphicon-trash' : availOperations.name == 'Delete', -->
+							<span ng-repeat="availOperations in availOperations"> <i
+								style="cursor: pointer;"
+								ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',    
+					      'glyphicon glyphicon-eye-open' : availOperations.name == 'View',    
+					      'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',    
+					       
+					      'disabled': disable_{{availOperations.name}}}"
+								ng-disabled="disable_{{availOperations.name}}"
+								ng-click="org= {}; operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+							</span>
+						</div>
+					</div>
+						
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<!-- Organization Model -->
+<div class="modal fade" id="organizationModal" tabindex="-1" role="dialog" aria-labelledby="organizationModal" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="width: 850px">
+    <div class="modal-content">
+		<div class="modal-header">
+				<button type="button" class="close modelCloseButton"
+					data-dismiss="modal" ng-click="clearSelectedRow();init();org ={};">&times;</button>
+				<h4 class="modal-title">{{orgModelHeading}} Organization</h4>
+			</div>
+        <div class="modal-body">
+        <div class="alert alert-success" ng-show="showSuccessAlert"
+                             style="padding: 2px; text-align: center;">
+                            <strong></strong> {{successTextAlert}}
+                        </div>
+                        <div class="alert alert-danger" ng-show="showErrorAlert"
+                             style="padding: 0px; text-align: center;">
+                            <strong></strong> {{ErrorTextAlert}}
+                        </div>	
+        	<form  name="menuForm" autocomplete="off">
+
+       		<div class="row">
+				<div class="col-md-5">
+					<div class="col-md-4">
+						<label for="orgName">Name<font color="red">*</font>:</label>
+					</div>
+					<div class="col-md-8">
+						<input type="text" id="orgName" name="orgName" ng-readonly="!orgView" ng-model="org.basic.orgName" maxlength="30" uppercase ng-maxlength="29"  class="form-control input input-sm" required>
+						<!-- <span style="color:red;" ng-show="menuForm.orgName.$error.maxlength">Max Limit Exceeded!</span> -->
+						<br/>
+					</div>
+					
+				</div>
+				<div class="col-md-6">
+					<div class="col-md-4">
+						<label for="website">Website<font color="red">*</font>:</label>
+					</div>
+						<div class="col-md-8">
+						<input uppercase type="text" id="website" name="website" ng-readonly="!orgView" ng-model="org.basic.website"  maxlength="20"  ng-maxlength="19" class="form-control input input-sm" required>
+						<!-- <span style="color:red;" ng-show="menuForm.website.$error.pattern">Not valid website!</span>
+						<span style="color:red;" ng-show="menuForm.website.$error.maxlength">Max Limit Exceeded!</span> -->
+						<br/>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5">
+					<div class="col-md-4">
+						<label for="orgShortName">Short Name<font color="red">*</font>:</label>
+					</div>
+				<div class="col-md-8">
+					<input type="text" uppercase id="orgShortName" name="orgShortName" ng-readonly="!orgView" ng-model="org.basic.orgShortName"  maxlength="20"  ng-maxlength="19" class="form-control input input-sm" disallow-Spaces required>
+					<!-- <span style="color:red;" ng-show="menuForm.orgShortName.$error.maxlength">Max Limit Exceeded!</span> -->
+					<br/>
+				</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="col-md-4">
+					<label for="email">Contact Email<font color="red">*</font>:</label>
+				</div>
+				<div class="col-md-8">
+					<input type="text" uppercase id="email" name="email" maxlength="50" ng-readonly="!orgView" ng-model="org.basic.emailId"  class="form-control input input-sm" required>
+					<!-- <span style="color:red;" ng-show="menuForm.$error.email">Not valid email!</span> -->
+					<br/>
+				</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5">
+					<div class="col-md-4">
+					<label for="phoneNumber">Phone No<font color="red">*</font>:</label>
+				</div>
+				   <div class="col-md-3" > 
+                 <!--  <input type="text" maxlength="4" minlength="2" class="form-control input input-sm" id="countryCode" name="faxCode" ng-model="org.basic.countryCode" required> -->
+				 <select class="selectpicker form-control" ng-model="org.basic.countryCode" style="    width: 61px;height: 31px;padding-right: 0px;padding-left: 0px;"
+				 	ng-readonly="!orgView"
+			         id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as state.countryCallingCode for state in vm.countryCodeList | unique:'countryCallingCode' | orderBy:'countryCallingCode'">
+			     <option value="">--Select--</option>
+			      </select>
+                </div>
+				
+				
+				<div class="col-md-5" style="padding-left: 0px;">
+					<input type="text" uppercase id="phoneNumber" name="phoneNumber" ng-readonly="!orgView" maxlength="15" ng-model="org.basic.phoneNumber" class="form-control input input-sm" only-Number  required>
+  <!-- <span style="color:red;" ng-show="menuForm.phoneNumber.$error.pattern">Not a valid number!</span> -->
+					<br/>
+				</div>
+				</div>
+				<div class="col-md-6">
+					<div class="col-md-4">
+					<label for="contactPersonId">Contact Person:</label>
+				</div>
+				<div class="col-md-8">
+					
+					<input name="contactPersonId" list="contactPersonId" ng-readonly="!orgView" id="contactPersonId" type="text" placeholder=" " ng-model="org.basic.contactPersonName"
+						onfocusout="getEmpData()" 
+						class="form-control" maxlength="30"   ng-maxlength="29" required >
+
+					<!-- <span style="color:red;" ng-show="menuForm.contactPersonId.$error.maxlength">Max Limit Exceeded!</span> -->
+					<span class="alert alert-info" ng-show="empNotFound" style="margin:0px;padding:2px">
+						<strong>No employee found.</strong>
+					</span>
+					<br/>
+				</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5">
+					<div class="col-md-4">
+					<label for="faxNumber">Fax No<font color="red">*</font>:</label>
+				</div>
+				
+				
+                <div class="col-md-3" > 
+						<select class="selectpicker form-control" ng-model="org.basic.faxCode" style="    width: 61px;height: 31px;padding-right: 0px;padding-left: 0px;"
+						ng-readonly="!orgView"
+						id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as state.countryCallingCode for state in vm.countryCodeList | unique:'countryCallingCode' | orderBy:'countryCallingCode'">
+					<option value="">--Select--</option>
+					 </select>
+                <!--  <input type="text" maxlength="100" class="form-control input input-sm" id="faxCode" name="faxCode" ng-model="org.basic.faxCode" only-Number required> -->
+                </div>
+				
+				
+				
+				<div class="col-md-5" style="padding-left: 0px;">
+					<input type="text" id="faxNumber" name="faxNumber" ng-readonly="!orgView" ng-model="org.basic.faxNumber" class="form-control input input-sm" only-Number  required>
+					<!--  <span style="color:red;" ng-show="menuForm.faxNumber.$error.pattern">Not a valid number!</span> -->
+					<br/>
+				</div>
+				</div>
+			
+					<div class="col-md-6">
+					<div class="col-md-4">
+					<label for="paretnOrganization">Parent Organization:</label>
+				</div>
+				<div class="col-md-8">
+					<select name="paretnOrganization"  uppercase ng-disabled="!orgView" ng-model="org.basic.parentOrgId" class="form-control input input-sm" >
+						<option  ng-repeat="orgPar  in vm.orgLists  track by $index" ng-selected="orgPar.orgId == org.basic.parentOrgId" value="{{orgPar.orgId}}">{{orgPar.orgName}}</option>
+					</select>
+					<br/>
+				</div>
+					
+				</div>
+			</div>
+			
+				<div class="row">
+				<div class="col-md-5">
+						<div class="col-md-4">
+					<label for="totalHrs">Total Hrs<font color="red">*</font>:</label>
+				</div>
+				<div class="col-md-8">
+					<input type="text" uppercase id="totalHrs" name="totalHrs" ng-readonly="!orgView" ng-model="org.basic.totalHrsPerYear" maxlength="10"  class="form-control input input-sm"  only-Number required>
+					<!-- <span style="color:red;" ng-show="menuForm.$error.email">Not valid email!</span> -->
+					<br/>
+				</div>
+				</div>
+
+				<div class="col-md-6">
+				<div class="col-md-4">
+						<label for="orgOvrHdPct">OverHead Pct<font color="red">*</font>:</label>
+					</div>
+				<div class="col-md-8">
+					<input type="text" uppercase id="orgOvrHdPct" name="orgOvrHdPct" ng-readonly="!orgView" ng-model="org.basic.overheadPct"  maxlength="3"  ng-maxlength="2" class="form-control input input-sm" disallow-Spaces  only-Number required>
+					<!-- <span style="color:red;" ng-show="menuForm.orgShortName.$error.maxlength">Max Limit Exceeded!</span> -->
+					<br/>
+				</div>
+				</div>
+			</div>
+				<div class="row">
+				<div class="col-md-5">
+				<div class="col-md-4">
+					<label for="costCal">Cost Cal<font color="red">*</font>:</label>
+				</div>
+				<div class="col-md-8">
+				<select name="costCal"  uppercase ng-disabled="!orgView" ng-model="org.basic.costCalc" class="form-control input input-sm"	
+				ng-options="data.lookupValue as data.lookupDesc for data in costList" ng-disabled="!iseditable">
+								<option value="">-- Select Cost Type --</option></select> 
+					
+					<br/>
+				</div>
+				</div>
+
+				<div class="col-md-6">
+						<div class="col-md-4">
+						<label for="orgIntOvrHdPct">Internal OverHead Pct:</label>
+					</div>
+				<div class="col-md-8">
+					<input type="text" uppercase id="orgIntOvrHdPct" name="orgIntOvrHdPct" ng-readonly="!orgView" ng-model="org.basic.interEmpOverheadPct"  maxlength="3"  ng-maxlength="2" class="form-control input input-sm" disallow-Spaces  only-Number >
+					<!-- <span style="color:red;" ng-show="menuForm.orgShortName.$error.maxlength">Max Limit Exceeded!</span> -->
+					<br/>
+				</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5">
+					<div class="col-md-4">
+					<label for="baseCurrencyId" >Base Currency<font color="red">*</font>:</label>
+				</div>
+				<div class="col-md-5">
+					<select name="baseCurrencyId" uppercase ng-disabled="!orgView" ng-model="org.basic.baseCurrencyId.currencyId"   class="form-control input input-sm" required>
+						<option ng-repeat="currency  in currencies  track by $index" ng-selected="currency.currencyId == org.basic.baseCurrencyId.currencyId" value="{{currency.currencyId}}">{{currency.currencyCode|uppercase}} </option>
+					</select>
+					<br/>
+				</div>
+					
+				</div>
+				
+				<div class="col-md-6">
+					<div class="col-md-4">
+					<label for="reportingCurrencyId" >Reporting Currency<font color="red">*</font>:</label>
+				</div>
+				<div class="col-md-4">
+					<select name="reportingCurrencyId" uppercase ng-disabled="!orgView" ng-model="org.basic.reportingCurrencyId.currencyId" class="form-control input input-sm" required>
+						<option  ng-repeat="currency  in currencies" ng-selected="currency.currencyId == org.basic.reportingCurrencyId.currencyId" value="{{currency.currencyId}}">{{currency.currencyCode|uppercase}}</option>
+					</select>
+					<br/>
+				</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5">
+				<div class="col-md-4">
+				<label for="active" >Active:</label>
+				
+					<input type="checkbox" id="active" name="active" ng-disabled="!orgView" ng-model="org.basic.active" ng-true-value=1 ng-false-value=0 class="input input-sm">
+					<label for="active"></label>
+				</div>
+				</div>
+			</div>
+		
+			<div class="row" ng-if="vm.orgLocLists.length >0">
+				<div class="col-md-8 col-md-offset-2">
+					<br/>
+					<br/>
+					<table class="table table-bordered">
+						<thead>
+							<tr class="thead_bg">
+							<th ng-click="sort('locName')">Location Name<span
+										class="glyphicon sort-icon" ng-show="sortKey == 'locName'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>  </th>
+							<th ng-click="sort('locAddress')">Address<span
+										class="glyphicon sort-icon" ng-show="sortKey == 'locAddress'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> </th>
+							<th ng-click="sort('locCity')">City<span
+										class="glyphicon sort-icon" ng-show="sortKey == 'locCity'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> </th>
+							
+							<th ng-click="sort('locZipcode')">Zipcode<span
+										class="glyphicon sort-icon" ng-show="sortKey == 'locZipcode'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> </th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr dir-paginate="orgLocList in vm.orgLocLists|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+								ng-class="{selected: orgLocList.locationId == isLocSelectedRow}"
+								ng-click="selectLocRow(orgLocList)"
+								ng-dblclick="editSelectedLocRowDetails(orgLocList)"
+								ng-init="myIndex = $index">
+							<td>{{orgLocList.locationName|uppercase}}</td>
+							<td>{{orgLocList.osiAddresses.addressLine1|uppercase}} <br/>{{orgLocList.addressLine2|uppercase}}</td>
+							<td>{{orgLocList.osiAddresses.city|uppercase}}</td>
+							<td>{{orgLocList.osiAddresses.zipcode}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div ng-if="vm.orgLocLists.length == 0">
+							<h6 style="text-align: center; color: red;">No Records Found</h6>
+						</div>
+
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							<div style="float: left; margin-top: -10px;">
+								<dir-pagination-controls max-size="8" direction-links="true"
+									boundary-links="true" on-page-change="clearLocSelectedRow()">
+								</dir-pagination-controls>
+							</div>
+						</div>
+						<div style="float: right;"  ng-show="orgView">
+							<span class="alert alert-info" ng-show="toolLocTipMsg" style="margin:0px;padding:2px">
+							  <strong>Please Select Row</strong>
+							</span>
+							<!--  'glyphicon glyphicon-trash' : availOperations.name == 'Delete', -->
+							<span ng-repeat="availOperations in availOperations"> <i
+								style="cursor: pointer;"
+								ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',    
+					      'glyphicon glyphicon-eye-open' : availOperations.name == 'View',    
+					      'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',    
+					       
+					      'disabled': disable_Loc_{{availOperations.name}}}"
+								ng-disabled="disable_Loc_{{availOperations.name}}"
+								ng-click="operationsLocation(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+      	</div>
+      <div class="modal-footer" ng-show="orgView">
+	<button   ng-show="disable_Edit" class="btn btn-primary" ng-click="createLocation(org)"> Create Location </button>
+      	<button type="button" ng-show="!disable_Edit" class="btn btn-primary" ng-click="addOrganization(org, 'all')">Save</button>
+        <button type="button" class="btn btn-default  btn-width" ng-click="vm.closeOrganizationModal();">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Location Modal -->
+<div class="modal fade" id="LocationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="width: 500px">
+    <div class="modal-content">
+     <div class="modal-header">
+				<button type="button" class="close modelCloseButton"
+					data-dismiss="modal" ng-click="clearLocSelectedRow()">&times;</button>
+				<h4 class="modal-title">{{locModelHeading}} Location</h4>
+			</div>
+        <div class="modal-body">
+        <div class="alert alert-success" ng-show="showSuccessAlert"
+                             style="padding: 2px; text-align: center;">
+                            <strong></strong> {{successTextAlert}}
+                        </div>
+                        <div class="alert alert-danger" ng-show="showErrorAlert"
+                             style="padding: 0px; text-align: center;">
+                            <strong></strong> {{ErrorTextAlert}}
+                        </div>	
+        <div class="alert alert-danger" ng-show="showPrimaryPresent"
+                             style="padding: 0px; text-align: center;">
+                            <strong></strong> {{primaryLocName}} is already a primary location. Will be replaced.
+                        </div>
+        <form name="locationForm">
+	       <div class="row">
+					<div class="col-md-10">
+						<div class="col-md-5">
+						<label for="org_loc_place">Location Place<font color="red">*</font>:</label>
+						</div>
+						<div class="col-md-6">
+						<input type="text" id="org_loc_place" uppercase ng-readonly="!locView || !orgView" ng-model="org.loc.locationName" name="org_loc_place" 
+ maxlength="30" ng-maxlength="29"   class="form-control  input input-sm" required>
+						<br/>
+					<!-- <span style="color:red;" ng-show="locationForm.org_loc_place.$error.maxlength">Max Limit Exceeded!</span> -->
+					</div>
+					<div class="col-md-5">
+						<label for="org_loc_place">Location Region:</label>
+						</div>
+						<div class="col-md-6">
+						<select type="text" id="osiRegionsId" ng-disabled="!locView || !orgView" ng-model="org.loc.osiRegionsId.regionId" ng-options="region.regionId as (region.regionShortName|uppercase) for region in regions" name="osiRegionsId" 
+ 						 class="form-control  input input-sm">
+ 						 <option></option>
+ 						 </select>
+						<br/>
+					</div>
+					<div class="col-md-5">
+						<label for="org_loc_place">Location Timezone:</label>
+						</div>
+						<div class="col-md-6">
+						<select type="text" id="osiTimezonesId" ng-disabled="!locView || !orgView" ng-model="org.loc.osiTimezonesId.tzId" ng-options="timezone.tzId as (timezone.tzShortName|uppercase) for timezone in timezones" name="osiTimezonesId" 
+ 						 class="form-control  input input-sm">
+ 						 <option></option>
+ 						 </select>
+						<br/>
+					</div>
+					</div>
+			</div>
+			 <div class="row">
+					<div class="col-md-5">
+						<label for="org_add_loc">Address:</label>
+					</div>
+			</div>
+			<div class="row">
+					<div class="col-md-10">
+						<div class="col-md-5">
+						<label for="org_loc_add_line1" >Address Line1:</label>
+					</div>
+					<div class="col-md-6">
+						<textarea type="text" id="org_loc_add_line1" uppercase ng-model="org.loc.osiAddresses.addressLine1" name="org_loc_add_line1" ng-readonly="!locView || !orgView" maxlength="100" class="form-control  input input-sm" required></textarea>
+						<br/>
+					</div>
+					</div>
+			</div>
+			<div class="row">
+					<div class="col-md-10">
+						<div class="col-md-5">
+						<label for="org_loc_add_line2" >Address Line2:</label>
+					</div>
+					<div class="col-md-6">
+						<textarea type="text" id="org_loc_add_line2" uppercase ng-model="org.loc.osiAddresses.addressLine2" name="org_loc_add_line2" maxlength="100"  ng-readonly="!locView || !orgView" class="form-control  input input-sm"></textarea>
+						<br/>
+					</div>
+					</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="col-md-4">
+					<label for="org_loc_add_country">Country:</label>
+				</div>
+				<div class="col-md-8">
+						<select name="org_loc_add_country" ng-disabled="!locView || !orgView" ng-model="org.loc.osiAddresses.countryId" ng-options="country.countryId as (country.countryName|uppercase) for country in countries" class="form-control input input-sm" required>
+						<!-- <option  ng-repeat="country  in countries  track by $index" ng-selected="country.countryId == org.loc.osiAddresses.countryId" value="{{country.countryId}}">{{country.countryName}} </option> -->
+						<option></option>
+					</select>
+					<br/>
+				</div>
+
+				</div>
+				<div class="col-md-6">
+					<div class="col-md-4">
+					<label for="org_loc_state">State:</label>
+				</div>
+				<div class="col-md-8">
+					<select name="org_loc_state" ng-disabled="!locView || !orgView" ng-model="org.loc.osiAddresses.stateId" ng-options="state.stateId as (state.stateName|uppercase) for state  in states" class="form-control input input-sm" required>
+						<!-- <option  ng-repeat="state  in states  track by $index" ng-selected="state.stateId == org.loc.osiAddresses.stateId" value="{{state.stateId}}">{{state.stateName}} </option> -->
+						<option></option>
+					</select>
+					<br/>
+				</div>
+
+				
+				
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="col-md-4">
+					<label for="org_loc_city">City:</label>
+				</div>
+				<div class="col-md-8">
+					<input type="text" id="org_loc_city" uppercase ng-readonly="!locView || !orgView" ng-model="org.loc.osiAddresses.city" name="org_loc_city"  
+ maxlength="30" ng-maxlength="29"  class="form-control input input-sm pull-right" required>
+ <!-- <span style="color:red;" ng-show="locationForm.org_loc_city.$error.maxlength">Max Limit Exceeded!</span> -->
+				</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="col-md-5">
+					<label for="org_loc_add_zipcode">ZipCode:</label>
+				</div>
+				<div class="col-md-7">
+					<input type="text" id="org_loc_add_zipcode" ng-readonly="!locView || !orgView" ng-model="org.loc.osiAddresses.zipcode"  maxlength="20" ng-maxlength="19" name="org_loc_add_zipcode"  class="form-control input input-sm " only-Number required>
+
+					<!-- <span style="color:red;" ng-show="locationForm.org_loc_add_zipcode.$error.maxlength">Max Limit Exceeded!</span> -->
+				</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-4">
+					<div class="col-md-4" ng-mouseover="warnPrimaryIn()" ng-mouseleave="warnPrimaryOut()">
+						<input type="checkbox" ng-model="org.loc.isPrimary" ng-disabled="!locView" id="org_loc_add_primary" name="org_loc_add_primary"  ng-true-value="1" ng-false-value="0" class="form-control input input-sm"
+						ng-readonly="!orgView">
+					</div>
+					<div class="col-md-8">
+						<br/>
+						<label for="org_loc_add_primary">Is Primary</label>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="col-md-4">
+					<input type="checkbox" ng-model="org.loc.active" ng-disabled="!locView" id="org_loc_add_active" name="org_loc_add_active"  ng-true-value="1" ng-false-value="0"  class="form-control input input-sm"
+					ng-readonly="!orgView">
+				</div>
+				<div class="col-md-6">
+					<br/>
+					<label for="org_loc_add_active">Active</label>
+				</div>
+				</div>
+			</div>
+			<span class="alert alert-info" ng-show="showWarning" style="margin:0px;padding:2px">
+				<strong>Can't remove only primary location.</strong>
+			</span>
+			</form>
+	</div>
+	<div class="modal-footer" ng-show="locBtnStatus">
+		   	<button type="button"  class="btn btn-primary" ng-click="addLocation(org)" ng-disabled="!orgView || !locView">Save</button>
+        <button type="button" class="btn btn-default  btn-width" ng-click="vm.closeLocationModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+</div>
+<div ng-include="'views/supervisorPopup.html'" ></div>
+<script>
+	function getEmpData(){
+	
+	  var scope = angular.element(document.getElementById('contactPersonId')).scope();
+    scope.$apply(function(){
+    	scope.searchEmployeePopup($("#contactPersonId").val());
+  })
+}
+
+</script>

@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/osi-repos/testing_svn/!svn/ver/2497/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom
+END
+ICrudOsiDepratmentRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiDepratmentRepositoryCustom.java
+END
+IListOsiSkilsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/IListOsiSkilsRepositoryCustom.java
+END
+ICrudOsiTitlesRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiTitlesRepositoryCustom.java
+END
+ICrudOsiDeptGradesHistoryRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/osi-repos/testing_svn/!svn/ver/1980/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiDeptGradesHistoryRepositoryCustom.java
+END
+OsiAssignmentsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/OsiAssignmentsRepositoryCustom.java
+END
+ICrudOsiGradesRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiGradesRepositoryCustom.java
+END
+ICrudOsiCertificationsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiCertificationsRepositoryCustom.java
+END
+IListOsiJobCodesRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/IListOsiJobCodesRepositoryCustom.java
+END
+OsiWorkflowsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/osi-repos/testing_svn/!svn/ver/1681/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/OsiWorkflowsRepositoryCustom.java
+END
+ICrudOsiCostCenterRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiCostCenterRepositoryCustom.java
+END
+OsiEmployeesRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/osi-repos/testing_svn/!svn/ver/2314/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/OsiEmployeesRepositoryCustom.java
+END
+ICrudOsiBusinessUnitsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiBusinessUnitsRepositoryCustom.java
+END
+ICrudOsiBUGradesHistoryRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/osi-repos/testing_svn/!svn/ver/1980/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiBUGradesHistoryRepositoryCustom.java
+END
+IListOsiDepratmentRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/IListOsiDepratmentRepositoryCustom.java
+END
+OsiLocationRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/osi-repos/testing_svn/!svn/ver/784/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/OsiLocationRepositoryCustom.java
+END
+IListOsiTitlesRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/osi-repos/testing_svn/!svn/ver/2408/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/IListOsiTitlesRepositoryCustom.java
+END
+IListOsiGradesRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/IListOsiGradesRepositoryCustom.java
+END
+OsiEmpVisaDetailsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/osi-repos/testing_svn/!svn/ver/1075/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/OsiEmpVisaDetailsRepositoryCustom.java
+END
+IListOsiCertificationsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/IListOsiCertificationsRepositoryCustom.java
+END
+ICrudOsiSkilsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiSkilsRepositoryCustom.java
+END
+IListOsiCostCenterRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/IListOsiCostCenterRepositoryCustom.java
+END
+ICrudOsiJobCodesRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiJobCodesRepositoryCustom.java
+END
+OrgHeirarchyRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/osi-repos/testing_svn/!svn/ver/1075/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/OrgHeirarchyRepository.java
+END
+IListOsiBusinessUnitsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/IListOsiBusinessUnitsRepositoryCustom.java
+END
+ICrudOsiGradesHistoryRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/osi-repos/testing_svn/!svn/ver/1761/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiGradesHistoryRepository.java
+END
+OsiEmpBankDetailsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/OsiEmpBankDetailsRepositoryCustom.java
+END
+ICrudOsiCCGradesHistoryRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/osi-repos/testing_svn/!svn/ver/1980/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/ICrudOsiCCGradesHistoryRepositoryCustom.java
+END
+OsiCategoriesRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/osi-repos/testing_svn/!svn/ver/1482/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/OsiCategoriesRepositoryCustom.java
+END
+OsiOrganizationsRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/osi-repos/testing_svn/!svn/ver/820/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/repository/custom/OsiOrganizationsRepositoryCustom.java
+END

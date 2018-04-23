@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/osi-repos/testing_svn/!svn/ver/2088/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl
+END
+OsiOrgAddressMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/osi-repos/testing_svn/!svn/ver/1042/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiOrgAddressMapperImpl.java
+END
+OsiRollupsMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/osi-repos/testing_svn/!svn/ver/796/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiRollupsMapperImpl.java
+END
+OsiEmployeesMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/1437/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiEmployeesMapperImpl.java
+END
+OsiCertificationTagsMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/osi-repos/testing_svn/!svn/ver/1876/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiCertificationTagsMapperImpl.java
+END
+OsiAttachmentsesMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/osi-repos/testing_svn/!svn/ver/1731/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiAttachmentsesMapperImpl.java
+END
+OsiLocationMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiLocationMapperImpl.java
+END
+ListOsiGradesAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/1077/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/ListOsiGradesAssembler.java
+END
+ListOsiCostCenterAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/osi-repos/testing_svn/!svn/ver/865/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/ListOsiCostCenterAssembler.java
+END
+ListOsiBusinessUnitsAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/osi-repos/testing_svn/!svn/ver/935/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/ListOsiBusinessUnitsAssembler.java
+END
+OsiEmpAdditionalDocsMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/osi-repos/testing_svn/!svn/ver/1342/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiEmpAdditionalDocsMapperImpl.java
+END
+ListOsiSkilsAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/1780/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/ListOsiSkilsAssembler.java
+END
+CrudOsiGradesAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/1795/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/CrudOsiGradesAssembler.java
+END
+OsiSubPracticeGradesMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiSubPracticeGradesMapperImpl.java
+END
+OsiSkillGroupMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/osi-repos/testing_svn/!svn/ver/1790/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiSkillGroupMapperImpl.java
+END
+OsiContactMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/osi-repos/testing_svn/!svn/ver/269/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiContactMapperImpl.java
+END
+ListOsiJobCodesAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/osi-repos/testing_svn/!svn/ver/971/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/ListOsiJobCodesAssembler.java
+END
+CrudOsiTitleGradesAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/osi-repos/testing_svn/!svn/ver/933/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/CrudOsiTitleGradesAssembler.java
+END
+OsiSkillTagsMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/1790/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiSkillTagsMapperImpl.java
+END
+CrudOsiCostCenterAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/CrudOsiCostCenterAssembler.java
+END
+OsiCertificationGroupMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/osi-repos/testing_svn/!svn/ver/1792/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiCertificationGroupMapperImpl.java
+END
+CrudOsiBusinessUnitsAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/CrudOsiBusinessUnitsAssembler.java
+END
+OsiSubPracticeMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiSubPracticeMapperImpl.java
+END
+ListOsiDepratmentAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/osi-repos/testing_svn/!svn/ver/935/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/ListOsiDepratmentAssembler.java
+END
+ListOsiTitlesAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/840/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/ListOsiTitlesAssembler.java
+END
+ListOsiCertificationsAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/osi-repos/testing_svn/!svn/ver/1941/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/ListOsiCertificationsAssembler.java
+END
+CrudOsiSkilsAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/1832/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/CrudOsiSkilsAssembler.java
+END
+OsiFlexiFieldMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/251/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiFlexiFieldMapperImpl.java
+END
+OsiSubPracticeGradesHistoryMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiSubPracticeGradesHistoryMapperImpl.java
+END
+OsiCategoryMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/osi-repos/testing_svn/!svn/ver/820/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiCategoryMapperImpl.java
+END
+CrudOsiJobCodesAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/osi-repos/testing_svn/!svn/ver/840/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/CrudOsiJobCodesAssembler.java
+END
+OsiOrganizationsMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/osi-repos/testing_svn/!svn/ver/1761/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiOrganizationsMapperImpl.java
+END
+CrudOsiDepratmentAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/CrudOsiDepratmentAssembler.java
+END
+CrudOsiTitlesAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/914/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/CrudOsiTitlesAssembler.java
+END
+OsiAssignmentsMapperImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/osi-repos/testing_svn/!svn/ver/2088/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/OsiAssignmentsMapperImpl.java
+END
+CrudOsiCertificationsAssembler.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/osi-repos/testing_svn/!svn/ver/1792/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/impl/CrudOsiCertificationsAssembler.java
+END

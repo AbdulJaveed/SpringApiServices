@@ -1,0 +1,86 @@
+<script>
+    setTimeout(function(){
+    $("#add").toggleClass("active");
+    $("#add-li").toggleClass("active");
+    $("#emergency").toggleClass("active"); }, 100);</script>
+<div data-ng-include="'views/employeeMenu.html'"></div>
+<div class="container-fluid">
+        <div class="mt-3 col-md-12"></div>
+        <div class="mt-3 col-md-12"></div>
+        
+        <div class="row">
+                <div class="alert alert-success" ng-show="showSuccessAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{successTextAlert}}
+                </div>
+                <div class="alert alert-danger" ng-show="showFailureAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{failureTextAlert}}
+                </div>
+            </div>
+    <div class="row ml-0">
+        <section class="forms">
+ 
+            <div class="card">
+                <div class="card-body">
+                    <div class="row" data-ng-disabled="vm.infoView">
+                        <div class="col-md-2 col-sm-12 col-xs-12 border-top-0 border-bottom-0 border-left-0">
+                            <div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+                        </div>
+                        <div class="col-md-5" ng-repeat="emrcontact in empContactsInfo">     
+                            <div class="col-md-12">
+
+                                <div class="form-group row">
+                                    <label for="isPrimaru" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                        Is Primary</label>
+                                    <input type="checkbox" class="checkbox-alignment" ng-disabled="!enbleEdit" name="seq" ng-model="emrcontact.seq" ng-click="checkPrefrence($index)" />
+                                </div>
+                                <div class="form-group row">
+                                    <label for="name" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                        Name </label>
+                                    <input title-case ng-disabled="!enbleEdit" class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width" ng-model="emrcontact.name" placeholder='Name' type="text" maxlength="50" no-special-char>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="mobileNumber" class="col-md-5 col-sm-12 text-align-right  col-form-label">Mobile
+                                        Number</label>
+                                    <select class="form-control form-control-sm col-md-2 col-sm-12 ml-mr-15 border-left-width adjust-select-date-alignment" ng-model="emrcontact.countryCode"
+                                            id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as (state.countryCode+'('+state.countryCallingCode+')') for state in countryCodeList| unique:'countryCallingCode' | orderBy:'countryCode'">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                    <input only-number type="text" maxlength="15" class="form-control form-control-sm col-md-3 col-sm-12  ml-mr-15 border-left-width" ng-disabled="!enbleEdit" ng-model="emrcontact.mobileNumber" style="text-transform: uppercase;width: 161px;" placeholder="Mobile" >
+                                </div>
+                                <div class="form-group row">
+                                        <label for="Relation" class="col-md-5 col-sm-12 text-align-right  col-form-label"> Relation 
+                                        </label>
+                                          <select class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15  border-left-width adjust-select-date-alignment"  ng-disabled="!enbleEdit" id="relation" name="relation" ng-model="emrcontact.relation" required
+                                                   ng-options="data.lookupValue as data.lookupDesc for data in relationsList | orderBy:'lookupSeqNum'" ng-disabled="!iseditable">
+                                                   <option value="">-- Select Relation --</option></select>  <br/>
+                                     </div>
+                                <div class="form-group row">
+                                    <label for="alternativeMobileNumber" class="col-md-5 col-sm-12 text-align-right  col-form-label">Alternative
+                                        Number</label>
+                                    <select class="form-control form-control-sm col-md-2 col-sm-12 ml-mr-15  border-left-width adjust-select-date-alignment" ng-model="emrcontact.altrCountryCode"
+                                            id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as (state.countryCode+'('+state.countryCallingCode+')') for state in countryCodeList| unique:'countryCallingCode' | orderBy:'countryCode'">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                    <input only-number type="text" maxlength="15" class="form-control form-control-sm col-md-3 col-sm-12 ml-mr-15 border-left-width" ng-disabled="!enbleEdit" ng-model="emrcontact.altrMobileNumber" style="text-transform: uppercase;width: 161px;" placeholder="Mobile" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pull-right">
+                        <div class="col-sm-12">
+                           
+                            <button type="button" class="btn btn-default" ng-click="backToEmployeeList()" ng-disabled="!enbleEdit">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-disabled="!enbleEdit"  ng-click="saveEmergencyContacts()" >
+                                    Save
+                                </button>
+                        </div>
+                    </div>      
+                </div>
+        </section>
+    </div>
+</div>
+

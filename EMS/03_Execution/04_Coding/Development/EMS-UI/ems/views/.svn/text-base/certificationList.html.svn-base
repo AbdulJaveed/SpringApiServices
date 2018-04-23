@@ -1,0 +1,186 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <div class="right-side">
+        <div>
+            <section class="content">
+                <div class="row" style="margin-right: 0px;">
+                    <div class="col-sm-6">
+                        <h4>Certification List</h4>
+                    </div>
+                </div>
+                <div class="alert alert-success" ng-show="showSuccessAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{successTextAlert}}
+                </div>
+                <div class="alert alert-danger" ng-show="showFailureAlert"
+                    style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{failureTextAlert}}
+                </div>
+            </section>
+            <section class="content">
+                <div class="col-sm-12 no-padding">
+                    <div class="panel panel-default" style="min-height: auto;">
+                        <div class="panel-body">
+                            <div class="navbar-form navbar-left form-horizontal col-lg-12"
+                                 role="form">
+                                <div class="col-lg-3"><input class="form-control" name="certificationName" ng-Model="certificationName" placeholder="Certification Name" type="text"></div><div class="col-lg-3"><input class="form-control" name="certificationCode" ng-Model="certificationCode" placeholder="Certification Code" type="text"></div><div class="col-lg-3"><input class="form-control" name="issuedBy" ng-Model="issuedBy" placeholder="Issued By" type="text"></div>
+                                <div class="col-lg-3">
+                                    <button type="button" class="btn btn-primary btn-width" ng-click="searchOsiCertificationss()" >Search</button>
+                                    <button type="button" class="btn btn-defaul btn-width" ng-click="clearSearch()">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!--MAIN BODY START-->
+                <div class="box1">
+                    <div class="box-body table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead_bg">
+                                <tr><th ng-click="sort('certificationName')">Certification Name<span class="glyphicon sort-icon" ng-show="sortKey == 'certificationName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th><th ng-click="sort('certificationCode')">Certification Code<span class="glyphicon sort-icon" ng-show="sortKey == 'certificationCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th><th ng-click="sort('issuedBy')">Issued By<span class="glyphicon sort-icon" ng-show="sortKey == 'issuedBy'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th><th ng-click="sort('active')">Status<span class="glyphicon sort-icon" ng-show="sortKey == 'active'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th></tr>
+                            </thead>
+							<tr
+								dir-paginate="item in certificationList |orderBy:sortKey:reverse|itemsPerPage:rowSize "
+								ng-class="{selected: item.certificationId== isSelectedRow}"
+								ng-click="selectRow(item)"
+								ng-dblclick="editSelectedRowDetails(item)"
+								ng-init="myIndex = $index">
+								<input type="hidden" ng-model="id" value="{{item.id}}" />
+								<td>{{item.certificationName|uppercase}}</td>
+								<td>{{item.certificationCode|uppercase}}</td>
+								<td>{{item.issuedBy|uppercase}}</td>
+								<td ng-show="item.active==1">ACTIVE</td>
+								<td ng-show="item.active==0">INACTIVE</td>
+							</tr>
+						</table>
+                        <div ng-if="certificationList.length == 0"><h6 style="text-align: center; color: red;">No Records Found</h6></div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div style="float: left; margin-top:-10px;">
+                                <dir-pagination-controls max-size="8" direction-links="true"
+                                                         boundary-links="true" on-page-change="clearSelectedRow()"> 
+                                </dir-pagination-controls>
+                            </div>
+                        </div>
+                        <div style="float: right;">
+                            <span ng-repeat="availOperations in availOperations"> <i
+                                    style="cursor: pointer;"
+                                    ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create', 
+                                               'glyphicon glyphicon-eye-open' : availOperations.name == 'View', 
+                                               'glyphicon glyphicon-pencil' : availOperations.name == 'Edit', 
+                                               'glyphicon glyphicon-trash' : availOperations.name == 'Delete', 
+                                               'disabled': disable_{{availOperations.name}}}"
+                                    ng-disabled="disable_{{availOperations.name}}"
+                                    ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+    <!-- /.right-side -->
+</div>
+<!-- ./wrapper -->
+
+<div class="modal fade" id="OsiCertifications-model" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 900px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{headername}}</h4>
+            </div>
+            <div class="modal-body">
+				<div class="form-horizontal" role="form">
+					<div class="row" ng-if="isTrascError">
+						<div
+							ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+							ng-if="flash" ng-bind="flash.message"></div>
+					</div>
+					<div class="form-group">
+						<input class="form-control" ng-disabled="!iseditable" name="item"
+							ng-model="OsiCertifications.certificationId" placeholder="Enter ID"
+							type="hidden">
+					</div>
+					<div class="row">
+					<div class="col-sm-6">
+					<div class="col-md-4">
+						<label for="address" class="control-label col-sm-3">Certification Name<font
+							color="red">*</font></label></div>
+						<div class="col-sm-8">
+							<input class="form-control" ng-disabled="!iseditable" name="item" uppercase
+								ng-model="OsiCertifications.certificationName" maxlength="50"
+								placeholder="Enter Certification" type="text"></br>
+						</div>
+					</div>
+					<div class="col-sm-6">
+					<div class="col-md-4">
+						<label for="address" class="control-label col-sm-3">Certification&nbspCode
+						</label></div>
+						<div class="col-sm-8">
+							<input class="form-control" ng-disabled="!iseditable" name="item" uppercase
+								ng-model="OsiCertifications.certificationCode" maxlength="50"
+								placeholder="Enter Certification Code" type="text"></br>
+						</div>
+					</div>
+					</div>
+					<div class="row">
+					<div class="col-sm-6">
+					<div class="col-md-4">				
+						<label for="address" class="control-label col-sm-3">Certification Additional&nbspInfo
+						</label></div>
+						<div class="col-sm-8">
+							<textarea class="form-control" ng-disabled="!iseditable" name="item" uppercase
+								ng-model="OsiCertifications.certificationAddInfo" maxlength="100"
+								placeholder="Enter Certification Additional Info" type="text"></textarea></br>
+						</div>
+					</div>
+					<div class="col-sm-6">
+					<div class="col-md-4">
+						<label for="address" class="control-label col-sm-3">Issued&nbspBy
+						</label></div>
+						<div class="col-sm-8">
+							<input class="form-control" ng-disabled="!iseditable" name="item" uppercase
+								ng-model="OsiCertifications.issuedBy" maxlength="50"
+								placeholder="Enter Issued By" type="text"></br>
+						</div>
+					</div></div>
+					<div class="row">
+					<div class="col-sm-6">
+					<div class="col-md-4">	
+						<label for="address" class="control-label col-sm-3">Active<font
+							color="red">*</font></label></div>
+						<div class="col-sm-8">
+							<input type="checkbox" ng-disabled="!iseditable" name="active"
+							ng-model="OsiCertifications.active" ng-true-value=1 ng-false-value=0>
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal-footer">
+                           <button type="button" class="btn btn-default btn-space pull-right"  data-dismiss="modal">Close</button>
+                           <div ng-if="isUpdatable">
+                                <button class="btn btn-primary modalButton"
+                                        ng-click="saveOsiCertifications(OsiCertifications)" ng-disabled="!iseditable">Update</button>
+                            </div>
+                            <div ng-if="!isUpdatable">
+                                <button type="button" class="btn btn-primary modalButton" ng-hide="!iseditable" ng-click="saveOsiCertifications(OsiCertifications)">Save</button>
+                            </div>
+                </div>
+				</div>
+            </div>
+    </div>
+</div>
+ </div>
+      </div>
+      </div>

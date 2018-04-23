@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm
+END
+OSIRMManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/OSIRMManager.java
+END
+OSIRMSynchDAOImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/OSIRMSynchDAOImpl.java
+END
+TestDBConnection.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/TestDBConnection.java
+END
+OSIRMManagerDAOImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/OSIRMManagerDAOImpl.java
+END

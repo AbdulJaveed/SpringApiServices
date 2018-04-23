@@ -1,0 +1,80 @@
+
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+        
+
+ <div data-ng-include="'views/employeeInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+  <div class="row" ng-if="isTrascError">
+							<div
+								ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+								ng-if="flash" ng-bind="flash.message"></div>
+						</div> 
+    <h4 class="title-align"><strong>Function Exclusion</strong></h4>
+    <div class="wrapper row-offcanvas row-offcanvas-left container">
+    <div class="right-side">
+     <section class="content-header">
+        <div class="row" style="margin-right: 0px;">
+           
+        </div>
+    </section>
+        <section class="content">
+	<form id="FunctionExcluForm" name="myForm" novalidate="">
+
+        <fieldset ng-disabled="vm.infoView">
+            <div class="row">
+                <div class="col-md-5">
+                        <h5><b>Available Function</b></h5>
+                        <select name="from[]" class="multiselect form-control Exclusionstriped"
+                                id="multiselect" size="12" ng-model="vm.availableFuncs" ng-dblclick="vm.excludeFunction(vm.availableFuncs)"
+                                multiple="multiple" data-right="#multiselect_to_1"
+                                data-right-all="#right_All_1"
+                                data-right-selected="#right_Selected_1" data-left-all="#left_All_1"
+                                data-left-selected="#left_Selected_1" >
+
+                                <option ng-repeat="funcNames in vm.availableFunctionsNames | orderBy:'toString()' track by $index" 
+                                        class="strippedOptions" >{{funcNames}}</option>
+
+                        </select>
+                </div>
+                <div class="col-md-1 btn-group-vertical">
+                        <button type="button" class="btn margin-bottom-10" ng-click="vm.excudedAllFunction()">
+                                <i class="glyphicon glyphicon-forward"></i>
+                        </button>
+                        <button type="button" class="btn margin-bottom-10" ng-click="vm.excludeFunction(vm.availableFuncs)">
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                        </button>
+                        <button type="button" class="btn margin-bottom-10"
+                                ng-click="vm.includeAllFunction()">
+                                <i class="glyphicon glyphicon-backward"></i>
+                        </button>
+                        <button type="button" class="btn margin-bottom-10" ng-click="vm.includeFunction(vm.excludedFuncs)">
+                                <i class="glyphicon glyphicon-chevron-left"></i>
+                        </button>
+                </div>
+                <div class="col-md-5">
+                        <h5><b>Excluded Function</b></h5>
+                        <select name="to[]" id="multiselect_to_1" ng-model="vm.excludedFuncs" ng-dblclick="vm.includeFunction(vm.excludedFuncs)"
+                            class="form-control Exclusionstriped" size="12" multiple="multiple">
+                            <option ng-repeat="functions in vm.exclFunctionsNames | orderBy:'toString()' track by $index" class="strippedOptions">{{functions}}</option>
+                        </select>
+                </div>
+        </div>
+        </fieldset><br>
+        <div class="row pull-right no-right-margin" >
+            <button type="button" class="btn btn-primary" ng-click="vm.backToEmpList()">Employee List</button>&nbsp;
+            <button type="button" class="btn btn-primary" ng-click="functionSubmit();" ng-hide="vm.infoView">Submit</button>&nbsp;
+            <button type="button" class="btn btn-primary previousBtnFuncExclu " ng-click="vm.clearUserFunctionExclusions();">Clear</button>
+        </div>
+                 
+	</form>
+	</section>
+	</div>
+	</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$('.multiselect').multiselect();
+});
+</script>
+

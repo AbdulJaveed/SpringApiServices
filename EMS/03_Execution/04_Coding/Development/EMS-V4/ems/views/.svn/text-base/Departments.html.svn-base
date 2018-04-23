@@ -1,0 +1,82 @@
+<div class="modal fade" id="DepartmentsRollup" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Department Information
+                </h4>
+
+            </div>
+            <div class="modal-body">
+                    <div class="row" ng-if="isTrascErrorDept">
+                            <div
+                             ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                             ng-if="flash" ng-bind="flash.message">
+                     </div>
+                 </div>
+                <div class="card">
+                        <div class="card-body">
+                             <form name="vm.osiRollUpsInfo" novalidate="" class="form-horizontal" role="form" action="">
+                            <div class="row" data-ng-disabled="vm.infoView">
+                                <div class="col-md-12">
+                                <div class="form-group row" ng-repeat="segmentStructure in osiSegmentStructure.osiSegmentStructureDetailses track by $index">
+                                        <label for="isManager" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                                {{segmentStructure.segmentStructureDetailsDesc}}</label>
+                                    <select class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width form-field-border" id="orgName{{$index}}" name="orgName" ng-init="segmentStructure.isSqlReqdForValidation !== 1 && (vm.empAssignment.deptId === undefined || vm.empAssignment.deptId === null ) ? vm.getDropDownData(vm.OsiRollUpsDept.segment[$index],segmentStructure.segmentStructureDetailsDesc,$index) :false"
+                                    ng-model="vm.OsiRollUpsDept.segment[$index]" required ng-change="vm.getDropDownDataList1(vm.OsiRollUpsDept.segment[$index],segmentStructure.segmentStructureDetailsDesc,$index+1)"
+                                    ng-options="data.id as data.name for data in vm.osiSegment[$index]"
+                                    ng-disabled="!iseditable">
+                                    <option value="">-- Select {{segmentStructure.segmentStructureDetailsDesc}} --</option>
+                                </select> 
+                                    </div>
+                                    
+                                    </div>
+</div>
+</form>
+<div class="modal-footer">
+        <div class="pull-right">
+            <button class="btn btn-default" ng-click="vm.clearSegmentData();" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary" ng-click="validateDeptData();" ng-disabled="!iseditable">OK</button>
+        </div>
+    </div>
+</div>
+</div>
+            </div>                                         
+
+
+
+
+
+         <!--   <form name="vm.osiRollUpsInfo" novalidate="">
+                        <div class="row"  ng-repeat="segmentStructure in osiSegmentStructure.osiSegmentStructureDetailses track by $index">
+						<div class="col-md-10">
+							<div class="col-md-4 no-padding">
+								<label for="organization"
+									class=" control-label no-padding pull-right">
+									{{segmentStructure.segmentStructureDetailsDesc}}<font color="red">*</font>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<select class="form-control" id="orgName{{$index}}" name="orgName" ng-init="segmentStructure.isSqlReqdForValidation !== 1 && (vm.empAssignment.deptId === undefined || vm.empAssignment.deptId === null ) ? vm.getDropDownData(vm.OsiRollUpsDept.segment[$index],segmentStructure.segmentStructureDetailsDesc,$index) :false"
+									ng-model="vm.OsiRollUpsDept.segment[$index]" required ng-change="vm.getDropDownDataList(vm.OsiRollUpsDept.segment[$index],segmentStructure.segmentStructureDetailsDesc,$index+1)"
+									ng-options="data.id as data.name for data in vm.osiSegment[$index]"
+									ng-disabled="!iseditable">
+									<option value="">-- Select {{segmentStructure.segmentStructureDetailsDesc}} --</option>
+								</select> 
+							
+								<br />
+							</div>
+						</div>
+					</div>
+         </form>
+                <div class="modal-footer">
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-click="vm.clearSegmentData();" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" ng-click="validateDeptData();" ng-disabled="!iseditable">OK</button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

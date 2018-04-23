@@ -1,0 +1,363 @@
+<style>
+
+.lightblue {background-color: lightblue;}
+</style>
+<script>
+    setTimeout(function(){ $("#professional").toggleClass("active"); }, 100);
+        </script>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  	<div data-ng-include="'views/employeeMenu-sf.html'"></div>
+      <div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+	<div class="right-side">
+				<div class="row" style="margin-right: 0px;">
+					<div class="col-sm-12">
+						<h3>&nbsp;&nbsp;&nbsp;Skill Details</h3>
+					</div>
+				</div>
+<div class="alert alert-success" ng-show="showSuccessAlert"
+					style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+					{{successTextAlert}}
+				</div>
+				<div class="alert alert-danger" ng-show="showFailureAlert"
+					style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+					{{failureTextAlert}}
+				</div>
+
+		 <section class="content" style="height:400px;overflow-y: scroll;" >
+          <!--
+             <div class="panel-body " >
+					   <div class="row">
+                <div class="col-md-2 no-padding">
+                  <label for="skill" class=" control-label no-padding pull-right">
+                    Skill Name
+                  </label>
+                </div>
+                <div class="col-md-3">
+                  <select class="form-control"  ng-model="osiUser.skillId"
+                   ng-options="data.skillId as data.skillName for data in osiSkills | orderBy:'skillName'">
+                    <option value="">-- Select Skill --</option>
+                  </select>
+                  <br />
+                </div>
+                <div class="col-md-3 no-padding">
+                  <label for="lastusedDate" class=" control-label no-padding pull-right">
+                    Last Used Date
+                  </label>
+                </div>
+
+                <div class="col-md-3">
+                     <div class="col-md-9" style="padding-right: 0px;padding-left:0px">
+                  <datepicker date-format="yyyy-MM-dd" date-max-limit = "{{minDOH}}"
+                  selector="form-control">
+                    <input class="form-control" id="lud"
+                    ng-model="osiUser.lastUpdatedDate"
+                    placeholder='Last Used Date'>
+                    <br>
+                  </datepicker>
+                    </div>
+                    <div class="col-md-2" style="padding-left: 0px;" >
+								<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+									<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('lud')"></i>
+								</span>
+							</div>
+                </div>
+              </div>
+
+               <div class="row">
+                <div class="col-md-2 no-padding">
+                  <label for="yearsOfExp" class=" control-label no-padding pull-right">
+                    Experience
+                  </label>
+                </div>
+                <div class="col-md-1" style="padding-right:5px;padding-left:10px">
+                  <input class="form-control"  only-number type="text" maxlength="4" minlength="1" ng-model="osiUser.yearOfExperience" placeholder="Years">
+                </div>
+                <div class="col-md-1" style="padding-right:0px;padding-left:10px">
+                  <input class="form-control" name="monthsOfExp"  only-number type="text" maxlength="2" minlength="1"
+                  ng-model="osiUser.monthsOfExp"  placeholder="Months">
+                </div>
+                <div class="col-md-4 no-padding">
+                  <label for="proficiency" class=" control-label no-padding pull-right">
+                    Proficiency
+                  </label>
+                </div>
+                <div class="col-md-3">
+                  <select class="form-control" id="proficiency"
+                  name="proficiency" ng-model="osiUser.proficiency">
+                    <option value="">-- Select Skill --</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Expert">Expert</option>
+                    <option value="Intermediate">Intermediate</option>
+                  </select>
+                  <br />
+                </div>
+              </div>
+                  <div class="row ">
+                <div class="col-md-2 pull-right">
+                  <button type="button" class="btn btn-primary"
+                  ng-click="searchSkills();">
+                    <span>Search</span>
+                  </button>
+                </div>
+              </div>
+				</div>
+        -->
+				<div class="box1">
+					<div class="box-body table-responsive" style="">
+						<table class="table table-bordered ">
+							<thead class="thead_bg">
+								<tr>
+									 <th class="col-xs-2">Skill Name</th>
+                        <th class="col-xs-2">Last Used Date</th>
+                        <th class="col-xs-2">Experience</th>
+                        <th class="col-xs-2">Proficiency</th>
+                        <th width="1%">
+                            <input type="checkbox" ng-model="IsAllChecked" ng-change="CheckUncheckAll()" ng-disabled="!isVerified"/>
+                        </th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr
+									dir-paginate="skillist in osiSkillSearchResult|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+									ng-init="myIndex = $index" ng-click="selectRow(skillist)"
+									 ng-dblclick="editSelectedRowDetails('mySkillModal','skills')"
+									    ng-class="{selected: skillist.empSkillId == isSelectedRow,lightblue: skillist.verified== 'true'}">
+
+								  <td >{{skillist.skillName}}</td>
+                  <td class="col-xs-2">{{skillist.lastUpdatedDate}}</td>
+                  <td class="col-xs-2">{{skillist.yearOfExperience}}.{{skillist.monthsOfExp}} years</td>
+                  <td class="col-xs-2">{{skillist.proficiency}}</td>
+                  <td width="1%">
+                    <input id="chkCustomer_{{skillist.empSkillId}}" type="checkbox" ng-model="skillist.isVerified" ng-change="CheckUncheckHeader()" ng-disabled="!isVerified"/>
+                  </td>
+
+								</tr>
+					</tbody>
+
+						</table>
+					</div>
+
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							<div style="float: left; margin-top: 20px;">
+								<dir-pagination-controls max-size="1" direction-links="true"
+									boundary-links="true" on-page-change="clearSelectedRow()">
+								</dir-pagination-controls>
+							</div>
+						</div>
+            <div style="float: right;" ng-if="!iseditable">
+               <!--  'glyphicon glyphicon-trash' : availOperations.name == 'Delete', -->
+               <span ng-repeat="availOperations in availOperations" ng-if="employeeId===loggedInEmpId"> <i
+                  style="cursor: pointer;"
+                  ng-class="{
+                  'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',
+                  'glyphicon glyphicon-eye-open' : availOperations.name == 'View',
+                  'disabled': disable_{{availOperations.name}}}"
+                  ng-disabled="disable_{{availOperations.name}}"
+                  ng-click="operationsGenericFunction(availOperations.name, availOperations.url,'mySkillModal','skills')"></i>&nbsp;&nbsp;
+               </span>
+               <button type="button"  class="btn btn-primary" ng-if="isVerified && osiSkillSearchResult.length!=0"
+               ng-click="saveVerifiedSkills()"><span>Save</span>
+               </button>
+               <button type="button" class="btn btn-primary" ng-if="isVerified && osiSkillSearchResult.length!=0"
+               data-dismiss="modal"
+               ng-click="searchSkills()"><span>Cancel</span>
+               </button>
+            </div>
+            <div style="float: right;" ng-if="iseditable">
+               <!--  'glyphicon glyphicon-trash' : availOperations.name == 'Delete', -->
+               <span ng-repeat="availOperations in availOperations"  ng-if="employeeId===loggedInEmpId"> <i
+                  style="cursor: pointer;"
+                  ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',
+                  'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',
+                  'glyphicon glyphicon-eye-open' : availOperations.name == 'View',
+                  'disabled': disable_{{availOperations.name}}}"
+                  ng-disabled="disable_{{availOperations.name}}"
+                  ng-click="operationsGenericFunction(availOperations.name, availOperations.url,'mySkillModal','skills')"></i>&nbsp;&nbsp;
+               </span>
+            </div>
+
+					</div>
+				</div>
+				<!-- /.box -->
+
+			</section>
+
+    </div>
+			<!-- /.content -->
+                <!-- Modal -->
+                <div class="modal fade" id="mySkillModal" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content" style="margin-top: 96px;margin-left: 79px;margin-right: -119px;">
+                      <div class="modal-header">
+                        <button type="button" class="close modelCloseButton" data-dismiss="modal" ng-click="cancelSkills()" >&times;</button>
+                        <h4 class="modal-title">Add/Edit Skills</h4>
+                      </div>
+                      <div class="modal-body">
+
+                      <div class="row" style="margin-right: 0px;">
+                        <div class="alert alert-success" ng-show="showSuccessAlertPopup"
+                          style=" padding: 2px; text-align:center">
+                          {{successTextAlert}}
+                        </div>
+                        <div class="alert alert-danger" ng-show="showFailureAlertPopup"
+                          style=" padding: 2px; text-align:center">
+                         {{failureTextAlert}}
+                        </div>
+                      </div>
+
+
+                   <fieldset ng-disabled="infoView">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 no-padding">
+                           <div class="col-md-6 no-padding">
+                              <label for="skill" class=" control-label no-padding pull-right">
+                                      Skill Name
+                                <font color="red">*</font>
+                               </label>
+                           </div>
+                           <div class="col-md-6 no-padding">
+                              <input name="skillId" list="skillId"  
+                              id="skillId" type="text" placeholder=" " 
+                              ng-model="emp.skillName" 
+                              typeahead-on-select="setSkillId($item)" 
+                              uib-typeahead="skills.skillName for skills in skillsData | limitTo:8" 
+                              ng-keyup="getSkillsData()"  
+                              class="form-control" maxlength="30"   ng-maxlength="29" 
+                              ng-disabled="!iseditable" 
+                              ng-blur="removeSuggestions('skills')"
+                              required >
+                              <span class="alert alert-info" ng-show="skillNotFound" style="margin:0px;padding:2px">
+                                <strong>No Skill found.</strong>
+                              </span>
+                              <!-- <select class="form-control"
+                                    ng-model="osiUser.skillId"
+                                    required ng-disabled="!iseditable"
+                                    ng-options="data.skillId as data.skillName for data in osiSkills | orderBy:'skillName'">
+                                      <option value="">-Select Skill-</option>
+                                 </select> -->
+                              <br />
+                           </div>
+                                </div>
+                          <div class="col-md-6 no-padding">
+                           <div class="col-md-6 ">
+                             <label for="lastusedDate" class="control-label  pull-right">
+                                      Last Used Date
+                                      <font color="red">*</font>
+                                    </label>
+                           </div>
+                           <div class="col-md-6 no-padding">
+                               <div class="col-md-9 no-padding" style="margin: 0px 0px 0px -16px;">
+                                    <datepicker date-format="yyyy-MM-dd" placeholder="Last Used Date"
+                                    selector="form-control"
+                                   date-max-limit = "{{minDOH}}">
+                                      <input class="form-control" ng-disabled="!iseditable"
+                                      ng-model="osiUser.lastUpdatedDate" id="ludf"
+                                      style="text-transform: uppercase">
+                                      <br>
+                                    </datepicker>
+                                      </div>
+                                       <div class="col-md-2" style="padding-left: 0px;" >
+								<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+									<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('ludf')"></i>
+								</span>
+							</div>
+                           </div>
+                                </div>
+
+
+
+                         </div>
+                         <div class="row">
+                          <div class="col-md-6">
+                           <div class="col-md-6 no-padding">
+                             <label for="yearsOfExp" class=" control-label no-padding pull-right">
+                                      Years of Experience
+                                      <font color="red">*</font>
+                                    </label>
+                           </div>
+                           <div class="col-md-6 no-padding">
+                               <div class="col-md-6 no-padding">
+                                    <input class="form-control" ng-disabled="!iseditable" only-number type="text" maxlength="3" ng-change= "(osiUser.yearOfExperience !=null && osiUser.yearOfExperience !='') ? yearsOfExp = true : yearsOfExp = false" minlength="1" ng-model="osiUser.yearOfExperience" placeholder="years" >
+                                  </div>
+                                  <div class="col-md-6 no-padding"  style="padding-left:0px">
+                                    <input class="form-control" ng-disabled="!iseditable" only-number type="text" maxlength="2"  ng-change= "(osiUser.monthsOfExp !=null && osiUser.monthsOfExp !='') ? yearsOfExp = true : yearsOfExp = false" minlength="1" ng-model="osiUser.monthsOfExp" placeholder="months">
+                                  </div>
+                            </div>
+                             </div>
+                             <div class="col-md-6 no-padding">
+                             <div class="col-md-6 no-padding">
+                             <label for="proficiency" class=" control-label pull-right" style="margin: 8px 15px 0px 0px;">
+                                      Proficiency
+                                      <font color="red">*</font>
+                                    </label>
+                           </div>
+                           <div class="col-md-6 no-padding" style="margin: 0px 0px 0px -16px;">
+                                 <select class="form-control" ng-disabled="!iseditable"  ng-model="osiUser.proficiency">
+                                      <option value="">-Select Proficiency-</option>
+                                      <option value="Beginner">Beginner</option>
+                                      <option value="Expert">Expert</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                    </select>
+                           </div>
+                             </div>
+                         </div>
+                         <br>
+
+
+
+
+                         <div class="row">
+                            <!--  <div class="col-md-6 ">
+                             <div class="col-md-6 no-padding">
+                              <label for="percentage" class=" control-label no-padding pull-right">
+                              GPA/Percentage
+                              <font color="red">*</font>
+                              </label>
+                           </div>
+                           <div class="col-md-6  no-padding">
+                              <input class="form-control" ng-disabled="!iseditable" only-number type="text" maxlength="4" minlength="1" ng-model="osiUserCertificates.percentage"  placeholder="Percentage" required>
+                           </div>
+
+                             </div> -->
+                           <!-- <div class="col-md-6 no-padding">
+                             <div class="col-md-12 " style="padding: 0px 0px 0px 74px;">
+                              <label class="checkbox control-label">
+                              <input type="checkbox" ng-disabled="iseditable  || isView" ng-model="osiUser.isVerified">Is Verified
+                              </label>
+                           </div>
+                             </div> -->
+                         </div>
+                          <!-- ng-click="saveSkills()" ng-disabled="osiUser.skillId == null || osiUser.lastUpdatedDate==null ||osiUser.proficiency ==null || yearsOfExp == 0 || osiUser.skillId == '' || osiUser.lastUpdatedDate== ''||osiUser.proficiency ==''"><span>Save</span> -->
+                         <div class="row pull-right">
+                            <button type="button"  class="btn btn-primary"
+                              ng-click="saveSkills()" ng-disabled="!enableSaveButton || !yearsOfExp|| osiUser.skillId == null || osiUser.lastUpdatedDate==null ||osiUser.proficiency ==null || osiUser.skillId == '' || osiUser.lastUpdatedDate== ''||osiUser.proficiency =='' || isView"><span>Save</span>
+                              </button>
+                             <button type="button" class="btn btn-primary"
+                                    data-dismiss="modal"
+                                    ng-click="cancelSkills()"><span>Cancel</span>
+                                    </button>
+                        </div>
+                     </div>
+                  </div>
+               </fieldset>
+
+
+                  </div>
+                </div>
+		</div>
+	</div>
+	<!-- /.right-side -->
+</div>
+<!-- ./wrapper -->
+<script>
+    function getDatePicker(thiz){
+        console.log(thiz);
+        document.getElementById(thiz).focus();
+    }
+</script>

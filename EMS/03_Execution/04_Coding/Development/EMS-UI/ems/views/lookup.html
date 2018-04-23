@@ -1,0 +1,289 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <div class="right-side">
+        <div>
+            <!-- Content Header (Page header) -->
+            <!-- <section class="content-header">
+                    <div class="row" style="margin-right: 0px;">
+                            <div class="col-sm-6">
+                                    <h4>&nbsp; Look up</h4>
+                            </div>
+                            <div class="col-sm-6" style="margin-top: 5px;">
+                                    <button class="btn btn-primary pull-right"
+                                            ng-click="openlookupmodal($event)">Add Lookup</button>
+                            </div>
+                    </div>
+            </section> -->
+            <section class="content">
+                <div class="row" style="margin-right: 0px;">
+                    <div class="col-sm-6">
+                        <h4>Look up</h4>
+                    </div>
+                </div>
+                <div class="alert alert-success" ng-show="showSuccessAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{successTextAlert}}
+                </div>
+                <div class="alert alert-danger" ng-show="showFailureAlert"
+                    style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{failureTextAlert}}
+                </div>
+            </section>
+            <section class="content">
+                <div class="col-sm-12 no-padding">
+                    <div class="panel panel-default" style="min-height: auto;">
+                        <div class="panel-body">
+                            <div class="navbar-form navbar-left form-horizontal col-lg-12"
+                                 role="form">
+                                <div class="col-lg-4">
+                                    <input class="form-control" name="code" ng-Model="code" placeholder="Lookup Code"
+                                           type="text">
+                                </div>
+                                <div class="col-lg-4">
+                                    <input class="form-control input-height" name="name" ng-model="name"
+                                           placeholder="Lookup Name" type="text">
+                                </div>
+                                <div class="col-lg-4">
+                                    <button type="button" class="btn btn-primary btn-width" ng-click="searchLookups()" >Search</button>
+                                    <button type="button" class="btn btn-defaul btn-width" ng-click="clearSearch()">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!--MAIN BODY START-->
+                <div class="box1">
+                    <div class="box-body table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead_bg">
+                                <tr>
+                                    <th ng-click="sort('lookupCode')">Code <span
+                                            class="glyphicon sort-icon" ng-show="sortKey == 'lookupCode'"
+                                            ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    <th ng-click="sort('lookupName')">Name <span
+                                            class="glyphicon sort-icon" ng-show="sortKey == 'lookupName'"
+                                            ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th ng-click="sort('active')">Status <span
+                                            class="glyphicon sort-icon" ng-show="sortKey == 'active'"
+                                            ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    <!-- <th>Action</th> -->
+                                </tr>
+                            </thead>  
+                            <tr dir-paginate="item in lookupdata|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+                                ng-class="{selected: item.id == isSelectedRow}" ng-click="selectRow(item)"
+                                ng-dblclick="editSelectedRowDetails(item, lookupdata)"
+                                ng-init="myIndex = $index">
+                            <input type="hidden" ng-model="id" value="item.id" />
+                            <td>{{item.lookupCode}}</td>
+                            <td>{{item.lookupName}}</td>
+                            <td ng-if ="item.active==1">Active</td>
+                            <td ng-if ="item.active==0">In-Active</td>
+                            <!-- <td>
+                                    <div class="col-sm-12 lookup-action">
+                                            <i class="fa fa-eye" ng-click="viewitem(item)"></i>&nbsp;
+                                            &nbsp; <i class="fa fa-pencil-square-o"
+                                                    ng-click="edititem(item)"></i>
+                                    </div>
+                            </td> -->
+                            </tr>
+                        </table>
+                        <div ng-if="lookupdata.length == 0">								
+                            <h6 style="text-align: center; color: red;">No Records Found</h6>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div style="float: left; margin-top:-10px;">
+                                <dir-pagination-controls max-size="8" direction-links="true"
+                                                         boundary-links="true" on-page-change="clearSelectedRow()"> 
+                                </dir-pagination-controls>
+                            </div>
+                        </div>
+                        <div style="float: right;">
+                            <span ng-repeat="availOperations in availOperations"> <i
+                                    style="cursor: pointer;"
+                                    ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create', 
+                                               'glyphicon glyphicon-eye-open' : availOperations.name == 'View', 
+                                               'glyphicon glyphicon-pencil' : availOperations.name == 'Edit', 
+                                               'glyphicon glyphicon-trash' : availOperations.name == 'Delete', 
+                                               'disabled': disable_{{availOperations.name}}}"
+                                    ng-disabled="disable_{{availOperations.name}}"
+                                    ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+    <!-- /.right-side -->
+</div>
+<!-- ./wrapper -->
+<div class="modal fade" id="lookup-model" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{headername}}</h4>
+            </div>
+            <div class="modal-body" style="height: auto; overflow: scroll;">
+                <div class="form-horizontal" role="form">
+                    <div class="row" ng-if="isTrascError">
+                        <div
+                            ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                            ng-if="flash" ng-bind="flash.message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="control-label col-sm-2">Name<font
+                                color="red">*</font></label>
+                        <div class="col-sm-7">
+                            <input class="form-control" ng-disabled="!iseditable" name="item"
+                                   ng-model="lookupname" placeholder="Enter Lookup Name"
+                                   onFocus="this.placeholder = ''" maxlength="50"
+                                   onBlur="this.placeholder = 'Enter Lookup Name'" type="text"
+                                   special-char-underscore>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="control-label col-sm-2">Code<font
+                                color="red">*</font></label>
+                        <div class="col-sm-7">
+                            <input class="form-control" ng-disabled="!iseditable||!iscodeeditable"
+                                   name="organization" ng-model="lookupcode" maxlength="20"
+                                   placeholder="Enter Code" onFocus="this.placeholder = ''"
+                                   onBlur="this.placeholder = 'Enter Code'" type="text"
+                                   special-char-underscore uppercase="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="control-label col-sm-2">Active</label>
+                        <div class="col-sm-7" style="margin-top: 7px;">
+                            <input type="checkbox" ng-disabled="!iseditable" id="cbk1" ng-style="iseditable && {'background-color': 'white'}"  ng-model="isActive">
+                        </div> 
+                    </div>
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+                    <div class="col-sm-12" style="padding-left: 27px;">
+                        <table class="table1">
+                            <thead>
+                                <tr style="height: 35px; font-size: 14px;">
+                                    <td class="td_font" ng-show="iseditable">
+                                        <div style="width: 100px; margin-left: 25px; width: 45px;">
+                                            <input type="checkbox" ng-model="allbox.selected" ng-disabled="!selectAll"
+                                                   ng-click="removeselectall()" id="allSelect">
+                                        </div>
+                                    </td>
+                                    <th><div style="margin-left: 6px; width: 75px;">Sequence<font
+                                        color="red">*</font></div></th>
+                                    <th><div style="margin-left: 6px; width: 190px;">Value<font
+                                color="red">*</font></div></th>
+                                    <th style="width: 305px;">
+                                        <div style="margin-left: 7px; width: 100px; float: left;">Description<font
+                                color="red">*</font></div>
+                                        <div ng-show="iseditable"
+                                             style="margin-left: 0px; float: left;" align="left">
+                                            <i class="fa fa-plus" ng-disabled="!iseditable"
+                                               ng-click="addRow()"></i>&nbsp;&nbsp;&nbsp; <i
+                                               class="fa fa-minus" ng-disabled="!iseditable"
+                                               ng-click="removeRow()" /></i>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <table class="table1 borderless">
+                            <tbody>
+                                <tr ng-repeat="datum in valuedata | orderBy:'lookupSeqNum' track by $index"
+                                    ng-init="myIndex = $index">                                    
+                                    <td class="td_font" ng-show="iseditable"
+                                        ng-if="datum.isselected == 'Y'">
+                                        <div style="width: 50px; margin-left: 25px;">
+                                             <input type="checkbox" ng-model="datum.selected"
+                                                   ng-init="datum.selected = false" ng-disabled="true">
+                                        </div>
+                                    </td>
+                                    <td class="td_font" ng-show="iseditable"
+                                        ng-if="datum.isselected == 'N' && datum.isCbkeditable =='N' ">
+                                        <div style="width: 50px; margin-left: 25px; margin-top: 6px;">
+                                            <input type="checkbox" ng-model="datum.selected"
+                                                   ng-init="datum.selected = false" ng-disabled="true">
+                                        </div>
+                                    </td>
+                                    <td class="td_font" ng-show="iseditable"
+                                        ng-if="datum.isselected == 'N' && datum.isCbkeditable =='Y' ">
+                                        <div style="width: 50px; margin-left: 25px; margin-top: 6px;">
+                                            <input type="checkbox" ng-model="datum.selected"
+                                                   ng-init="datum.selected = false" ng-disabled="false">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 75px; margin-top: 6px;">
+                                            <input type="text" class="form-control" ng-model="datum.lookupSeqNum" only-number maxlength="4">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 200px; margin-top: 6px;">
+                                            <input type="text" ng-disabled="!iseditable" maxlength="50"
+                                                   class="form-control" ng-model="datum.lookupvalue"
+                                                   placeholder="Value" onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = 'Value'" no-special-char>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 240px; margin-left: 4px; margin-top: 6px;">
+                                            <input type="hidden" ng-model="datum.id">
+                                            <input type="text" ng-disabled="!iseditable" maxlength="500"
+                                                   class="form-control" ng-model="datum.lookupdesc"
+                                                   placeholder="Description" onFocus="this.placeholder = ''"
+                                                   onBlur="this.placeholder = 'Description'">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-foot" align="right" style="margin-top: 10px; float: left; width: 100%;">
+                           <button type="button" class="btn btn-default btn-space pull-right"  data-dismiss="modal">Close</button>
+                           <div ng-if="isUpdatable">
+                                <button class="btn btn-primary modalButton"
+                                        ng-click="saveLookup()" ng-disabled="!iseditable">Update</button>
+                            </div>
+                            <div ng-if="!isUpdatable">
+                                <button type="button" class="btn btn-primary modalButton" ng-hide="!iseditable" ng-click="saveLookup()">Save</button>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- delete confirmation modal -->
+<div class="modal fade" id="lookup-delete-model" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Are you sure you want to delete?</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal" role="form">
+                    <div class="modal-foot" align="center">
+                        <button type="button" class="btn btn-primary"
+                                ng-click="deleteLookup()">Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div style="width:100%;">
+<p>Available operations on this Page</p></br></br></br>
+    <table >
+    	<tr>
+    	<td ng-repeat="availOperations in availOperations">
+    		<button class="btn btn-primary">{{availOperations.name}}</button> URL:{{availOperations.url}}
+    	</td>
+    	</tr>
+    </table>
+
+</div>

@@ -1,0 +1,322 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<!-- Left side column. contains the logo and sidebar -->
+	<!-- Right side column. Contains the navbar and content of the page -->
+	<div class="right-side">
+		<div>
+			<!-- Content Header (Page header) -->
+			<section class="content">
+				<div class="row" style="margin-right: 0px;">
+					<div class="col-sm-6">
+						<h4>&nbsp; Function</h4>
+					</div>
+				</div>
+				<div class="alert alert-success" ng-show="showSuccessAlert"
+					style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+					<strong></strong> {{successTextAlert}}
+				</div>
+				<div class="alert alert-danger" ng-show="showFailureAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{failureTextAlert}}
+                </div>
+				<div class="col-sm-12 no-padding">
+					<div class="panel panel-default" style="min-height: auto;">
+						<div class="panel-body">
+						<form name="functionForm">
+							<div class="navbar-form navbar-left form-horizontal col-lg-12"
+								role="form">
+								<div class="col-sm-3">
+									<input class="form-control" type="text" placeholder="Function Name" name="funcName" 
+										ng-model="vm.searchBy.funcName" ng-change="vm.makeEnableButtionForName(vm.searchBy.funcName)" only-Alphabets no-special-char uppercase disallow-spaces required/>
+								</div>
+								<div class="col-sm-3">
+									<input class="form-control" placeholder="Function Value" name="funcValue" type="text" ng-change="vm.makeEnableButtion(vm.searchBy.funcValue)"
+										ng-model="vm.searchBy.funcValue" />
+								</div>
+								<div class="col-lg-4">
+									<button class="btn btn-primary" ng-click="vm.search()">Search</button>
+                                                                        <button type="button" class="btn btn-defaul btn-width"
+										ng-click="clearSearch()">Clear</button>
+								</div>
+								
+							</div>
+							</form>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+				</div>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<!--MAIN BODY START-->
+				<div class="box1">
+					<div class="box-body table-responsive">
+						<table class="table table-bordered table-striped">
+							<thead class="thead_bg">
+								<tr>
+									<th ng-click="sort('funcName')">Function Name <span
+										class="glyphicon sort-icon" ng-show="sortKey == 'funcName'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+									<th ng-click="sort('funcValue')">Value <span
+										class="glyphicon sort-icon" ng-show="sortKey == 'funcValue'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+									<th ng-click="sort('active')">Status <span
+										class="glyphicon sort-icon" ng-show="sortKey == 'active'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+									<!--<th>Action</th>-->
+								</tr>
+							</thead>
+							<tr
+								dir-paginate="item in vm.functions|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+								ng-class="{selected: item.id == isSelectedRow}"
+								ng-click="selectRow(item); vm.selectRow($event, item)"
+								ng-dblclick="editSelectedRowDetails(item)"
+								ng-init="myIndex = $index">
+								<td>{{item.funcName}}</td>
+								<td>{{item.funcValue}}</td>
+								<td>{{item.active}}</td>
+								<!--<td>
+                                    <div class="col-sm-12 lookup-action">
+                                        <i class="fa fa-eye" ng-click="vm.viewitem(item)"></i>&nbsp;
+                                        &nbsp; <i class="fa fa-pencil-square-o"
+                                                  ng-click="vm.edititem(item)"></i>
+                                        &nbsp; <i class="fa fa-trash-o" aria-hidden="true" ng-click="vm.deleteEntry(item)"></i>
+                                    </div>
+                                </td>-->
+							</tr>
+						</table>
+						<div ng-if="vm.functions.length == 0">
+							<h6 style="text-align: center; color: red;">No Records Found</h6>
+						</div>
+					</div>
+					<!-- /.box-body -->
+					<div class="col-sm-12">
+						<!--<div style="float: right;">
+                            <button class="btn btn-primary pull-right"
+                                    ng-click="vm.openfunctionmodal($event)">Add Function</button>
+                        </div>-->
+						<div class="col-sm-6">
+							<div style="float: left; margin-top: -10px;">
+								<dir-pagination-controls max-size="8" direction-links="true"
+									boundary-links="true" on-page-change="clearSelectedRow()">
+								</dir-pagination-controls>
+							</div>
+						</div>
+						<div style="float: right;">
+							<!--  'glyphicon glyphicon-trash' : availOperations.name == 'Delete', -->
+							<span ng-repeat="availOperations in availOperations"> <i
+								style="cursor: pointer;"
+								ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',    
+					      'glyphicon glyphicon-eye-open' : availOperations.name == 'View',    
+					      'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',    
+					       
+					      'disabled': disable_{{availOperations.name}}}"
+								ng-disabled="disable_{{availOperations.name}}"
+								ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+							</span>
+						</div>
+					</div>
+				</div>
+				<!-- /.box -->
+				<!--<div class="box1" ng-if="item.length == 0">
+                    <h6> No Records Found</h6>
+                    <br>
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <button class="btn btn-primary pull-right" ng-click="vm.openfunctionmodal($event)">Add Function</button>
+                        </div>
+                    </div>
+                </div>-->
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+	<!-- /.right-side -->
+</div>
+<!-- ./wrapper -->
+<div class="modal fade" id="function-model" role="dialog">
+	<div class="modal-dialog modal-sm" style="width: 700px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close modelCloseButton"
+					data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">{{funModelHeading}} Function</h4>
+			</div>
+			<div class="modal-body" style="height: 448px;">
+				<div class="form-horizontal" role="form">
+					<div class="row" ng-if="isTrascError">
+						<div
+							ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+							ng-if="flash" ng-bind="flash.message"></div> 
+							<!-- <div class="alert alert-success" ng-show="showSuccessAlert1"
+					style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+					<strong>Done!</strong> {{successTextAlert1}}
+				</div> -->
+					</div>
+					<form name="myForm">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="address" class="control-label col-sm-3">Name<font
+										color="red">*</font></label>
+									<div class="col-sm-8">
+										<input class="form-control" ng-disabled="!iseditable"
+											name="name" ng-model="vm.functionDetails.funcName"
+											placeholder="Enter Function Name"
+											onFocus="this.placeholder = ''"
+											onBlur="this.placeholder = 'Enter function Name'" type="text"
+											no-special-char required maxlength="100">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="control-label col-sm-3">value<font
+										color="red">*</font></label>
+									<div class="col-sm-8">
+										<input class="form-control" ng-disabled="!iseditable"
+											name="organization" ng-model="vm.functionDetails.funcValue"
+											placeholder="Enter Value" onFocus="this.placeholder = ''"
+											onBlur="this.placeholder = 'Enter Code'" type="text"
+											maxlength="500">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="address" class="control-label col-sm-3">Type<font
+										color="red">*</font></label>
+									<div class="col-sm-8">
+										<input class="form-control" ng-disabled="!iseditable"
+											name="item" ng-model="vm.functionDetails.funcType"
+											placeholder="Enter Function Type"
+											onFocus="this.placeholder = ''"
+											onBlur="this.placeholder = 'Enter function type'" type="text"
+											no-special-char maxlength="50">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="control-label col-sm-3">Parameter</label>
+									<div class="col-sm-8">
+										<input class="form-control" ng-disabled="!iseditable"
+											name="organization" ng-model="vm.functionDetails.parameters"
+											placeholder="Enter Parameter" onFocus="this.placeholder = ''"
+											onBlur="this.placeholder = 'Enter Code'" type="text"
+											maxlength="100">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-1"></div>
+							<div class="col-sm-3">
+								<input ng-show="vm.createActive" type="checkbox"
+									ng-model="activeCreate"> <span
+									ng-show="vm.createActive"><b>Active</b></span> <input
+									ng-show="vm.editActive" ng-disabled="!iseditable"
+									type="checkbox" ng-model="activeEdit"> <span
+									ng-show="vm.editActive"><b>Active</b></span>
+							</div>
+						</div>
+					</form>
+					<div>
+						<hr style="border-width: 2px;"></hr>
+					</div>
+					<div class="col-sm-12" class="row">
+					<form name="vm.tableForm">
+						<table>
+							<tbody>
+								<tr>
+									<td class="col-sm-1.5"><label>Operation</label></td>
+									<td class="col-sm-3.5" style="padding-left: 40px"><b>URL</b><font
+										color="red">*</font></td>
+									<td class="col-sm-3.5"><b>Start Date<font color="red">*</font></b></td>
+									<td class="col-sm-3.5"><b>End Date</b></td>
+								</tr>
+								<tr ng-repeat="item in vm.functionOperations track by $index">
+									<td class="col-sm-1.5"><b>{{item.name}}</b></td>
+									<td class="col-sm-3.5"><input type="value"
+										class="form-control" id="create" only-Slash-Char
+										placeholder="/{{item.name}} function " maxlength="100"
+										ng-model="vm.functionOperations[$index].opUrl"
+										ng-disabled="!iseditable" ng-change="vm.checkUrl($index)" /></td>
+									<td class="col-sm-3.5">
+                                                                            <datepicker date-format="dd-MMM-yyyy" selector="form-control" date-min-limit="{{todaysDate}}"> 
+                                                                                <div class="input-group">                                                                                    
+																					<input my-valid-date date-formatter class="form-control" placeholder="Choose Start Date"
+																							id="startDate{{$index+1}}" 
+                                                                                            ng-blur="vm.checkDate($index)"
+                                                                                            ng-model="vm.functionOperations[$index].startDate"
+                                                                                            ng-disabled="!iseditable" name="myDateInput" /> <span
+                                                                                            class="input-group-addon" style="cursor: pointer"> <i
+                                                                                            class="fa fa-lg fa-calendar" id="startDate{{$index+1}}" onclick="getDatePicker(this)"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </datepicker>
+                                                                        </td>
+									<td class="col-sm-3.5"><datepicker
+											date-format="dd-MMM-yyyy" selector="form-control"
+											date-min-limit="{{vm.functionOperations[$index].startDate}}">
+										<div class="input-group">
+											<input my-valid-date date-formatter
+												ng-disabled="!vm.functionOperations[$index].startDate || !iseditable"
+												class="form-control" placeholder="Choose End Date"
+												id="endDate{{$index+1}}" 
+												ng-model="vm.functionOperations[$index].endDate" ng-blur="vm.checkEndDate($index)"  ng-change="vm.compareDate($index)"/> <span
+												class="input-group-addon" style="cursor: pointer"> <i
+												class="fa fa-lg fa-calendar" id="endDate{{$index+1}}"  onclick="getDatePicker(this)"></i>
+											</span>
+										</div>
+										</datepicker></td>
+									<td ng-if="vm.functionOperations[$index].opUrl != undefined ">
+										<span ng-model="vm.functionOperations[$index].id"
+										ng-init="vm.functionOperations[$index].id = item.id"></span>
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+						</form>
+						<div class="form-group  modal-foot"></div>
+					</div>
+				</div>
+				<div class="modal-foot" align="center">
+					<!--<button type="button" class="btn btn-default pull-right" ng-click="vm.clear()" ng-if="viewClearButton">Clear</button>-->
+					<button type="button" class="btn btn-default pull-right"
+						data-dismiss="modal" ng-click="vm.clear()">Close</button>
+					<button ng-show="vm.showSave" type="button"
+						class="btn btn-primary pull-right modalButton"
+						ng-disabled="!iseditable && myForm.name.$touched && myForm.name.$invalid"
+						ng-click="vm.save()">Save</button>
+					<button ng-show="vm.showUpdate" type="button"
+						class="btn btn-primary pull-right modalButton"
+						ng-click="vm.update()">Update</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- delete confirmation modal -->
+<div class="modal fade" id="function-delete-model" role="dialog"
+	style="top: 20%">
+	<div class="modal-dialog modal-sm" style="width: 400px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close modelCloseButton"
+					data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Do you want to {{vm.activateValue}} ?</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal" role="form">
+					<div class="modal-foot" align="center">
+						<button type="button" class="btn btn-primary"
+							ng-click="vm.deleteFunction()">Yes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="vm.noAction()">No</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    function getDatePicker(thiz){
+		console.log(thiz);
+        document.getElementById(thiz.id).focus();
+    }
+</script>

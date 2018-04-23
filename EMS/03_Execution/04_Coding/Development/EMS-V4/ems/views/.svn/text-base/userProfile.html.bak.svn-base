@@ -1,0 +1,140 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <div class="right-side">
+        <div>	
+            <section class="content">
+                <div class="row" style="margin-right: 0px;">
+                    <div class="col-sm-6">
+                        <h4> My Profile</h4>
+                    </div>
+                </div>
+                <div class="row" ng-if="isTrascError">
+							<div
+								ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+								ng-if="flash" ng-bind="flash.message"></div>
+						</div> 
+                <div class="col-lg-12">
+                    <div class="card hovercard">
+                        <!-- <div class="card-background">
+                            <img src="img/userProfileBackGround.jpg"  alt="Background Image">
+                        </div> -->
+<!--                        <div class="useravatar">
+                            
+                            <img alt="Profile Pic" src="{{vm.image}}">
+                            
+                        </div>
+                        <div style="position: fixed; left: 28%; top: 30%;"> <button  class="btn btn-default btn-sm" style="border: 1px solid #656060; border-radius: 50%;"><span class="glyphicon glyphicon-pencil"></span></button></div>-->
+                        <!-- <div class="card-info"> <span class="card-title">{{vm.user.firstName}} {{vm.user.lastName}}</span>
+
+                        </div> -->
+                    </div>
+                    <div class="btn-pref btn-group btn-group-justified btn-group-lg"  data-tabs="tabs" role="group" aria-label="..." style="width: 50% !important;">
+                        <div class="btn-group" role="group">
+                            <button type="button" id="detailsTab" class="tabss btn btn-primary" href="#tab1" data-toggle="tab" data-target="#tab1"  
+                            	ng-click="vm.deselectTabs('detailsTab', 'tab1');changeTab($event,'tab1');">
+                            	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                <span class="hidden-xs">Details</span>
+                            </button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" id="idCardsTab" class="tabss btn btn-default" href="#tab2" data-toggle="tab" data-target="#tab2"
+                            	ng-click="vm.deselectTabs('idCardsTab', 'tab2');changeTab($event,'tab2');">
+                            	<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                <span class="hidden-xs">ID Cards</span>
+                            </button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" id="bankDetailsTab" class="tabss btn btn-default" href="#tab3" data-toggle="tab" data-target="#tab3"
+                            	ng-click="vm.deselectTabs('bankDetailsTab', 'tab3');changeTab($event,'tab3');">
+                            	<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                <span class="hidden-xs">Bank Account Details</span>
+                            </button>
+                        </div>
+                        <!-- <div class="btn-group" role="group">
+                            <button type="button" id="functionsTab" class="btn btn-default" href="#tab3" data-toggle="tab" ng-click="vm.getUserFunctions()"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+                                <span class="hidden-xs">Functions</span>
+                            </button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" id="operationsTab" class="btn btn-default" href="#tab4" data-toggle="tab" ng-click="vm.getUserOperations()"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                <span class="hidden-xs">Operations</span>
+                            </button>
+                        </div> -->
+                      <!--   <div class="btn-group" role="group">
+                            <button type="button" id="invOrgTab" class="btn btn-default" href="#tab5" data-toggle="tab" ng-click="vm.getUserInvOrgs()"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+                                <span class="hidden-xs">Inventory Organization</span>
+                            </button>
+                        </div> -->
+<!--                        <div class="btn-group" role="group">
+                            <button type="button" id="cATab" class="btn btn-default" href="#tab6" data-toggle="tab" ng-click="vm.getUserCategoryAndApproval()"><span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+                                <div class="hidden-xs">Category And Approvers</div>
+                            </button>
+                        </div>-->
+                        <!-- <div class="btn-group" role="group">
+                            <button type="button" id="rDTab" class="btn btn-default" href="#tab6" data-toggle="tab" ng-click="vm.getUserRoleAndDepartments()"><span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+                                <span class="hidden-xs">Role and Departments</span>
+                            </button>
+                        </div> -->
+                    </div>
+
+                    <div class="well" style=" height: auto;">
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="tab1" >
+                                <div ng-include="'views/userProfileDetails.html'" ngCloak></div>
+                            </div>
+                            <div class="tab-pane fade in" id="tab2" >
+                                <div ng-include="'views/userIdCards.html'" ngCloak></div>
+                            </div>
+                            <div class="tab-pane fade in" id="tab3" >
+                                <div ng-include="'views/bankAccountDetails.html'" ngCloak></div>
+                            </div>
+                            <!-- <div class="tab-pane fade in" id="tab3">
+                                <div ng-include="'views/userProfileFunctions.html'" ngCloak></div>
+                            </div>
+                            <div class="tab-pane fade in" id="tab4">
+                                <div ng-include="'views/userProfileOperations.html'" ngCloak></div>
+                            </div>
+                            <div class="tab-pane fade in" id="tab5">
+                                <div ng-include="'views/userProfileInvOrg.html'" ngCloak></div>
+                            </div> -->
+<!--                            <div class="tab-pane fade in" id="tab6">
+                                <div ng-include="'views/userProfileCategoryApprovals.html'" ngCloak></div>
+                            </div>-->
+                            <!-- <div class="tab-pane fade in" id="tab6">
+                                <div ng-include="'views/userProfileRoleAndDepartments.html'" ngCloak></div>
+                            </div> -->
+                        </div>
+                        <br>
+                   <!--  <div class="pull-right">
+                        <button type="button" class="btn btn-primary" ng-hide="vm.userUpdate || vm.userView"
+                            ng-click="vm.saveOsiUser();">
+                            <span>Submit</span>
+                        </button> &nbsp;
+                        <button type="button" class="btn btn-primary" ng-show="vm.userUpdate && !vm.userView"
+                            ng-click="vm.saveOsiUser()">
+                            <span>Update</span>
+                        </button> &nbsp;
+                        <button type="button" class="btn btn-default pull-right"
+                            ng-click="vm.close();" ng-hide="userView">
+                            <span>Close</span>
+                        </button>
+                    </div> -->
+                    </div>
+	
+                    </div>
+                
+            </section>
+        
+        </div>
+    </div><!-- /.right-side -->
+</div><!-- ./wrapper -->
+
+<script>
+    $(document).ready(function() {
+$(".btn-pref .btn").click(function () {
+    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+    // $(".tab").addClass("active"); // instead of this do the below 
+    $(this).removeClass("btn-default").addClass("btn-primary");   
+});
+});
+
+</script>

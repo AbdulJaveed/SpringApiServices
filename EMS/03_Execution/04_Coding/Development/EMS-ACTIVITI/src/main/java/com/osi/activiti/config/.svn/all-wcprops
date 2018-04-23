@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/osi-repos/testing_svn/!svn/ver/2142/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config
+END
+db.properties
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/db.properties
+END
+JPAConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/JPAConfig.java
+END
+ActivitiInit.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/osi-repos/testing_svn/!svn/ver/2142/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/ActivitiInit.java
+END
+ActivitiConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/ActivitiConfig.java
+END
+Application.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/osi-repos/testing_svn/!svn/ver/1915/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/Application.java
+END
+ProcessStartEventListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/ProcessStartEventListener.java
+END
+Config.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/osi-repos/testing_svn/!svn/ver/2142/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/Config.java
+END
+ActivitiUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/ActivitiUtil.java
+END
+TransactionConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/TransactionConfig.java
+END
+Constants.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/Constants.java
+END
+application.properties
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/application.properties
+END
+ServiceConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/ServiceConfig.java
+END
+ServletInitializer.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/ServletInitializer.java
+END
+CacheConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/CacheConfig.java
+END
+ActivitiDelegates.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/osi-repos/testing_svn/!svn/ver/2142/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/ActivitiDelegates.java
+END
+MyEventListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/config/MyEventListener.java
+END

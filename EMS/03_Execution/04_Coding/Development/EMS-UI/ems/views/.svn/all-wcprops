@@ -1,0 +1,527 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/osi-repos/testing_svn/!svn/ver/1454/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views
+END
+titleList.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/titleList.html
+END
+UserResponsibility.html
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/osi-repos/testing_svn/!svn/ver/1052/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/UserResponsibility.html
+END
+certificationList.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/1314/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/certificationList.html
+END
+assignmentsPage-self.html
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/assignmentsPage-self.html
+END
+userProfileInvOrg.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userProfileInvOrg.html
+END
+function.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/function.html
+END
+empOrgList.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/osi-repos/testing_svn/!svn/ver/1314/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/empOrgList.html
+END
+flexifield-inline.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/1117/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/flexifield-inline.html
+END
+businessUnitList.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/osi-repos/testing_svn/!svn/ver/1138/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/businessUnitList.html
+END
+common.html
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/osi-repos/testing_svn/!svn/ver/169/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/common.html
+END
+menuEntriesViewUpdate.html
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/224/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/menuEntriesViewUpdate.html
+END
+employeeBasicInfo.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/1454/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/employeeBasicInfo.html
+END
+userSkills.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userSkills.html
+END
+orgnization.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/osi-repos/testing_svn/!svn/ver/1329/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/orgnization.html
+END
+userProfileOperations.html
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userProfileOperations.html
+END
+employeeMenu.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/osi-repos/testing_svn/!svn/ver/1454/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/employeeMenu.html
+END
+supervisorPopup.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/osi-repos/testing_svn/!svn/ver/1122/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/supervisorPopup.html
+END
+empCertificates.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/empCertificates.html
+END
+skillList.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/osi-repos/testing_svn/!svn/ver/1282/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/skillList.html
+END
+userList.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userList.html
+END
+categoryViewUpdate.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/753/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/categoryViewUpdate.html
+END
+landing.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/landing.html
+END
+category.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/osi-repos/testing_svn/!svn/ver/1059/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/category.html
+END
+emergencyContacts.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/emergencyContacts.html
+END
+gradeList.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/osi-repos/testing_svn/!svn/ver/1349/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/gradeList.html
+END
+view-profile-orgChart.html
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/view-profile-orgChart.html
+END
+personalInformation-self.html
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/personalInformation-self.html
+END
+employeeList-sf.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/osi-repos/testing_svn/!svn/ver/753/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/employeeList-sf.html
+END
+costing-inline.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/osi-repos/testing_svn/!svn/ver/1324/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/costing-inline.html
+END
+empBankDetails.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/osi-repos/testing_svn/!svn/ver/1314/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/empBankDetails.html
+END
+practiceList.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/osi-repos/testing_svn/!svn/ver/1282/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/practiceList.html
+END
+imageUpload.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/imageUpload.html
+END
+home.html
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/home.html
+END
+userProfileFunctions.html
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userProfileFunctions.html
+END
+operationExclusion.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/731/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/operationExclusion.html
+END
+bankAccountDetails.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/bankAccountDetails.html
+END
+empCertificates-self.html
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/empCertificates-self.html
+END
+reports.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/reports.html
+END
+userProfile.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userProfile.html
+END
+userProfileResponsibility.html
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userProfileResponsibility.html
+END
+empBankList-self.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/empBankList-self.html
+END
+employeeChart.html
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/osi-repos/testing_svn/!svn/ver/1282/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/employeeChart.html
+END
+menu.html
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/menu.html
+END
+userIdCards.bak.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userIdCards.bak.html
+END
+usercertifications.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/232/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/usercertifications.html
+END
+login.html
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/osi-repos/testing_svn/!svn/ver/480/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/login.html
+END
+employeeList.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/osi-repos/testing_svn/!svn/ver/1122/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/employeeList.html
+END
+reportshistory.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/reportshistory.html
+END
+segmenthirarcy.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/segmenthirarcy.html
+END
+Departments.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/osi-repos/testing_svn/!svn/ver/1354/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/Departments.html
+END
+passportInfo.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/passportInfo.html
+END
+userSkills-self.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userSkills-self.html
+END
+assignmentsPage.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/osi-repos/testing_svn/!svn/ver/1454/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/assignmentsPage.html
+END
+empAdditionalDocs-sf.html
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/empAdditionalDocs-sf.html
+END
+personalInformation.html
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/osi-repos/testing_svn/!svn/ver/1454/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/personalInformation.html
+END
+menuEntries.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/menuEntries.html
+END
+personalInfo.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/osi-repos/testing_svn/!svn/ver/169/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/personalInfo.html
+END
+searchorgNameOsiEmployeesPopup.html
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/osi-repos/testing_svn/!svn/ver/850/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/searchorgNameOsiEmployeesPopup.html
+END
+flexifield-modal.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/osi-repos/testing_svn/!svn/ver/1117/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/flexifield-modal.html
+END
+costCenterList.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/osi-repos/testing_svn/!svn/ver/1340/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/costCenterList.html
+END
+officeInfo.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/officeInfo.html
+END
+lookup.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/osi-repos/testing_svn/!svn/ver/1282/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/lookup.html
+END
+categoryList.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/categoryList.html
+END
+empBankList.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/empBankList.html
+END
+employeeMenu-sf.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/osi-repos/testing_svn/!svn/ver/1454/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/employeeMenu-sf.html
+END
+confirmationPopup.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/osi-repos/testing_svn/!svn/ver/478/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/confirmationPopup.html
+END
+passportInfo-self.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/passportInfo-self.html
+END
+userFunctionExclusion.html
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/731/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userFunctionExclusion.html
+END
+userProfileDetails..bak.html
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userProfileDetails..bak.html
+END
+menuEntryList.html
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/menuEntryList.html
+END
+empAdditionalDocs.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/empAdditionalDocs.html
+END
+employeeBasicInfo-self.html
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/employeeBasicInfo-self.html
+END
+dashboard.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/dashboard.html
+END
+BasicInfoTemplate.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/1282/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/BasicInfoTemplate.html
+END
+employeeOverallSearch.html
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/employeeOverallSearch.html
+END
+userProfile.html.bak
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userProfile.html.bak
+END
+errorDisplayModal.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/errorDisplayModal.html
+END
+osiResponsibilitiesList.html
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/osi-repos/testing_svn/!svn/ver/1051/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/osiResponsibilitiesList.html
+END
+officeInfo-self.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/officeInfo-self.html
+END
+medicalInfo-self.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/medicalInfo-self.html
+END
+jobCodeList.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/jobCodeList.html
+END
+emergencyContacts-self.html
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/emergencyContacts-self.html
+END
+userProfileDetails.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/169/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userProfileDetails.html
+END
+costing.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/osi-repos/testing_svn/!svn/ver/1061/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/costing.html
+END
+userIdCards.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/userIdCards.html
+END
+medicalInfo.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/medicalInfo.html
+END
+reportsgroup.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/views/reportsgroup.html
+END

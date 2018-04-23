@@ -1,0 +1,41 @@
+<!-- Search Modal -->
+<div class="searchEmployeeModal">
+	<div class="modal-content" style="margin-top: 13%;">
+		<div class="modal-header">
+			<button type="button" class="close modelCloseButton"
+				ng-click="closeorgNameModal()">&times;</button>
+			<h4 class="modal-title">As Of Date</h4>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="col-lg-11" style="padding: 0px;">
+					<datepicker date-format="yyyy-MM-dd" selector="form-control" date-max-limit = "">
+						<input class="form-control" name="employeeSearchDate" id="employeeSearchDate" required
+							ng-model="searchempDate"
+							style="text-transform: uppercase" placeholder='Date' required>
+						<br>
+					</datepicker>
+					</div>
+					<div class="col-lg-1" style="padding: 0px;">
+					<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+						<i class="fa fa-lg fa-calendar"  onclick="getDatePicker(this)"></i>
+					</span></div>
+				</div>
+				<div class="col-lg-4">
+					<button type="button" class="btn btn-primary" ng-disabled="!searchempDate.length"
+						ng-click="vm.searchEmployee(searchempDate)">Search</button>
+					&nbsp;
+					<button type="button" class="btn btn-defaul"
+						ng-click="vm.clearEmployeeSearch()">Clear</button>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
+</div>
+<script>
+function getDatePicker(thiz){
+	document.getElementById('employeeSearchDate').focus();
+}
+</script>

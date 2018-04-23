@@ -1,0 +1,508 @@
+
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <div class="right-side">
+        <div>
+            <section class="content">
+                <div class="row" style="margin-right: 0px;">
+                    <div class="col-sm-6">
+                        <h4>Reports</h4>
+                    </div>
+                </div>
+                <div class="alert alert-success" ng-show="showSuccessAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{successTextAlert}}
+                </div>
+            </section>
+            <section class="content">
+                <div class="col-sm-12 no-padding" style="width:90%">
+                    <div class="panel panel-default" style="min-height: auto;">
+                        <div class="panel-body">
+                            <div  role="form">
+                                <label for="address" class="control-label col-sm-2">Report Name<font color="red">*</font></label>
+                                <div class="col-sm-5">
+                                    <select  class="form-control" id="reportId" onchange="renderText()">
+                                        <!--                                            ng-repeat="report.reportId as report.userReportName  for report in reportsList | orderBy:'userReportName'  track by report.reportId"-->
+                                        <option value="-1" selected>Select Report Name</option>   
+                                        <option ng-repeat="report in reportsList| orderBy:'userReportName'" value="{{report.reportId}}" >{{report.userReportName}}</option> 
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body" style="height:375px;">
+                        <table id="reportArgs" width="45%" style="position:absolute;left:0px;">
+                            <tbody></tbody>
+                        </table> 
+                        
+                    <table id="scheduling" width="50%" style="position:absolute;right:0px;display:none;" class="scheduling"><tr>
+                            <td><label for="name" style="width:100%;" class="control-label col-sm-2">Request Date<font color="red">*</font></label></td>
+<!--                            <td width="35%"><datepicker date-format="yyyy-MM-dd" date-min-limit="{{vm.today}}" selector="form-control">
+                            <div class="input-group">
+                                <input my-valid-date ng-model="requestDate"  id="requestDate"
+                                       class="form-control info" placeholder='YYYY-MM-DD'
+                                       min="{{vm.today| date : 'yyyy-MM-dd' }}" name="requestDate" required
+                                       /> 
+                            </div>
+                        </datepicker></td>-->
+                        <td width="35%">
+                                <input    id="requestDate"
+                                       class="form-control" placeholder='DD-MMM-YYYY' name="requestDate"
+                                       /> 
+                            </td>
+                        <td><label for="name" class="control-label col-sm-2">HR</label></td>
+                        <td><select name="requestTimeHr" id="requestTimeHr" 
+                                    ></select></td>
+                        <td><label for="name" class="control-label col-sm-2">MM</label></td>
+                        <td> <select  name="requestTimeMins" id="requestTimeMins" 
+                                      ></select></td>
+
+                        </tr>
+                        <tr><td width="30%">	
+                                <label for="name" style="width:100%;" class="control-label col-sm-2">Is Repeat</label></td>
+                            <td><input type="checkbox" name="repeat" id="repeat" cssClass='checkbox' onclick="disableFields();"/></td>
+                        <tr><td width="30%">
+                                <label for="name" style="width:100%;" class="control-label col-sm-2">Occurrences<font color="red">*</font></label></td>
+                            <td><select class="form-control" id="scheduleFrequencyId" >
+                                    <!--                                            ng-repeat="report.reportId as report.userReportName  for report in reportsList | orderBy:'userReportName'  track by report.reportId"-->
+                                    <option value="-1" selected>Select Occurrence</option>   
+                                    <option value="1">Minutes</option>
+                                    <option value="2">Hourly</option>
+                                    <option value="3">Daily</option>
+                                    <option value="4">Weekly</option>
+                                    <option value="5">Monthly</option>
+                                    <option value="6">Yearly</option>
+                                </select></td>
+                            <!--<s:select list="#{'1':'Minutes','2':'Hourly','3':'Daily','4':'Weekly','5':'Monthly','6':'Yearly'}" name="osiReportsGenerationVO.occurrences" id="scheduleFrequencyId" cssClass="selectOptions" headerKey="-1" headerValue="Select" />-->
+                        <tr><td width="30%">	
+                                <label for="name" style="width:100%;" class="control-label col-sm-2">Repeat Interval<font color="red">*</font></label></td>
+                            <td><input class="form-control" 
+                                       name="repeatInterval" id="repeatInterval"
+                                       placeholder="Select Repeat Interval" onFocus="this.placeholder = ''"
+                                       onBlur="this.placeholder = 'Select Repeat Interval'" type="text" ng-model="repeatInterval" only-number /></td>
+                            <!--<s:textfield name="osiReportsGenerationVO.repeatInterval" id="repeatInterval" cssClass='textbox'/>-->
+                        <tr>
+                            <td width="30%">	
+                                <label for="name" style="width:100%;" class="control-label col-sm-2">Schedule End Date<font color="red">*</font></label></td>
+                            <td>	
+<!--                        <datepicker date-format="yyyy-MM-dd" date-min-limit="{{vm.today}}" selector="form-control">
+                            <div class="input-group">
+                                <input my-valid-date ng-model="scheduleEndDate" id="scheduleEndDate"
+                                       class="form-control info" placeholder='YYYY-MM-DD'
+                                       min="{{vm.today| date : 'yyyy-MM-dd' }}" name="scheduleEndDate" required
+                                       /> 
+                            </div>
+                        </datepicker>-->
+                            <input    id="scheduleEndDate"
+                                       class="form-control" placeholder='DD-MMM-YYYY' name="scheduleEndDate"
+                                       /> 
+                    </td>
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                    </table>
+                        <div id="buttons" style="margin-right: -30px;">
+                        <div class="col-sm-1" style="float: right;"><button class="btn btn-primary" ng-click="backToHistory()">Back
+                 </button></div>
+                    <div class="modal-foot" style="display:none;margin-right: 10px;" align="right">
+                            <button type="button" id="custom-button" onclick="save();" class="btn btn-primary pull-right">Submit</button>
+                </div>
+                        </div>
+                    </div>
+                    
+                </div>
+               
+            </section>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="error-modal" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Error</b></h4>
+            </div>
+            <div class="modal-body">
+                <div style="white-space: pre;color:red"><b id="error-modal-content"></b></div>
+                <div class="modal-foot" align="right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="success-modal" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Success</b></h4>
+            </div>
+            <div class="modal-body">
+                <div style="white-space: pre;"><b id="success-modal-content"></b></div>
+                <div class="modal-foot" align="right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="backToHistory()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var token = "";
+    var childArgId = "";
+    var jsURL = "http://192.168.32.71:8080/ems-api/api/";
+    var successMsg = "";
+    $(function() {
+        var globals = $.cookie("globals");
+       // jsURL = $.cookie("configJsUrl");
+        token = JSON.parse(globals).userDTO.token;
+        //console.log("token --- "+token);
+        $("#scheduleFrequencyId").attr("disabled", "disabled");
+            $("#repeatInterval").attr("disabled", "disabled");
+            $("#scheduleEndDate").attr("disabled", "disabled");
+            $("#scheduleEndDate").val("");
+            
+                      $("#requestDate").datepicker({
+        dateFormat: 'dd-M-yy',
+        minDate: 0,
+        changeYear: true
+    });
+                      $("#requestDate").removeClass('hasDatepicker');
+                      $("#scheduleEndDate").datepicker({
+        dateFormat: 'dd-M-yy',
+        minDate: 0,
+        changeYear: true
+    });
+                      $("#scheduleEndDate").removeClass('hasDatepicker');
+    });
+
+    // 2017-05-10 :: Paolo Jarana - Created to Format to and from the client's date format without compromising report integrity (START)
+    function formatDate(dateToFormat,isReportParm){
+        var m_names = new Array("Jan", "Feb", "Mar", 
+       "Apr", "May", "Jun", "Jul", "Aug", "Sep", 
+       "Oct", "Nov", "Dec");      
+        
+        if(isReportParm){
+            //alert(dateToFormat.split("-")[2]+"-"+("0" + (parseInt(m_names.indexOf(dateToFormat.split("-")[1])) + 1)).slice(-2)+"-"+dateToFormat.split("-")[0]);
+            return dateToFormat.split("-")[2]+"-"+("0" + (parseInt(m_names.indexOf(dateToFormat.split("-")[1])) + 1)).slice(-2)+"-"+dateToFormat.split("-")[0];
+        }else{
+            var d = new Date(dateToFormat);
+            var curr_date = d.getDate();
+            var curr_month = d.getMonth();
+            var curr_year = d.getFullYear();
+            //alert(("0" + curr_date).slice(-2) + "-" + m_names[curr_month] + "-" + curr_year);
+            return ("0" + curr_date).slice(-2) + "-" + m_names[curr_month] + "-" + curr_year; 
+        }
+    }
+    // 2017-05-10 :: Paolo Jarana (END)
+
+    var x = '';
+    function save() {
+        var reportSave =   {
+                    "reportId":0,
+                    "finalParameters":"",
+                    "requestDate":"",
+                    "requestTimeHr":"",
+                    "requestTimeMins":"",
+                    "repeat":""
+                }
+        var checkValidations = validations();
+        //var checkValidations = true;
+        if (checkValidations) {
+            var finalParameters = "";
+            reportSave.reportId=$("#reportId").val();
+            //$('#actionmessages').html("<center>Your request is processing.....</center>");
+            var table = $("#reportArgs tbody");
+            table.find('tr').each(function(i) {
+                var fieldId = $(this).find('td').attr('id');
+                var isDate = false;
+                if (fieldId.indexOf('date_') != -1) {
+                    isDate = true;
+                    fieldId = fieldId.substring(5, fieldId.length);
+                    //$("#Id_" + fieldId).val(formatDate($("#Id_" + fieldId).val(),true));
+                }
+                
+                if(isDate){
+                    finalParameters = finalParameters + fieldId + "::" + formatDate($("#Id_" + fieldId).val(),true) + "##";
+                }else{
+                    finalParameters = finalParameters + fieldId + "::" + $("#Id_" + fieldId).val() + "##";
+                }
+                //alert(finalParameters);
+            });
+            //$('#finalParameters').val(finalParameters);
+            reportSave.finalParameters=finalParameters;
+            //alert(finalParameters);
+
+            reportSave.requestDate = formatDate($("#requestDate").val(),true);
+            reportSave.requestTimeHr = $("#requestTimeHr").val();
+            reportSave.requestTimeMins = $("#requestTimeMins").val();  
+            if ($("#repeat").is(':checked')) {
+                reportSave.occurrences = $("#scheduleFrequencyId").val();
+                reportSave.repeatInterval = $("#repeatInterval").val();
+                reportSave.scheduleEndDate = formatDate($("#scheduleEndDate").val(),true);  
+                reportSave.repeat = 1;
+            }else{
+                reportSave.repeat = 0;
+            }
+            //alert(JSON.stringify(reportSave));
+            //console.log(JSON.stringify(reportSave));
+            //alert(token);
+            $.ajax({
+                type: "POST",
+                url: jsURL + "generate-report",
+                headers: {'Auth_Token': token, 'Content-Type': 'application/json'},
+                data: JSON.stringify(reportSave),
+                dataType: "text",
+                async: false,
+                success: function(data) {
+                    //alert(JSON.stringify(data));
+                    $("#success-modal-content").html(JSON.stringify(data));
+                    $("#success-modal").modal("show");
+                    //$("#reportId").val(-1);
+                    //document.getElementById("scheduling").style.display = 'none';
+                    //document.getElementsByClassName('modal-foot')[0].style.display = 'none';
+                    //alert(data);
+                    /* $(".errors").hide();
+                     $(".errors").html('');
+                     $(".welcome").hide();
+                     $(".welcome").html('');
+                     $('#actionmessages').hide();
+                     success = true;
+                     x = $(data).find('#dummy').html();
+                     msg = $(data).find('#message').html(); */
+                }});
+        }
+    }
+    function renderText() {
+         document.getElementById("scheduling").style.display = 'none';
+         document.getElementsByClassName('modal-foot')[0].style.display = 'none';
+        $("#reportArgs > tbody").empty();
+        $("#buttons").css("margin-top", "0%");
+        if($("#reportId").val()!=-1){
+        var tdIds = "";
+        childArgId = "";
+        var reportsReq = {
+            "reportId": $("#reportId").val()
+        }
+        var inputData = JSON.stringify(reportsReq);
+        $.ajax({
+            type: "POST",
+            url: jsURL + "screen-fields/",
+            headers: {'Auth_Token': token, 'Content-Type': 'application/json'},
+            data: inputData,
+            dataType: "text",
+            async: false,
+            success: function(data) {
+                $("#buttons").css("margin-top", "25%");
+                //alert(JSON.stringify(data));
+                var result = JSON.parse(data);
+                $.each(result.hrsList, function(index, hr) { // Iterates through a collection
+                        $("#requestTimeHr").append(// Append an object to the inside of the select box
+                                $("<option></option>") // Yes you can do this.
+                                .text(hr)
+                                .val(hr)
+                                );
+                    });
+                    $("#requestTimeHr").val(result.requestTimeHr);
+                    $.each(result.minsList, function(index, min) { // Iterates through a collection
+                        $("#requestTimeMins").append(// Append an object to the inside of the select box
+                                $("<option></option>") // Yes you can do this.
+                                .text(min)
+                                .val(min)
+                                );
+                    });
+                    $("#requestTimeMins").val(result.requestTimeMins);
+                    
+                    $("#requestDate").val(formatDate(result.requestDate));
+                      document.getElementById("scheduling").style.display = 'block';
+                document.getElementsByClassName('modal-foot')[0].style.display = 'block';
+                //alert(result.screenFields);
+                $("#reportArgs tbody").append((result.screenFields).replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+                var table = $("#reportArgs tbody");
+                table.find('tr').each(function(i) {
+                    tdIds = $(this).find('td').attr('id');
+                    childArgId = childArgId + tdIds + ",";
+                    if (tdIds.indexOf('date_') != -1) {
+                        tdIds = tdIds.substring(5, tdIds.length);
+//                        alert(tdIds);
+                        dateFormat = $("#Id_" + tdIds).attr('dateFormat');
+//                        alert(dateFormat);
+                       $('#Id_' + tdIds).datepicker({
+                            dateFormat: 'dd-M-yy',
+                            changeYear: true,
+                            onSelect: function(selected, evnt) {
+                                getChildList(this);
+                            }
+                        });
+//                       'yy-mm-dd'                        
+                        $('#Id_' + tdIds).removeAttr("disabled");
+//                        $('#Id_' + tdIds).datepicker();
+//                        $('#Id_' + tdIds).removeAttr("disabled");
+//                        $('#Id_' + tdIds).removeClass('hasDatepicker');
+                    }
+                    
+                });
+               // if (childArgId != "") {
+                    //$('.modal-foot').append('<button type="button" id="custom-button" value="Submit" onclick="save();" class="btn btn-primary pull-right">');
+                    
+              //  }
+            }});
+    }
+    }
+    function getIdsValues() {
+        var table = $("#reportArgs tbody");
+        table.find('tr').each(function(i) {
+            var $tds = $(this).find('td'),
+                    fieldLable = $tds.eq(0).text(),
+                    fieldId = $(this).find('td').attr('id');
+            alert('Row ' + (i + 1) + ':\nId: ' + fieldLable
+                    + '\Id: ' + fieldId + ':\nValue: ' + $("#Id_" + fieldId).val());
+        });
+        return false;
+    }
+    function getChildList(id) {
+        var fieldValues = {
+            "reportId": $("#reportId").val(),
+            "selectedValues": "",
+            "childParameter": ""
+        }
+        var finalParameters = "";
+        var table = $("#reportArgs tbody");
+        table.find('tr').each(function(i) {
+            var fieldId = $(this).find('td').attr('id');
+            //alert(fieldId);
+            if (fieldId.indexOf('date_') != -1) {
+                fieldId = fieldId.substring(5, fieldId.length);
+            }
+            if ($("#Id_" + fieldId).val() != -1 && $("#Id_" + fieldId).val() != "" && $("#Id_" + fieldId).val() != undefined)
+                finalParameters = finalParameters + fieldId + ":" + $("#Id_" + fieldId).val() + ";";
+        });
+        fieldValues.selectedValues = finalParameters;
+        //alert(finalParameters);
+        //alert("childArgId " + childArgId);
+        var array = childArgId.split(",");
+        var curIndex = 0;
+        var curId = $(id).attr('id').substring(3, $(id).attr('id').length);
+        //alert("curId "+curId);
+        var table = $("#reportArgs tbody");
+        table.find('tr').each(function(i) {
+            fieldId = $(this).find('td').attr('id');
+            //alert("fieldId"+fieldId);
+            if (curId == fieldId || fieldId == 'date_' + curId) {
+                curIndex = (i + 1);
+                //alert("curIndex "+curIndex);
+            }
+        });
+        //setSelectedValues(id);
+        $.each(array, function(i) {
+            //alert(array[i]);
+            if (i >= curIndex && i < (array.length - 1)) {
+                fieldValues.childParameter = array[i];
+                var inputData = JSON.stringify(fieldValues);
+                //alert(inputData);
+
+                $.ajax({
+                    type: "POST",
+                    url: jsURL + "child-fields/",
+                    headers: {
+                        'Auth_Token': token,
+                        'Content-Type': 'application/json'
+                    },
+                    data: inputData,
+                    dataType: "text",
+                    async: false,
+                    success: function(data) {
+                        //alert(data);
+                        $('#tdId' + array[i]).html(data.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+                    }
+                });
+            }
+        });
+        return false;
+    }
+
+    $(window).bind('load', function() {
+        $("#scheduleFrequencyId").attr("disabled", "disabled");
+        $("#repeatInterval").attr("disabled", "disabled");
+        $("#scheduleEndDate").attr("disabled", "disabled");
+        $("#scheduleEndDate").val("");
+        $(".close").click(function() {
+            $(".popupContent, .popupBg").hide();
+            //if(successMsg!='Error')
+            window.location.href = 'osirmHistory?requestId=' + $("#requestId").val();
+        });
+    });
+
+    function disableFields() {
+        if ($("#repeat").is(':checked')) {
+            $("#scheduleFrequencyId").removeAttr("disabled");
+            $("#repeatInterval").removeAttr("disabled");
+            $("#scheduleEndDate").removeAttr("disabled");
+            $("#scheduleEndDate").val("");
+        } else {
+            $("#scheduleFrequencyId").attr("disabled", "disabled");
+            $("#repeatInterval").attr("disabled", "disabled");
+            $("#scheduleEndDate").attr("disabled", "disabled");
+            $("#scheduleEndDate").val("");
+        }
+    }
+
+    function validations() {
+        var msg = "";
+        var checkRequired = "";
+        var numberss = /^[0-9]+$/;
+        if ($("#reportId").val() == '-1')
+            msg = msg + "Please select a Report \n";
+        var table = $("#reportArgs tbody");
+        table.find('tr').each(function(i) {
+            var $tds = $(this).find('td'),
+                    fieldLable = $tds.eq(0).text(),
+                    fieldId = $(this).find('td').attr('id');
+            if (fieldId.indexOf('date_') != -1) {
+                fieldId = fieldId.substring(5, fieldId.length);
+            }
+            checkRequired = $("#Id_" + fieldId).attr('checkRequired');
+            if (checkRequired == "required") {
+                if ($("#Id_" + fieldId).val() == "")
+                    msg = msg + "Please enter " + fieldLable.substring(0, fieldLable.length - 1) + "\n";
+                else if ($("#Id_" + fieldId).val() == "-1")
+                    msg = msg + "Please select " + fieldLable.substring(0, fieldLable.length - 1) + "\n";
+            }
+        });
+
+        var d = new Date();
+        /*     if((currentDate&&parseInt($("#requestTimeHr").val())<d.getHours()) || parseInt($("#requestTimeMins").val()<d.getMinutes()))
+         msg = msg+"You selected invalid Request Date/Time"; */
+        var requestDate = $("#requestDate").val();
+        //alert(requestDate);
+        if (requestDate == null || requestDate == "") {
+                msg = msg + "Please select Request Date \n";
+            }
+        if ($("#repeat").is(':checked')) {
+            var frequency = $("#scheduleFrequencyId").val();
+            var repeatInterval = $("#repeatInterval").val();
+            var scheduleEndDate = $("#scheduleEndDate").val();
+            if (frequency == null || frequency == "-1") {
+                msg = msg + "Please select an Occurences \n";
+            }
+            if (repeatInterval == null || repeatInterval == "" || repeatInterval == "0") {
+                msg = msg + "Please enter Repeat Interval \n";
+            } else if (!numberss.test(repeatInterval)) {
+                msg = msg + "Repeat Interval accepts only numbers\n";
+            }
+            if (scheduleEndDate == null || scheduleEndDate == "") {
+                msg = msg + "Please select Schedule End Date \n";
+            }
+        }
+        if (msg != "") {
+            $("#error-modal-content").html(msg);
+            $("#error-modal").modal("show");
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/exception
+END
+NoTransitionFoundException.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/exception/NoTransitionFoundException.java
+END
+NoErrorHandlerTaskException.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/exception/NoErrorHandlerTaskException.java
+END
+ErrorEmailListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/exception/ErrorEmailListener.java
+END
+PostErrorHandlerDelegate.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/exception/PostErrorHandlerDelegate.java
+END
+BusinessException.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/exception/BusinessException.java
+END
+DataAccessException.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/exception/DataAccessException.java
+END
+NavigationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/exception/NavigationException.java
+END

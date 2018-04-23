@@ -1,0 +1,125 @@
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<script>
+    setTimeout(function(){ $("#add").toggleClass("active"); }, 100);
+        </script>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  	<div data-ng-include="'views/employeeMenu.html'"></div>
+   <div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+   <div class="right-side">
+      <div class="alert alert-success" ng-show="showSuccessAlert"
+         style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+         {{successTextAlert}}
+      </div>
+      <div class="alert alert-danger" ng-show="showFailureAlert"
+         style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+         {{failureTextAlert}}
+      </div>
+      <div class="panel-body " >
+         <div class="col-md-12">
+            <h3>Emergency Contacts</h3>
+         </div>
+         <section class="content">
+              <div ng-repeat="emrcontact in empContactsInfo">                 
+                  <input type="hidDen" ng-model="emrcontact.emergencyContactId">
+            <div class="col-md-6">
+               
+               <div class="row">
+                  <div class="col-md-4 no-padding"> 
+                     <label for="pref" class=" control-label no-padding pull-right">Is Primary</label>    
+                  </div>
+                  <div class="col-md-3">   
+                  <input type="checkbox" style="margin-top: 8px;" name="seq" ng-model="emrcontact.seq" ng-click="checkPrefrence($index)">  
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-12">
+               <div class="row">
+                  <div class="col-md-2 no-padding">
+                     <label for="name" class=" control-label no-padding pull-right"> Name 
+                     </label>
+                  </div>
+                  <div class="col-md-3">
+                     <input class="form-control" title-case ng-model="emrcontact.name" placeholder='Name' type="text" maxlength="50" no-special-char>
+                     <br/>
+                  </div>
+                  <div class="col-md-3 no-padding">
+                     <label for="Relation" class=" control-label no-padding pull-right"> Relation 
+                     </label>
+                  </div>
+                  <div class="col-md-3">
+                   	<select class="form-control" id="relation" name="relation" ng-model="emrcontact.relation" required
+								ng-options="data.lookupValue as data.lookupDesc for data in relationsList | orderBy:'lookupSeqNum'" ng-disabled="!iseditable">
+								<option value="">-- Select Relation --</option></select>  <br/>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-2 no-padding">
+                     <label for="Mobile" class=" control-label no-padding pull-right"> Mobile
+                     </label>
+                  </div>
+                  <div class="col-md-3">
+                 <!--     <div class="col-md-3" style="padding-left: 0px;">
+                        <input only-number type="text" maxlength="2" minlength="1" class="form-control" id="countryCode" name="countryCode" ng-model="emrcontact.countryCode"   >
+                     </div> -->
+                     <div class="col-lg-4 custom-group0" style="padding-left: 0px;">
+		                <select class="selectpicker form-control" ng-model="emrcontact.countryCode" style="width: 74px;"
+					         id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as state.countryCallingCode for state in countryCodeList | unique:'countryCallingCode' | orderBy:'countryCallingCode'">
+					     <option value="">--Select--</option>
+					      </select>
+		                 <!--  <input type="text" maxlength="4" minlength="2" class="form-control" id="countryCode" name="countryCode" ng-model="vm.personalInfo.countryCodeforMobile"> -->
+		                </div>
+                     <div class="col-md-8" style="padding-left: 0px;">
+                        <input only-number type="text" maxlength="15" minlength="1"  class="form-control"  ng-model="emrcontact.mobileNumber" style="text-transform: uppercase;width: 161px;" placeholder="Mobile">
+                     </div>
+                  </div>
+                  <div class="col-md-3 no-padding">
+                     <label for="AltMobile" class=" control-label no-padding pull-right"> Alternate Mobile
+                     </label>
+                  </div>
+                  <div class="col-md-3">
+                   <!--   <div class="col-md-3" style="padding-left: 0px;">
+                        <input only-number type="text" maxlength="2" minlength="1" class="form-control" id="altrCountryCode" name="altrCountryCode" ng-model="emrcontact.altrCountryCode" >
+                     </div>
+                     <div class="col-md-9" style="padding-left: 0px;">
+                        <input only-number class="form-control"  type="text" maxlength="10" minlength="1"  ng-model="emrcontact.altrMobileNumber" style="text-transform: uppercase" placeholder='Alternate Mobile'>
+                     </div>
+                     <br/> -->
+                      <div class="col-lg-4 custom-group0" style="padding-left: 0px;">
+		                <select class="selectpicker form-control" ng-model="emrcontact.altrCountryCode" style="width: 74px;"
+					         id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as state.countryCallingCode for state in countryCodeList | unique:'countryCallingCode' | orderBy:'countryCallingCode'">
+					     <option value="">--Select--</option>
+					      </select>
+		                 <!--  <input type="text" maxlength="4" minlength="2" class="form-control" id="countryCode" name="countryCode" ng-model="vm.personalInfo.countryCodeforMobile"> -->
+		                </div>
+                     <div class="col-md-8" style="padding-left: 0px;">
+                        <input only-number type="text" maxlength="15" minlength="1"  class="form-control"  ng-model="emrcontact.altrMobileNumber" style="text-transform: uppercase;width: 161px;" placeholder="Mobile">
+                     </div>
+                  </div>
+               </div>
+            </div>
+             </div>
+             <br>            
+          
+               <br>
+             <br>
+              
+                  <div class="col-md-12" style="padding-top:10px;">
+                      
+                     <div class="col-md-2 pull-right">
+                     
+                        <button type="button" class="btn btn-primary"  ng-click="backToEmpList()" ><span>Cancel</span>
+                        </button>
+                          <button type="button" class="btn btn-primary"  ng-click="saveEmergencyContacts()" ><span>Save</span><!--ng-disabled="!nonEditable"-->
+                        </button>
+                         
+                      </div>
+                    
+                  </div>
+             
+          
+         </section>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,747 @@
+.top-container{
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-left: 50px;
+ /* box-shadow: 0 1px 3px gray;*/
+  height: 250px;
+  max-height: 250px;
+  overflow: auto;
+  background: #ececec;
+}
+.customScrollBarBasic{
+	height : 600px !important;
+}
+.ui-grid-viewport{
+	/*height: 350px !important;*/
+}
+#tree{
+	height: 620px !important;
+}
+.customWrapper{
+  overflow: auto;
+    height: 100%;
+    position: absolute;
+}
+ .customScrollBar {
+        float: left;
+        width: 100% ;
+        overflow-y: auto;
+        height: 500px;
+        margin-top: -2px;
+    }
+.top-container-location{
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-left: 50px;
+ /* box-shadow: 0 1px 3px gray;*/
+  height: 350px;
+  max-height: 350px;
+  overflow: auto;
+  overflow-x: auto;
+  background: #ececec;
+}
+
+radiusNone{
+    border-radius: 0 !important;
+}
+
+.pad15{
+   padding-right: 15px!important;
+   padding-left: 15px!important;
+}
+.pl20{
+    padding-left: 20px;
+}
+.pad100{
+   padding-right: 100px!important;
+   padding-left: 100px!important;
+}
+
+.mar-bot5{
+    margin-bottom: 5px;
+}
+
+.topBot5{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ml15{
+    margin-left: 15px;
+}
+
+.bottom-container{
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.layout{
+    border: 1px solid black;
+
+}
+
+.invmodal{
+    width: 80%!important;
+}
+
+
+.menuEntryModalBody{
+    padding: 10px 50px 30px 50px;
+}
+
+.menuEntryContainer{
+    /*border: 1px solid gray;
+    border-radius: 5px;*/
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.deleteIcon:hover{
+    color:red;
+}
+
+/* functionExclusion styles*/
+.funcExcluMultiselect button {
+	margin-top: 9%;
+
+    background-color: transparent;
+    color:  #003399;
+}
+
+#funcExclButton button {
+	margin-top: 7% !important;
+    background-color: #003399 !important;
+}
+
+#multiselect_rightAll{
+	margin-top: 38%;
+}
+
+.cancelExclu{
+	background-color:  white !important;
+}
+
+.previousBtnFuncExclu {
+	margin-left: -20% !important;
+}
+
+#multiselect_to_1{
+
+    margin-left: 0%;
+}
+
+/* operationExclusion styles*/
+#ExclButton button{
+	margin-top: 7%;
+	 background-color:  #003399;
+
+}
+
+.previousBtnOpExclu{
+	margin-left: -13%;
+	}
+
+.strippedOptions:nth-child(even) {
+	padding: 10px 0px 10px 3px;
+}
+
+.strippedOptions:nth-child(odd) {
+	background: #F3F4F5 !important;
+	padding: 10px 0px 10px 5px;
+}
+
+.Exclusionstriped {
+	height: 218px !important;
+	overflow: auto !important;
+	padding: 0 !important;
+}
+
+.modalButton{
+    margin-left:5px;margin-right:5px;
+}
+
+/* userList */
+
+.userlistSearchHeader{
+	background-color:white ;
+	color:black;
+}
+
+
+.selectedTab button:focus {
+  outline: none;
+  text-decoration: none;
+  background:   #203b8a  !important;
+  border-bottom: none !important;
+
+
+}
+
+.selectedInfoTab{
+
+  outline: none;
+  text-decoration: none;
+  background: #203b8a !important;
+  border-bottom: none !important;
+  color: white !important;
+
+}
+.selectedTab button{
+	margin-right: 3px;
+}
+
+#userInfo :active{
+	background-color:red;
+}
+
+.alternateColours:nth-child(even) {
+                padding: 10px 0px 10px 3px;
+}
+
+.alternateColours:nth-child(odd) {
+                background-color: #F3F4F5;
+                padding: 10px 0px 10px 5px;
+}
+
+.highlitedRow {
+    background-color: #00acd6 !important;
+}
+
+ .textareaMenuDesc{
+	height: 90px;
+   resize: none !important;
+}
+
+#textareaOsiResp{
+	resize: none !important;
+
+}
+.modelCloseButton{
+    color: white !important;
+    opacity: 1 !important;
+}
+
+.glyphicon-plus:hover:after{
+    background: #428bca;
+    border-radius: 5px;
+    bottom: 20px;
+    color: #fff;
+    content: "Create";
+    right: 25%;
+    padding: 4px 15px 7px 15px;
+    position: absolute;
+    marging-right:30%;
+}
+
+.glyphicon-minus:hover:after{
+    background: #428bca;
+    border-radius: 5px;
+    bottom: 20px;
+    color: #fff;
+    content: "Delete";
+    right: 25%;
+    padding: 4px 15px 7px 15px;
+    position: absolute;
+    marging-right:30%;
+}
+
+.glyphicon-eye-open:hover:after{
+    background: #428bca;
+    border-radius: 5px;
+    bottom: 20px;
+    color: #fff;
+    right: 25%;
+    padding: 4px 15px 7px 15px;
+    position: absolute;
+    z-index: 98;
+    content: "View";
+
+}
+
+.glyphicon-pencil:hover:after{
+    background: #428bca;
+    border-radius: 5px;
+    bottom: 20px;
+    color: #fff;
+     right: 25%;
+    padding: 4px 15px 7px 15px;
+    position: absolute;
+    z-index: 98;
+    content: "Edit";
+
+}
+
+.glyphicon-trash:hover:after{
+    background: #428bca;
+    border-radius: 5px;
+    bottom: 20px;
+    color: #fff;
+    right: 25%;
+    padding: 4px 15px 7px 15px;
+    position: absolute;
+    z-index: 98;
+    content: "Delete";
+
+}
+
+.glyphicon-search-custom{
+    position: absolute !important;
+    right: 12px;
+    top: 12px !important;
+}
+
+.search-text .form-control {
+    padding: 5px 28px 5px 10px;
+}
+
+.div-no-padding-width100{
+    width: 100% !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.text-align-right{
+    text-align: right;
+}
+
+/*####### Purchase Order ########*/
+.poCrud .modal-dialog {
+  width: 99%;
+}
+.searchModal {
+    position: relative;
+    bottom: -50px;
+    left: 25%;
+    width: 55%;
+}
+
+.discountModal{
+	position: relative;
+	left: 25%;
+	width: 55%;
+	bottom: -50px;
+}
+.termsHeader {
+    background-color: rgba(70, 130, 180, 0.27);
+    padding: 1%;
+    font-weight: bold;
+}
+.mar-bot2 {
+	margin-right: -128px;
+}
+
+.linesButton {
+	margin: 13px 13px 0px -10px;
+    font-size: initial;
+    color: darkblue;
+    cursor: pointer;
+}
+
+.discountImg {
+	font-size: x-large;
+    margin: 4px 0 0 0;
+}
+.imgIcon {
+    margin: 0px 0px 0px 8px;
+    font-size: x-large;
+    color: darkblue;
+    cursor: pointer;
+}
+.attach {
+    display: inherit;
+    color: #203b8a;
+}
+
+.deleteAttachment {
+	cursor: pointer;
+    color: indianred;
+    left: 35%;
+    font-size: larger;
+}
+
+.footerButtons {
+    margin-bottom: 15px;
+    float: right!important;
+}
+.poFormError {
+    color: red;
+    text-align: center;
+}
+.poTable{
+	overflow-x: scroll;
+	overflow-x: auto;
+}
+
+ /* DropBox */
+.dropbox {
+	cursor : pointer;
+    padding: 6%;
+    border: 2px dotted #DDD;
+    border-radius: 8px;
+    background-color: #F3F4F5;
+    text-align: center;
+    color:	#203b8a;
+    font-size: small;
+    font-family: inherit;
+}
+.dropbox span {
+    display: block;
+}
+.dropbox.not-available {
+    background-color: #F88;
+}
+.dropbox.over {
+    background-color: #bfb;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.inner_icon {
+    position: absolute !important;
+    right: 25px;
+    top: 10px !important;
+    font-size: larger;
+}
+
+.inner_symbol{
+    position: absolute !important;
+    right: 30px;
+    top: 7px !important;
+    font-size: initial;
+}
+
+.clearDiscount {
+	margin: -7% 0% 0% 66%;
+    font-size: large;
+    color: darkblue;
+    cursor: pointer;
+}
+
+.clearDiscount > .glyphicon-trash:hover:after {
+	content: "Clear Discount" !important;
+}
+
+/* CUSTOM MODAL */
+.alertModal {
+    background: #1b2a61 !important;
+}
+
+.alertPO {
+	height: 35px;
+	margin-bottom: 0px !important;
+}
+
+.customAlert {
+  margin-top: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alertText {
+	font-size: medium;
+    position: relative;
+    top: 15%;
+}
+
+.disableButton {
+    pointer-events: none;
+    opacity: .5;
+}
+
+.showPointer {
+	cursor: pointer !important;
+}
+
+.nonEditable {
+	background-color: white !important;
+}
+/*####### END of Purchase Order ########*/
+/*****************************MyImage Dialog********************************/
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.myModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 2%; /* Location of the box */
+ 	left: 24%;
+    top: 44%;
+    width: 25%;
+    height: 45%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.myModal-content {
+    margin: auto;
+    display: block;
+	width: 93%;
+    height: 94%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    height: 150px;
+}
+::-webkit-input-placeholder {
+   text-transform: none;
+}
+::-moz-placeholder {
+  text-transform: none;
+}
+
+
+/* Add Animation */
+.myModal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.closeMyModal {
+    position: absolute !important;
+    top: -4% !important;
+    right: 2% !important;
+    color: #fff !important;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    opacity: 0.75 !important;
+}
+
+.closeMyModal:hover,
+.closeMyModal:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    ..myModal-content {
+        width: 100%;
+    }
+}
+/***************************** END MyImage Dialog ********************************/
+
+/***************************** Raleway Css ***************************************/
+/* latin-ext */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), local('Raleway-Regular'), url(https://fonts.gstatic.com/s/raleway/v11/yQiAaD56cjx1AooMTSghGfY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), local('Raleway-Regular'), url(https://fonts.gstatic.com/s/raleway/v11/0dTEPzkLWceF7z0koJaX1A.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Raleway Bold'), local('Raleway-Bold'), url(https://fonts.gstatic.com/s/raleway/v11/WmVKXVcOuffP_qmCpFuyzSEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Raleway Bold'), local('Raleway-Bold'), url(https://fonts.gstatic.com/s/raleway/v11/JbtMzqLaYbbbCL9X6EvaI_k_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+ .textareaPMDesc{
+   resize: none !important;
+}
+
+.panel-body-for-contents{
+    border:1px solid #ddd !important;
+    background: #fff !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 1.3rem rgba(0,0,0,0.25) !important;
+    height: 250px;
+    overflow: auto;
+    margin: 0px;
+}
+.panel-body-for-Issue-contents{
+    border:1px solid #ddd !important;
+    background: #fff !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 1.3rem rgba(0,0,0,0.25) !important;
+    height: 280px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0px;
+}
+
+.panel-body-footer-Amount{
+    border:1px solid #ddd !important;
+    background: #fff !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 1.3rem rgba(0,0,0,0.25) !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0px;
+    padding-top: 12px;
+}
+
+/****** Project Mgmt ***********/
+.delivButtons {
+	margin: 2%;
+    font-size: small;
+    color: darkblue;
+    cursor: pointer;
+}
+
+.mileStoneButtons {
+	font-size: medium;
+    margin: 0 5px 0px 0px;
+    color: darkblue;
+}
+.delivAttach {
+	margin: 0px 10px 0px 0px;
+    font-size: medium;
+    color: darkblue;
+    cursor: pointer;
+}
+
+.deliveryFiles {
+    display: inline-grid;
+    color: #203b8a;
+    margin-left: 20%;
+}
+
+.delivButtons > .glyphicon-plus:hover:after {
+	content: "Add" !important;
+}
+
+.disableRow {
+	cursor: not-allowed;
+    background-color: #eee;
+    opacity: 0.8;
+}
+
+.num-align{
+    text-align: right!important;
+}
+
+.closebtn {
+    color: #888;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+}
+.inactiveTab{
+	 background-color: #7F8C8D;
+  pointer-events: none;
+  cursor: default;
+}
+
+.topCalendar > ._720kb-datepicker-calendar {
+	margin: -285% 0% 13% -75%;
+}
+
+.fixedSet {
+    max-height: 100px;
+    overflow-x: auto;
+}
+
+.borderedSet {
+	border-style: ridge;
+    border-width: 1px;
+}
+
+.empBank .modal-dialog {
+    width: 0%;
+    bottom: -50px;
+    left: -25%;
+}
+
+.modal-header>button {
+	color: #fff;
+	text-shadow: 1 1px 0 #fff;
+	filter: 8px 8px 10px #800000;
+	opacity: 1;
+}
+select.select-width{
+    width: 75px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+            transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+select.select-width[disabled],
+select.select-width[readonly],
+fieldset[disabled] select.select-width {
+    cursor: not-allowed;
+    background-color: #eeeeee;
+}
+
+/*Employee List style*/
+#employeeProfile {
+				/* margin-top: 8%; */
+				margin-right: 2%;
+				z-index: 1000;
+				position: fixed;
+				width: 450px;
+				transition-duration: 0.5s;
+				transition-property: width, height; 
+				top: 192px;
+				right: 0px;
+				background-color: rgb(82, 169, 220);
+			/* 	height: inherit; */
+				overflow: hidden;
+				border-left: 1px solid rgb(221, 221, 221);
+				border-bottom: 1px solid rgb(221, 221, 221);
+}

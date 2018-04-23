@@ -1,0 +1,173 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<div class="right-side">
+
+		<section class="content">
+
+			<div class="row" style="margin-right: 0px;">
+				<div class="row" style="margin-right: 0px;">
+					<div class="col-sm-6">
+						<h4>&nbsp;Categories</h4>
+					</div>
+				</div>
+
+				<div class="alert alert-success" ng-show="showSuccessAlert"
+					style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+					{{successTextAlert}}
+				</div>
+				<div class="alert alert-danger" ng-show="showFailureAlert"
+					style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+					{{failureTextAlert}}
+				</div>
+
+			</div>
+
+			<div class="col-sm-12 no-padding">
+				<div class="panel panel-default" style="min-height: auto;">
+					<div class="panel-body">
+						<div class="navbar-form navbar-left form-horizontal col-lg-12"
+							role="form">
+							<div class="col-lg-3">
+								<div class="form-group">
+									<select ng-model="vm.searchEntryObj.orgId"
+										ng-change="vm.removeOrgName(vm.category.orgId)"
+										class="form-control top10" id="sel1"
+										place-holder="select Type">
+										<option value="" disabled>Select Organization</option>
+									   
+										<option ng-repeat="organization in vm.organizations | orderBy:'name'"
+											value="{{organization.orgId}}">{{organization.orgName}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-3">
+								<input class="form-control" name="category"
+									ng-model="vm.searchEntryObj.catName" placeholder="Function Name" ng-change="vm.makeEnableButtionPrompt(vm.searchEntryObj.prompt)"
+									type="text" no-special-char>
+                            </div>
+                            <div class="col-lg-3">
+								<input class="form-control" name="table"
+									ng-model="vm.searchEntryObj.tblName" placeholder="Table Name" ng-change="vm.makeEnableButtionPrompt(vm.searchEntryObj.prompt)"
+									type="text" >
+							</div>
+							<div class="col-lg-3">
+								<button class="btn btn-primary" 
+									ng-click="vm.searchEntry(vm.searchEntryObj)">Search</button>
+                                                            <button type="button" class="btn btn-defaul btn-width"
+									ng-click="clearSearch()">Clear</button>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+		</section>
+
+		<div>
+			<!-- Content Header (Page header) -->
+			<!-- Main content -->
+			<section class="content">
+				<!--MAIN BODY START-->
+				<div class="box1">
+					<div class="box-body table-responsive" style="">
+						<table class="table table-bordered table-striped">
+							<thead class="thead_bg">
+								<tr>
+									<!--                                    <th>ID</th>-->
+									<!--                                    <th>Sequence</th>
+                                    <th>Prompt</th>
+                                    <th>Header Menu</th>
+                                    <th>Submenu</th>
+                                    <th>Function</th>-->
+									<!--                                    <th>Actions</th>-->
+									<th ng-click="sort('orgName')">Organization Name <span
+										class="glyphicon sort-icon" ng-show="sortKey == 'orgName'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+									<th ng-click="sort('catName')">Function Name <span
+										class="glyphicon sort-icon" ng-show="sortKey == 'catName'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+									<th ng-click="sort('tblName')">Table Name
+										 <span class="glyphicon sort-icon"
+										ng-show="sortKey == 'tblName'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+									</th>
+									<th ng-click="sort('active')">Status <span
+										class="glyphicon sort-icon" ng-show="sortKey == 'active'"
+										ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr
+									dir-paginate="entry in vm.entryList|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+									ng-init="myIndex = $index" ng-click="selectRow($event, entry)"
+									ng-dblclick="editSelectedRowDetails()"
+									ng-class="{selected: isRowSelected(entry)}">
+									<!--<td>{{entry.id}}</td>-->
+									<td>{{entry.orgName}}</td>
+									<td>{{entry.catName}}</td>
+									<td>{{entry.tblName}}</td>
+									<td>{{entry.status}}</td>
+									<!--                                <td>
+                                        <div class="col-sm-12 lookup-action">
+                                            <i class="fa fa-eye" ng-click="vm.showViewEntryModal(entry)"></i>&nbsp; &nbsp; 
+                                            <i class="fa fa-pencil-square-o" ng-click="vm.showUpdateEntryModal(entry,$index)"></i>&nbsp; &nbsp;
+                                            <i class="fa fa-trash-o" aria-hidden="true" ng-click="vm.deleteEntry(entry)"></i>
+                                        </div>
+                                    </td>-->
+								</tr>
+
+								<!--                            <tr ng-show="lookupdata.length==0">
+
+                                </tr>
+-->
+							</tbody>
+
+						</table>
+						<div ng-if="vm.entryList.length == 0">
+							<h6 style="text-align: center; color: red;">No Records Found</h6>
+						</div>
+
+
+					</div>
+					<!-- /.box-body -->
+					<br>
+					<div class="col-sm-12">
+						<div class="col-sm-6">
+							<div style="float: left; margin-top: 20px;">
+								<dir-pagination-controls max-size="8" direction-links="true"
+									boundary-links="true" on-page-change="clearSelectedRow()">
+								</dir-pagination-controls>
+							</div>
+						</div>
+						<!--                            <div class="col-sm-6">
+                                <button class="btn btn-primary pull-right" ng-click="vm.showMenuEntryModal()">Add Menu Entries</button>
+                            </div>-->
+						<div style="float: right;">
+							<!-- 'glyphicon glyphicon-trash' : availOperations.name == 'Delete',   -->
+							<span ng-repeat="availOperations in availOperations"> <i
+								style="cursor: pointer;"
+								ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',  
+                                                    'glyphicon glyphicon-eye-open' : availOperations.name == 'View',  
+                                                    'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',  
+                                                    'disabled': disable_{{availOperations.name}}}"
+								ng-disabled="disable_{{availOperations.name}}"
+								ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+							</span>
+						</div>
+					</div>
+				</div>
+				<!-- /.box -->
+
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+	<!-- /.right-side -->
+</div>
+<!-- ./wrapper -->
+
+<div ng-include="'views/category.html'"></div>
+<div ng-include="'views/categoryViewUpdate.html'"></div>
+

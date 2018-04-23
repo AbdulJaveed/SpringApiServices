@@ -1,0 +1,328 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<div class="breadcrumb-holder">
+		<div class="container-fluid">
+			<ul class="breadcrumb">
+				<h1 class="h3 display">Responsibility</h1>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<header> </header>
+		<section class="forms">
+			<div class="row">
+				<div class="alert alert-success" ng-show="showSuccessAlert">
+					{{successTextAlert}}</div>
+				<div class="alert alert-danger" ng-show="showFailureAlert">
+					<strong></strong> {{ErrorTextAlert}}
+				</div>
+
+			</div>
+
+			<div class="col-sm-12 no-padding adjust-search-box">
+				<div class="card">
+					<div class="card-body">
+						<div class="row" role="form">
+							<div class="col-lg-4">
+								<input class="form-control" name="respName"
+									ng-model="searchResp.respName"
+									placeholder="Responsibility Name"
+									onFocus="this.placeholder = ''"
+									onBlur="this.placeholder = 'Responsibility Name'" type="text"
+									no-special-char>
+							</div>
+							<div class="col-lg-4">
+								<button class="btn btn-primary"
+									ng-click="searchResponsibilities()">Search</button>
+								<button type="button" class="btn btn-defaul btn-width"
+									ng-click="clearSearch()">Clear</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="content">
+			<div class='card'>
+				<div class="box-body table-responsive">
+					<table class="table table-striped table-sm">
+						<thead class="thead_bg">
+							<tr>
+								<th ng-click="sort('respName')">Responsibility Name <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'respName'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('description')">Description <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'description'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+
+								<th ng-click="sort('description')">Status <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'description'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr
+								dir-paginate="responsibility in vm.osiResponsibilitiesList|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+								ng-class="{selected: responsibility.id == isSelectedRow}"
+								ng-click="selectRow(responsibility)"
+								ng-dblclick="editSelectedRowDetails(responsibility)"
+								ng-init="vm.myIndex = $index">
+								<td>{{responsibility.respName}}</td>
+								<td>{{responsibility.description}}</td>
+								<td>{{responsibility.active}}</td>
+							</tr>
+						</tbody>
+
+					</table>
+					<div ng-if="vm.osiResponsibilitiesList.length == 0">
+						<h6 style="text-align: center; color: red;">No Records Found</h6>
+					</div>
+
+
+				</div>
+				<!-- /.box-body -->
+				<div class="col-sm-13 row">
+					<div class="col-sm-10">
+						<dir-pagination-controls max-size="8" direction-links="true"
+							boundary-links="true" on-page-change="clearSelectedRow()">
+						</dir-pagination-controls>
+					</div>
+					<div class="col-sm-2 adjust-crud-op">
+						<span ng-repeat="availOperations in availOperations"> <i
+							style="cursor: pointer;"
+							ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',
+                                                'glyphicon glyphicon-eye-open' : availOperations.name == 'View',
+                                                'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',
+                                                'disabled': disable_{{availOperations.name}}}"
+							ng-disabled="disable_{{availOperations.name}}"
+							ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+						</span>
+					</div>
+				</div>
+		</section>
+	</div>
+</div>
+<div class="modal fade" id="rsp_modal" role="dialog">
+	<div class="modal-dialog modal-sm invmodal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="row">
+					<div class="col-lg-6">
+						<h4 class="modal-title">{{rspModelHeading}} Responsibility</h4>
+					</div>
+					<div class="col-lg-6 pull-right">
+						<button type="button" class="close modelCloseButton"
+							ng-click="vm.clear()" data-dismiss="modal">&times;</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal-body" style="height: auto; width: 100%;">
+				<div class="row" ng-if="isTrascError">
+					<div
+						ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+						ng-if="flash" ng-bind="flash.message"></div>
+				</div>
+				<form name="osiResponsibility" novalidate="">
+					<fieldset ng-disabled="vm.view">
+						<div class="row">
+							<div class="col-md-2 text-align-right">
+								<label for="osiResponsibilityName"
+									class=" control-label no-padding"> Responsibility Name
+								</label>
+							</div>
+							<div class="col-md-4">
+								<input ng-model="vm.osiResponcibilityObj.respName" type="text"
+									maxlength="100" placeholder="Enter Responsibility Name"
+									onFocus="this.placeholder = ''"
+									onBlur="this.placeholder = 'Enter Responsibility Name'"
+									name="osiResponsibilityName" class="form-control form-field-border "
+									no-special-char required />
+							</div>
+							<div class="col-md-2 text-align-right">
+								<label for="osiResponsibilityDesc"
+									class=" control-label no-padding"> Responsibility
+									Description </label>
+							</div>
+							<div class="col-md-4">
+								<textarea id="textareaOsiResp"
+									ng-model="vm.osiResponcibilityObj.description" type="text"
+									name="osiResponsibilityDesc"
+									placeholder="Enter Responsibility Description"
+									onFocus="this.placeholder = ''"
+									onBlur="this.placeholder = 'Enter Responsibility Description'"
+									class="form-control" maxlength="500">
+                                        </textarea>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-2 text-align-right">
+								<label for="orgCodeTxt" class=" control-label no-padding">
+									Start Date 
+								</label>
+							</div>
+							<div class="col-md-4">
+								<datepicker date-format="yyyy-MM-dd" selector="form-control"
+									date-min-limit="{{todaysDate}}">
+								<div class="input-group">
+									<input  class="form-control date-input form-field-border"
+										id="startDate" ng-model="vm.osiResponcibilityObj.startDate"
+										ng-blur="vm.checkDate(vm.osiResponcibilityObj.startDate)" 
+										required="required" placeholder="Choose Start date" />
+										
+										<span
+										class="input-group-addon date-icon"> <i
+										class="fa fa-lg fa-calendar"
+										onclick="getDatePicker('startDate')"></i>
+									</span>
+								</div>
+								</datepicker>
+							</div>
+							<div class="col-md-2 text-align-right">
+								<label for="orgCodeTxt" class=" control-label no-padding">
+									End Date</label>
+							</div>
+							<div class="col-md-4">
+								<datepicker date-format="yyyy-MM-dd" selector="form-control"
+									date-min-limit="{{vm.osiResponcibilityObj.startDate}}">
+								<div class="input-group">
+									<input class="form-control" id="endDate"
+										ng-model="vm.osiResponcibilityObj.endDate"
+										ng-disabled="!vm.osiResponcibilityObj.startDate"
+										placeholder="Choose End date"
+										
+										ng-change="vm.checkEndDate(vm.osiResponcibilityObj)" /> 
+										
+										<span
+										class="input-group-addon"> <i
+										class="fa fa-lg fa-calendar"
+										onclick="getDatePicker('endDate')"></i>
+									</span>
+								</div>
+								</datepicker>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-2"></div>
+							<h3 style="text-align: center;">Select Menus</h3>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<h5>
+									<b>Available Menus</b>
+								</h5>
+							</div>
+							<div class="col-md-6">
+								<h5>
+									<b>Selected Menus</b><font color="red">*</font>
+								</h5>
+							</div>
+						</div>
+						<div class="row table-striped ">
+							<div class="col-lg-5">
+								<select name="from[]"
+									class="multiselect form-control Exclusionstriped"
+									id="multiselect" size="12"
+									ng-model="vm.osiResponcibilityObj.availableOsiMenus"
+									ng-dblclick="vm.selectMenu(vm.osiResponcibilityObj.availableOsiMenus)"
+									multiple="multiple" data-right="#multiselect_to_1"
+									data-right-all="#right_All_1"
+									data-right-selected="#right_Selected_1"
+									data-left-all="#left_All_1"
+									data-left-selected="#left_Selected_1">
+
+									<option
+										ng-repeat="element in vm.availableMenuNames | orderBy:'toString()'"
+										class="strippedOptions">{{element}}</option>
+
+								</select>
+							</div>
+
+							<div class="col-lg-1 funcExcluMultiselect">
+								<button type="button" class="btn" ng-click="vm.selectAllMenus()">
+									<i class="glyphicon glyphicon-forward"></i>
+
+								</button>
+								<button type="button" class="btn"
+									ng-click="vm.selectMenu(vm.osiResponcibilityObj.availableOsiMenus)">
+									<i class="glyphicon glyphicon-chevron-right"></i>
+								</button>
+								<button type="button" class="btn"
+									ng-click="vm.unselectAllMenus()">
+									<i class="glyphicon glyphicon-backward"></i>
+								</button>
+								<button type="button" class="btn"
+									ng-click="vm.unselectMenu(vm.osiResponcibilityObj.selectedMenus)">
+									<i class="glyphicon glyphicon-chevron-left"></i>
+								</button>
+							</div>
+							<div class="col-lg-5">
+								<select name="to[]" id="multiselect_to_1"
+									ng-model="vm.osiResponcibilityObj.selectedMenus"
+									ng-dblclick="vm.unselectMenu(vm.osiResponcibilityObj.selectedMenus)"
+									class="form-control Exclusionstriped" size="12"
+									multiple="multiple">
+									<option
+										ng-repeat="element in vm.selectedMenuNames  | orderBy:'toString()'"
+										class="strippedOptions">{{element}}</option>
+								</select>
+							</div>
+						</div>
+			</div>
+			<br>
+			</fieldset>
+
+			<div class="row pull-right">
+				<div class="col-lg-9 pull-right"></div>
+				<div class="col-lg-3 pull-right">
+					<button type="button" class="btn btn-default" ng-click="vm.clear()"
+						data-dismiss="modal">Close</button>
+					&nbsp;
+					<button ng-if="vm.edit" type="button" class="btn btn-primary"
+						ng-click="vm.updateOsiResponcibility(vm.osiResponcibilityObj)">Update</button>
+					&nbsp;
+					<button ng-if="!vm.edit && !vm.view" type="button"
+						class="btn btn-primary" ng-click="vm.createOsiResponcibility()">Save</button>
+					&nbsp;
+				</div>
+			</div>
+			<br>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+<!-- delete confirmation modal -->
+<div class="modal fade" id="responsibility-delete-model" role="dialog"
+	style="top: 20%;">
+	<div class="modal-dialog modal-sm" style="width: 400px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close modelCloseButton"
+					data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Do you want to Deactivate?</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal" role="form">
+					<div class="modal-foot" align="center">
+						<!--                        <button type="button" class="btn btn-primary"
+                                ng-click="vm.deleteResponsibility(selectedRowDetails)">Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>-->
+						<button type="button" class="btn btn-primary" data-dismiss="modal"
+							ng-click="vm.updateOsiResponcibility(vm.osiResponcibilityObj)">Yes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="vm.cancelDeActive()">No</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    function getDatePicker(thiz){
+        document.getElementById(thiz).focus();
+    }
+</script>

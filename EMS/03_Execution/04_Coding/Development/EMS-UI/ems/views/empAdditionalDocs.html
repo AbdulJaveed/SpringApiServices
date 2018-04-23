@@ -1,0 +1,159 @@
+<script>
+        setTimeout(function(){ $("#other").toggleClass("active"); }, 100);
+            </script>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    	<div data-ng-include="'views/employeeMenu.html'"></div>
+    <!-- Left side column. contains the logo and sidebar -->
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <div class="right-side">
+        <div>
+            <section class="content">
+                <div class="row" style="margin-right: 0px;margin-top: 14px;">
+                    <div class="col-sm-6">
+                        <h4>Additional Documents List</h4>
+                    </div>
+                    <div class="col-sm-6" style="height: 44px;">
+                    </div>
+                </div>
+                <div class="alert alert-success" ng-show="showSuccessAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    <strong>Done!</strong> {{successTextAlert}}
+                </div>
+                <div class="alert alert-danger" ng-show="showFailureAlert"
+                    style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    <strong>Fail!</strong> {{failureTextAlert}}
+                </div>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!--MAIN BODY START-->
+                <div class="box1">
+                    <div class="box-body table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead_bg">
+                                <tr>
+                                    <th ng-click="sort('description')">Description<span class="glyphicon sort-icon" ng-show="sortKey == 'description'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    <th ng-click="">Download</th>
+                                </tr>
+                            </thead>
+                            <tr dir-paginate="item in empAdditionalDocsList |orderBy:sortKey:reverse|itemsPerPage:rowSize "
+                            	ng-class="{selected: item.docId == isSelectedRow}" ng-click="selectRow(item)"
+                            	ng-dblclick="editSelectedRowDetails(item)" ng-init="myIndex = $index">
+                            	<input type="hidden" ng-model="employeeId" value="{{item.employeeId}" />
+                                <td>
+                                    {{item.description}}
+                                </td>
+                                <td><a id='resume{{$index}}' style="display:none;" />
+                                    <a ng-click="download(item, $index);">{{item.attachments.originalFileName}}</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <div ng-if="empAdditionalDocsList.length == 0"><h6 style="text-align: center; color: red;">No Records Found</h6></div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div style="float: left; margin-top:-10px;">
+                                <dir-pagination-controls max-size="8" direction-links="true"
+                                                         boundary-links="true" on-page-change="clearSelectedRow()">
+                                </dir-pagination-controls>
+                            </div>
+                        </div>
+                        <div  ng-if="!isAccessControl" style="float: right;">
+                            <span ng-repeat="availOperations in availOperations"> <i
+                                    style="cursor: pointer;"
+                                    ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',
+                                               'glyphicon glyphicon-eye-open' : availOperations.name == 'View',
+                                               'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',
+                                               
+                                               'disabled': disable_{{availOperations.name}}}"
+                                    ng-disabled="disable_{{availOperations.name}}"
+                                    ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+    <!-- /.right-side -->
+</div>
+<!-- ./wrapper -->
+
+<div class="modal fade" id="EmployeeAdditionalDocs-model" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal" ng-click="clearData()">&times;</button>
+                <h4 class="modal-title">{{headername}}</h4>
+            </div>
+            <div class="modal-body" style="height: 300px;">
+                <div class="form-horizontal" role="form">
+                    <section class="content">
+                    <div class="row" ng-if="isTrascError">
+                        <div ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                            ng-if="flash" ng-bind="flash.message"></div>
+                    </div>
+                    </section>
+						<div class="form-group">
+                            <input class="form-control" ng-disabled="!iseditable" name="item" 
+                            ng-model="additionalDocs.docId" placeholder="Enter ID" type="hidden"> 
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-2">
+                                <label for="description" class="control-label col-sm-3">Description<font style="color:red">*</font></label>
+                            </div>
+                            <div class="col-lg-8">
+                                <textarea class="form-control" ng-disabled="!iseditable" name="item" 
+                                ng-model="additionalDocs.description" placeholder="Enter Description" type="text"  style="text-transform: uppercase"/> 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-2">
+                                <label for="resume" class="control-label col-sm-3">Document<font style="color:red">*</font></label>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="card" style="text-align: center;width:100%">        
+                                <div class="card-block" style="padding: 0px; margin-left: -10px;">
+                                        <div ngf-change="vm.load(picFile)" ngf-select ngf-drop ng-model="picFile" required="" id="image"
+                                           
+                                            class="drop-box" ngf-drop-available="dropAvailable" ngf-keep="false" ngf-multiple="false"
+                                            style="height: 60px;border: dashed; color: #203b8a;" class="drop-box" ng-disabled="!iseditable">
+                                            <span ng-show="dropAvailable"> Drag & Drop Here
+                                            </span>
+                                            <img ngf-src="vm.preview.content" class="thumb" style="margin-top: -34px;width: 100%; height: 100%">
+                                        </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <a id='resume' style="display:none;" />
+                            <a ng-click="downloadResume();" title='Resume.docx'>{{vm.preview.name}}</a></div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" ng-disabled="!iseditable" name="employeeId" 
+                                ng-model="additionalDocs.employeeId" placeholder="Enter ID" type="hidden">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" ng-disabled="!iseditable" name="attachmentId" 
+                                ng-model="additionalDocs.attachmentId" placeholder="Enter ID" type="hidden">
+                        </div>
+                <div class="modal-foot" align="right" style="margin-top: 10px; float: left; width: 100%;">
+                           <button type="button" class="btn btn-default btn-space pull-right"  data-dismiss="modal" ng-click="clearData()">Close</button>
+                           <div ng-if="isUpdatable">
+                                <button class="btn btn-primary modalButton"
+                                        ng-click="saveAdditionaDocs(additionalDocs)" ng-disabled="!iseditable">Update</button>
+                            </div>
+                            <div ng-if="!isUpdatable">
+                                <button type="button" class="btn btn-primary modalButton" ng-hide="!iseditable" ng-click="saveAdditionaDocs(additionalDocs)">Save</button>
+                            </div>
+                </div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,95 @@
+<script>
+		$(function () {
+	   //var $lists = $('.list-group li').click(function(e) {
+	   $("#navbar ul li a").click(function () {
+			 $("#navbar ul li a").removeClass("active");
+			 $(this).toggleClass("active");
+			 $(this).css("display", "display: table-cell");
+		  // e.preventDefault(); /*ignores actual link*/
+		 });
+   });
+		</script>
+<div id="navbar">
+		<ul>
+			<li><a href="#/employeeInfo-sf">Profile</a></li>
+			<li><a id="job" href="#/employeeAssignments-sf">At Work</a></li>
+			<li><a id="add">Additional Info</a>
+			  <ul>
+				<li><a href="#/personalinfo-sf">Personal</a></li>
+			<!--	<li><a href="#/medicalInfo-sf">Medical Info</a></li> -->
+				<li><a href="#/officeInfo-sf">Office</a></li>
+				<li ng-show="{{usOrgCode!=orgCode}}"><a href="#/passportInfo-sf">Passport</a></li>
+				<li ng-show="{{usOrgCode!=orgCode}}"><a href="#/empBankList-sf">Bank</a></li>
+				<li><a href="#/emergencyContacts-sf">Emergency Contacts</a></li>
+			  </ul>
+			</li>
+			<li><a id="professional">Professional</a>
+			  <ul>
+				<li><a href="#/skillDetails-sf">Skills</a></li>
+				<li><a href="#/certificationDetails-sf">Certifications</a></li>
+			  </ul>			
+			</li>
+			<li><a id="other">Other</a>
+			  <ul>
+				<li><a href="#/additionalDocs-sf">Additonal Docs</a></li>
+				<li><a href="#/overallSearch">Search Employee</a></li>
+			  </ul>			
+			</li>
+		  </ul>
+		</div>
+	</script>
+	<style>
+		#navbar{
+			margin-left: 14.5%;
+		}
+	 #navbar ul {
+		position: relative;  
+	  }
+	  #navbar ul li {
+		  list-style: none;
+		  display: inline-block;
+		margin: 0 -4px 0 0;
+	  }
+	  #navbar ul li a {
+		  padding: 7px 15px;
+		  text-transform: uppercase;
+		  text-decoration: none; 
+			color: #fff;
+			display: block;
+		  background: orange; 
+	  }
+	  #navbar ul li:hover a {
+		/*  text-decoration: underline; */
+		color: #fff;
+		background: #999;
+	  }
+	  #navbar ul li ul {
+		  display: none;
+		width: 100%;
+		z-index: 9999;
+	  }
+	  #navbar ul li:hover ul {
+		  position: absolute;
+		  display: block;
+		  left: 0;
+		top: 2.3em;
+		width: 100%;
+	  }
+	  #navbar ul li:hover li {
+		  display: inline-block;
+		margin: 0 -4px 0 0;
+	  }
+	 /*  #navbar ul li:hover li a {
+		 text-decoration: underline; 
+	  }*/
+	  #navbar ul li li a:hover {
+		  color: #fff;
+		background: rgb(143, 231, 157);
+		}
+		.active {
+		background: #aaa !important;
+	}
+	#navbar ul li a.active {
+		background: #aaa !important;
+}
+	  </style>

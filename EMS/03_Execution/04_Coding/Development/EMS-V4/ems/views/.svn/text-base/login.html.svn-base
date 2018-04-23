@@ -1,0 +1,40 @@
+<!--// New Login Pagin //-->
+<div class="page login-page">
+    <div class="container">
+      <div class="form-outer text-center d-flex align-items-center">
+        <div class="form-inner full-width">
+          <div class="logo text-uppercase"><span>OSI</span> <strong class="text-primary">HRMS</strong></div>
+          <p>Login <span class="glyphicon glyphicon-lock"></span></p>
+          <form id="login-form" method="post" novalidate >
+            <div class="form-group-material" ng-if="isTrascError">
+                    <div style="width: 100%;" ng-class="{ 'alert no-margin': flash, 'validInput': flash.type === 'success', 'invalidInput': flash.type === 'error'}"
+                        ng-if="flash" ng-bind="flash.message"></div>
+            </div>
+            <div class="form-group-material">
+              <input id="login-username" type="text" name="loginUsername" ng-model="vm.username"
+                    placeholder="Username" class="input-material">
+              <!--<label for="login-username" class="">Username</label>-->
+            </div>
+            <div class="form-group-material">
+              <input id="login-password" type="password" name="loginPassword"
+                    ng-model="vm.password" maxlength="40" placeholder="Password" class="input-material">
+              <!--<label for="login-password" class="">Password</label>-->
+            </div><br>
+            <div>
+                <button type="submit" ng-disabled="(vm.loading) || (formLogin.$invalid)"
+                        class="btn btn-primary" ng-click="login();">Sign in</button>&nbsp;
+              <!--  <button type="button" ng-click="resetform()" class="btn btn-default">Reset</button> -->
+            </div>
+            
+            <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+  $("#tree").dynatree("getRoot").visit(function(node){
+   node.select(false);
+});
+</script>
+<!--// New Login Page - END //-->

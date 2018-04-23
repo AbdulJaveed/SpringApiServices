@@ -1,0 +1,269 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <div class="right-side">
+        <div>
+            <section class="content">
+                <div class="row" style="margin-right: 0px;">
+                    <div class="col-sm-6">
+                        <h4>Grade List</h4>
+                    </div>
+                </div>
+                <div class="alert alert-success" ng-show="showSuccessAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{successTextAlert}}
+                </div>
+                <div class="alert alert-danger" ng-show="showFailureAlert"
+                    style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{failureTextAlert}}
+                </div>
+            </section>
+            <section class="content">
+                <div class="col-sm-12 no-padding">
+                    <div class="panel panel-default" style="min-height: auto;">
+                        <div class="panel-body">
+                            <div class="navbar-form navbar-left form-horizontal col-lg-12"
+                                 role="form">
+                                <div class="col-lg-6"><input class="form-control" name="gradeName" ng-Model="gradeName" placeholder="Grade" type="text"></div>
+                                <div class="col-lg-6">
+                                    <button type="button" class="btn btn-primary btn-width" ng-click="searchOsiGradess()" >Search</button>
+                                    <button type="button" class="btn btn-defaul btn-width" ng-click="clearSearch()">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!--MAIN BODY START-->
+                <div class="box1">
+                    <div class="box-body table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead_bg">
+								<tr><th ng-click="sort('gradeName')">Grade Name<span class="glyphicon sort-icon" ng-show="sortKey == 'gradeName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+									<th ng-click="sort('gradeDescription')">Grade Description<span class="glyphicon sort-icon" ng-show="sortKey == 'gradeDescription'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+									<th ng-click="sort('orgName')">Organization<span class="glyphicon sort-icon" ng-show="sortKey == 'orgName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								</tr>
+                            </thead>
+							<tr
+								dir-paginate="item in gradeList |orderBy:sortKey:reverse|itemsPerPage:rowSize "
+								ng-class="{selected: item.gradeId== isSelectedRow}"
+								ng-click="selectRow(item)"
+								ng-dblclick="editSelectedRowDetails(item)"
+								ng-init="myIndex = $index">
+								<input type="hidden" ng-model="id" value="{{item.id}}" />
+								<td>{{item.gradeName|uppercase}}</td>
+								<td>{{item.gradeDescription|uppercase}}</td>
+								<td>{{item.orgName|uppercase}}</td>
+							</tr>
+						</table>
+                        <div ng-if="gradeList.length == 0"><h6 style="text-align: center; color: red;">No Records Found</h6></div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div style="float: left; margin-top:-10px;">
+                                <dir-pagination-controls max-size="8" direction-links="true"
+                                                         boundary-links="true" on-page-change="clearSelectedRow()"> 
+                                </dir-pagination-controls>
+                            </div>
+                        </div>
+                        <div style="float: right;">
+                            <span ng-repeat="availOperations in availOperations"> <i
+                                    style="cursor: pointer;"
+                                    ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create', 
+                                               'glyphicon glyphicon-eye-open' : availOperations.name == 'View', 
+                                               'glyphicon glyphicon-pencil' : availOperations.name == 'Edit', 
+                                               'glyphicon glyphicon-trash' : availOperations.name == 'Delete', 
+                                               'disabled': disable_{{availOperations.name}}}"
+                                    ng-disabled="disable_{{availOperations.name}}"
+                                    ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+    <!-- /.right-side -->
+</div>
+<!-- ./wrapper -->
+
+<div class="modal fade" id="OsiGrades-model" tabindex="-1" role="dialog" aria-labelledby="gradesModal" aria-hidden="true">
+    <div class="modal-dialog " style="width: 850px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{headername}}</h4>
+            </div>
+            <div class="modal-body" >
+				<form  name="menuForm" autocomplete="off">
+					<div class="row" ng-if="isTrascError">
+						<div
+							ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+							ng-if="flash" ng-bind="flash.message"></div>
+					</div>
+       		<div class="row">
+					<div class="col-md-0">
+						<input class="form-control" ng-disabled="!iseditable" name="item"
+							ng-model="OsiGrades.id" placeholder="Enter ID" type="hidden">
+					</div>
+					<div class="col-sm-6">
+					<div class="col-md-5">
+						<label for="address" >Grade<font
+							color="red">*</font></label>
+							</div>
+							<div class="col-md-7">
+							<input class="form-control input input-sm" ng-disabled="!iseditable" name="item" uppercase
+								ng-model="OsiGrades.gradeName" placeholder="Enter Grade" maxlength="20"
+								type="text">
+						</div>
+				
+					</div>
+					<div class="col-sm-6">
+					<div class="col-md-5">
+						<label for="address" >Description</label>
+							</div>
+						<div class="col-md-7">
+							<textarea class="form-control input input-sm" ng-disabled="!iseditable" name="item" uppercase
+								ng-model="OsiGrades.gradeDescription" maxlength="200"
+								placeholder="Enter Description"></textarea>
+								<br/>
+						</div>
+					
+					</div>
+					<div class="col-sm-6">
+					<div class="col-md-5">
+						<label for="address" >Sequence<font
+							color="red">*</font></label>
+							</div>
+						<div class="col-md-7">
+							<input type="text" maxlength="11"  ng-maxlength="10" class="form-control" ng-disabled="!iseditable" name="item"
+								ng-model="OsiGrades.seq" placeholder="Enter Sequence" only-Number><br/>
+						</div>
+					</div>
+					
+					
+							<div class="col-sm-6">
+					<div class="col-md-5">
+						<label for="address" >Cost
+							Per Hour<font color="red">*</font>
+						</label>
+						</div>
+						<div class="col-md-7">
+							<input class="form-control" ng-disabled="!iseditable" name="item"
+								ng-model="OsiGrades.costPerHour"
+								placeholder="Enter Cost Per Hour" type="text" convert-decimal-number><br/>
+						</div>
+					
+					</div>
+				
+					</div>
+						<div class="row">
+					<div class="col-sm-6">
+					<div class="col-md-5">
+						<label for="address" >Cost
+							Per Month<font color="red">*</font>
+						</label></div>
+						<div class="col-md-7">
+							<input class="form-control" ng-disabled="!iseditable" name="costPerMonth"
+								ng-model="OsiGrades.costPerMonth"
+								placeholder="Enter Cost Per Month" type="text" convert-decimal-number><br/>
+						</div>
+					</div>
+					
+					<div class="col-sm-6">
+					<div class="col-md-5">
+						<label for="address" >Revenue
+							Per Hour<font color="red">*</font>
+						</label></div>
+						<div class="col-md-7">
+							<input class="form-control" ng-disabled="!iseditable" name="revPerHour"
+								ng-model="OsiGrades.revPerHour"
+								placeholder="Enter Revenue Per Hour" type="text" convert-decimal-number><br/>
+						</div>
+					</div>
+					<div class="col-sm-6">
+					<div class="col-md-5">
+						<label for="address" >Revenue
+							Per Month<font color="red">*</font>
+						</label>	</div>
+						<div class="col-md-7">
+							<input class="form-control" ng-disabled="!iseditable" name="revPerMonth"
+								ng-model="OsiGrades.revPerMonth"
+								placeholder="Enter Revenue Per Month" type="text" convert-decimal-number><br/>
+						</div>
+				
+					</div>
+					
+					<div class="col-sm-6">
+					<div class="col-sm-5">
+						<label for="orgId" >Organization<font
+							color="red">*</font></label>
+							</div>
+						<div class="col-md-7">
+							<!-- <select name="orgId" uppercase
+								ng-disabled="!iseditable"
+								ng-model="OsiGrades.orgId"
+								class="form-control input input-sm" required>
+								<option ng-repeat="org  in organizations"
+									ng-selected="org.orgId == OsiGrades.orgId"
+									value="{{org.orgId}}">{{org.orgName|uppercase}}</option>
+							</select> -->
+							<select name="orgId" ng-disabled="!iseditable" ng-model="OsiGrades.orgId" ng-options="org.orgId as (org.orgName|uppercase) for org  in organizations" class="form-control input input-sm" required>
+								<option value="" label="-- Select organization --"></option>
+							</select><br/>
+						</div>
+					</div>
+					
+					</div>
+					<div class="row">
+					<div class="col-sm-6">
+					<div class="col-sm-5">
+						<label for="titleId" >Title<font
+							color="red">*</font></label>
+							</div>
+						<div class="col-md-7">
+							
+							<select name="titleId" ng-disabled="!iseditable" ng-model="OsiGrades.titleId" ng-options="title.titleId as (title.titleShortName|uppercase) for title  in titles" class="form-control input input-sm" required>
+								<option value="" label="-- Select Title --"></option>
+							</select><br/>
+						</div>
+					</div>
+						<div class="col-sm-6">
+					<div class="col-sm-5">
+						<label for="active" >Active<font
+							color="red">*</font></label>
+						</div>
+						<div class="col-md-7">
+							<input type="checkbox" ng-disabled="!iseditable" name="active"
+								ng-model="OsiGrades.active" ng-true-value=1 ng-false-value=0>
+						</div>
+					
+					</div>
+						</div>
+							</form>
+				</div>
+			
+				<div class="modal-footer" >
+                           <button type="button" class="btn btn-default btn-space pull-right"  data-dismiss="modal">Close</button>
+                           <div ng-if="isUpdatable">
+                                <button class="btn btn-primary modalButton"
+                                        ng-click="saveOsiGrades(OsiGrades)" ng-disabled="!iseditable">Update</button>
+                            </div>
+                            <div ng-if="!isUpdatable">
+                                <button type="button" class="btn btn-primary modalButton" ng-hide="!iseditable" ng-click="saveOsiGrades(OsiGrades)">Save</button>
+                            </div>
+                </div>
+				</div>
+            </div>
+    </div>
+</div>
+ </div>
+      </div>
+      </div>

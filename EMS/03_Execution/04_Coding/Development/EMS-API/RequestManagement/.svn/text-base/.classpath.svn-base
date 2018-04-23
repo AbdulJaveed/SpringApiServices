@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_144"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/com-jaspersoft-ireport.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/commons-digester-2.0.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/itext-2.1.7.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/jasperreports-5.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/jasperreports-extensions-3.5.3.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/poi-3.6.jar"/>
+	<classpathentry kind="lib" path="F:/Projects/ExternalJars/mysql-connector-java-5.1.40.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

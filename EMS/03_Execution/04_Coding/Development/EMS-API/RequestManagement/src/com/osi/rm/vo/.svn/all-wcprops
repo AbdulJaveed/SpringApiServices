@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/vo
+END
+OSIPODetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/vo/OSIPODetails.java
+END
+OSIRMConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/vo/OSIRMConfig.java
+END
+OSIRMRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/vo/OSIRMRequest.java
+END
+OSIRMSchedulerFrequencies.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/vo/OSIRMSchedulerFrequencies.java
+END
+DataFileDetailsVO.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/vo/DataFileDetailsVO.java
+END
+OSIRMReportDetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/vo/OSIRMReportDetails.java
+END

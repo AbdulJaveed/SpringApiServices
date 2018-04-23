@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src
+END
+connection.properties
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/connection.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/log4j.properties
+END
+jasperreports.properties
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/jasperreports.properties
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources
+END
+ehcache.xml
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/ehcache.xml
+END
+schedulerconfig.properties
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/osi-repos/testing_svn/!svn/ver/2291/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/schedulerconfig.properties
+END
+db.properties
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/osi-repos/testing_svn/!svn/ver/1903/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/db.properties
+END
+logback.xml
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/logback.xml
+END
+errorOrSuccessMsg.properties
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/osi-repos/testing_svn/!svn/ver/2487/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/errorOrSuccessMsg.properties
+END
+resources.properties
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/osi-repos/testing_svn/!svn/ver/2487/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/resources.properties
+END

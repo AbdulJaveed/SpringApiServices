@@ -1,0 +1,82 @@
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <div class="right-side">
+        <section class="content">
+	<form name="vm.empBasicInfo" novalidate style="box-shadow: 0px 0px 2px 0px #888888;padding-top: 25px;background-color:#aeb7d4 ">
+		<fieldset data-ng-disabled="vm.infoView">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="organization" class=" control-label no-padding pull-right">
+								Organization<font color="red">*</font></label>
+						</div>
+						<div class="col-md-7">							
+								<!-- <select class="form-control" id="orgName" name="orgName" ng-model="vm.basicInfo.orgId" required 
+								ng-options="data.orgId as data.orgName for data in vm.osiOrganizations" ng-disabled="!iseditable">
+								<option value="">-- Select Organization --</option></select> -->
+								<input class="form-control" id="orgName" name="orgName"  ng-disabled="!iseditable"
+								ng-model="vm.basicInfo.orgName" required 
+								placeholder='Organization'
+								type="text">
+							<br />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="employeeNumber"
+								class=" control-label no-padding pull-left"> Employee Name <font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-7">
+							<input class="form-control" id="employeeName" name="employeeName" ng-disabled="!iseditable"
+								ng-model="vm.basicInfo.fullName" required 
+								placeholder='Employee Name'
+								type="text" minlength="4" maxlength="25" no-special-char-space >
+							<br />
+						</div>
+					</div>
+				</div>
+					<div class="col-md-3">
+					<div class="row">
+						<div class="col-md-5 no-padding">
+							<label for="employeeNumber"
+								class=" control-label no-padding pull-left"> Employee Number <font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-7">
+							<input class="form-control" id="employeeNumber" name="employeeNumber" ng-disabled="!iseditable"
+								ng-model="vm.basicInfo.employeeNumber" required 
+								placeholder='Employee Number'
+								type="text" minlength="4" maxlength="25" no-special-char-space >
+							<br />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1">
+					<div class="card" style="text-align: center;margin-left:-6px;margin-top:-7px">
+						  
+						<div class="card-block" style="width: 54%; padding: 0px; margin-left: -6px;">							
+            				<div ng-model="picFile" required="" id="image"
+            						class="drop-box" ngf-drop-available="dropAvailable" 
+            						style="width: 150%; height: 55px; color: #203b8a;" class="drop-box">
+            					<span ng-show="dropAvailable"> <img ngf-src="vm.preview.content" title="Drag & Drop Files Here" class="thumb" style="width: 100%; height: 45px;margin-top:2px">
+            						</span>
+            						<span ng-show="vm.preview.content ==null"  style="width: 100%; height: 45px;margin-top:2px">
+            						No Image Found</span>
+							</div>
+					</div>
+				</div>
+				<br>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+	<br>
+</section>
+</div>
+</div>

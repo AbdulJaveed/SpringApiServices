@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/osi-repos/testing_svn/!svn/ver/1053/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper
+END
+OsiSegmentStructureMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiSegmentStructureMapper.java
+END
+OsiOperationsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiOperationsMapper.java
+END
+OsiMenusMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiMenusMapper.java
+END
+OsiUserLoginsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiUserLoginsMapper.java
+END
+OsiMenuRespMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiMenuRespMapper.java
+END
+OsiMenuEntriesMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiMenuEntriesMapper.java
+END
+CentralConfigMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/CentralConfigMapper.java
+END
+OsiReponsibilitiesMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiReponsibilitiesMapper.java
+END
+OsiUserFuncExclMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/1053/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiUserFuncExclMapper.java
+END
+OsiRespUserMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/1053/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiRespUserMapper.java
+END
+OsiFunctionsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiFunctionsMapper.java
+END
+OsiLookupMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiLookupMapper.java
+END
+OsiUserOperationExclMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiUserOperationExclMapper.java
+END
+OsiAttachmentsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiAttachmentsMapper.java
+END
+OsiFuncOperationMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiFuncOperationMapper.java
+END
+OsiUserMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/osi-repos/testing_svn/!svn/ver/1053/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/mapper/OsiUserMapper.java
+END

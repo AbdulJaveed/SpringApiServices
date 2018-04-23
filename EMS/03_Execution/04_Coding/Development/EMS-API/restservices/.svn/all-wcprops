@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/osi-repos/testing_svn/!svn/ver/2497/EMS/03_Execution/04_Coding/Development/EMS-API/restservices
+END
+mvnw
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/mvnw
+END
+mvnw.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/mvnw.cmd
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/osi-repos/testing_svn/!svn/ver/1262/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/pom.xml
+END

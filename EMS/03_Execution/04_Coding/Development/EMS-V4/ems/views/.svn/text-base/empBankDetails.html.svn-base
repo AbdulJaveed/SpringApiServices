@@ -1,0 +1,94 @@
+<div class="wrapper row-offcanvas row-offcanvas-left" >
+    <div class="modal-content" style="width:800px;">
+        <div class="modal-header">
+            <button type="button" class="close modelCloseButton" ng-click="vm.close()"
+                    >&times;
+            </button>
+            <h4 class="modal-title">{{vm.title}} Bank Information</h4>
+        </div>
+        <div class="modal-body">
+                <div class="mt-3 col-md-12"></div>
+                <div class="mt-3 col-md-12"></div>
+            <div class="form-horizontal" role="form">
+                <div class="row" ng-if="isTrascError">
+                    <div ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                         ng-if="flash" ng-bind="flash.message">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12 border-top-0 border-bottom-0 border-left-0">
+                        <div class="form-group row">
+                            <label for="name" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                Account Holder Name</label>
+                            <input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 form-field-border" name="accountHolderName" id="noSpaces"
+                                   ng-disabled="iseditable" ng-model="vm.empBankDetails.accountHolderName"
+                                   type="text" maxlength="100" only-Alphabets no-special-char uppercase required>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="accountNumber" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                Account Number</label>
+                            <input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 form-field-border" name="accountNumber" id="noSpaces"
+                                   ng-disabled="iseditable" ng-model="vm.empBankDetails.accountNumber" maxlength="50" only-number required >
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="bankName" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                Bank Name</label>
+                            <input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 form-field-border" name="bankName" id="noSpaces"
+                                   ng-disabled="iseditable" ng-model="vm.empBankDetails.bankName" maxlength="50" no-special-char uppercase required >
+                        </div>
+                    </div>
+
+                    <!--Right Side-->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="branchName" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                Branch Name </label>
+                            <input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 form-field-border" name="branchName" id="noSpaces"
+                                   ng-disabled="iseditable" ng-model="vm.empBankDetails.branchName" maxlength="50" no-special-char uppercase required >
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="code" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                IFSC Code </label>
+                            <input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 form-field-border" name="ifscCode" id="noSpaces"
+                                   ng-disabled="iseditable" ng-model="vm.empBankDetails.ifscCode" maxlength="20"  no-special-char  uppercase required>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="active" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                Active </label>
+                            <input type="checkbox" name="active" id="noSpaces" ng-true-value="1" ng-false-value="0"
+                                   ng-disabled="iseditable" ng-model="vm.empBankDetails.active" class="check-box-top-margin">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-foot col-md-12>" align="center">
+                    <div class="form-group row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-4 offset-md-2">
+                            <button type="button" class="btn btn-default"
+                                    ng-click="vm.close()">Close</button>
+                            <button class="btn btn-primary" ng-if="isUpdatable && viewButton"
+                                    ng-click="updateRow(menu);" ng-disabled="iseditable">Update
+                            </button>
+
+                            <!-- <div ng-if="!isUpdatable && viewButton"> -->
+
+                            <button class="btn btn-primary"
+                                    ng-click="vm.saveEmpBankDetails()" ng-disabled="!nonEditable || vm.empBankDetails.accountHolderName == ''
+                                            || vm.empBankDetails.accountNumber == '' || vm.empBankDetails.bankName == ''
+                                            || vm.empBankDetails.branchName == '' || vm.empBankDetails.ifscCode == '' || iseditable">Save
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

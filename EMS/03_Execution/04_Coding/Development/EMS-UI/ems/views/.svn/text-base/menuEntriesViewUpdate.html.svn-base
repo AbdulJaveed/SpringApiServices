@@ -1,0 +1,146 @@
+
+<div class="modal fade" id="menu_Entries_Update_modal" role="dialog">
+	<div class="modal-dialog modal-sm invmodal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close modelCloseButton"
+					data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">
+					<span ng-if="vm.view">View</span><span ng-if="!vm.view">Edit</span>
+					Menu Entries 
+				</h4>
+			</div>
+			<div class="modal-body menuEntryModalBody"
+				style="height: auto; width: 100%;">
+				<!--page------------------------------------------------------>
+
+				<div class="row" ng-if="isTrascError">
+					<div
+						ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+						ng-if="flash" ng-bind="flash.message"></div>
+				</div>
+
+				<form name="orgInventory" novalidate="">
+					<fieldset ng-disabled="vm.view">
+
+						<br>
+						<div class="row menuEntryContainer">
+							<div class="col-md-1"></div>
+							<div class="col-md-10">
+
+								<div class="row mar-bot5">
+									<div class="col-md-2 ">
+										<label for="orgNameTxt" class=" control-label "
+											style="line-height: 2; font-size: 16px;"> Header Menu<font
+											color="red">*</font></label>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<select class="form-control"
+												ng-options="menu as menu.menuName for menu in vm.menus | orderBy:'menuName' track by menu.id"
+												ng-change="vm.removeHeaderMenu(vm.menuEntry.osiMenusByMenuId)"
+												ng-model="vm.menuEntry.osiMenusByMenuId"></select>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="row" style="padding-left: 15px;">
+									<h4 class="no-margin">Menu Entries</h4>
+								</div>
+								<hr class="no-padding"
+									style="margin: 0 0 3px 0; border-top: 1px solid #eee;">
+
+
+								<table class="table table-bordered table-striped">
+									<thead class="thead_bg">
+										<tr class="row">
+											<th class="col-md-2 top10">Type<font color="red">*</font></th>
+											<th class="col-md-2">Sequence<font color="red">*</font></th>
+											<th class="col-md-3">Menu/Function<font color="red">*</font></th>
+											<th class="col-md-3">Prompt<font color="red">*</font></th>
+											<th class="col-md-2">Active<font color="red">*</font></th>
+										</tr>
+									</thead>
+									<tr class="row">
+										<td class="col-md-2 top10"><select class="form-control"
+											ng-model="vm.selectedType">
+												<option ng-repeat="type in vm.types"
+													ng-selected="vm.selectedType==type.type">{{type.type}}</option>
+										</select></td>
+										<td class="col-md-2"><input ng-model="vm.menuEntry.seq"
+											type="text" class="form-control top10" name="quantity"
+											min="1" maxlength="10" valid-onlynumber required></td>
+
+
+										<td class="col-md-3" ng-if="vm.selectedType == 'Menu' "><select
+											class="form-control"
+											ng-options="menu as menu.menuName for menu in vm.subMenuOptions | orderBy:'menuName' track by menu.id"
+											ng-model="vm.menuEntry.osiMenusBySubMenuId" required></select>
+										</td>
+										<td class="col-md-3" ng-if="vm.selectedType == 'Function' "><select
+											class="form-control"
+											ng-options="func as func.funcName for func in vm.functions | orderBy:'funcName' track by func.id"
+											ng-model="vm.menuEntry.osiFunctions" required></select></td>
+
+										<td class="col-md-3"><input type="text"
+											ng-model="vm.menuEntry.prompt" class="form-control "
+											placeholder="Prompt" maxlength="100"
+											no-special-char required></td>
+										<td class="col-md-2"><input type="checkbox"
+											ng-model="vm.active" ng-value="{{active}}"></td>
+
+									</tr>
+								</table>
+
+</fieldset>
+
+
+								<br>
+								<div class="row">
+									<div class="pull-right">
+										<button class="btn" ng-click="vm.closeModal()">Close</button>
+									</div>
+									<div class="pull-right" style="margin-right: 5px;"
+										ng-if="!vm.view">
+										<button class="btn btn-primary"
+											ng-click="vm.update(vm.menuEntry)">Update</button>
+									</div>
+
+
+								</div>
+
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+
+									</form>
+
+				<!--/page------------------------------------------------------>
+				<!--                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>-->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- delete confirmation modal -->
+<div class="modal fade" id="menuEntry-delete-model" role="dialog"
+	style="top: 20%">
+	<div class="modal-dialog modal-sm" style="width: 400px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close modelCloseButton"
+					data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Do you want to {{confirmationHeading}}
+					?</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal" role="form">
+					<div class="modal-foot" align="center">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="vm.noAction()">No</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

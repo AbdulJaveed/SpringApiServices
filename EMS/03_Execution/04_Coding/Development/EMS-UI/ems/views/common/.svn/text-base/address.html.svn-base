@@ -1,0 +1,177 @@
+<style>
+  textarea {
+    resize: none;
+  }
+</style>
+
+<div>
+  <form style="text-align: left;margin-top: -23px;">
+    <div class="form-group custom-group">
+      <div class="col-lg-10">
+      
+        <label class="custom-label"  style="color: #3bacda;">Mailing Address </lable>
+    </div>
+  </div>
+  <div class="form-group custom-group" style="margin-left: 26px;">
+    <div class="col-lg-4">
+      <label for="addressLine1">Address Line1 </label>
+      </div>
+
+      <div class="col-lg-8" style="margin: -37px 0px 3px 116px;">
+        <textarea ng-keyup="vm.copyAddressLine1()" title-case ng-model="vm.emailing.addressLine1" class="form-control" maxlength="100" id="addressLine1" name="addressLine1" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="form-group custom-group" style="margin-left: 26px;">
+      <div class="col-lg-4">
+        <label for="addressLine2">Address Line2</label>
+      </div>
+
+      <div class="col-lg-8" style="margin: -16px 9px 2px -57px;">
+        <textarea ng-keyup="vm.copyAddressLine2()" title-case type="text " ng-model="vm.emailing.addressLine2" class="form-control"  maxlength="100" id="addressLine2" name="addressLine2" rows="3"></textarea>
+
+      </div>
+    </div>
+
+    <div class="form-group custom-group" style="margin-left: 26px;">
+      <div class="col-lg-4">
+        <label for="city">City</label>
+      </div>
+
+      <div class="col-lg-3" style="margin: -16px 9px 2px -57px;">
+        <input type="text " title-case ng-keyup="vm.copyCity()" title-case ng-model="vm.emailing.city" class="form-control"  maxlength="100" id="city" name="city">
+      </div>
+
+      <div class="col-lg-2" style="margin-left: -9px;">
+        <label for="State">State</label>
+      </div>
+
+      <div class="col-lg-3" style="margin: -14px 11px 4px -37px;">
+
+        <select class="selectpicker form-control" ng-model="vm.emailing.stateId" style="width: 137px;"
+        ng-change="vm.copyEmailAddress()" id="state" name="state" data-style="btn" ng-options="state.stateId as state.stateName for state in vm.emalingState">
+
+      </select>
+      </div>
+
+    </div>
+
+    <div class="form-group custom-group" style="margin-left: 26px;">
+      <div class="col-lg-4">
+        <label for="country">Country</label>
+      </div>
+
+      <div class="col-lg-3" style="margin: -16px 9px 2px -57px;">
+        <select class="selectpicker form-control" id="country"
+        ng-change="vm.getStatesByCountryIdForEmailAddress()" ng-model="vm.emailing.countryId" name="country" data-style="btn" ng-options="country.countryId as country.countryName for country in vm.emalingAddCountry">
+      </select>
+      </div>
+
+      <div class="col-lg-2">
+        <label for="zipCode">Zip Code</label>
+      </div>
+      <div class="col-lg-3" style="margin: -14px 11px 4px -9px;">
+        <input ng-keyup="vm.copyZipCode()" type="text" class="form-control" ng-model="vm.emailing.zipcode"  maxlength="20" id="zipCode" name="zipCode" no-special-char-space>
+      </div>
+
+    </div>
+
+    <div class="form-group custom-group">
+      <div class="col-lg-8" style="    width: 61%;">
+        <label class="custom-label" style="color: #3bacda;">Permanent Address </lable>
+    </div>
+    <div class="form-check col-lg-4">
+      <label class="form-check-label" style="float: right;">
+        <input name="sameAsAbove" ng-model="vm.sameAsAbove"
+        ng-click="vm.copyEmailAddress()" id="sameAsAbove"
+        class="form-check-input" type="checkbox" value="true">
+        Same As Above
+      </label>
+      </div>
+
+    </div>
+
+
+    <div class="form-group custom-group" style="margin-left: 26px;">
+      <div class="col-lg-4">
+        <label for="perminentAddressLine1">Address Line1</label>
+      </div>
+
+      <div class="col-lg-8" style="margin: -37px 0px 3px 116px;">
+
+        <textarea ng-disabled="vm.sameAsAbove" title-case ng-model="vm.perminent.addressLine1" class="form-control"  maxlength="100" id="perminentAddressLine1" name="perminentAddressLine1" rows="3"></textarea>
+
+      </div>
+    </div>
+
+    <div class="form-group custom-group" style="margin-left: 26px;">
+      <div class="col-lg-4">
+        <label for="addressLine2">Address Line2</label>
+      </div>
+
+      <div class="col-lg-8" style="margin: -16px 9px 2px -57px;">
+        <textarea ng-disabled="vm.sameAsAbove" title-case ng-model="vm.perminent.addressLine2"  maxlength="100" id="addressLine2" name="addressLine2" class="form-control" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="form-group custom-group" style="margin-left: 26px;">
+      <div class="col-lg-4">
+        <label for="perminentAddressCity">City</label>
+      </div>
+
+      <div class="col-lg-3" style="margin: -14px 11px 4px -57px;">
+        <input ng-disabled="vm.sameAsAbove" type="text " class="form-control" title-case ng-model="vm.perminent.city" maxlength="100" id="perminentAddressCity" name="perminentAddressCity">
+      </div>
+
+      <div class="col-lg-2" style="margin-left: -9px;">
+        <label for="perminentAddressState">State</label>
+      </div>
+
+      <div class="col-lg-3" style="margin: -14px 11px 4px -37px;">
+
+        <select ng-disabled="vm.sameAsAbove" style="width: 137px;" class="selectpicker form-control"
+        ng-model="vm.perminent.stateId" id="perminentAddressState" name="perminentAddressState" data-style="btn" ng-options="state.stateId as state.stateName for state in vm.stateList">
+
+      </select>
+      </div>
+
+    </div>
+
+    <div class="form-group custom-group" style="margin-left: 26px;">
+      <div class="col-lg-4">
+        <label for="perminentAddressCountry">Country</label>
+      </div>
+
+      <div class="col-lg-3" style="margin: -14px 11px 4px -57px;">
+        <select ng-disabled="vm.sameAsAbove" class="selectpicker form-control" ng-change="vm.getStatesByCountryIdForPerminentAddress()"
+        ng-model="vm.perminent.countryId" id="perminentAddressCountry" name="perminentAddressCountry" data-style="btn"
+          ng-options="country.countryId as country.countryName for country in vm.countryList">
+
+      </select>
+      </div>
+
+      <div class="col-lg-2">
+        <label for="perminentAddressZipCode">Zip Code</label>
+      </div>
+      <div class="col-lg-3" style="margin: -14px 11px 4px -9px;">
+        <input ng-disabled="vm.sameAsAbove" type="text" class="form-control" ng-model="vm.perminent.zipcode"  maxlength="20" id="perminentAddressZipCode" name="perminentAddressZipCode" no-special-char-space>
+      </div>
+
+    </div>
+    <div class="form-group custom-group" style="margin-left: -44px;">
+    
+    
+    <button type="button" style="float: right;margin-left: 14px;    padding-left: 22px;padding-right: 22px;" class="btn btn-primary"
+			        	ng-click="vm.saveAddress()">
+			            <span>OK</span>
+			        </button>
+			     
+        			 <button type="button" ng-click="vm.clearFormAddress()" style="float: right;margin-left: 14px;" class="btn btn-primary">
+			            <span>Cancel</span>
+			        </button>
+			        
+     
+    </div>
+
+  </form>
+
+</div>

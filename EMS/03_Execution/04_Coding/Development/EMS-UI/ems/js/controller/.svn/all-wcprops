@@ -1,0 +1,353 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/osi-repos/testing_svn/!svn/ver/1454/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller
+END
+userSkillsController.js
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/userSkillsController.js
+END
+authController.js
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/authController.js
+END
+employeesController.js
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/employeesController.js
+END
+OsiJobCodesController.js
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/OsiJobCodesController.js
+END
+menucontroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/menucontroller.js
+END
+organizationController.js
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/osi-repos/testing_svn/!svn/ver/1367/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/organizationController.js
+END
+officeInfoController.js
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/officeInfoController.js
+END
+logincontroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/logincontroller.js
+END
+categoryListController.js
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/categoryListController.js
+END
+sidebarcontroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/osi-repos/testing_svn/!svn/ver/754/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/sidebarcontroller.js
+END
+userListController.js
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/1123/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/userListController.js
+END
+reportsgroupcontroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/reportsgroupcontroller.js
+END
+emergencyContactsController.js
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/emergencyContactsController.js
+END
+categoryController.js
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/1122/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/categoryController.js
+END
+userResponsibilityController.js
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/osi-repos/testing_svn/!svn/ver/1123/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/userResponsibilityController.js
+END
+OsiTitlesController.js
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/OsiTitlesController.js
+END
+OsiGradesController.js
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/osi-repos/testing_svn/!svn/ver/1349/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/OsiGradesController.js
+END
+reportshistorycontroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/reportshistorycontroller.js
+END
+OsiCertificationsController.js
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/OsiCertificationsController.js
+END
+empBankDetailsController.js
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/empBankDetailsController.js
+END
+empAdditionalDocsController.js
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/empAdditionalDocsController.js
+END
+OsiCostCenterController.js
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/OsiCostCenterController.js
+END
+uploadController.js
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/uploadController.js
+END
+functioncontroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/functioncontroller.js
+END
+homeController.js
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/homeController.js
+END
+employeeOverallSearchController.js
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/employeeOverallSearchController.js
+END
+operationExclusionController.js
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/osi-repos/testing_svn/!svn/ver/1123/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/operationExclusionController.js
+END
+userProfileController.bak.js
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/userProfileController.bak.js
+END
+basicInfoController.js
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/727/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/basicInfoController.js
+END
+PersonalInfoController.js
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/PersonalInfoController.js
+END
+userProfileController.js
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/osi-repos/testing_svn/!svn/ver/1123/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/userProfileController.js
+END
+OsiSkilsController.js
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/OsiSkilsController.js
+END
+controllers.js
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/controllers.js
+END
+osiResponsibilitiesController.js
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/osi-repos/testing_svn/!svn/ver/1367/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/osiResponsibilitiesController.js
+END
+empBankDetailsConfigController.js
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/empBankDetailsConfigController.js
+END
+lookupcontroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/lookupcontroller.js
+END
+epmsEmpOrgListController.js
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/epmsEmpOrgListController.js
+END
+medicalInfoController.js
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/medicalInfoController.js
+END
+flexifieldController.js
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/osi-repos/testing_svn/!svn/ver/1122/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/flexifieldController.js
+END
+OsiEmployeesController.js
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/osi-repos/testing_svn/!svn/ver/1123/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/OsiEmployeesController.js
+END
+OsiDepratmentController.js
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/OsiDepratmentController.js
+END
+functionExclusionController.js
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/osi-repos/testing_svn/!svn/ver/1122/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/functionExclusionController.js
+END
+display-chart-controller.js
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/osi-repos/testing_svn/!svn/ver/892/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/display-chart-controller.js
+END
+employee-modal-controller.js
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/osi-repos/testing_svn/!svn/ver/892/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/employee-modal-controller.js
+END
+dashboardcontroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/731/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/dashboardcontroller.js
+END
+orgController.js
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/orgController.js
+END
+passportInfoController.js
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/passportInfoController.js
+END
+commonController.js
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/commonController.js
+END
+errorController.js
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/errorController.js
+END
+employeesController-self.js
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/employeesController-self.js
+END
+OsiBusinessUnitsController.js
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/OsiBusinessUnitsController.js
+END
+menuEntriesListController.js
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/osi-repos/testing_svn/!svn/ver/1367/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/menuEntriesListController.js
+END
+userInfoController.js
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/1123/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/userInfoController.js
+END
+assignmentsController.js
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/assignmentsController.js
+END
+segmenthirarchycontroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/osi-repos/testing_svn/!svn/ver/1362/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/segmenthirarchycontroller.js
+END
+employeeBasicInfoController.js
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/osi-repos/testing_svn/!svn/ver/1454/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/employeeBasicInfoController.js
+END
+menuEntriesController.js
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/osi-repos/testing_svn/!svn/ver/1135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/menuEntriesController.js
+END
+reportscontroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/controller/reportscontroller.js
+END

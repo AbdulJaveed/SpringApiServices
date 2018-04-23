@@ -1,0 +1,141 @@
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<script>
+        setTimeout(function(){ $("#add").toggleClass("active"); }, 100);
+            </script>
+<div>
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+		<div data-ng-include="'views/employeeMenu-sf.html'"></div>
+		<div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+    <div class="right-side">
+        <section class="content">
+        <div class="row" ng-if="isTrascError">
+							<div
+								ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+								ng-if="flash" ng-bind="flash.message"></div>
+						</div>
+        <h4>Office Information</h4><br>
+	<form name="vm.osiEmployees" novalidate="">
+		<fieldset ng-disabled="vm.infoView" style="padding-left: 136px;padding-top: 19px;">
+
+			<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-2 no-padding">
+								<label for="extensionNumber"
+									class=" control-label no-padding pull-right"> Extension Number
+
+								</label>
+							</div>
+							<div class="col-md-4">
+								<input class="form-control info"
+									ng-model="vm.osiEmployeeContacts.contactNumber" maxlength="10"
+										placeholder='Extension Number '
+									 type="text" name="extensionNumber" data-only-Number  data-no-special-char-space required
+                   ng-disabled="!iseditable" />
+								<br/>
+							</div>
+
+							<div class="col-md-2 no-padding">
+								<label for="Email"
+									class=" control-label no-padding pull-right"> Email <font color="red">*</font></label>
+							</div>
+							<!--Mob No 10 digit excluding starting 0 validation ng-pattern="/^((0091)|0?)[1-9]{1}\d{9}$/"-->
+							<div class="col-md-4">
+								<input class="form-control info"
+									ng-model="vm.osiEmployees.officeEmail" style="text-transform: uppercase"
+										placeholder='Email'
+									 maxlength="50" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+									 type="email" name="email" required ng-disabled="!iseditable" />
+							</div>
+						</div>
+				</div>
+				<br/>
+				<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-2 no-padding">
+						<label for="mailStop"
+							class=" control-label no-padding pull-right"> Mail Stop </label>
+					</div>
+					<!--Mob No 10 digit excluding starting 0 validation ng-pattern="/^((0091)|0?)[1-9]{1}\d{9}$/"-->
+					<div class="col-md-4">
+						<input class="form-control info" maxlength="100"
+							ng-model="vm.osiEmployees.mailStop" style="text-transform: uppercase"
+								placeholder='Mail Stop'
+							 type="text" name="MailStop" required ng-disabled="!iseditable" />
+					</div>
+
+					<div class="col-md-2 no-padding">
+						<label for="capacity"
+							class=" control-label no-padding pull-right"> Hours per week <font color="red">*</font></label>
+					</div>
+
+					<div class="col-md-4">
+						<input class="form-control info"
+							ng-model="vm.osiEmployees.fteCapacity"
+								placeholder='Capacity'
+							 type="text" maxlength="2" name="Capacity" data-only-Number  data-no-special-char-space required ng-disabled="!iseditable" />
+					</div>
+				</div>
+				</div>
+
+				<div class="row">
+						<div class="col-md-12">
+						<div class="col-md-2 no-padding">
+							<label for="extensionNumber"
+								class=" control-label no-padding pull-right"> User Name
+							
+							</label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control info"
+								ng-model="vm.osiEmployees.userName"
+								placeholder='User Name '
+								ng-disabled="!iseditable" 
+								type="text" name="userName" data-no-special-char-space  
+								maxlength="10" required />
+							<br/>
+						</div>
+
+						<div class="col-md-2 no-padding">
+							<label for="serialNumber"
+								class=" control-label no-padding pull-right"> Serial Number
+							
+							</label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control info"
+								ng-model="vm.osiEmployees.serialNumber"
+								placeholder='Serial Numnber'
+								style="text-transform: uppercase"
+								ng-disabled="!vm.officeEmailValue"
+								type="text" name="userName" data-special-char-hyphen-dot  
+								maxlength="10" required />
+							<br/>
+						</div>
+						</div>
+					</div>
+				<br>
+
+
+			</div>
+
+
+
+
+		</fieldset>
+		<button type="button" style="float: right;" class="btn btn-primary" ng-click="vm.checkForValidData();" ng-disabled="!nonEditable || !iseditable">
+			            <span>Save</span>
+			            </button>
+			             <button type="button" ng-click="vm.clearOfficeInfoData();" style="float: right;margin-left: 14px;margin-right: 10px;" class="btn btn-primary">
+			            <span>Cancel</span>
+			        </button>
+	</form>
+	</section></div></div>
+</div>
+
+<div class="modal fade" role="dialog" id="confirmationModelForOffice" tabindex="-1" role="dialog" aria-labelledby="co">
+			  <div ng-include="'views/confirmationPopup.html'"></div>
+</div>

@@ -1,0 +1,163 @@
+<div class="modal fade" id="supervisorpopupModel" role="dialog">
+    <div class="modal-dialog" width="    width: 60%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                   Employee List
+                </h4>
+
+            </div>
+            <div class="modal-body">
+            	                <div class="row" ng-if="isTrascErrorDept">
+                    <div style="width: 65%;margin-left: 110px; margin-top: 2px;" ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}" ng-if="flash" ng-bind="flash.message">
+                    </div>
+                </div>
+            <form name="vm.osiRollUpsInfo" novalidate="">
+                        <div class="row">
+						<div class="col-md-10">
+							<div class="col-md-4 no-padding">
+								<label for="organization"
+									class=" control-label no-padding pull-right">
+									Employee Name
+								</label>
+							</div>
+							<div class="col-md-6">
+								 <input class="form-control" type="text"
+                                                            ng-model="vm.empAssignment.searchName"
+                                                            id="searchName"/>
+							<!-- 	 <div
+								ng-if="(vm.OsiRollUps.segment[$index] == '' || vm.OsiRollUps.segment[$index] == undefined  ||  vm.OsiRollUps.segment[$index] == null ) || vm.submitted) : isMandatory(true,{{segmentStructure.segmentStructureDetailsDesc}}) : isMandatory(false,{{segmentStructure.segmentStructureDetailsDesc}})">
+								Employee ID is required.</div>  -->
+								<br/>
+								
+						</div>
+						<div class="col-md-2">
+								<button class="btn btn-primary" style="float: right;" ng-click="getEmployeeListByName(vm.empAssignment.searchName,'notFrmFunction')" ng-disabled="!iseditable">Search</button>
+							</div>
+							</div>
+					</div>
+					<div class="row">
+					   <div ng-if="supervisorList.length > 0">
+                                                                <div class="form-group" style="margin-bottom: 0;">
+                                                                    <fieldset class="scheduler-border">
+                                                                    
+                                                                    <table class="table table-striped" style="margin-bottom:0;">
+                                                                            <thead>
+                                                                            <tr>
+                                                                            <th style="background: gainsboro;"><b>Employee Name</b></th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            </table>
+                                                                        <table class="table table-striped" style="margin-bottom:0;">
+                                                                            <thead>
+                                                                                <tr ng-repeat="cust in supervisorList | limitTo: 10 track by $index"  style="cursor: default;"
+                                                                                    ng-class="{'selected':$index == custRowItem}" ng-dblclick="setCustRowItem($index)"
+                                                                                    class="supervisor-option">
+                                                                                    <td class="text-left" style="width:275px;">
+                                                                                        <span class="form-control-static">{{cust.fullName}}</span>
+                                                                                    </td>
+<!--                                                                                    <td class="col-md-4 text-left" >
+                                                                                        <span class="form-control-static">{{cust.employeeId}}</span>
+                                                                                    </td>-->
+                                                                                </tr>
+                                                                        </table>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+					
+					</div>
+         </form>
+              <!--   <div class="modal-footer">
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-click="vm.clearSegmentData();" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" ng-click="validateDeptData();" ng-disabled="!iseditable">OK</button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="refferedBypopupModel" role="dialog">
+    <div class="modal-dialog" width="    width: 60%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Employee List
+                </h4>
+
+            </div>
+            <div class="modal-body">
+            	                <div class="row" ng-if="isTrascErrorDept">
+                    <div style="width: 65%;margin-left: 110px; margin-top: 2px;" ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}" ng-if="flash" ng-bind="flash.message">
+                    </div>
+                </div>
+            <form name="vm.osiRollUpsInfo" novalidate="">
+                        <div class="row">
+						<div class="col-md-10">
+							<div class="col-md-4 no-padding">
+								<label for="organization"
+									class=" control-label no-padding pull-right">
+									Employee Name
+								</label>
+							</div>
+							<div class="col-md-6">
+								 <input class="form-control" type="text"
+                                                            ng-model="vm.empAssignment.searchNameByReffredBy"
+                                                            id="searchName"/>
+							<!-- 	 <div
+								ng-if="(vm.OsiRollUps.segment[$index] == '' || vm.OsiRollUps.segment[$index] == undefined  ||  vm.OsiRollUps.segment[$index] == null ) || vm.submitted) : isMandatory(true,{{segmentStructure.segmentStructureDetailsDesc}}) : isMandatory(false,{{segmentStructure.segmentStructureDetailsDesc}})">
+								Employee ID is required.</div>  -->
+								<br/>
+								
+						</div>
+						<div class="col-md-2">
+								<button class="btn btn-primary" style="float: right;" ng-click="getEmployeeListByNameForRefferedBy(vm.empAssignment.searchNameByReffredBy,'notFrmFunction')" >Search</button>
+                            	
+                            </div>
+							</div>
+					</div>
+					<div class="row">
+					   <div ng-if="searchParamsList.length > 0">
+                                                                <div class="form-group" style="margin-bottom: 0;">
+                                                                    <fieldset class="scheduler-border">
+                                                                    
+                                                                    <table class="table table-striped" style="margin-bottom:0;">
+                                                                            <thead>
+                                                                            <tr>
+                                                                            <th style="background: gainsboro;"><b>Employee Name</b></th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            </table>
+                                                                        <table class="table table-striped" style="margin-bottom:0;">
+                                                                            <thead>
+                                                                                <tr ng-repeat="cust in searchParamsList | limitTo: 10 track by $index"  style="cursor: default;"
+                                                                                    ng-class="{'selected':$index == custRowItem}" ng-dblclick="setCustRowsItem($index)"
+                                                                                    class="supervisor-option">
+                                                                                    <td class="text-left" style="width:275px;">
+                                                                                        <span class="form-control-static">{{cust.fullName}}</span>
+                                                                                    </td>
+<!--                                                                                    <td class="col-md-4 text-left" >
+                                                                                        <span class="form-control-static">{{cust.employeeId}}</span>
+                                                                                    </td>-->
+                                                                                </tr>
+                                                                        </table>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+					
+					</div>
+         </form>
+              <!--   <div class="modal-footer">
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-click="vm.clearSegmentData();" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" ng-click="validateDeptData();" ng-disabled="!iseditable">OK</button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+

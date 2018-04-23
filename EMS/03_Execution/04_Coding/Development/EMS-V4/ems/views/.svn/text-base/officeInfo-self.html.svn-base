@@ -1,0 +1,255 @@
+<script>
+		setTimeout(function(){
+			 $("#add").toggleClass("active"); 
+			 $("#add-li").toggleClass("active"); 
+			 $("#office").toggleClass("active"); 
+	}, 100);
+            </script>
+<div>
+
+		<div data-ng-include="'views/employeeMenu-sf.html'"></div>
+		<div class="container-fluid">
+				<div class="mt-3 col-md-12"></div>
+                <div class="mt-3 col-md-12"></div>
+		  <div class="row" ng-if="isTrascError">
+					  <div
+					   ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+					   ng-if="flash" ng-bind="flash.message">
+			   </div>
+		   </div>
+		   <div class="row ml-0">
+			   <section class="forms">
+		  <div class="card">
+						   <div class="card-body">
+							  <form name="vm.personalInfoForm">
+							  <div class="row" data-ng-disabled="vm.infoView">	
+									<div class="col-md-2 col-sm-12 col-xs-12 border-top-0 border-bottom-0 border-left-0">
+											<div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+									</div>
+									<div class="col-md-5">
+											<div class="form-group row">
+													<label for="userName" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+															Username </label>
+														<input class="form-control form-control-sm col-md-5 col-sm-12 form-field-border ml-mr-15 border-left-width"
+														ng-model="vm.osiEmployees.userName"
+														placeholder='User Name '
+														ng-disabled="!iseditable" 
+														type="text" name="userName" data-no-special-char-space  
+														maxlength="10" required/>
+												</div>
+											
+
+											<div class="form-group row">
+													<label for="Email" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+															Email </label>
+														<input class="form-control form-control-sm col-md-5 col-sm-12 form-field-border ml-mr-15 border-left-width"
+														ng-model="vm.osiEmployees.officeEmail" style="text-transform: uppercase"
+														placeholder='Email'
+													 maxlength="50" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+													 type="email" name="email" required ng-disabled="!iseditable" />
+												</div>
+												<div class="form-group row">
+														<label for="hoursPerWeek" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+																Hours per Week </label>
+															<input class="form-control form-control-sm col-md-5 col-sm-12 form-field-border ml-mr-15 border-left-width"
+															ng-model="vm.osiEmployees.fteCapacity"
+															placeholder='Capacity'
+														 type="text" maxlength="2" name="Capacity" data-only-Number  data-no-special-char-space required ng-disabled="!iseditable" />
+													</div>
+												
+
+
+									</div>
+									<div class="col-md-5">
+											<div class="form-group row">
+													<label for="extensionNumber" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+															Extension Number </label>
+														<input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width"
+														ng-model="vm.osiEmployeeContacts.contactNumber" maxlength="10"
+															placeholder='Extension Number '
+														 type="text" name="extensionNumber" data-only-Number  data-no-special-char-space required
+									   ng-disabled="!iseditable" />
+												</div>
+												<div class="form-group row">
+														<label for="mailStop" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+															Workstation / Locker ID </label>
+															<input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width"
+															maxlength="100"
+															ng-model="vm.osiEmployees.mailStop" capitalize
+																placeholder='Mail Stop'
+															 type="text" name="MailStop" required ng-disabled="true"  />
+													</div>
+												<div class="form-group row">
+														<label for="serialNumber" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+																Asset ID </label>
+															<input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width"
+															ng-model="vm.osiEmployees.serialNumber"
+															placeholder='Serial Numnber'
+															capitalize
+															ng-disabled="!iseditable"
+															type="text" name="userName" data-special-char-hyphen-dot  
+															maxlength="10" required />
+													</div>
+												
+
+													
+											</div>
+
+
+
+
+
+								</div>	
+									<div class="row pull-right">
+											<div class="col-sm-12">
+													<button type="button" class="btn btn-primary" ng-click="vm.checkForValidData();" ng-disabled="!nonEditable || iseditable">
+															Save
+															</button>
+															 <button type="button" ng-click="cancelProfile();" class="btn btn-default">
+															Cancel
+														</button>
+											</div>
+										</div>        
+											  </form>
+							</div>
+							</div>
+							</section>
+							</div>
+							</div>
+							</div>
+
+
+<!--
+<div class="wrapper row-offcanvas row-offcanvas-left">
+		<div data-ng-include="'views/employeeMenu-sf.html'"></div>
+		<div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+    <div class="right-side">
+        <section class="content">
+        <div class="row" ng-if="isTrascError">
+							<div
+								ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+								ng-if="flash" ng-bind="flash.message"></div>
+						</div>
+        <h4>Office Information</h4><br>
+	<form name="vm.osiEmployees" novalidate="">
+		<fieldset ng-disabled="vm.infoView" style="padding-left: 136px;padding-top: 19px;">
+
+			<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-2 no-padding">
+								<label for="extensionNumber"
+									class=" control-label no-padding pull-right"> Extension Number
+
+								</label>
+							</div>
+							<div class="col-md-4">
+								<input class="form-control info"
+									ng-model="vm.osiEmployeeContacts.contactNumber" maxlength="10"
+										placeholder='Extension Number '
+									 type="text" name="extensionNumber" data-only-Number  data-no-special-char-space required
+                   ng-disabled="!iseditable" />
+								<br/>
+							</div>
+
+							<div class="col-md-2 no-padding">
+								<label for="Email"
+									class=" control-label no-padding pull-right"> Email <font color="red">*</font></label>
+							</div>
+						
+							<div class="col-md-4">
+								<input class="form-control info"
+									ng-model="vm.osiEmployees.officeEmail" style="text-transform: uppercase"
+										placeholder='Email'
+									 maxlength="50" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+									 type="email" name="email" required ng-disabled="!iseditable" />
+							</div>
+						</div>
+				</div>
+				<br/>
+				<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-2 no-padding">
+						<label for="mailStop"
+							class=" control-label no-padding pull-right"> Mail Stop </label>
+					</div>
+					
+					<div class="col-md-4">
+						<input class="form-control info" maxlength="100"
+							ng-model="vm.osiEmployees.mailStop" style="text-transform: uppercase"
+								placeholder='Mail Stop'
+							 type="text" name="MailStop" required ng-disabled="!iseditable" />
+					</div>
+
+					<div class="col-md-2 no-padding">
+						<label for="capacity"
+							class=" control-label no-padding pull-right"> Hours per week <font color="red">*</font></label>
+					</div>
+
+					<div class="col-md-4">
+						<input class="form-control info"
+							ng-model="vm.osiEmployees.fteCapacity"
+								placeholder='Capacity'
+							 type="text" maxlength="2" name="Capacity" data-only-Number  data-no-special-char-space required ng-disabled="!iseditable" />
+					</div>
+				</div>
+				</div>
+
+				<div class="row">
+						<div class="col-md-12">
+						<div class="col-md-2 no-padding">
+							<label for="extensionNumber"
+								class=" control-label no-padding pull-right"> User Name
+							
+							</label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control info"
+								ng-model="vm.osiEmployees.userName"
+								placeholder='User Name '
+								ng-disabled="!iseditable" 
+								type="text" name="userName" data-no-special-char-space  
+								maxlength="10" required />
+							<br/>
+						</div>
+
+						<div class="col-md-2 no-padding">
+							<label for="serialNumber"
+								class=" control-label no-padding pull-right"> Serial Number
+							
+							</label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control info"
+								ng-model="vm.osiEmployees.serialNumber"
+								placeholder='Serial Numnber'
+								style="text-transform: uppercase"
+								ng-disabled="!vm.officeEmailValue"
+								type="text" name="userName" data-special-char-hyphen-dot  
+								maxlength="10" required />
+							<br/>
+						</div>
+						</div>
+					</div>
+				<br>
+
+
+			</div>
+
+
+
+
+		</fieldset>
+		<button type="button" style="float: right;" class="btn btn-primary" ng-click="vm.checkForValidData();" ng-disabled="!nonEditable || !iseditable">
+			            <span>Save</span>
+			            </button>
+			             <button type="button" ng-click="vm.clearOfficeInfoData();" style="float: right;margin-left: 14px;margin-right: 10px;" class="btn btn-primary">
+			            <span>Cancel</span>
+			        </button>
+	</form>
+	</section></div></div>
+</div>
+-->
+<div class="modal fade" role="dialog" id="confirmationModelForOffice" tabindex="-1" role="dialog" aria-labelledby="co">
+			  <div ng-include="'views/confirmationPopup.html'"></div>
+</div>

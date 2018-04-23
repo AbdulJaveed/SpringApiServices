@@ -1,0 +1,227 @@
+<script>
+    setTimeout(function(){ $("#job").toggleClass("active"); }, 100);
+        </script>
+<div data-ng-include="'views/employeeMenu-sf.html'"></div>
+<div class="container-fluid">
+        <div class="mt-3 col-md-12"></div>
+  <div class="row" ng-if="isTrascError">
+              <div
+               ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+               ng-if="flash" ng-bind="flash.message">{{flash.message}}
+       </div>
+   </div>
+   <div class="row ml-0">
+       <section class="forms">
+  <div class="card">
+                   <div class="card-body">
+                        <form class="form-horizontal" role="form" action="">
+                                <div class="row" data-ng-disabled="vm.infoView">
+                                        <div class="col-md-2 col-sm-12 col-xs-12 border-top-0 border-bottom-0 border-left-0">
+                                            <div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group row">
+                                                <label for="isManager" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                                        Is Manager</label>
+                                                        <input type="checkbox" class="checkbox-alignment" id="isManager" ng-model="vm.empAssignment.isManager" ng-true-value="1" ng-false-value="0" ng-disabled="!iseditable" />
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                    <label for="locationId" class="col-md-5 col-sm-12 text-align-right  col-form-label">Organization Location</label>
+                                         <select class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width form-field-border"
+                                         ng-model="vm.empAssignment.osiLocations"
+                                         name="selectedOrgLocation" id="orgId" ng-disabled="!iseditable"
+                                         ng-options="orgLocation.locationId as orgLocation.locationName for orgLocation in orgLocations">
+                                     <option value="" selected disabled="disabled">--Select Location--</option>
+                                 </select>
+                                                </div>
+                                              <div class="form-group row">
+                                                    <label for="deptId" class="col-md-5 col-sm-12 text-align-right  col-form-label">Department </label>         
+                                                    <input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width form-field-border"  ng-model="deptStructure" type="text"  ng-click="openRollUpsPopup()">
+                                              </div>
+                                              <div class="form-group row">
+                                                    <label for="gradeId" class="col-md-5 col-sm-12 text-align-right  col-form-label">Grade</label>
+                                                    <select class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width form-field-border"
+                                                    ng-model="vm.empAssignment.osiGrades"
+                                                    name="selectedGrades" id="gradeId" ng-disabled="!iseditable"
+                                                    ng-options="grade.gradeId as grade.gradeName for grade in grades"
+                                                    ng-change="vm.setTitleGrade(vm.empAssignment.osiGrades)">
+                                                <option value="" selected disabled="disabled">--Select Grade--</option>
+                                         </select>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="gradeId" class="col-md-5 col-sm-12 text-align-right  col-form-label">Job Code</label>
+                                                    <input type="text" class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width" ng-model="jobName" ng-disabled="true" />
+                                                </div>
+                                                <div class="form-group row" ng-show="{{usOrg}}" ng-if="vm.empAssignment.employeeType == 'EMPLOYEE'">
+                                                        <label for="onProbations" class="col-md-5 col-sm-12 text-align-right  col-form-label">On Probation</label>
+                                                        <input type="checkbox" class="checkbox-alignment" id="onProbation"
+                                                        ng-model="vm.empAssignment.onProbation"
+                                                        ng-change="changeOnProbation()" ng-disabled="!iseditable"
+                                                        ng-true-value="1" ng-false-value="0"/>
+                                                  </div>
+                                                  <div ng-if="isContractor" class="form-group row">
+                                                    <label for="startDate" class="col-md-5 col-sm-12 text-align-right  col-form-label">Start Date</label>
+                                                    <datepicker class="col-md-6 col-sm-12 ml-mr-15 margin-inherit" date-format="yyyy-MM-dd" selector="form-control">
+                                                        <div class="input-group ">
+                                                            <input class="form-control  form-field-border" ng-disabled="!iseditable" id="startDate" 
+                                                                placeholder="Start Date" required ng-model="vm.empAssignment.contractStartDate"
+                                                                ng-change="vm.compareDate(vm.empAssignment.contractStartDate)">
+                                                            <span class="input-group-addon" style="cursor: pointer;height: 38px;">
+                                                                <i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('startDate')"></i>
+                                                            </span>
+                                                        </div>
+                                                        <br>
+                                                    </datepicker>   
+                                            </div>
+                                                <!--  <div class="form-group row" ng-show="{{usOrgCode!=orgCode}}" ng-if="vm.empAssignment.employeeType == 'EMPLOYEE'">
+                                                        <label for="onProbation" class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width">Probation End Date</label>
+                                                        <input class="form-control" type="text"
+                                                        ng-model="vm.empAssignment.probationEndDate"
+                                                        id="probEndDate"
+                                                        disabled=true/>
+                                                  </div> -->
+                                    </div>
+                                    <div class="col-md-5">
+                                            <div class="form-group row">
+                                                    <label for="employeeType" class="col-md-5 col-sm-12 text-align-right  col-form-label">Employee Type    </label>         
+                                                    <input type="text" class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width form-field-border" ng-disabled="!iseditable"
+                                                    ng-model="vm.empAssignment.employeeType"
+                                                    id="employeeType"
+                                                    disabled=true/>
+                                              </div>
+                                            <div class="form-group row">
+                                                    <label for="supervisorId" class="col-md-5 col-sm-12 text-align-right  col-form-label">Supervisor</label>
+                                                    <input class="form-control" ng-model="supervisor.employeeId" type="hidden"/>
+                                                    <input type="text" placeholder="Search Employee" id="supId" autofocus ng-disabled="!iseditable"
+                                                           class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width form-field-border customer-search" name="supId" ng-model="supervisor.fullName"
+                                                           ng-keyup="searchSupervisor($event, supervisor.fullName)" autocomplete="off"/>
+
+                                                    <div class="col-md-12" style="z-index:500; position: absolute; float: left; border: 1px #C7C7CC solid;
+                                                         border-bottom-left-radius: 5px;
+                                                         border-bottom-right-radius: 5px;
+                                                         width: auto; background: white;" ng-if="supervisorList.length > 0">
+                                                        <div class="form-group" style="margin-bottom: 0;">
+                                                            <fieldset class="scheduler-border">
+                                                                <table class="table table-striped" style="margin-bottom:0;">
+                                                                    <thead>
+                                                                        <tr ng-repeat="cust in supervisorList | limitTo: 10 track by $index"  style="cursor: default;"
+                                                                            ng-class="{'selected':$index == custRowItem}" ng-click="setCustRowItem($index)"
+                                                                            ng-keyup="searchSupervisor($event, supervisor.fullName)"
+                                                                            class="supervisor-option">
+                                                                            <td class="text-left" style="width:275px;">
+                                                                                <span class="form-control-static">{{cust.fullName}}</span>
+                                                                            </td>
+                                                                            <td class="col-md-4 text-left" >
+<!--                                                                                        <span class="form-control-static">{{cust.employeeId}}</span>
+                                                                            </td>-->
+                                                                        </tr>
+                                                                </table>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="referredById" class="col-md-5 col-sm-12 text-align-right  col-form-label">Referred By</label>
+                                                    <input class="form-control" ng-model="searchParams.employeeId" type="hidden"/>
+                                                    <input type="text" placeholder="Search Employee" id="empId" autofocus ng-disabled="!iseditable"
+                                                           class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width  customer-search" name="supId" ng-model="searchParams.fullName"
+                                                           ng-keyup="searchEmployee($event, searchParams.fullName)" autocomplete="off"/>
+
+                                                    <div class="col-md-12" style="z-index:500; position: absolute; float: left; border: 1px #C7C7CC solid;
+                                                         border-bottom-left-radius: 5px;
+                                                         border-bottom-right-radius: 5px;
+                                                         width: auto; background: white;" ng-if="searchParamsList.length > 0">
+                                                        <div class="form-group" style="margin-bottom: 0;">
+                                                            <fieldset class="scheduler-border">
+                                                                <table class="table table-striped" style="margin-bottom:0;">
+                                                                    <thead>
+                                                                        <tr ng-repeat="cust in searchParamsList | limitTo: 10 track by $index"  style="cursor: default;"
+                                                                            ng-class="{'selected':$index == custRowItem}" ng-click="setCustRowsItem($index)"
+                                                                            ng-keyup="searchEmployee($event, searchParams.fullName)"
+                                                                            class="supervisor-option">
+                                                                            <td class="col-md-4 text-left" style="width:275px;">
+                                                                                <span class="form-control-static">{{cust.fullName}}</span>
+                                                                            </td>
+                                                                            <td class="col-md-4 text-left" >
+<!--                                                                                        <span class="form-control-static">{{cust.employeeId}}</span>
+                                                                            </td>-->
+                                                                        </tr>
+                                                                </table>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                    <label for="jobId" class="col-md-5 col-sm-12 text-align-right  col-form-label">Job Title</label>
+                                                    <select	class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width form-field-border"
+                                                    ng-model="vm.empAssignment.osiJobCodes"
+                                                    name="selectedJob" id="jobId" ng-disabled="!iseditable"
+                                                    ng-options="job.jobCodeId as job.jobCodeName for job in jobs">
+                                                <option value="" selected disabled="disabled">--Select Job--</option>
+                                        </select>
+                                                </div>
+                                   
+
+                                      <div class="form-group row" ng-show="{{usOrg}}" ng-if="vm.empAssignment.employeeType == 'EMPLOYEE'">
+                                            <label for="onProbations" class="col-md-5 col-sm-12 text-align-right  col-form-label">Probation Period</label>
+                                            <select class="select-width col-md-3"
+                                            ng-model="vm.empAssignment.selectedPeriod"
+                                            name="selectedMonth" id="months"
+                                            ng-options="n.momentProp as n.name for n in probationPeriod"
+                                            ng-change="changeSelectedDuration()"
+                                            ng-disabled="undefined == vm.empAssignment.onProbation || vm.empAssignment.onProbation == 0 || !iseditable">
+                                    </select>
+                                    <input class="form-control col-md-2" type="text" name="selectedDays" style="width: 54px;"
+                                    ng-model="vm.empAssignment.selectedPeriodValue" maxlength="2" only-number
+                                   ng-disabled="undefined == vm.empAssignment.onProbation || vm.empAssignment.onProbation == 0 || !iseditable" id="probEndDate"
+                                    /> 
+                                   
+                                      </div>
+                                      <div ng-if="isContractor" class="form-group row">
+                                        <label for="startDate" class="col-md-5 col-sm-12 text-align-right  col-form-label">End Date</label>    
+                                        <datepicker class="col-md-6 col-sm-12 ml-mr-15 margin-inherit" date-format="yyyy-MM-dd" selector="form-control" date-max-limit = "{{minDOH}}">
+                                            <div class="input-group ">
+                                                <input class="form-control  form-field-border" ng-disabled="!iseditable" id="endDate" placeholder="Start Date" required ng-model="vm.empAssignment.contractEndDate">
+                                                <span class="input-group-addon" style="cursor: pointer;height: 38px;">
+                                                    <i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('endDate')"></i>
+                                                </span>
+                                            </div>
+                                            <br>
+                                        </datepicker>
+                                          
+                                </div>
+                               </div>
+                               <div class="col-md-12">
+                               <div class="form-group row">
+                                    <label for="reason" class="col-md-4 col-sm-12 text-align-right  col-form-label">Reason for Change </label>         
+                                    <textarea  class="form-control form-control-sm col-md-7 col-sm-12 ml-mr-15 border-left-width" ng-model="vm.empAssignment.reasonForChange" id="reason" maxlength="120" ng-disabled="!iseditable" ></textarea>
+                              </div>
+                              </div>
+                            </div> 
+                                <div class="row pull-right">
+
+                                       
+                                        <div class="col-sm-12">
+                                        <!--    <button type="button" class="btn btn-primary"  ng-click="saveAssignment(vm.empAssignment)"
+                                            ng-disabled="!iseditable" id="btnSubmit" >
+                                             Save
+                                            </button> -->
+                                            <button type="button" class="btn btn-default" ng-click="cancelProfile()">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>    
+                                  
+                          </form>
+                          </div>
+                          </div>
+                          </section>
+                          </div>
+                          </div>
+                            
+                    
+
+<!-- ./wrapper -->
+<div ng-include="'views/Departments.html'" ></div>
+<div ng-include="'views/supervisorPopup.html'" ></div>

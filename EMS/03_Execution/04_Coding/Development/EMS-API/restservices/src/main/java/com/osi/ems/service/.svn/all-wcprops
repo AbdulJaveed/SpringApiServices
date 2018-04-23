@@ -1,0 +1,221 @@
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/osi-repos/testing_svn/!svn/ver/2430/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service
+END
+OsiLocationService.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/784/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiLocationService.java
+END
+IListOsiDepratmentService.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/osi-repos/testing_svn/!svn/ver/935/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/IListOsiDepratmentService.java
+END
+IListOsiTitlesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/820/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/IListOsiTitlesService.java
+END
+OsiFlexiFieldService.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/1482/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiFlexiFieldService.java
+END
+IListOsiCertificationsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/osi-repos/testing_svn/!svn/ver/865/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/IListOsiCertificationsService.java
+END
+OsiCategoryService.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/204/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiCategoryService.java
+END
+OsiSkillGroupsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/1832/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiSkillGroupsService.java
+END
+OsiContactsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/391/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiContactsService.java
+END
+ICrudOsiJobCodesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/osi-repos/testing_svn/!svn/ver/840/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/ICrudOsiJobCodesService.java
+END
+OsiEmpBankDetailsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/osi-repos/testing_svn/!svn/ver/1093/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiEmpBankDetailsService.java
+END
+OsiCertificationGroupsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/osi-repos/testing_svn/!svn/ver/1832/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiCertificationGroupsService.java
+END
+IListOsiBusinessUnitsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/osi-repos/testing_svn/!svn/ver/935/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/IListOsiBusinessUnitsService.java
+END
+OsiAddressService.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/209/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiAddressService.java
+END
+OsiOrganizationsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/osi-repos/testing_svn/!svn/ver/820/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiOrganizationsService.java
+END
+ICrudOsiDepratmentService.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/1980/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/ICrudOsiDepratmentService.java
+END
+OsiSubPracticeGradesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/osi-repos/testing_svn/!svn/ver/1965/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiSubPracticeGradesService.java
+END
+IListOsiSkilsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/849/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/IListOsiSkilsService.java
+END
+OsiAssignmentsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/1385/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiAssignmentsService.java
+END
+ICrudOsiTitlesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/840/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/ICrudOsiTitlesService.java
+END
+ICrudOsiCertificationsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/osi-repos/testing_svn/!svn/ver/887/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/ICrudOsiCertificationsService.java
+END
+OsiRollUpsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/977/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiRollUpsService.java
+END
+OsiStatesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/osi-repos/testing_svn/!svn/ver/198/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiStatesService.java
+END
+OsiSubPracticeService.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/1965/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiSubPracticeService.java
+END
+ICrudOsiBusinessUnitsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/osi-repos/testing_svn/!svn/ver/1980/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/ICrudOsiBusinessUnitsService.java
+END
+IListOsiGradesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/2408/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/IListOsiGradesService.java
+END
+OsiCountriesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/1093/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiCountriesService.java
+END
+OrgHierarchyService.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/1075/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OrgHierarchyService.java
+END
+ICrudOsiSkilsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/879/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/ICrudOsiSkilsService.java
+END
+OsiSubPracticeGradesHistoryService.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/osi-repos/testing_svn/!svn/ver/1965/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiSubPracticeGradesHistoryService.java
+END
+IListOsiCostCenterService.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/osi-repos/testing_svn/!svn/ver/865/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/IListOsiCostCenterService.java
+END
+ICrudOsiGradesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/1761/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/ICrudOsiGradesService.java
+END
+OsiSkillTagsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/1832/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiSkillTagsService.java
+END
+IListOsiJobCodesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/osi-repos/testing_svn/!svn/ver/820/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/IListOsiJobCodesService.java
+END
+ICrudOsiCostCenterService.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/ICrudOsiCostCenterService.java
+END
+OsiEmployeesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/2346/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiEmployeesService.java
+END
+OsiCertificationTagsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/osi-repos/testing_svn/!svn/ver/1832/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/service/OsiCertificationTagsService.java
+END

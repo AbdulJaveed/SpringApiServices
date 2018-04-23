@@ -1,0 +1,233 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<div class="breadcrumb-holder">
+		<div class="container-fluid">
+			<ul class="breadcrumb">
+				<h1 class="h3 display">Menu</h1>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<header> </header>
+		<section class="forms">
+			<div class="row">
+				<div class="alert alert-success" ng-show="showSuccessAlert">
+					<strong></strong> {{successTextAlert}}
+				</div>
+				<div class="alert alert-danger" ng-show="showErrorAlert">
+					<strong></strong> {{ErrorTextAlert}}
+				</div>
+
+			</div>
+
+			<div class="col-sm-12 no-padding adjust-search-box">
+				<div class="card">
+					<div class="card-body">
+						<div class="row" role="form">
+							<div class="col-lg-4">
+								<input class="form-control" name="menuname"
+									ng-model="searchMenu.menuName" placeholder="Menu Name"
+									onFocus="this.placeholder = ''"
+									onBlur="this.placeholder = 'Menu Name'" type="text"
+									maxlength="100" only-Alphabets no-special-char />
+							</div>
+							<div class="col-lg-4">
+								<button class="btn btn-primary" ng-click="searchMenu1()">Search</button>
+								<button type="button" class="btn btn-defaul btn-width"
+									ng-click="clearSearch()">Clear</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="content">
+			<div class='card'>
+				<div class="box-body table-responsive" style="">
+					<table class="table table-striped table-sm">
+						<thead class="thead_bg">
+							<tr>
+								<th ng-click="sort('menuName')">Menu Name <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'menuName'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('description')">Menu Description <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'description'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('active')">Status <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'active'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr
+								dir-paginate="menu1 in menus|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+								ng-init="myIndex = $index" ng-click="selectRow($event, menu1)"
+								ng-dblclick="editSelectedRowDetails()"
+								ng-class="{selected: isRowSelected(menu1)}">
+								<td>{{menu1.menuName}}</td>
+								<td>{{menu1.description}}</td>
+								<td>{{menu1.active}}</td>
+							</tr>
+						</tbody>
+
+					</table>
+					<div ng-if="menus.length == 0">
+						<h6 style="text-align: center; color: red;">No Records Found</h6>
+					</div>
+
+
+				</div>
+				<!-- /.box-body -->
+				<div class="col-sm-13 row">
+					<div class="col-sm-10">
+						<dir-pagination-controls max-size="8" direction-links="true"
+							boundary-links="true" on-page-change="clearSelectedRow()">
+						</dir-pagination-controls>
+					</div>
+					<div class="col-sm-2 adjust-crud-op">
+						<span ng-repeat="availOperations in availOperations"> <i
+							style="cursor: pointer;"
+							ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',
+                                                'glyphicon glyphicon-eye-open' : availOperations.name == 'View',
+                                                'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',
+                                                'disabled': disable_{{availOperations.name}}}"
+							ng-disabled="disable_{{availOperations.name}}"
+							ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+						</span>
+					</div>
+				</div>
+		</section>
+	</div>
+
+</div>
+<div class="modal fade" id="menu_model" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="row">
+					<div class="col-lg-6">
+						<h4 class="modal-title">{{headername}}</h4>
+					</div>
+					<div class="col-lg-6 pull-right">
+						<button type="button" class="close modelCloseButton"
+							data-dismiss="modal">&times;</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="row" ng-if="isTrascError">
+					<div
+						ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+						ng-if="flash" ng-bind="flash.message"></div>
+				</div>
+				<div class="row">
+					<div class="col-lg-5 text-align-right">
+						<label for="name">Menu Name </label>
+					</div>
+					<div class="col-lg-6">
+						<input class="form-control form-field-border" name="name"
+							id="noSpaces" ng-disabled="!iseditable" ng-model="menu.menuName"
+							placeholder="Enter Menu Name" onFocus="this.placeholder = ''"
+							onBlur="this.placeholder = 'Enter Menu Name'" type="text"
+							maxlength="100" only-Alphabets no-special-char>
+					</div>
+					<div class="col-sm-1"></div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-lg-5 text-align-right">
+						<label for="Desc">Menu Description</label>
+					</div>
+					<div class="col-lg-6">
+						<textarea class="form-control textareaMenuDesc" name="menuDesc"
+							ng-disabled="!iseditable" ng-model="menu.description"
+							placeholder="Enter Menu Description"
+							onFocus="this.placeholder = ''"
+							onBlur="this.placeholder = 'Enter Menu Description'"
+							maxlength="500"></textarea>
+					</div>
+					<div class="col-sm-1"></div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-lg-5 text-align-right">
+						<label for="name">Report Group</label>
+					</div>
+					<div class="col-lg-6">
+						<!-- <select class="form-control" ng-model="menu.reportGrpId" required>
+							<option value="" selected>--select one--</option>
+							<option
+								ng-repeat="element in osiReportGroupsList | orderBy:'rptGrpName'"
+								value={{element}}
+								ng-selected="menu.reportGrpId == element.rptGrpId">{{element.rptGrpName}}</option>
+						</select>  -->
+						<select class="form-control" ng-model="menu.reportGrpId"
+							ng-options="element.rptGrpId as (element.rptGrpName) for element in osiReportGroupsList | orderBy:'rptGrpName'"
+							ng-disabled="!iseditable" required>
+							<option value="" selected>Select Report Group</option>
+						</select>
+					</div>
+					<div class="col-sm-1"></div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-sm-5 text-align-right">
+						<label>Active</label>
+						
+					</div>
+					<div class="col-sm-4">
+							<input type="checkbox" ng-model="active">
+					</div>
+					<div class="col-sm-1"></div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-sm-6"></div>
+					<div class="col-lg-3">
+						<button type="button" class="btn btn-default pull-right"
+							data-dismiss="modal">Close</button>
+					</div>
+					<div class="col-lg-3">
+						<div ng-if="isUpdatable && viewButton">
+							<button class="btn btn-primary  pull-right modalButton"
+								ng-click="updateRow(menu);" ng-disabled="!iseditable">Update</button>
+						</div>
+						<div ng-if="!isUpdatable && viewButton">
+							<button class="btn btn-primary  pull-right modalButton"
+								ng-click="saveRow(menu);" ng-disabled="!iseditable">Save</button>
+						</div>
+					</div>
+					<div class="col-sm-1"></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- delete confirmation modal -->
+<div class="modal fade" id="menu-delete-model" role="dialog"
+	style="top: 20%">
+	<div class="modal-dialog">
+		<div class="modal-content modalMenuEntry-content">
+			<div class="modal-header">
+				<button type="button" class="close modelCloseButton"
+					data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Do you want to {{confirmationHeading}}
+					?</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal" role="form">
+					<div class="modal-foot" align="center">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="activeField()">No</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

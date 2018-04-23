@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/osi-repos/testing_svn/!svn/ver/2467/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/service
+END
+EMSProcessStartService.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/2467/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/service/EMSProcessStartService.java
+END
+MyService.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/osi-repos/testing_svn/!svn/ver/2142/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/service/MyService.java
+END
+ProcessStartService.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/activiti/service/ProcessStartService.java
+END

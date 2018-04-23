@@ -1,0 +1,5 @@
+<div>
+<h3>Header</h3>
+<div ng-show="{{loggedIn}}" style="float: left;margin-top: -20px; margin-left: 53px;">
+<a href="#/home">Home</a></div>
+</div>

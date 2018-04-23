@@ -1,0 +1,144 @@
+<style>
+    textarea {
+        resize: none;
+    }
+</style>
+
+<div class="wrapper row-offcanvas row-offcanvas-left" >
+    <form novalidate name="address">
+        <div class="col-md-7 margin-left-3">
+            <label class="custom-label"  style="color: #3bacda;">Mailing Address </label>
+        </div>
+
+        <div class="form-horizontal">
+            <div class="form-group row">
+                <label for="addressLine1" class="col-md-3 col-sm-12 text-align-right  col-form-label">
+                    Address Line1 </label>
+                <textarea ng-disabled="!iseditable" placeholder="Address Line1" ng-keyup="vm.copyAddressLine1()" title-case ng-model="vm.emailing.addressLine1" 
+                          class="form-control form-control-sm col-md-8 col-sm-12 ml-mr-15" maxlength="100" id="addressLine1" name="addressLine1" rows="2"></textarea>
+            </div>
+            <div class="form-group row">
+                <label for="addressLine2" class="col-md-3 col-sm-12 text-align-right  col-form-label">
+                    Address Line2 </label>
+                <textarea ng-disabled="!iseditable" placeholder="Address Line2" ng-keyup="vm.copyAddressLine2()" title-case type="text " ng-model="vm.emailing.addressLine2" 
+                          class="form-control form-control-sm col-md-8 col-sm-12 ml-mr-15"  maxlength="100" id="addressLine2" name="addressLine2" rows="2"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12 border-top-0 border-bottom-0 border-left-0">
+                        <div class="form-group row">
+                                <label for="Country" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                    Country</label>
+                                <select ng-disabled="!iseditable" class="selectpicker form-control form-control-sm col-md-5 col-sm-12 ml-mr-15" id="country" 
+                                        ng-change="vm.getStatesByCountryIdForEmailAddress()" ng-model="vm.emailing.countryId" name="country" data-style="btn" ng-options="country.countryId as country.countryName for country in vm.emalingAddCountry">
+                                        <option value="">--Select--</option>
+                                </select>
+                            </div>
+                    <div class="form-group row">
+                            <label for="State" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                State</label>
+                            <select ng-disabled="!iseditable" class="selectpicker form-control form-control-sm col-md-5 col-sm-12 ml-mr-15" ng-model="vm.emailing.stateId" 
+                                    ng-change="vm.copyEmailAddress()" id="state" name="state" data-style="btn" ng-options="state.stateId as state.stateName for state in vm.emalingState">
+                                    <option value="">--Select--</option>
+                            </select>
+                        </div>
+                </div>  
+                <div class="col-md-6 margin-left-4">
+                        <div class="form-group row">
+                                <label for="City" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                    City</label>
+                                <input ng-disabled="!iseditable" placeholder="City" type="text" title-case ng-keyup="vm.copyCity()" class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15"
+                                       title-case ng-model="vm.emailing.city" class="form-control"  maxlength="100" id="city" name="city">
+                            </div>
+                        
+
+                    <div class="form-group row">
+                        <label for="ZipCode" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                            Zip Code</label>
+                        <input ng-disabled="!iseditable" ng-keyup="vm.copyZipCode()" placeholder="Zip Code" type="text" class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15" 
+                               ng-model="vm.emailing.zipcode"  capitalize maxlength="20" id="zipCode" name="zipCode" no-special-char-space>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7">
+                <label class="custom-label" style="color: #3bacda;">Permanent Address </label>
+            </div>
+            <div class="form-check col-md-4">
+                <label class="form-check-label" style="float: right;">
+                    <input name="sameAsAbove" ng-model="vm.sameAsAbove" ng-disabled="!iseditable"
+                           ng-click="vm.copyEmailAddress()" id="sameAsAbove"
+                           class="form-check-input" type="checkbox" value="true">
+                    Same As Above
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <div class="form-group row">
+                <label for="perminentAddressLine1" class="col-md-3 col-sm-12 text-align-right  col-form-label">
+                    Address Line1 </label>
+                <textarea ng-disabled="vm.sameAsAbove || !iseditable" title-case ng-model="vm.perminent.addressLine1" 
+                          class="form-control form-control-sm col-md-8 col-sm-12 ml-mr-15" maxlength="100" 
+                          id="perminentAddressLine1" name="perminentAddressLine1" rows="2" placeholder="Address Line1"></textarea>
+            </div>
+            <div class="form-group row">
+                <label for="addressLine2" class="col-md-3 col-sm-12 text-align-right  col-form-label">
+                    Address Line2 </label>
+                <textarea ng-disabled="vm.sameAsAbove || !iseditable" title-case ng-model="vm.perminent.addressLine2"  placeholder="Address Line2"
+                          class="form-control form-control-sm col-md-8 col-sm-12 ml-mr-15"  maxlength="100" id="addressLine2" name="addressLine2" rows="2"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12 border-top-0 border-bottom-0 border-left-0">
+                        <div class="form-group row">
+                                <label for="Country" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                    Country</label>
+                                <select ng-disabled="vm.sameAsAbove || !iseditable" class="selectpicker form-control form-control-sm col-md-5 col-sm-12 ml-mr-15" id="country" 
+                                     ng-change="vm.getStatesByCountryIdForPerminentAddress()"
+                                    ng-model="vm.perminent.countryId" id="perminentAddressCountry" name="perminentAddressCountry" data-style="btn"
+                                    ng-options="country.countryId as country.countryName for country in vm.countryList">
+                                    <option value="">--Select--</option>
+                                </select>
+                            </div>
+                    <div class="form-group row">
+                            <label for="State" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                State</label>
+                            <select ng-disabled="vm.sameAsAbove || !iseditable" class="selectpicker form-control form-control-sm col-md-5 col-sm-12 ml-mr-15"
+                                    ng-model="vm.perminent.stateId" id="perminentAddressState" name="perminentAddressState" data-style="btn" ng-options="state.stateId as state.stateName for state in vm.stateList">
+                                    <option value="">--Select--</option>
+                            </select>
+                        </div>
+                </div>  
+                <div class="col-md-6 margin-left-4">
+                        <div class="form-group row">
+                                <label for="City" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                                    City</label>
+                                <input ng-disabled="vm.sameAsAbove || !iseditable" type="text" class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15"
+                                      placeholder="City" title-case ng-model="vm.perminent.city" maxlength="100" id="perminentAddressCity" name="perminentAddressCity">
+                            </div>
+                       
+                    <div class="form-group row">
+                        <label for="ZipCode" class="col-md-6 col-sm-12 text-align-right  col-form-label">
+                            Zip Code</label>
+                        <input placeholder="Zip Code" ng-disabled="vm.sameAsAbove || !iseditable" type="text" class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15" 
+                              ng-model="vm.perminent.zipcode" capitalize maxlength="20" id="perminentAddressZipCode" name="perminentAddressZipCode" no-special-char-space>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-foot col-md-12>" align="center">
+            <div class="form-group row">
+                <div class="col-md-6"></div>
+                <div class="col-md-4 offset-md-2">
+                    <button type="button" class="btn btn-default"
+                            ng-click="vm.clearFormAddress()">Close</button>
+                    <button class="btn btn-primary" formnovalidate 
+                            ng-click="vm.saveAddress();">OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

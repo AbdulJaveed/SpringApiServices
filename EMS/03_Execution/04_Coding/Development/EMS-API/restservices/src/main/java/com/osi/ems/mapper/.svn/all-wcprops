@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/osi-repos/testing_svn/!svn/ver/2088/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper
+END
+OsiOrganizations.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/191/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiOrganizations.java
+END
+OsiEmpAdditionalDocsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/1189/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiEmpAdditionalDocsMapper.java
+END
+OsiOrganizationsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/1042/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiOrganizationsMapper.java
+END
+OsiSubPracticeGradesMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/1965/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiSubPracticeGradesMapper.java
+END
+OsiSkillGroupMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/osi-repos/testing_svn/!svn/ver/1790/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiSkillGroupMapper.java
+END
+OsiAssignmentsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/osi-repos/testing_svn/!svn/ver/317/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiAssignmentsMapper.java
+END
+OsiSkillTagsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/1790/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiSkillTagsMapper.java
+END
+OsiOrgAddressMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/209/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiOrgAddressMapper.java
+END
+OsiRollupsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/794/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiRollupsMapper.java
+END
+OsiCertificationGroupMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/1792/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiCertificationGroupMapper.java
+END
+OsiEmployeesMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/435/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiEmployeesMapper.java
+END
+OsiCertificationTagsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/1876/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiCertificationTagsMapper.java
+END
+OsiAttachmentsesMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/137/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiAttachmentsesMapper.java
+END
+OsiSubPracticeMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/1965/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiSubPracticeMapper.java
+END
+OsiLocationMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/1042/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiLocationMapper.java
+END
+OsiFlexiFieldMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/147/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiFlexiFieldMapper.java
+END
+OsiSubPracticeGradesHistoryMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/osi-repos/testing_svn/!svn/ver/1965/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiSubPracticeGradesHistoryMapper.java
+END
+OsiCategoryMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/osi-repos/testing_svn/!svn/ver/195/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiCategoryMapper.java
+END
+OsiContactsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/osi-repos/testing_svn/!svn/ver/270/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/mapper/OsiContactsMapper.java
+END

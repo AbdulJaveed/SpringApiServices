@@ -1,0 +1,227 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <div class="right-side">
+        <div>
+            <!-- Content Header (Page header) -->
+            <section class="content">
+                <div class="row" style="margin-right: 0px;">
+                    <div class="col-sm-6">
+                        <h4>&nbsp; Report Group</h4>
+                    </div>
+                </div>
+                <div class="alert alert-success" ng-show="showSuccessAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{successTextAlert}}
+                </div>
+                <div class="col-sm-12 no-padding">
+                    <div class="panel panel-default" style="min-height: auto;">
+                        <div class="panel-body">
+                            <div class="navbar-form navbar-left form-horizontal col-lg-12"
+                                 role="form">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input style="width:150px;" class="form-control" name="rptGrpName"
+                                                       ng-Model="rptGrpName" placeholder="Report Group Name"
+                                                       type="text">
+                                            </td>
+
+                                            <td><div class="col-lg-2"  style="width:150px;">
+                                                    <button type="button" class="btn btn-primary btn-width" 
+                                                            ng-click="searchReportsGroup()">Search</button>
+                                                    <button type="button" style = "position:absolute;right:0%;" class="btn btn-defaul btn-width" ng-click="clearSearch()">Clear</button>
+                                                </div></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>    
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!--MAIN BODY START-->
+                <div class="box1">
+                    <div class="box-body table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead_bg">
+                                <tr>
+                                    <th ng-click="sort('rptGrpName')">Report Group Name <span
+                                            class="glyphicon sort-icon" ng-show="sortKey == 'rptGrpName'"
+                                            ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    <th ng-click="sort('active')">Status <span
+                                            class="glyphicon sort-icon" ng-show="sortKey == 'active'"
+                                            ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    <!--<th>Action</th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="reportsGroup in reportsGroupList|orderBy:sortKey:!reverse|itemsPerPage:rowSize" 
+                                    ng-class="{selected: reportsGroup.rptGrpId == isSelectedRow}"
+                                    ng-click="selectRow(reportsGroup.rptGrpId)"  ng-dblclick="operationsGenericFunction('Edit','')">
+                                    <td>{{reportsGroup.rptGrpName}}</td>
+                                    <!--<td>{{reportsGroup.active}}</td>-->
+                                    <td ng-if ="reportsGroup.active == 1">Active</td>
+                                    <td ng-if ="reportsGroup.active == 0">In-Active</td>
+                                    <!--<td>
+        <div class="col-sm-12 lookup-action">
+            <i class="fa fa-eye" ng-click="vm.viewitem(item)"></i>&nbsp;
+            &nbsp; <i class="fa fa-pencil-square-o"
+                      ng-click="vm.edititem(item)"></i>
+            &nbsp; <i class="fa fa-trash-o" aria-hidden="true" ng-click="vm.deleteEntry(item)"></i>
+        </div>
+    </td>-->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-if="reportsGroup.length == 0">
+                            <h6 style="text-align: center; color: red;">No Records Found</h6>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="col-sm-12">
+                        <!--<div style="float: right;">
+    <button class="btn btn-primary pull-right"
+            ng-click="vm.openfunctionmodal($event)">Add Function</button>
+</div>-->
+                        <div class="col-sm-6">
+                            <div style="float: left; margin-top: -10px;">
+                                <dir-pagination-controls max-size="8" direction-links="true"
+                                                         boundary-links="true" on-page-change="clearSelectedRow()">
+                                </dir-pagination-controls>
+                            </div>
+                        </div>
+                        <div style="float: right;">
+                            <!--  'glyphicon glyphicon-trash' : availOperations.name == 'Delete', -->
+                            <span ng-repeat="availOperations in availOperations"> <i
+                                    style="cursor: pointer;"
+                                    ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',       
+					      'glyphicon glyphicon-eye-open' : availOperations.name == 'View',       
+					      'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',       
+					       
+					      'disabled': disable_{{availOperations.name}}}"
+                                    ng-disabled="disable_{{availOperations.name}}"
+                                    ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+    <!-- /.right-side -->
+</div>
+
+<div class="modal fade" id="reports-group-modal" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton"
+                        data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{rptGrpHeading}} Report Group</h4>
+            </div>
+            <div class="modal-body" style="height: 480px;">
+                <div class="form-horizontal" role="form">
+
+                    <div class="row" ng-if="isTrascError">
+                        <div
+                            ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                            ng-if="flash" ng-bind="flash.message"></div>
+                    </div>
+                    <div class="form-group" ng-show="false">
+                        <label for="name" class="control-label col-sm-3">Report Group Id<font color="red">*</font>
+                        </label>
+                        <div class="col-sm-8">
+                            <input class="form-control" name="name" id="noSpaces"
+                                   ng-disabled="!iseditable" ng-model="rptGrp.rptGrpId"
+                                   placeholder="Enter Id" onFocus="this.placeholder = ''" 
+                                   onBlur="this.placeholder = 'Enter Report Group Id'" type="text" maxlength="100" only-Alphabets no-special-char>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="control-label col-sm-3">Report Group<font color="red">*</font>
+                        </label>
+                        <div class="col-sm-8">
+                            <input class="form-control" name="name" id="noSpaces"
+                                   ng-disabled="!iseditable" ng-model="rptGrp.rptGrpName"
+                                   placeholder="Enter Name" onFocus="this.placeholder = ''" 
+                                   onBlur="this.placeholder = 'Enter Report Group'" type="text" maxlength="100" only-Alphabets no-special-char required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="control-label col-sm-3">Active</label>
+                        <div class="col-sm-8">
+                            <input ng-style="iseditable && {'background-color': 'white'}"
+                                   type="checkbox" ng-disabled="!iseditable" ng-checked="rptGrp.active==1" ng-model="isActive" />
+                        </div>
+                    </div>
+                    <div class="row table-striped">
+                        <div class="col-lg-5" style="margin-left: 30px; margin-top: 10px;">
+                            <label for="from" class ="control-label" style="font-size:14px;">Available Reports</label>
+                            <select name="from[]" class="multiselect form-control Exclusionstriped"
+                                    id="multiselect" size="12" ng-model="existingReports" ng-disabled="!iseditable"
+                                    multiple="multiple" data-right="#multiselect_to_1"
+                                    data-right-all="#right_All_1"
+                                    data-right-selected="#right_Selected_1" data-left-all="#left_All_1"
+                                    data-left-selected="#left_Selected_1">
+                                <option ng-repeat="report in availableReports| filter:searchSupplier | orderBy:'userReportName' track by $index" 
+                                        class="strippedOptions" value="{{report}}">
+                                    {{report.userReportName}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1 funcExcluMultiselect" style="margin-top: 75px;">
+                            <button type="button" class="btn" ng-click="includeAllReports()" ng-disabled="!iseditable">
+                                <i class="glyphicon glyphicon-forward"></i>
+                            </button>
+                            <button type="button" class="btn" ng-click="includeSelectedReport(existingReports)" ng-disabled="!iseditable">
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                            </button>
+                            <button type="button" class="btn" ng-click="excludeAllReports()" ng-disabled="!iseditable">
+                                <i class="glyphicon glyphicon-backward"></i>
+                            </button>
+                            <button type="button" class="btn" ng-click="excludeSelectedReports(selectedReports)" ng-disabled="!iseditable">
+                                <i class="glyphicon glyphicon-chevron-left"></i>
+                            </button>
+                        </div>
+                        <div class="col-lg-5" style="margin-top: 10px;">
+                            <label for="to" class ="control-label" style="font-size:14px;">Selected Reports</label>
+                            <select name="to[]" id="multiselect_to_1" ng-model="selectedReports" ng-disabled="!iseditable"
+                                    class="form-control Exclusionstriped" size="12" multiple="multiple">
+                                <option ng-repeat="report in includedReports| orderBy:'userReportName' track by $index" 
+                                        class="strippedOptions" value="{{report}}">
+                                    {{report.userReportName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modal-foot" align="center">
+                        <br>
+                        <div>
+                            <button type="button" class="btn btn-default pull-right"
+                                    data-dismiss="modal">Close</button>
+                        </div>
+                        <div ng-show="vm.showUpdate">
+                            <button class="btn btn-primary  pull-right modalButton"
+                                    ng-click="saveReportGroup(rptGrp);" ng-disabled="!iseditable">Update</button>
+                        </div>
+                        <div ng-show="vm.showSave">
+                            <button class="btn btn-primary  pull-right modalButton"
+                                    ng-click="saveReportGroup(rptGrp);" ng-disabled="!iseditable">Save</button>
+                        </div>
+                    </div>
+                    <br> <br>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

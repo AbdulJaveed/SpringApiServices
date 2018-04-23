@@ -1,0 +1,229 @@
+
+
+<div  ng-init="loadCertificates()">
+	<form name="vm.osiUser" novalidate="">
+		<fieldset ng-disabled="vm.infoView">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="certificationName"
+								class=" control-label no-padding pull-right"> Certification Name
+								
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="certificationName" 
+								ng-model="vm.userInfo.certificationName" placeholder='Certification Name'
+								type="text" maxlength="50" no-special-char-space >
+							<!--<div class="validation-error" style="color: red"
+								ng-show="(vm.userInfo.certificationName.$dirty || vm.submitted) && vm.userInfo.certificationName.$error.required">
+								certification Name is required.</div>-->
+							<br />
+						</div>
+					</div>
+                  
+                    <div class="row">
+						<div class="col-md-4 paddingright">
+							<label for="yearOfPass"
+								class=" control-label no-padding pull-right"> Year of passing
+								
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="yearOfPass" 
+								ng-model="vm.userInfo.yearOfPass" placeholder='year of passing'
+								type="text" maxlength="50" no-special-char-space >
+							<!--<div class="validation-error" style="color: red"
+								ng-show="(vm.userInfo.yearOfPass.$dirty || vm.submitted) && vm.userInfo.yearOfPass.$error.required">
+								year of pass is required.</div>-->
+							<br />
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="ExpiryDate"
+								class=" control-label no-padding pull-right"> Expiry Date
+								
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="ExpiryDate" 
+								ng-model="vm.userInfo.ExpiryDate"
+								type="date" >
+							
+							<br />
+						</div>
+					</div>
+					  <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="isVerified"
+								class=" control-label no-padding pull-right"> Is Verified
+								
+							</label>
+						</div>
+						<div class="col-md-6">
+							<select class="form-control"  ng-model="vm.userInfo.isVerified"  name="isVerified">>
+                                <option value="yes">yes</option>
+                                <option value="No">No</option>
+                            </select>
+							
+							<br />
+						</div>
+					</div>
+                    <input type="button" id="search_btn1" value="Search" onclick="searchCertificates(vm.userInfo)">
+				<br>
+                    <table  border="1">
+                        <thead>
+				<tr>
+					<th>Certificate Name</th>
+					<th>Issued By</th>
+					<th>Year Of Passing</th>
+					<th>Date Of Expiry</th>
+					<th>GPA/percentage</th>
+					<th>Is Verified</th>
+				</tr>
+			</thead>  
+                        <tbody>
+							<tr ng-repeat="certList in certLists">
+							<td>{{certList.certificationName}}</td>
+							<td>{{certList.IssuedBy}}</td>
+							<td>{{certList.yearOfPass}}</td>
+							<td>{{certList.dateofExpiry}}</td>
+                                <td>{{certList.percentage}}</td>
+                                <td>{{certList.IsVerified}}</td>
+														</tr>
+						</tbody>
+                    </table>
+                   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span>&#43;</span></button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Certificate</h4>
+        </div>
+        <div class="modal-body">
+          <form name="vm.osiUser" novalidate="">
+        
+		<fieldset ng-disabled="vm.infoView">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="certificationName" 
+								class=" control-label no-padding pull-right"> Certification Name
+								
+							</label>
+						</div>
+						<div class="col-md-6">
+							<select class="form-control"  ng-model="vm.userInfo.certificationName"  name="isVerified">>
+                             
+                            </select>
+							<!--<div class="validation-error" style="color: red"
+								ng-show="(vm.userInfo.certificationName.$dirty || vm.submitted) && vm.userInfo.certificationName.$error.required">
+								certification Name is required.</div>-->
+							<br />
+						</div>
+					</div>
+                  
+                    
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="issuedBy" 
+								class=" control-label no-padding pull-right"> Issued By
+								
+							</label>
+						</div>
+						<div class="col-md-6">
+							<select class="form-control"  ng-model="vm.userInfo.issuedBy"  name="isVerified">>
+                             
+                            </select>
+							<!--<div class="validation-error" style="color: red"
+								ng-show="(vm.userInfo.issuedBy.$dirty || vm.submitted) && vm.userInfo.issuedBy.$error.required">
+								issuedBy  is required.</div>-->
+							<br />
+						</div>
+					</div>
+                    
+                 <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="percentage" 
+								class=" control-label no-padding pull-right"> GPA/Percentage
+								
+							</label>
+						</div>
+						<div class="col-md-6">
+						<input class="form-control" name="percentage" 
+								ng-model="vm.userInfo.percentage" placeholder='GPA/percentage'
+								type="text" maxlength="50" no-special-char-space required>
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUser.percentage.$dirty || vm.submitted) && vm.osiUser.percentage.$error.required">
+								percentage is required.</div>
+							<br />
+						</div>
+					</div>
+                     <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="yearOfPassing"
+								class=" control-label no-padding pull-right"> Year of Passing
+								
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="yearOfPassing" 
+								ng-model="vm.userInfo.yearOfPassing"
+								type="text" required>
+                            <div class="validation-error" style="color: red"
+								ng-show="(vm.osiUser.yearOfPassing.$dirty || vm.submitted) && vm.osiUser.yearOfPassing.$error.required">
+								yearOfPassing is required.</div>
+							
+							<br />
+						</div>
+					</div>
+                     <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="dateOfExpiry"
+								class=" control-label no-padding pull-right"> Date Of Expiry
+								
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="dateOfExpiry" 
+								ng-model="vm.userInfo.dateOfExpiry"
+								type="date" >
+							
+							<br />
+						</div>
+					</div>
+                    <input type="checkbox" name="isVerified" value="yes">isVerified<br>
+                <br/>
+              <input type="button" id="clear_certificate"  value="clear" onclick="clearCertificates()">
+                 <input type="button" id="cancel_certificate" value="cancel" onclick="cancelCertificates()">
+                 <input type="Submit" id="save_certificate" onclick="saveCertificates()">
+                    </div>
+            </div>
+		</fieldset>
+	</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+                   
+			</div>
+            </div>
+		</fieldset>
+	</form>
+    </div>
+	
+
+

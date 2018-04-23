@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/osi-repos/testing_svn/!svn/ver/2411/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao
+END
+ICrudOsiCostCenterDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/ICrudOsiCostCenterDao.java
+END
+OsiRollUpsDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/osi-repos/testing_svn/!svn/ver/977/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/OsiRollUpsDao.java
+END
+OsiOrganizationDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/osi-repos/testing_svn/!svn/ver/489/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/OsiOrganizationDao.java
+END
+OsiSubPracticeDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/osi-repos/testing_svn/!svn/ver/1965/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/OsiSubPracticeDao.java
+END
+ICrudOsiBusinessUnitsDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/1795/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/ICrudOsiBusinessUnitsDao.java
+END
+IListOsiDepratmentDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/935/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/IListOsiDepratmentDao.java
+END
+OsiLocationDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/osi-repos/testing_svn/!svn/ver/784/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/OsiLocationDao.java
+END
+IListOsiTitlesDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/osi-repos/testing_svn/!svn/ver/820/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/IListOsiTitlesDao.java
+END
+IListOsiGradesDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/osi-repos/testing_svn/!svn/ver/2408/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/IListOsiGradesDao.java
+END
+IListOsiCertificationsDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/865/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/IListOsiCertificationsDao.java
+END
+ICrudOsiSkilsDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/osi-repos/testing_svn/!svn/ver/879/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/ICrudOsiSkilsDao.java
+END
+IListOsiCostCenterDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/865/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/IListOsiCostCenterDao.java
+END
+ICrudOsiJobCodesDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/840/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/ICrudOsiJobCodesDao.java
+END
+IListOsiBusinessUnitsDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/935/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/IListOsiBusinessUnitsDao.java
+END
+ICrudOsiDepratmentDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/ICrudOsiDepratmentDao.java
+END
+IListOsiSkilsDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/osi-repos/testing_svn/!svn/ver/849/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/IListOsiSkilsDao.java
+END
+ICrudOsiTitlesDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/osi-repos/testing_svn/!svn/ver/840/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/ICrudOsiTitlesDao.java
+END
+ICrudOsiGradesDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/ICrudOsiGradesDao.java
+END
+IListOsiJobCodesDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/820/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/IListOsiJobCodesDao.java
+END
+ICrudOsiCertificationsDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/887/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ems/dao/ICrudOsiCertificationsDao.java
+END

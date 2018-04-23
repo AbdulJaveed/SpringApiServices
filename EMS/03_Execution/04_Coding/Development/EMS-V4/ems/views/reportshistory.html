@@ -1,0 +1,218 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+
+    <!-- Right side column. modal-content Contains the navbar and content of the page -->
+    <div class="right-side">
+        <div>	
+            <section class="content">
+                <div class="row" style="margin-right: 0px;">
+                    <div class="col-sm-6">
+                        <h4>Reports History</h4>
+                    </div>
+                </div>
+                <div class="alert alert-success" ng-show="showSuccessAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{successTextAlert}}
+                </div>
+                <div class="alert alert-danger" ng-show="showFailureAlert"
+                     style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+                    {{failureTextAlert}}
+                </div>
+            </section>
+
+            <div class="">
+                <section class="content">
+                    <div class="col-sm-12 no-padding">
+                        <div class="panel panel-default" style="min-height: auto;">
+                            <div class="panel-body">
+                                <div class="navbar-form navbar-left form-horizontal col-lg-12"
+                                     role="form">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                        <input style="width:100px;" class="form-control" name="requestId"
+                                               ng-Model="requestId" placeholder="Request Id"
+                                               type="text">
+                                                    </td>
+                                                     <td>
+                                        <select  class="form-control" id="reportId" ng-model="reportId">
+                                            <option value="" selected>Report Name</option>   
+                                            <option ng-repeat="report in reportsList| orderBy:'userReportName'" value="{{report.reportId}}" >{{report.userReportName}}</option> 
+                                        </select>
+                                        </td>
+                                         <td>
+                                   <select  class="form-control" id="requestProcess" ng-model="requestProcess">
+                                            <option value="" selected>Request Process</option>   
+                                            <option value="R" selected>Running</option>
+                                            <option value="P" selected>Pending</option>
+                                            <option value="C" selected>Completed</option>
+                                        </select>
+                                        </td><td>
+                                     <datepicker style="width:100px;"  date-format="dd-MMM-yyyy"  selector="form-control">
+                                            <div class="input-group">
+                                                <input my-valid-date ng-model="startDate"  id="startDate"
+                                                       class="form-control info" placeholder='Request Start Date'
+                                                       name="startDate" /> 
+                                            </div>
+                                        </datepicker>
+                                                </td><td>
+                                        <datepicker style="width:100px;" date-format="dd-MMM-yyyy"  selector="form-control">
+                                            <div class="input-group">
+                                                <input my-valid-date ng-model="endDate"  id="endDate"
+                                                       class="form-control info" placeholder='Request End Date'
+                                                       name="endDate" /> 
+                                            </div>
+                                        </datepicker>
+                                                </td>
+                                                <td><div class="col-lg-2"  style="width:240px;">
+                                        <button type="button" class="btn btn-primary btn-width" 
+                                                ng-click="searchReports()">Search</button>
+                                        <!-- <button type="button" class="btn btn-defaul btn-width"
+                                                ng-click="basicSearch()">Basic</button> -->
+                                         <button type="button" style = "position:absolute;right:30%;" class="btn btn-primary btn-width" ng-click="clearSearch()">Refresh</button>           
+                                        <button type="button" style = "position:absolute;right:2%;" class="btn btn-defaul btn-width" ng-click="clearSearch()">Clear</button>
+                                    </div></td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                        </table>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div style="margin-top: 20px;">
+            <!-- Content Header (Page header) -->
+            <!--   <section class="content-header">
+                  <div class="row" style="margin-right: 0px;">
+                      <div class="col-sm-6"><h4>&nbsp; Users List </h4></div>
+                      <div class="col-sm-6" style="margin-top: 5px;">
+                          <button class="btn btn-primary pull-right" ng-click="openuserlistmodal($event)">Add User</button>
+                      </div>
+                  </div>
+              </section>
+            -->
+
+            <!-- Main content -->
+            <section class="content">
+                <!--MAIN BODY START-->
+                <div class="box1">                                
+                    <div class="box-body table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead_bg">
+                                <tr>
+                                    <!-- <th>Name</th>
+                                    <th>User Name</th>
+                                    <th>Employee No.</th>
+                                    <th>Email Id</th> -->
+                                    <!--  <th>Action</th>   -->      
+                                    <th style="text-align:center;" ng-click="sort('requestId')">Req ID <span
+                                            class="glyphicon sort-icon" ng-show="sortKey == 'requestId'"
+                                            ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    <th style="text-align:center;" ng-click="sort('reportName')">Report Name <span
+                                            class="glyphicon sort-icon" ng-show="sortKey == 'reportName'"
+                                            ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    <th style="text-align:center;" ng-click="sort('requestStatus')">Request Status <span
+                                            class="glyphicon sort-icon" ng-show="sortKey == 'requestStatus'"
+                                            ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    <th style="text-align:center;" ng-click="sort('requestSubmitionDate')">Requested Date <span
+                                            class="glyphicon sort-icon" ng-show="sortKey == 'requestSubmitionDate'"
+                                            ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    <th style="text-align:center;">Actual Start Time </th>
+                                    <th style="text-align:center;">Actual End Time </th>
+                                    <th style="text-align:center;">Duration </th>
+                                    <th style="text-align:center;" ng-click="sort('userName')">User Name <span
+                                            class="glyphicon sort-icon" ng-show="sortKey == 'userName'"
+                                            ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                   <th style="text-align:center;">Parent Req Id </th>
+                                </tr>
+                            </thead>
+                            <tbody >
+
+                                <tr style="text-align:center;" dir-paginate="report in reportsHistory|orderBy:sortKey:!reverse|itemsPerPage:rowSize"
+                                     ng-class="{selected: isRowSelected(report)}" ng-click="selectRow(report)"
+                                     ng-init="myIndex = $index">
+                                    <td>{{report.requestId}}</td>
+                                    <td>{{report.reportName}}</td>
+                                    <td>{{report.requestStatus}}</td>
+                                    <td>{{formatDate(report.requestSubmitionDate) | date:  "dd-MMM-yyyy HH:mm:ss"}}</td>
+                                    <td>{{formatDate(report.startDate) | date:  "dd-MMM-yyyy HH:mm:ss"}}</td>
+                                    <td>{{formatDate(report.endDate) | date:  "dd-MMM-yyyy HH:mm:ss"}}</td>
+                                    <td>{{report.duration}}</td>
+                                    <td>{{report.userName}}</td>
+                                    <td>{{report.parentRequestId}}</td>
+                                    <!-- <td>
+                                        <div class="col-sm-12 lookup-action">
+                                            <i class="fa fa-eye" ng-click="viewuser(user)"></i>&nbsp; &nbsp; 
+                                            <i class="fa fa-pencil-square-o" ng-click="edituser(user, $index)"></i>&nbsp; &nbsp;
+                                            <i class="fa fa-trash-o" ng-click="deleteOsiUser(user)"></i>
+                                        </div>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+
+
+                        </table>
+                    </div><!-- /.box-body -->
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div style="float: left; margin-top: -10px;">
+                                <dir-pagination-controls max-size="6" direction-links="true" boundary-links="true" on-page-change="clearSelectedRow()"> 
+                                </dir-pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <!-- class="btn btn-primary pull-right" -->
+                        <div class="col-sm-7">
+
+
+                            <button class="btn btn-primary" ng-disabled="isOutFileDisable" ng-click="downloadReport()">View Output</button>
+                            <button class="btn btn-primary"  ng-disabled="isLogFileDisable" ng-click="downloadLogFile()">View Log</button>
+                            <button class="btn btn-primary"  ng-disabled="isMoreInfoDisable" ng-click="moreInfoRequest()">More Info</button>
+                            <button class="btn btn-primary"  ng-disabled="isUnshceduleDisable" ng-click="unscheduleReport()" >Cancel</button>
+                            <button class="btn btn-primary"  ng-click="generateReport()" >Submit Job</button>
+                        </div> 
+                    </div>
+                </div><!-- /.box -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+    </div><!-- /.right-side -->
+</div><!-- ./wrapper -->
+<div class="modal fade" id="more-info-modal" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 450px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>More Info</b></h4>
+            </div>
+            <div class="modal-body">
+                <table>
+                        <tbody>
+                            <tr>
+                                <td><b>Host Name: </b></td><td>{{moreInfo.hostName}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Process Id: </b></td><td>{{moreInfo.processId}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Output Type: </b></td><td>{{moreInfo.outputType}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Repeatable: </b></td><td>{{moreInfo.isRepeatFlag}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <div class="modal-foot" align="right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

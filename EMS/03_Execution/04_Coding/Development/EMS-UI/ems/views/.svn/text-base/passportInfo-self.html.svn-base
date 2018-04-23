@@ -1,0 +1,339 @@
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<script>
+        setTimeout(function(){ $("#add").toggleClass("active"); }, 100);
+            </script>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    	<div data-ng-include="'views/employeeMenu-sf.html'"></div>
+<div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+    <div class="right-side">
+        <div class="row" ng-if="isTrascError">
+                <div ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                        ngf-if="flash" ngf-bind="flash.message">{{flash.message}}
+                </div>
+        </div>
+        <section class="content" style="max-height:400px;overflow-y: scroll;">
+	<form name="vm.empPassportInfo" novalidate>
+
+                <div class="row" style="padding-left: 15px;">
+                    <h4>Passport Information</h4>
+                    <br>
+                </div>
+
+		<fieldset>
+			<div class="row">
+				<div class="col-md-6">
+				 <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="passportNumber" class=" control-label no-padding pull-right">
+                                                            Passport Number<font color="red"> *</font>
+                                                        </label>
+						</div>
+						<div class="col-md-6">
+                                                        <input class="form-control" id="passportNumber" name="passportNumber"
+                                                               ng-model="vm.passportInfo.passportNumber"
+                                                               placeholder='Passport Number'
+                                                               type="text" maxlength="50" no-special-char-space uppercase required
+                                                               ng-disabled="!iseditable" >
+							<br />
+						</div>
+					</div>
+                                  <!--       <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="issueDate" class=" control-label no-padding pull-right">
+                                                            Date of Issue<font color="red"> *</font>
+							</label>
+						</div>
+                                                <div class="col-md-6">
+                                                    <div class="col-md-10" style="padding:unset;">
+                                                            <datepicker date-format="yyyy-MM-dd" selector="form-control" date-max-limit = "">
+                                                                    <input class="form-control" name="issueDate" id="issueDate"
+                                                                            ng-model="vm.passportInfo.issueDate"
+                                                                            style="text-transform: uppercase" placeholder='Date of Issue'
+                                                                            required ng-disabled="!iseditable" >
+                                                            <br/>
+                                                            </datepicker>
+                                                    </div>
+                                                    <div class="col-md-2" style="padding:unset;">
+                                                            <span class="input-group-addon" style="cursor: pointer;height: 34px;">
+                                                                    <i class="fa fa-lg fa-calendar"  id="issueDate" onclick="getDatePicker('issueDate')"></i>
+                                                            </span>
+                                                    </div>
+                                                </div>
+					</div> -->
+                                 <!--        <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="issuingAuthority" class=" control-label no-padding pull-right">
+                                                            Issuing Authority<font color="red"> *</font>
+                                                        </label>
+						</div>
+						<div class="col-md-6">
+								<select class="form-control" id="issuingAuthority" name="issuingAuthority"
+                                                                        ng-model="vm.passportInfo.issuingAuthority"
+                                                                        ng-options="data.lookupValue as data.lookupDesc for data in vm.issuingAuthorityList"
+                                                                        required ng-disabled="!iseditable" >
+                                                                    <option value="">-- Select Issuing Authority --</option>
+                                                                </select>
+							<br />
+						</div>
+					</div> -->
+					     <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="expiryDate" class=" control-label no-padding pull-right">
+                                                            Date of Expiry <font color="red"> *</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+                                                    <div class="col-md-10" style="padding:unset;">
+                                                            <datepicker date-format="yyyy-MM-dd" selector="form-control" date-max-limit = "">
+                                                                    <input class="form-control" name="expiryDate" id="expiryDate"
+                                                                            ng-model="vm.passportInfo.expiryDate"
+                                                                            style="text-transform: uppercase" placeholder='Date of Expiry'
+                                                                            required ng-disabled="!iseditable" >
+                                                            <br>
+                                                            </datepicker>
+                                                    </div>
+                                                    <div class="col-md-2" style="padding:unset;">
+                                                            <span class="input-group-addon" style="cursor: pointer;height: 34px;">
+                                                                    <i class="fa fa-lg fa-calendar"  id="expiryDate" onclick="getDatePicker('expiryDate')"></i>
+                                                            </span>
+                                                    </div>
+						</div>
+					</div>
+                                       
+				</div>
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="nationality" class=" control-label no-padding pull-right">
+                                                            Nationality<font color="red"> *</font>
+                                                        </label>
+						</div>
+						<div class="col-md-6">
+								<!--select class="form-control" id="nationality" name="nationality"
+                                                                        ng-model="vm.passportInfo.nationality"
+                                                                        ng-options="nationality.countryName as nationality.countryName for nationality in vm.nationalityList">
+                                                                    <option value="">-- Select Nationality --</option>
+                                                                </select-->
+                                                                <select class="form-control" id="nationality" name="nationality"
+                                                                        ng-model="vm.passportInfo.nationality"
+                                                                        ng-options="data.countryId as data.countryName for data in vm.countryList" 
+                                                                        required ng-disabled="!iseditable" >
+                                                                    <option value="">-- Select Nationality --</option>
+                                                                </select>
+							<br />
+						</div>
+					</div>
+					
+					 <div class="row" style="margin-left: 64px;">
+						<div class="col-md-3 no-padding">
+							<label for="nationality" class=" control-label no-padding pull-right">
+                                                            Has Second Passport
+                                                        </label>
+						</div>
+						<div class="col-md-6" style="margin-top: 5px;margin-left: 5px;">							
+								<!--select class="form-control" id="nationality" name="nationality" 
+                                                                        ng-model="vm.passportInfo.nationality"  
+                                                                        ng-options="nationality.countryName as nationality.countryName for nationality in vm.nationalityList">
+                                                                    <option value="">-- Select Nationality --</option>
+                                                                </select-->
+                                                                 <input type="checkbox" ng-model="vm.passportInfo.secondPassportExists"
+                                                       ng-checked="vm.passportInfo.secondPassportExists == 1"
+                                                       indexstyle="margin-left: 10px;width:10%;"
+                                                       parse-int="" ng-true-value="1" ng-false-value="0" ng-disabled="!iseditable" >							
+                                                       <br />
+						</div>
+					</div> 
+					
+
+					<!-- <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="placeOfIssue"
+								class=" control-label no-padding pull-right"> Place of Issue <font color="red"> *</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" id="placeOfIssue" name="placeOfIssue"
+								ng-model="vm.passportInfo.placeOfIssue" placeholder='Place of Issue'
+								maxlength="100" type="text" uppercase required ng-disabled="!iseditable">
+							<br>
+						</div>
+					</div> -->
+				</div>
+                                <!--
+				<div class="col-md-5"></div>
+				<div class="col-md-5">
+                                    <div class="row pull-right">
+                                        <button type="button" class="btn btn-primary">
+                                                <span>Clear</span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary">
+                                                <span>Cancel</span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary" ng-click="vm.savePassportInfo();">
+                                            <span>Submit</span>
+                                        </button>
+                                    </div>
+				</div>
+                                -->
+			</div>
+		</fieldset>
+
+                <br>
+
+                <div class="row" style="padding-left: 15px;">
+                    <h4>VISA Information</h4>
+                    <br>
+                </div>
+
+                <fieldset>
+                    <div class="row">
+                        <section class="content">
+                            <div class="box1">
+                                <!--div class="box-body table-responsive" style="overflow-y: auto; height: 110px;"-->
+                                <div class="box-body table-responsive">
+                                    <table class="table table-bordered table-striped" id="data">
+                                        <thead class="thead_bg">
+                                            <tr>
+                                           <!--      <th>Visa Number</th> -->
+                                               <!--  <th>Date of Issue</th> -->
+                                               <th>Country of Visa</th>
+                                               <th>Visa Type</th>
+                                               <th>Entry Type</th>
+                                                <th>Date of Expiry</th>
+                                               
+                                               <!--  <th>Place of Issue</th> -->
+                                              
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="visaList in vm.visaInfoList track by $index">
+                                              <!--   <td>
+                                                    <input class="form-control" id="visaNumber{{$index}}" name="visaNumber"
+                                                           ng-model="visaList.visaNumber" maxlength="100" type="text"
+                                                           no-special-char-space uppercase required ng-disabled="!iseditable">
+                                                    <br>
+                                                </td> -->
+                                             <!--    <td>
+                                                    <datepicker date-format="yyyy-MM-dd" selector="form-control" date-max-limit = "">
+                                                        <div class="input-group">
+                                                            <input class="form-control" name="visaIssueDate" id="visaIssueDate{{$index}}"
+                                                                   ng-model="visaList.visaIssueDate"
+                                                                   style="text-transform: uppercase" required ng-disabled="!iseditable">
+                                                            <span class="input-group-addon" style="cursor: pointer;height: 34px;">
+                                                                <i class="fa fa-lg fa-calendar" id="visaIssueDateCal{{$index}}" onclick="getDatePicker('visaIssueDate'$index)"></i>
+                                                            </span>
+                                                        </div>
+                                                    <br>
+                                                    </datepicker>
+                                                </td> -->
+                                                
+                                                <!-- <td>
+                                                    <input class="form-control" id="visaIssuanceAuthority{{$index}}" name="visaIssuanceAuthority"
+                                                           ng-model="visaList.visaIssuanceAuthority" maxlength="100" type="text"
+                                                           uppercase required ng-disabled="!iseditable">
+                                                    <br>
+                                                </td> -->
+                                                  <td>
+                                                    <!-- <input class="form-control" id="visaIssuanceAuthority{{$index}}" name="visaIssuanceAuthority" 
+                                                           ng-model="visaList.visaIssuanceAuthority" maxlength="100" type="text" 
+                                                           uppercase required>	 -->	
+                                                           <select class="form-control" id="visaIssuanceAuthority{{$index}}" name="visaIssuanceAuthority" 
+                                                            ng-model="visaList.visaIssuanceAuthority"ng-disabled="!iseditable"
+                                                            ng-options="data.countryId as data.countryName for data in vm.countryList  | orderBy:'countryName'" 
+                                                            required>
+                                                        <option value="">-- Select Country Name --</option>
+                                                    </select>					
+                                                    <br>
+                                                </td>
+                                            <!--     <td>
+                                                    <input class="form-control" id="visaPlaceOfIssue{{$index}}" name="visaPlaceOfIssue"
+                                                           ng-model="visaList.visaPlaceOfIssue" maxlength="100" type="text"
+                                                           uppercase required ng-disabled="!iseditable">
+                                                    <br>
+                                                </td> -->
+                                                <td>
+                                             
+                                                <input class="form-control"  id="visaType{{$index}}" name="visaType"
+                                                           ng-model="visaList.visaType" maxlength="20" type="text" ng-disabled="!iseditable" title-case 
+                                                            required>
+                                                    <br>
+                                                </td>
+                                                
+                                                <td>
+                                                    <select class="form-control" id="visaEntryType{{$index}}" name="visaEntryType"
+                                                            ng-model="visaList.visaEntryType"
+                                                            ng-options="data.lookupValue as data.lookupDesc for data in vm.entryTypeList"
+                                                            required ng-disabled="!iseditable">
+                                                        <option value="">-- Select Entry Type --</option>
+                                                    </select>
+                                                    <br>
+                                                </td>
+                                                <td>
+                                                        <datepicker date-format="yyyy-MM-dd" selector="form-control" date-max-limit = "">
+                                                            <div class="input-group">
+                                                                <input class="form-control" name="visaExpiryDate" id="visaExpiryDate{{$index+1}}"
+                                                                       ng-model="visaList.visaExpiryDate"
+                                                                       style="text-transform: uppercase" required ng-disabled="!iseditable">
+                                                                <span class="input-group-addon" style="cursor: pointer;height: 34px;">
+                                                                    <i class="fa fa-lg fa-calendar" id="visaExpiryDate{{$index+1}}" onclick="getDatePickerVisa(this)"></i>
+                                                                </span>
+                                                            </div>
+                                                        <br>
+                                                        </datepicker>
+                                                    </td>
+                                                <td ng-if="$index == 0">
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <i class="fa fa-plus-circle fa-lg" aria-hidden="true" ng-click="vm.addVisa()" ng-disabled="!iseditable"></i>
+                                                    <i class="fa fa-minus-circle fa-lg" aria-hidden="true" ng-click="vm.removeVisa($index)" ng-disabled="!iseditable"></i>
+                                                    <br>
+                                                </td>
+                                                <td ng-if="$index != 0">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="fa fa-minus-circle fa-lg" aria-hidden="true" ng-click="vm.removeVisa($index)" ng-disabled="!iseditable"></i>
+                                                    <br>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-12" style="padding-right: 30px;">
+                            <div class="row pull-right">
+                                <button type="button" class="btn btn-primary" ng-click="vm.clearPassportInfo();">
+                                        <span>Clear</span>
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                        <span>Cancel</span>
+                                </button>
+                                <button type="button" class="btn btn-primary" ng-click="vm.submitPassportInfo();" ng-disabled="!nonEditable ||!iseditable">
+                                    <span>Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+	</form>
+	<br>
+</section>
+</div>
+</div>
+<script>
+function getDatePicker(thiz){
+    console.log(thiz);
+    document.getElementById(thiz).focus();
+}
+function getDatePickerVisa(thiz){
+		console.log(thiz);
+        document.getElementById(thiz.id).focus();
+}
+</script>

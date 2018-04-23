@@ -1,0 +1,355 @@
+﻿<!doctype html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="expires" content="-1" />
+        <meta http-equiv="cache-control" content="no-store" />
+        <title>OSI</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700"> -->
+        <link type="text/css" href="css/style.css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" href="css/angular-datepicker.css" />
+        <link type="text/css" href="css/customeStyle.css" rel="stylesheet" />
+        <!-- <link type="text/css" href="js/treeview/treeview.css" rel="stylesheet" /> -->
+        <link type="text/css" rel="stylesheet" href="css/ui.dynatree.css"/>
+        <link type="text/css" rel="stylesheet" href="css/jquery.orgchart.css" media="all" />
+        <link type="image/x-icon" rel="shortcut icon" href="data:image/x-icon;" />
+        <link type="text/css" href="css/angular-block-ui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/angular-growl.min.css" />
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <style>
+            html {
+                overflow-y: hidden !important;
+            }
+            .ui-datepicker .ui-datepicker-header{
+                background: #138EFA !important;
+                padding: 8px !important;
+            }
+            .ui-widget-content{
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+                border: 0px solid #dddddd;
+            }
+            .ui-datepicker-calendar{
+                margin: 2%;
+                text-align: center;
+            }
+            .ui-datepicker-year{
+                background: #138EFA;
+                border: 0px;
+            }
+            .ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all{
+                width:250px !important;
+                height: 220px !important;
+            }
+            .ui-datepicker td{
+                padding: 3px !important;
+            }
+            .ui-state-default{
+                cursor: pointer;
+                font-size: 12.5px;
+                width: 100% !important;
+                margin: 5px 1%;
+                padding: 1.5% 0;
+                float: left;
+                color:black !important;
+                -webkit-border-radius: 1px;
+                -moz-border-radius: 1px;
+                border-radius: 1px;
+                border: 0px solid #dddddd !important;
+                font-weight: normal  !important;
+                background: url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x !important;
+            }
+            .ui-datepicker-unselectable ui-state-disabled {
+                background: url(images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) !important;
+            }
+            .ui-widget-header .ui-icon{
+                background-image: url(images/ui-icons_222222_256x240.png)!important;
+                margin-top: -2px !important;
+            }
+            .ui-datepicker-month{
+                color: white !important;
+                font-weight: normal !important;
+            }
+            .ui-datepicker-year > option{
+                background: white !important;
+            }
+            .itemUnique{
+                background-color: #fff;
+            }
+            .itemDuplicate{
+                background-color: palevioletred;
+            }
+            #tree{
+                overflow-y: scroll;
+                height: 600px;
+                overflow-x: hidden;
+
+            }
+        </style>
+    </head>
+    <body class="skin-black" ng-controller="MainCtrl">
+        <div data-growl></div>
+        <header class="header" style="display: block" ng-show="isLogin">
+            <a href="index.html#/employeeChart" class="logo"> <img src="img/SM-logo.png" style="width: 22%;"></a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top " role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas"
+                   role="button"> <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </a>
+                <div class="navbar-right" style="display: none">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i
+                                    class="glyphicon glyphicon-user"></i> <span>Jane Doe <i
+                                        class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header bg-light-blue">
+                                    <!--   <img src="img/avatar3.png" class="img-circle" alt="User Image" />-->
+                                    <p>
+                                        Jane Doe - Web Developer <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="float: right;margin-right: 5%;font-size: 2em;color: white;margin-top: 10px;" ng-show="isLogin">
+                    <span ng-bind="userName"></span>
+                </div>
+            </nav>
+        </header>
+		<div ng-messages="true" ng-hide="true">
+			<div ng-messages-include="util/messages.html"></div>
+		</div>
+        <div ng-include="'includes/sidebar.html'" ng-show="isLogin" id="MainWrap" ng-controller="sidebarCtrl"></div>
+        <div ng-view></div>
+        <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> -->
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/bootstrap.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+        <script src="js/AdminLTE/app-bkp.js" type="text/javascript"></script>
+        <script src="lib/angular.min.js"></script>
+        <!-- <script data-require="angularjs@1.5.8" data-semver="1.5.8" src="https://opensource.keycdn.com/angularjs/1.5.8/angular.min.js"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.js"></script> -->
+        <script src="lib/moment.js"></script>
+        <script src="lib/ui-bootstrap-tpls.min.js"></script>
+        <!--<script src="lib/angucomplete.js"></script> -->
+        <script src="lib/angular-route.js"></script>
+        <script src="lib/angular-cookies.js"></script>
+        <script src="lib/angular-messages.js"></script>
+        <script src="lib/lodash.js"></script>
+        <script src="lib/ng-file-upload.js"></script>
+        <script src="lib/ng-file-upload-shim.min.js"></script>
+        <script src="lib/ng-file-upload.min.js"></script>
+        <script src="lib/FileSaver.min.js"></script>
+        <script src="lib/dirPagination.js"></script>
+        <script src="lib/angular-datepicker.js"></script>
+         <script src="lib/angular-moment.min.js"></script>
+
+        <!-- <script src="js/treeview/treeview.js"></script> -->
+        <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
+       <!--  <script src="js/ui-bootstrap-tpls-0.12.0.js" type="text/javascript" ></script> -->
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-multiselect.js" type="text/javascript"></script>
+        <script src="js/bootstrap-multiselect-collapsible-groups.js" type="text/javascript"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script> -->
+        <script src="lib/bootstrap-multiselect.min.js"></script>
+        <!-- <script src="lib/ui-bootstrap-tpls.js"></script> -->
+        <script src="lib/angular-input-masks-standalone.min.js"></script>
+        <script src="lib/angular-animate.min.js"></script>
+        <script src="lib/angular-growl.min.js"></script>
+        <script src="lib/ngDialog-0.1.6.js"></script>
+        <script src="lib/angular-resource.js" type="text/javascript"></script>
+        <script src="lib/angular-hotkeys.js"></script>
+        <script src="lib/angular-auto-focus.js"></script>
+        <script src="lib/angular-websocket.min.js"></script>
+        <script src="lib/messages.js"></script>
+        <script src="lib/ngMask.min.js"></script>
+        <script src="lib/angular-server-time.js"></script>
+        <script src="lib/angular-idle.js"></script>
+        <script src="lib/ngStorage.js"></script>
+        <script src="lib/angular-confirm.js"></script>
+        <script src="lib/angular-animate.min.js"></script>
+        <script src="lib/angular-recursion.js"></script>
+        <script src="lib/angular-tree-widget.js"></script>
+        <script src="lib/multiselect.js"></script>
+        <script src="lib/jquery-ui.custom.js"></script>
+        <!-- <script type="text/javascript" src="lib/jquery-ui.js"></script> -->
+        <!--<script type="text/javascript" src="lib/autocomplete.js"></script> -->
+        <script src="lib/jquery.cookie.js"></script>
+        <script src="lib/jquery.dynatree.js"></script>
+        <script src="lib/jquery.orgchart.js"></script>
+        <script src="js/multiselect.js" type="text/javascript"></script>
+        <script src="lib/angular-block-ui.min.js"></script>
+        <script src="lib/underscore-min.js"></script>
+        <script src="lib/angular-base64.js"></script>
+        <script src="js/directive/autoCompleteDirective.js"></script>
+        <script src="js/directive/checklist-model.js"></script>
+        <script src="js/directive/sglClickDirective.js"></script>
+        <script src="js/directive/custom-index-sorting.js"></script>
+        <script src="lib/jszip.js"></script>
+        <script src="lib/xlsx.core.min.js"></script>
+        <script src="js/directive/ng-infinite-scroll.min.js"></script>
+        <script src="lib/xlsx.core.min.js"></script>
+        <!-- main js -->
+        <script src="js/app.js"></script>
+        <!-- config js -->
+        <script type="text/javascript" src="js/config.js"></script>
+        <!-- Controller -->
+        <script src="js/controller/controllers.js"></script>
+        <script src="js/controller/userSkillsController.js"></script>
+        <script src="js/controller/logincontroller.js"></script>
+        <script src="js/controller/dashboardcontroller.js"></script>
+        <script src="js/controller/sidebarcontroller.js"></script>
+        <script src="js/controller/menucontroller.js" type="text/javascript"></script>
+        <script src="js/controller/userListController.js" type="text/javascript"></script>
+        <script src="js/controller/osiResponsibilitiesController.js"></script>
+        <script src="js/controller/userResponsibilityController.js" type="text/javascript"></script>
+        <script src="js/controller/operationExclusionController.js" type="text/javascript"></script>
+        <script src="js/controller/functionExclusionController.js"></script>
+        <script src="js/controller/menuEntriesListController.js" type="text/javascript"></script>
+        <script src="js/controller/menuEntriesController.js" type="text/javascript"></script>
+        <script src="js/controller/categoryListController.js" type="text/javascript"></script>
+        <script src="js/controller/categoryController.js" type="text/javascript"></script>
+        <script src="js/controller/functioncontroller.js"></script>
+        <script src="js/controller/userInfoController.js" type="text/javascript"></script>
+        <script src="js/controller/userProfileController.js" type="text/javascript"></script>
+		<script src="js/controller/medicalInfoController.js" type="text/javascript"></script>
+		<script src="js/controller/employeeBasicInfoController.js" type="text/javascript"></script>
+		<script src="js/controller/basicInfoController.js" type="text/javascript"></script>
+		<script src="js/controller/employeesController.js"></script>
+         <script src="js/controller/lookupcontroller.js"></script>
+         <script src="js/controller/organizationController.js"></script>
+        <script src="js/controller/segmenthirarchycontroller.js"></script>
+        <script src="js/controller/empBankDetailsController.js"></script>
+        <script src="js/controller/empBankDetailsConfigController.js"></script>
+        <script src="js/controller/passportInfoController.js"></script>
+        <script src="js/controller/assignmentsController.js"></script>
+
+        <!--  TODO: Testing upload-->
+        <script src="js/controller/uploadController.js"></script>
+                        <script src="js/controller/reportscontroller.js"></script>
+        <script src="js/controller/reportshistorycontroller.js"></script>
+        <script src="js/controller/reportsgroupcontroller.js"></script>
+        <!-- <script src="js/controller/flexifieldController.js"></script> -->
+        <script src = "js/controller/PersonalInfoController.js"></script>
+        <script src="js/controller/basicInfoController.js" type="text/javascript"></script>
+        <script src="js/controller/officeInfoController.js"></script>
+        <script src="js/controller/passportInfoController.js"></script>
+
+        <script src="js/controller/employeesController-self.js"></script>
+        <script src="js/controller/OsiJobCodesController.js"></script>
+        <script src="js/controller/OsiGradesController.js"></script>
+        <script src="js/controller/OsiTitlesController.js"></script>
+
+        <script src="js/controller/OsiCertificationsController.js"></script>
+        <script src="js/controller/OsiCostCenterController.js"></script>
+        <script src="js/controller/OsiSkilsController.js"></script>
+        <script src="js/controller/OsiBusinessUnitsController.js"></script>
+        <script src="js/controller/OsiDepratmentController.js"></script>
+        <script src="js/controller/empAdditionalDocsController.js"></script>
+        <script src="js/controller/employeeOverallSearchController.js"></script>
+        <!-- Service -->
+        <script src="js/service/authenticationService.js"></script>
+        <script src="js/service/flashService.js"></script>
+        <script src="js/service/responsibilityservice.js" type="text/javascript"></script>
+        <script src="js/service/menuService.js" type="text/javascript"></script>
+        <script src="js/service/osiResponsibilitiesService.js" type="text/javascript"></script>
+        <script src="js/service/categoryService.js" type="text/javascript"></script>
+        <script src="js/service/menuEntryService.js" type="text/javascript"></script>
+        <script src="js/service/functionExclusionService.js" type="text/javascript"></script>
+        <script src="js/service/functionService.js" type="text/javascript"></script>
+        <script src="js/service/userService.js" type="text/javascript"></script>
+        <script src="js/service/appConstantInfoService.js" type="text/javascript"></script>
+        <script src="js/service/userProfileService.js" type="text/javascript"></script>
+        <script src="js/service/operationExclusionService.js" type="text/javascript"></script>
+        <script src="js/service/shareddataservice.js" type="text/javascript"></script>
+        <script src="js/service/commonService.js" type="text/javascript"></script>
+        <script src="js/service/lookupService.js"></script>
+		<script src="js/service/officeInfoService.js"></script>
+
+		 <script src="js/service/medicalInfoService.js"></script>
+		 <script src="js/service/flexifieldService.js"></script>
+		 <script src="js/service/employeeBasicInfoService.js"></script>
+		 <script src="js/service/employeesService.js"></script>
+
+        <script src="js/service/organizationService.js"></script>
+        <script src="js/service/segmenthirarchyService.js"></script>
+        <script src="js/service/segmentstructurehdrservice.js" type="text/javascript"></script>
+                        <script src="js/service/reportsService.js"></script>
+        <script src = "js/service/personalInfoService.js"></script>
+
+        <script src="js/service/reportsGroupService.js"></script>
+
+        <script src="js/service/employeeskillservice.js"></script>
+        <script src="js/service/empBankDetailsService.js"></script>
+        <script src="js/service/empBankDetailsConfigService.js"></script>
+        <script src="js/service/assignmentsService.js"></script>
+
+        <script src="js/service/employeesService-self.js"></script>
+        <script src="js/service/OsiJobCodesService.js"></script>
+        <script src="js/service/OsiGradesService.js"></script>
+        <script src="js/service/OsiTitlesService.js"></script>
+
+        <script src="js/service/OsiCertificationsService.js"></script>
+        <script src="js/service/OsiCostCenterService.js"></script>
+        <script src="js/service/OsiSkilsService.js"></script>
+        <script src="js/service/OsiBusinessUnitsService.js"></script>
+        <script src="js/service/OsiDepratmentService.js"></script>
+
+        <script src="js/controller/epmsEmpOrgListController.js"></script>
+        <script src="js/controller/employee-modal-controller.js"></script>
+        <script src="js/controller/orgController.js"></script>
+        <script type="text/javascript" src="js/service/orgchart-shared-service.js"></script>
+        <script type="text/javascript" src="js/service/orgchart-utility-service.js"></script>
+        <script type="text/javascript" src="lib/d3/3.5.14/d3.min.js"></script>
+        <script type="text/javascript" src="lib/d3/kodama.js"></script>
+
+        <script src="lib/ui-grid/angular-touch.js"></script>
+        <script src="lib/ui-grid/ui-grid.js"></script>
+        <script src="lib/ui-grid/csv.js"></script>
+        <script src="lib/ui-grid/pdfmake.js"></script>
+        <script src="lib/ui-grid/vfs_fonts.js"></script>
+
+
+        <script type="text/javascript">
+            jQuery.browser = {};
+            (function () {
+                jQuery.browser.msie = false;
+                jQuery.browser.version = 0;
+                if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                    jQuery.browser.msie = true;
+                    jQuery.browser.version = RegExp.$1;
+                }
+            })();
+
+                var tabID = sessionStorage.tabID && sessionStorage.closedLastTab !== '2' ? sessionStorage.tabID : sessionStorage.tabID = Math.random();
+    sessionStorage.closedLastTab = '2';
+    $(window).on('unload beforeunload', function() {
+          sessionStorage.closedLastTab = '1';
+    });
+         sessionStorage.TABID =tabID;
+     // alert(sessionStorage.TABID);
+
+        </script>
+    </body>
+</html>

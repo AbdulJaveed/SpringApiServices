@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository/custom
+END
+IActivitiHistoryCleanup.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/2291/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository/custom/IActivitiHistoryCleanup.java
+END
+IOsiEmpSkills.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository/custom/IOsiEmpSkills.java
+END
+OsiEmployeesRepositoryCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository/custom/OsiEmployeesRepositoryCustom.java
+END
+IOsiEmpCertifications.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository/custom/IOsiEmpCertifications.java
+END

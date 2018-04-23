@@ -1,0 +1,40 @@
+<div class="wrapper row-offcanvas row-offcanvas-left" ng-init="getImage();">
+    <div class="right-side">
+        <div>	
+            <section class="content">
+                <div class="row" style="margin-right: 0px;">
+                    <div class="col-sm-6">
+                        <h4> My Uploads</h4>
+                    </div>
+                </div>
+                <div>
+					<form name="myForm">
+            <fieldset>
+              <legend>Upload on form submit</legend><!-- ngf-multiple="true" ngf-keep="true" -->
+  Profile Picture: <input type="file" ngf-select="" ng-model="picFile" name="file" required="" ngf-max-size='5MB'
+  ngf-accept="'image/*'"  ngf-pattern="'.jpg/*,.gif,.jpeg,!.zip,!.rar,!.html,!.xlsx,!.txt,!.pdf'" >
+              <i ng-show="myForm.file.$error.required">*required</i>
+             <i ng-show="myForm.file.$error.maxSize">cross the size</i>
+             <i ng-show="myForm.file.$error.pattern">type not supportes</i>
+              <br>
+
+              <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)">Submit</button>
+              <div id="div_image">
+              <img ngf-src="picFile" class="thumb">
+              <a href="#" onclick="prepHref(this)" download>Click here to download image</a>
+              </div>
+              <span ng-show="picFile.result">Upload Successful</span>
+            </fieldset>
+            <br>
+          </form>
+				</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function prepHref(linkElement) {
+    var myDiv = document.getElementById('div_image');
+    var myImage = myDiv.children[0];
+    linkElement.href = myImage.src;
+}
+</script>

@@ -1,0 +1,342 @@
+<style>
+   .lightbluestyle {background-color: lightblue;}
+</style>
+<script>
+        setTimeout(function(){ $("#professional").toggleClass("active"); }, 100);
+            </script>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    	<div data-ng-include="'views/employeeMenu.html'"></div>
+<div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+<div class="right-side ">
+   <div class="row" style="margin-right: 0px;">
+      <div class="col-sm-12">
+         <h3>&nbsp; Certification Details</h3>
+      </div>
+   </div>
+   <div class="alert alert-success" ng-show="showSuccessAlert"
+      style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+      {{successTextAlert}}
+   </div>
+   <div class="alert alert-danger" ng-show="showFailureAlert"
+      style="margin: 0px 400px 15px 300px; padding: 2px; text-align: center;">
+      {{failureTextAlert}}
+   </div>
+
+      <section class="content" style="height:400px;overflow-y: scroll;" >
+         <!--
+          <div class="panel-body">
+            <div class="row">
+               <div class="col-md-2 no-padding">
+                  <label for="certificationName" class="control-label no-padding pull-right">
+                  Certification Name</label>
+               </div>
+               <div class="col-md-3">
+                  <select class="form-control" ng-model="osiUserCertificates.certificationId" required ng-options="data.certificationId as data.certificationName for data in osiCertificates | orderBy:'certificationName' | unique:'certificationName'">
+                     <option value="">-- Select Certificate --</option>
+                  </select>
+                  <br />
+               </div>
+               <div class="col-md-2 no-padding">
+                  <label for="yearOfPass" class=" control-label no-padding pull-right"> Certificate Date
+                  </label>
+               </div>
+
+               <div class="col-md-4">
+                   <div class="col-md-10" style="padding-right: 0px;">
+                  <datepicker date-format="yyyy-MM-dd" selector="form-control" date-max-limit = "{{minDOH}}">
+                     <input class="form-control" id="cdate" required ng-model="osiUserCertificates.yearOfPass" placeholder="Certification Date" required>
+
+                  </datepicker>
+                  </div>
+                	<div class="col-md-2" style="padding-left: 0px;" >
+								<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+									<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('cdate')"></i>
+								</span>
+							</div>
+
+             </div>
+
+
+            </div>
+            <div class="row">
+               <div class="col-md-2 no-padding">
+                  <label for="ExpiryDate" class=" control-label no-padding pull-right"> Expiry Date
+                  </label>
+               </div>
+               <div class="col-md-3">
+                   <div class="col-md-10" style="padding-right: 0px;padding-left:0px">
+                  <datepicker date-format="yyyy-MM-dd" selector="form-control" date-min-limit = "{{minDOH}}">
+                     <input class="form-control"  placeholder="Expiry Date" id="expdate" required ng-model="osiUserCertificates.expiryDate"   required>
+                     <br>
+                  </datepicker>
+                   </div>
+                   <div class="col-md-2" style="padding-left: 0px;" >
+								<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+									<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('expdate')"></i>
+								</span>
+							</div>
+               </div>
+            </div>
+            <div class="row ">
+               <div class="col-md-2 pull-right">
+                  <button type="button" class="btn btn-primary" ng-click="searchCertificates();">
+                  <span>Search</span>
+                  </button>
+               </div>
+            </div>
+         </div> -->
+         <!-- /.col-lg-12 -->
+         <!--MAIN BODY START-->
+         <div class="box1">
+            <div class="box-body table-responsive">
+               <table class="table table-bordered">
+                  <thead class="thead_bg">
+                     <tr>
+                        <th ng-click="sort('certificationName')">Certificate Name <span
+                           class="glyphicon sort-icon" ng-show="sortKey == 'certificationName'"
+                           ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                        <th>Issued By</th>
+                        <th>Certification Date</th>
+                        <th>Date Of Expiry</th>
+                        <th>GPA/Percentage</th>
+                        <th width="1%">
+                            <input type="checkbox" ng-model="IsAllCheckedCert" ng-change="CheckUncheckAllCert()" ng-disabled="!isVerified"/>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr dir-paginate="certlist in osiCertificateSearchResult|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+                        ng-class="{selected: certlist.empCertificationId == isCertSelectedRow ,lightbluestyle: certlist.verified == 'true'}" ng-click="selectCertRow(certlist)"
+                        ng-dblclick="editSelectedRowDetails('myModalCertificate','certificate')"
+                        ng-init="myIndex = $index">
+                        <td>{{certlist.certificationName}}</td>
+                        <td >{{certlist.issuedBy}}</td>
+                        <td>{{certlist.yearOfPass}}</td>
+                        <td >{{certlist.expiryDate}}</td>
+                        <td >{{certlist.percentage}}</td>
+                        <td width="1%">
+                            <!-- <input type="checkBox" ng-model="rowSelected" data-ng-checked="skillist.verified == 'true'" ng-click="select(rowSelected, skillist.empSkillId)"/> -->
+                            <input id="chkCert_{{certlist.empSkillId}}" type="checkbox" ng-model="certlist.isVerified" ng-change="CheckUncheckHeaderCert()" ng-disabled="!isVerified" />
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-sm-12">
+               <div class="col-sm-6">
+                  <div style="float: left; margin-top: 20px;">
+                     <dir-pagination-controls max-size="1" direction-links="true"
+                        boundary-links="true" on-page-change="clearSelectedRow()">
+                     </dir-pagination-controls>
+                  </div>
+               </div>
+               <div style="float: right;">
+                  <!--  'glyphicon glyphicon-trash' : availOperations.name == 'Delete', -->
+                  <span ng-repeat="availOperations in availOperations"> <i
+                     style="cursor: pointer;"
+                     ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',
+                     'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',
+                     'glyphicon glyphicon-eye-open' : availOperations.name == 'View',
+                     'disabled': disable_{{availOperations.name}}}"
+                     ng-disabled="disable_{{availOperations.name}}"
+                     ng-click="operationsGenericFunction(availOperations.name, availOperations.url,'myModalCertificate','certificate')"></i>&nbsp;&nbsp;
+                  </span>
+                  <button type="button"  class="btn btn-primary" ng-show="isVerified"
+                  ng-click="saveVerifiedCert()"><span>Save</span>
+                  </button>
+                  <button type="button" class="btn btn-primary" ng-show="isVerified"
+                  data-dismiss="modal"
+                  ng-click="searchCertificates()"><span>Cancel</span>
+                  </button>
+               </div>
+            </div>
+         </div>
+         <!-- /.box -->
+      </section>
+
+   <!-- /.content -->
+   <!-- Modal -->
+   <div class="modal fade" id="myModalCertificate" role="dialog">
+      <div class="modal-dialog" style="width: 900px !important;">
+         <!-- Modal content-->
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close modelCloseButton" data-dismiss="modal" ng-click="cancelcertificates()" >&times;</button>
+               <h4 class="modal-title">Add/Edit Certification</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row" style="margin-right: 0px;">
+              <div class="alert alert-success" ng-show="showSuccessAlertPopup"
+                        style=" padding: 2px; text-align:center">
+                        {{successTextAlert}}
+              </div>
+              <div class="alert alert-danger" ng-show="showFailureAlertPopup"
+                        style=" padding: 2px; text-align:center">
+                        {{failureTextAlert}}
+              </div>
+            </div>
+               <fieldset ng-disabled="infoView">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                           <div class="col-md-6 no-padding">
+                              <label for="certificateName" class=" control-label no-padding pull-right">
+                              Certificate Name
+                              <font color="red">*</font>
+                              </label>
+                           </div>
+                           <div class="col-md-6 no-padding">
+                              <input name="certificationId" list="certificationId"  
+                              id="certificationId" type="text" placeholder=" " 
+                              ng-model="emp.certificationName" 
+                              typeahead-on-select="setCertificationId($item)" 
+                              uib-typeahead="certifications.certificationName for certifications in certificationsData | limitTo:8" 
+                              ng-keyup="getCertificationsData()"  
+                              class="form-control" maxlength="30"   ng-maxlength="29" 
+                              ng-disabled="!iseditable" 
+                              ng-blur="removeSuggestions('certificates')" 
+                              required >
+                              <span class="alert alert-info" ng-show="certificationNotFound" style="margin:0px;padding:2px">
+                                <strong>No Certification found.</strong>
+                              </span>
+                              <!-- <select class="form-control" ng-disabled="!iseditable" id="certificateName" name="certificateName" ng-model="osiUserCertificates.certificationId"
+                                 required ng-options="data.certificationId as data.certificationName for data in osiCertificates  | orderBy:'certificationName'"  ng-change="issuedBy=(osiCertificates|filter:{certificationId:osiUserCertificates.certificationId})[0].issuedBy">
+                                 <option value="">--Select--
+                                 </option>
+                              </select> -->
+                              <br />
+                           </div>
+                                </div>
+                          <div class="col-md-6">
+                           <div class="col-md-4 no-padding ">
+                              <label for="IssuedBy" class=" control-label no-padding pull-right">
+                              Issued By
+                              <font color="red">*</font>
+                              </label>
+                           </div>
+                           <div class="col-md-6 no-padding">
+                              <input class="form-control" ng-disabled="true" required ng-model="issuedBy" required>
+                              <!-- <select class="form-control" ng-disabled="!iseditable" id="IssuedBy" name="IssuedBy" ng-model="osiUserCertificates.issuedBy" required
+                              ng-options="data.issuedBy as data.issuedBy for data in osiCertificates | orderBy:'issuedBy' | unique:'issuedBy'" >
+                              <option value="">-Issued By-
+                              </option>
+                           </select> -->
+                              <br />
+                           </div>
+                                </div>
+
+
+
+                         </div>
+                         <div class="row">
+                          <div class="col-md-6">
+                           <div class="col-md-6" style="padding:0 5px 0 0" >
+                              <label for="yearsOfPass" class=" control-label no-padding pull-right">
+                              Certification Date
+                              <font color="red">*</font>
+                              </label>
+                           </div>
+                           <div class="col-md-6 no-padding">
+                               <div class="col-md-9" style="padding-right: 0px;padding-left:0px">
+                              <datepicker date-format="yyyy-MM-dd" selector="form-control" date-max-limit = "{{minDOH}}">
+                                 <input class="form-control" ng-disabled="!iseditable" id="cdatef" placeholder="Date" required ng-model="osiUserCertificates.yearOfPass" required>
+                                 <br>
+                              </datepicker>
+                               </div>
+                               <div class="col-md-1" style="padding-left: 0px;" >
+								<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+									<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('cdatef')"></i>
+								</span>
+							</div>
+                            </div>
+                             </div>
+                             <div class="col-md-6">
+                             <div class="col-md-4 no-padding">
+                              <label for="ExpiryDate" class=" control-label no-padding pull-right"> Expiry Date&nbsp
+                              </label>
+                           </div>
+                           <div class="col-md-6 no-padding">
+                                 <div class="col-md-9" style="padding-right: 0px;padding-left:0px">
+                              <datepicker date-format="yyyy-MM-dd" selector="form-control" date-min-limit = "{{minDOH}}" >
+                                 <input class="form-control" id="expdatef" placeholder="Expiry"  ng-disabled="!iseditable" required ng-model="osiUserCertificates.expiryDate" date-min-limit = "{{minDOH}}" required>
+                                 <br>
+                              </datepicker>
+                               </div>
+                               <div class="col-md-1" style="padding-left: 0px;" >
+								<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+									<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('expdatef')"></i>
+								</span>
+							</div>
+                           </div>
+                             </div>
+                         </div>
+
+
+
+
+
+                         <div class="row">
+                             <div class="col-md-6 ">
+                             <div class="col-md-6 no-padding">
+                              <label for="percentage" class=" control-label no-padding pull-right">
+                              GPA/Percentage
+                              <font color="red">*</font>
+                              </label>
+                           </div>
+                           <div class="col-md-6  no-padding">
+                              <input class="form-control"  ng-disabled="!iseditable" only-number type="text" maxlength="4" minlength="1" ng-model="osiUserCertificates.percentage"  placeholder="Percentage" required>
+                           </div>
+
+                             </div>
+                             <!-- <div class="col-md-6">
+                                <div class="col-md-4 no-padding">
+                                    <label for="percentage" class=" control-label no-padding pull-right">
+                                        Is Verified&nbsp;
+                                    </label>
+                                 </div>
+                                 <div class="col-md-6  no-padding" style="margin-top: 7px;">
+                                    <input type="checkbox" ng-disabled="iseditable" ng-model="osiUserCertificates.isVerified">
+                                 </div>                          
+                                </div> -->
+                         </div>
+                      <div class="row">
+                          <div class="col-md-3 no-padding"><label for="certificate" class=" control-label no-padding pull-right">Certificate</label></div>
+                        <div class="col-lg-2">
+                            <div class="card" style="text-align: center;width:100%">        
+                                <div class="card-block" style="padding: 0px; margin-left: -10px;">
+                                        <div ngf-change="load(picFile)" ngf-select ngf-drop ng-model="picFile" required="" id="image" 
+                                            class="drop-box" ngf-drop-available="dropAvailable" ngf-keep="false" ngf-multiple="false"
+                                            style="height: 60px;border: dashed; color: #203b8a;" class="drop-box" ng-disabled="!iseditable">
+                                          <span ng-show="dropAvailable"> Drag & Drop Here<br>
+                                            <img ngf-src="preview.content" class="thumb" style="margin-top: -34px;width: 100%; height: 78%">
+                                          </span>
+                                        </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-lg-2 no-padding"><a id='resume' style="display:none;" />
+                          <a ng-click="downloadResume();" id='resume1' title='Resume.jpg' ng-disabled="!iseditable">{{preview.name}}</a>
+                        </div>
+                         <div class="col-lg-4 pull-right">
+                           <button type="button" class="btn btn-primary" ng-hide="isContactsaved" ng-click="saveCertificates()" ng-disabled="!enableSaveButton || osiUserCertificates.certificationId == null || osiUserCertificates.certificationId== '' || osiUserCertificates.issuedBy=='' || osiUserCertificates.yearOfPass ==undefined || osiUserCertificates.percentage==undefined || isView"><span>Save</span>
+                              </button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="cancelcertificates()"><span>Cancel</span>
+                              </button>
+                        </div>
+                      </div>
+                     </div>
+                  </div>
+               </fieldset>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- /.right-side -->
+</div>
+<script>
+    function getDatePicker(thiz){
+        console.log(thiz);
+        document.getElementById(thiz).focus();
+    }
+</script>

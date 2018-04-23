@@ -1,0 +1,28 @@
+<div class="row userProfilePadding">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-7">
+                <table class="tableBorder">
+                    <thead class="tableHead">
+                        <th class="tableText"> Inventory Organization Names </th>
+                    </thead>
+                    <tbody>
+                        <tr class="tableBorder" ng-show="vm.userInvOrg.length > 0" ng-repeat="userInvOrg in vm.userInvOrg">
+                            <td class="tableText">
+                                {{userInvOrg.osiInventoryOrg.invOrgName}}
+                            </td>
+                        </tr>
+                        
+                        <tr ng-show="vm.userInvOrg.length == 0">
+                            <td  class="tableErrorText">
+                                No Inventory Organization Assigned..!
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="col-lg-5"></div>
+        </div>
+    </div>
+</div>

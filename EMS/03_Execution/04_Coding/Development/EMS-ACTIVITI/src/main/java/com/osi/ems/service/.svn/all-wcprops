@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/service
+END
+EmployeeService.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/service/EmployeeService.java
+END
+ICertificationsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/1989/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/service/ICertificationsService.java
+END
+WfActivitiesService.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/osi-repos/testing_svn/!svn/ver/1989/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/service/WfActivitiesService.java
+END
+IConfigParamsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/osi-repos/testing_svn/!svn/ver/1989/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/service/IConfigParamsService.java
+END
+IHistoryCleanupService.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/2291/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/service/IHistoryCleanupService.java
+END
+IWorkflowService.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/osi-repos/testing_svn/!svn/ver/1989/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/service/IWorkflowService.java
+END
+EMSService.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/osi-repos/testing_svn/!svn/ver/2142/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/service/EMSService.java
+END
+BookOrderTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/service/BookOrderTest.java
+END
+NotificationsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/osi-repos/testing_svn/!svn/ver/1989/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/service/NotificationsService.java
+END

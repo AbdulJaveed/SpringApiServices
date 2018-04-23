@@ -1,0 +1,86 @@
+
+
+<div data-ng-include="'views/employeeInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+  
+<div id="user-responsibility" class="wrapper row-offcanvas row-offcanvas-left customScrollBar container">
+    <h4 class="title-align"><strong>User Responsibilities</strong></h4>
+    <div>
+    <section class="content">
+    <div class="row" ng-if="isTrascError">
+        <div ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                ng-if="flash" ng-bind="flash.message"></div>
+        </div> 
+    <form name="vm.respForm" novalidate="">
+        <fieldset ng-disabled="userView">
+        <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Responsibility<font size="3" color="red">*</font></th>
+                    <!-- <th class="col-md-1">Default</th> -->
+                    <th>Start Date<font size="3" color="red">*</font></th>
+                    <th>End Date</th>
+                    <th></th>
+                </tr>
+            </thead>                
+            <tr ng-repeat="userResp in vm.userResp track by $index">
+                <td>             
+                    <select class="form-control" ng-model="userResp.osiResponsibilities" 
+                        ng-options="resp as resp.respName for resp in responsibilities | orderBy:'respName' track by resp.id" 
+                        ng-change="checkDuplicateResp(userResp.osiResponsibilities,$index)" required>
+                        <option value="">Select Responsibility</option>
+                    </select>
+                </td>
+                <!-- <td class="col-md-1">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="" ng-click="updateSelection($index, userResp)" ng-model="userResp.defaultResp">                    
+                </td> -->
+                <td>
+                    <datepicker date-format="yyyy-MM-dd" selector="form-control" date-min-limit="{{todaysDate}}">
+                        <div class="input-group" id="start-date">
+                            <input class="form-control" placeholder="Start Date" 
+                                ng-model="userResp.startDate" id="{{'startDate'+$index}}" ng-blur="vm.checkDate(userResp)" ng-change="vm.compareDate(userResp)" required/> 
+                            <span name="sdate" class="input-group-addon" class="{{'endDate'+$index}}" ng-click="getDatePicker('startDate'+$index)" style="cursor: pointer"> 
+                                <i class="fa fa-lg fa-calendar"></i>
+                            </span>
+                        </div>
+                    </datepicker>
+                </td>
+                <td>
+                    <datepicker date-format="yyyy-MM-dd" selector="form-control" date-min-limit="{{userResp.startDate}}">
+                        <div class="input-group" id="end-date">
+                            <input ng-disabled="!userResp.startDate" id="{{'endDate'+$index}}"
+                                class="form-control" placeholder="End Date" ng-model="userResp.endDate" ng-change="vm.compareDate(userResp)" 
+                                ng-blur="vm.checkEndDate(userResp)" /> 
+                            <span name="edate" class="input-group-addon"  ng-click="getDatePicker('endDate'+$index)" style="cursor: pointer"> 
+                                <i class="fa fa-lg fa-calendar"></i>
+                            </span>
+                        </div>
+                    </datepicker>
+                </td>  
+                <td class="top10" style="font-size: 24px;">
+                    <span  ng-show="$last && !userView" class="glyphicon glyphicon-plus-sign minusIcon" 
+                        ng-click="addRow(userResp)"  style="cursor: pointer" >
+                    </span>
+                    <span class="glyphicon glyphicon-minus-sign minusIcon" ng-hide="userView" 
+                        ng-click="removeRow($index)"  style="cursor: pointer">
+                    </span>
+                </td>
+            </tr>
+        </table>
+        </div>
+        </fieldset>
+        <div class="row pull-right no-right-margin">
+                <button type="button" ng-click="vm.backToEmpList();" class="btn btn-default">
+                       Cancel
+                    </button>&nbsp;&nbsp;
+            <!--<button type="button" class="btn btn-primary" ng-click="vm.backToEmpList()">
+               Employee List</button>&nbsp; -->
+            <button type="button" class="btn btn-primary" ng-click="next()">Save
+            </button>
+              
+        </div>
+    </form>
+    </section></div>
+    <br>
+</div>

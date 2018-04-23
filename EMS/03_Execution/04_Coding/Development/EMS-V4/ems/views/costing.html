@@ -1,0 +1,75 @@
+<div class="modal fade" id="costingModal" role="dialog" style="z-index: 10000;">
+    <div class="modal-dialog">
+        <div class="modal-content" style="margin-left: -90px;width: 780px;">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Costing Info
+                </h4>
+                <div class="row" ng-if="isTrascError">
+                    <div style="width: 65%;margin-left: 110px; margin-top: 2px;" ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}" ng-if="flash" ng-bind="flash.message">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+    <form name="vm.respForm" novalidate="">
+        <fieldset ng-disabled="userView">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr class="row">
+                    <th class="col-md-4">Organization<font size="3" color="red">*</font></th>
+                    <th class="col-md-2">Grade<font size="3" color="red">*</font></th>
+                    <th class="col-md-3">Cost per Month<font size="3" color="red">*</font></th>
+                    <th class="col-md-3">Cost per Hour<font size="3" color="red">*</font></th>
+                </tr>
+            </thead>
+            <tr class="row" ng-repeat="costing in vm.costingInfo track by $index">
+                <input type="hidden" ng-model="costing.ccGradeId" />
+                <td class="col-md-4">
+                    <select class="form-control" ng-model="costing.orgId"
+                        ng-options="data.orgId as data.orgName for data in vm.osiOrganizations | orderBy:'orgName'"
+                        ng-change="getAllGradesByOrgId(costing.orgId, $index)"
+                          required>
+                        <option value="">Select Organization</option>
+                    </select>
+                </td>
+                <td class="col-md-2">
+                    <select class="form-control" ng-model="costing.gradeId"
+                        ng-change="checkDuplicateCosting(costing.orgId, costing.gradeId, $index);setValues(costing.gradeId, $index)"
+                        ng-options="resp.gradeId as resp.gradeName for resp in vm.osiGrades[$index] | orderBy:'gradeName'"
+                        required>
+                        <option value="">Select Grade</option>
+                    </select>
+                </td>
+                <td class="col-md-3">
+                  <input class="form-control" placeholder="Cost per Month" maxlength="10" convert-decimal-number ng-model="costing.costPerMonth" required/>
+                </td>
+                <td class="col-md-3">
+                  <input class="form-control" placeholder="Cost per Hour" maxlength="10" convert-decimal-number ng-model="costing.costPerHour" required/>
+                </td>
+                <td class="col-md-2 top10" style="font-size: 24px;">
+                    <span  ng-show="$last && !userView" class="glyphicon glyphicon-plus-sign minusIcon"
+                        ng-click="addRow(costing)"  style="cursor: pointer" >
+                    </span>
+                    <span class="glyphicon glyphicon-minus-sign minusIcon" ng-hide="userView"
+                        ng-click="removeRow($index)"  style="cursor: pointer">
+                    </span>
+                </td>
+            </tr>
+        </table>
+
+        <div class="pull-right">
+            <button type="button" style="margin-left: 14px;" class="btn btn-primary"
+			        	ng-click="vm.saveCcGrades();">
+			            <span>Save</span>
+			        </button>
+			           <button type="button" ng-click="vm.clearCostingInfo();" style="float: right;margin-left: 14px;" class="btn btn-primary">
+			            <span>Clear</span>
+			        </button>
+        </div>
+        </fieldset>
+    </form>
+  </div>
+</div>
+</div>
+</div>

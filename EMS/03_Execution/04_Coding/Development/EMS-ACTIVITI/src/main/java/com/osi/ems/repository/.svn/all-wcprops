@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository
+END
+IOsiEmailContentsRepo.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository/IOsiEmailContentsRepo.java
+END
+IOsiWorkFlowsRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository/IOsiWorkFlowsRepository.java
+END
+IOsiWFActivitiesRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository/IOsiWFActivitiesRepository.java
+END
+IOsiConfigParameters.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository/IOsiConfigParameters.java
+END
+IOsiNotificationsRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/osi-repos/testing_svn/!svn/ver/2339/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/repository/IOsiNotificationsRepository.java
+END

@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/osi-repos/testing_svn/!svn/ver/2386/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest
+END
+OsiEmergencyContactsResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/osi-repos/testing_svn/!svn/ver/820/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiEmergencyContactsResource.java
+END
+OsiUserResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiUserResource.java
+END
+OsiTestResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiTestResource.java
+END
+OsiResponsibilityResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiResponsibilityResource.java
+END
+OsiSegmentStructureResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/osi-repos/testing_svn/!svn/ver/790/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiSegmentStructureResource.java
+END
+OsiOperationsResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiOperationsResource.java
+END
+OsiCertificationResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiCertificationResource.java
+END
+OsiReportGrpResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiReportGrpResource.java
+END
+OsiFunctionResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/1973/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiFunctionResource.java
+END
+OsiUserLoginsResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiUserLoginsResource.java
+END
+OsiMenuEntriesResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiMenuEntriesResource.java
+END
+OsiFuncOperationsResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiFuncOperationsResource.java
+END
+OsiSkillsResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/osi-repos/testing_svn/!svn/ver/1681/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiSkillsResource.java
+END
+OsiAuthResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiAuthResource.java
+END
+OsiMenuResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiMenuResource.java
+END
+OsiUserFuncExclResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/osi-repos/testing_svn/!svn/ver/2062/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiUserFuncExclResource.java
+END
+OsiRespUserResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/2386/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiRespUserResource.java
+END
+OsiLoginResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/643/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiLoginResource.java
+END
+OsiLookupResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/765/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiLookupResource.java
+END
+OsiUserOperationExclResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/osi-repos/testing_svn/!svn/ver/2161/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/web/rest/OsiUserOperationExclResource.java
+END

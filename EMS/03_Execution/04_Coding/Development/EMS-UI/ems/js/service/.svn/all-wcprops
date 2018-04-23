@@ -1,0 +1,287 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service
+END
+OsiCostCenterService.js
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/osi-repos/testing_svn/!svn/ver/972/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/OsiCostCenterService.js
+END
+functionService.js
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/functionService.js
+END
+menuEntryService.js
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/menuEntryService.js
+END
+employeesService-self.js
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/osi-repos/testing_svn/!svn/ver/594/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/employeesService-self.js
+END
+OsiBusinessUnitsService.js
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/osi-repos/testing_svn/!svn/ver/991/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/OsiBusinessUnitsService.js
+END
+operationExclusionService.js
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/osi-repos/testing_svn/!svn/ver/296/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/operationExclusionService.js
+END
+assignmentsService.js
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/842/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/assignmentsService.js
+END
+segmenthirarchyService.js
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/850/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/segmenthirarchyService.js
+END
+employeeBasicInfoService.js
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/osi-repos/testing_svn/!svn/ver/1188/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/employeeBasicInfoService.js
+END
+reportsService.js
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/reportsService.js
+END
+personalInfoService.js
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/986/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/personalInfoService.js
+END
+OsiSkilsService.js
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/850/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/OsiSkilsService.js
+END
+shareddataservice.js
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/shareddataservice.js
+END
+osiResponsibilitiesService.js
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/osiResponsibilitiesService.js
+END
+OsiJobCodesService.js
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/835/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/OsiJobCodesService.js
+END
+menuService.js
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/menuService.js
+END
+appConstantInfoService.js
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/osi-repos/testing_svn/!svn/ver/1122/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/appConstantInfoService.js
+END
+officeInfoService.js
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/1055/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/officeInfoService.js
+END
+lookupService.js
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/osi-repos/testing_svn/!svn/ver/135/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/lookupService.js
+END
+medicalInfoService.js
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/436/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/medicalInfoService.js
+END
+reportsGroupService.js
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/reportsGroupService.js
+END
+categoryService.js
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/osi-repos/testing_svn/!svn/ver/380/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/categoryService.js
+END
+emergencyContactsService.js
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/osi-repos/testing_svn/!svn/ver/232/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/emergencyContactsService.js
+END
+employeeskillservice.js
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/osi-repos/testing_svn/!svn/ver/1386/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/employeeskillservice.js
+END
+OsiDepratmentService.js
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/osi-repos/testing_svn/!svn/ver/991/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/OsiDepratmentService.js
+END
+OsiTitlesService.js
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/osi-repos/testing_svn/!svn/ver/915/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/OsiTitlesService.js
+END
+authenticationService.js
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/1438/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/authenticationService.js
+END
+OsiCertificationsService.js
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/osi-repos/testing_svn/!svn/ver/864/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/OsiCertificationsService.js
+END
+empBankDetailsService.js
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/osi-repos/testing_svn/!svn/ver/491/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/empBankDetailsService.js
+END
+orgchart-utility-service.js
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/osi-repos/testing_svn/!svn/ver/892/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/orgchart-utility-service.js
+END
+commonService.js
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/commonService.js
+END
+orgchart-shared-service.js
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/osi-repos/testing_svn/!svn/ver/1127/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/orgchart-shared-service.js
+END
+flashService.js
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/flashService.js
+END
+authentication.service.js
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/authentication.service.js
+END
+userProfileService.js
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/userProfileService.js
+END
+employeesService.js
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/osi-repos/testing_svn/!svn/ver/1357/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/employeesService.js
+END
+organizationService.js
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/892/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/organizationService.js
+END
+httpErrorResponseInterceptor.js
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/httpErrorResponseInterceptor.js
+END
+empBankDetailsConfigService.js
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/osi-repos/testing_svn/!svn/ver/283/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/empBankDetailsConfigService.js
+END
+flexifieldService.js
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/osi-repos/testing_svn/!svn/ver/755/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/flexifieldService.js
+END
+OsiEmployeesService.js
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/OsiEmployeesService.js
+END
+rest-services.js
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/rest-services.js
+END
+userService.js
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/userService.js
+END
+functionExclusionService.js
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/functionExclusionService.js
+END
+responsibilityservice.js
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/osi-repos/testing_svn/!svn/ver/273/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/responsibilityservice.js
+END
+OsiGradesService.js
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/osi-repos/testing_svn/!svn/ver/932/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/OsiGradesService.js
+END
+segmentstructurehdrservice.js
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-UI/ems/js/service/segmentstructurehdrservice.js
+END

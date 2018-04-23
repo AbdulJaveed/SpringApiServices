@@ -1,0 +1,46 @@
+<div class="container-fluid grid-font-size"><br>
+<!-- <div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div> -->
+    <div class="row">
+            <div class="col-md-3"><strong>Employee Hierarchy Chart</strong></div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3 pull-right empChart-right"><button class="btn btn-primary" ng-click="orgList()">
+		Org-list<span class="fa fa-list-alt" style="margin-left: 8%;"></span></button>
+            </div>
+    </div><br>
+
+    <section class="content"><!--" -->
+<!--            <div class="row"></div>
+            <div class="row"></div>-->
+            <div class="row">
+                <div class="col-md-12 empChart">
+                            <div ng-controller="employeeModalController"></div>
+                            <div id="employeeProfile">
+                                    <div ng-include="'views/view-profile-orgChart.html'" class="empChart-Info"></div>
+                            </div>
+                            <tt  ></tt>
+                </div>
+            </div>
+    </section>
+</div>
+<style>
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+</style>

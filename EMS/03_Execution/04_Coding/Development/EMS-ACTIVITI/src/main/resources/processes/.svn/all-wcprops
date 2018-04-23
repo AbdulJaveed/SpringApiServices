@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes
+END
+1.2ems_employee_creation_process.bpmn
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes/1.2ems_employee_creation_process.bpmn
+END
+1.2ems_employee_skill_remainder_process.bpmn
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes/1.2ems_employee_skill_remainder_process.bpmn
+END
+1.2ems_employee_certification_verification_process.bpmn
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/osi-repos/testing_svn/!svn/ver/2420/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes/1.2ems_employee_certification_verification_process.bpmn
+END
+1.1ems_employee_parent_process.bpmn
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes/1.1ems_employee_parent_process.bpmn
+END
+1.2ems_employee_update_notification_process.bpmn
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/osi-repos/testing_svn/!svn/ver/1913/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes/1.2ems_employee_update_notification_process.bpmn
+END
+1.2ems_employee_termination_process.bpmn
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/osi-repos/testing_svn/!svn/ver/2488/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes/1.2ems_employee_termination_process.bpmn
+END
+1.1ems_employee_probation_process.bpmn
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes/1.1ems_employee_probation_process.bpmn
+END
+1.2ems_employee_probation_process.bpmn
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes/1.2ems_employee_probation_process.bpmn
+END
+1.2ems_employee_termination_remainder_process.bpmn
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes/1.2ems_employee_termination_remainder_process.bpmn
+END
+1.2ems_employee_skill_verification_process.bpmn
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/osi-repos/testing_svn/!svn/ver/2415/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/resources/processes/1.2ems_employee_skill_verification_process.bpmn
+END

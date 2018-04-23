@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/osi-repos/testing_svn/!svn/ver/1721/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto
+END
+OsiUserDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/1721/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiUserDTO.java
+END
+OsiSegmentStructureHdrDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiSegmentStructureHdrDTO.java
+END
+OsiOperationsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiOperationsDTO.java
+END
+OsiMenusDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiMenusDTO.java
+END
+OsiResponsibilitiesDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiResponsibilitiesDTO.java
+END
+OsiRptGrpRptsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiRptGrpRptsDTO.java
+END
+OsiReportArgsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiReportArgsDTO.java
+END
+OsiLookupValuesDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiLookupValuesDTO.java
+END
+OsiSegmentStructureDetailsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/osi-repos/testing_svn/!svn/ver/820/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiSegmentStructureDetailsDTO.java
+END
+OsiUserLoginsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiUserLoginsDTO.java
+END
+OsiListValuesDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiListValuesDTO.java
+END
+OsiListSqlDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiListSqlDTO.java
+END
+OsiReportsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiReportsDTO.java
+END
+OsiMenuRespDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiMenuRespDTO.java
+END
+OsiMenuEntriesDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiMenuEntriesDTO.java
+END
+OsiLookupTypesDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiLookupTypesDTO.java
+END
+OsiListsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiListsDTO.java
+END
+OsiFuncOperationsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiFuncOperationsDTO.java
+END
+OsiUserProjection.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiUserProjection.java
+END
+OsiRptGroupsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiRptGroupsDTO.java
+END
+OsiUserFuncExclDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/osi-repos/testing_svn/!svn/ver/272/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiUserFuncExclDTO.java
+END
+OsiKeyFlexDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiKeyFlexDTO.java
+END
+OsiFunctionsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiFunctionsDTO.java
+END
+OsiRespUserDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/osi-repos/testing_svn/!svn/ver/820/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiRespUserDTO.java
+END
+OsiReportsGenerationDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiReportsGenerationDTO.java
+END
+OsiRmRequestsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiRmRequestsDTO.java
+END
+OsiAttachmentsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiAttachmentsDTO.java
+END
+OsiUserOperationExclDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/osi-repos/testing_svn/!svn/ver/272/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/urm/service/dto/OsiUserOperationExclDTO.java
+END

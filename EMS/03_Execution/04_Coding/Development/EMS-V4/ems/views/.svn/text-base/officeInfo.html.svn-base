@@ -1,0 +1,121 @@
+<script>
+    setTimeout(function(){
+        $("#add").toggleClass("active");
+        $("#office").toggleClass("active");
+        $("#add-li").toggleClass("active");
+        }, 100);</script>
+</script>
+<div>
+
+    <div data-ng-include="'views/employeeMenu.html'"></div>
+    <div class="container-fluid">
+            <div class="mt-3 col-md-12"></div>
+            <div class="mt-3 col-md-12"></div>
+        <div class="row" ng-if="isTrascError">
+            <div
+                ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                ng-if="flash" ng-bind="flash.message">
+            </div>
+        </div>
+        <div class="row ml-0">
+            <section class="forms">
+                  
+                <div class="card">
+                    <div class="card-body">
+                        <form name="vm.personalInfoForm">
+                            <div class="row" data-ng-disabled="vm.infoView">	
+                                <div class="col-md-2 col-sm-12 col-xs-12 border-top-0 border-bottom-0 border-left-0">
+                                    <div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+                                </div>
+                                <div class="col-md-5">
+                                        <div class="form-group row">
+                                                <label for="userName" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                                    Username </label>
+                                                <input class="form-control form-control-sm col-md-5 col-sm-12 form-field-border ml-mr-15 border-left-width"
+                                                       ng-model="vm.osiEmployees.userName"
+                                                       placeholder='User Name' capitalize
+                                                       ng-disabled="disableUsername" 
+                                                       type="text" name="userName" data-no-special-char-space  
+                                                       maxlength="50" required/>
+                                            </div>
+                                    
+
+                                    <div class="form-group row">
+                                        <label for="Email" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                            Email </label>
+                                        <input class="form-control form-control-sm col-md-5 col-sm-12 form-field-border ml-mr-15 border-left-width"
+                                               ng-model="vm.osiEmployees.officeEmail"
+                                               placeholder='Email' capitalize
+                                               maxlength="50" ng-pattern="/^[A-Za-z]+[A-Za-z0-9._]+@[A-Za-z]+\.[A-Za-z.]{3,5}$/"
+                                               type="email" name="email" required ng-disabled="!vm.officeEmailValue" />
+                                    </div>
+                                    <div class="form-group row">
+                                            <label for="hoursPerWeek" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                                Hours per Week </label>
+                                            <input class="form-control form-control-sm col-md-5 col-sm-12 form-field-border ml-mr-15 border-left-width"
+                                                   ng-model="vm.osiEmployees.fteCapacity"
+                                                   placeholder='Capacity'
+                                                   type="text" maxlength="2" name="Capacity" data-only-Number  data-no-special-char-space required ng-disabled="!iseditable" />
+                                        </div>
+                                   
+                                </div>
+                                <div class="col-md-5">
+                                        <div class="form-group row">
+                                                <label for="extensionNumber" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                                    Extension Number </label>
+                                                <input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width"
+                                                       ng-model="vm.osiEmployeeContacts.contactNumber" maxlength="10"
+                                                       placeholder='Extension Number ' ng-disabled="true"
+                                                       type="text" name="extensionNumber" data-only-Number  data-no-special-char-space required
+                                                       ng-disabled="!iseditable" />
+                                            </div>
+                                            <div class="form-group row">
+                                                    <label for="mailStop" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                                        Workstation / Locker ID </label>
+                                                    <input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width"
+                                                           maxlength="50"
+                                                           ng-model="vm.osiEmployees.mailStop" capitalize
+                                                           placeholder='Mail Stop' 
+                                                           type="text" name="MailStop" required  data-special-char-hyphen-dot />
+                                                </div>
+                                    <div class="form-group row">
+                                        <label for="serialNumber" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                            Asset ID </label>
+                                        <input class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width"
+                                               ng-model="vm.osiEmployees.serialNumber" ng-disabled="true"
+                                               placeholder='Serial Numnber'
+                                               capitalize
+                                             
+                                               type="text" name="userName" data-special-char-hyphen-dot  
+                                               maxlength="50" required />
+                                    </div>
+                                   
+
+
+
+
+                                </div>
+                            </div>	
+                            <div class="row pull-right">
+                                <div class="col-sm-12">
+                                        <button type="button" ng-click="vm.clearOfficeInfoData();" class="btn btn-default">
+                                                Cancel
+                                            </button>
+                                    <button type="button" class="btn btn-primary" ng-click="vm.checkForValidData();" 
+                                            ng-disabled="!nonEditable || !iseditable">
+                                        Save
+                                    </button> 
+                                   
+                                </div>
+                            </div>        
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" role="dialog" id="confirmationModelForOffice" tabindex="-1" aria-labelledby="co">
+    <div ng-include="'views/confirmationPopup.html'"></div>
+</div>

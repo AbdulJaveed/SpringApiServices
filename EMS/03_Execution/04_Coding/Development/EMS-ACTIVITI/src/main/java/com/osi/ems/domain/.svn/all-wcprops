@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain
+END
+OsiEmailContents.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain/OsiEmailContents.java
+END
+OsiEmpCertifications.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain/OsiEmpCertifications.java
+END
+OsiConfigParameters.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain/OsiConfigParameters.java
+END
+OsiNotifications.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain/OsiNotifications.java
+END
+OsiAssignments.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain/OsiAssignments.java
+END
+OsiWorkFlows.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain/OsiWorkFlows.java
+END
+ConfigMails.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/osi-repos/testing_svn/!svn/ver/2467/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain/ConfigMails.java
+END
+OsiWFActivities.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain/OsiWFActivities.java
+END
+OsiEmployees.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/osi-repos/testing_svn/!svn/ver/2522/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain/OsiEmployees.java
+END
+OsiEmpSkills.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/osi-repos/testing_svn/!svn/ver/1898/EMS/03_Execution/04_Coding/Development/EMS-ACTIVITI/src/main/java/com/osi/ems/domain/OsiEmpSkills.java
+END

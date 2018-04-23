@@ -1,0 +1,149 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<div class="breadcrumb-holder">
+		<div class="container-fluid">
+			<ul class="breadcrumb">
+				<h1 class="h3 display">Categories</h1>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<header> </header>
+		<section class="forms">
+			<div class="row">
+				<div class="alert alert-success" ng-show="showSuccessAlert">
+					{{successTextAlert}}</div>
+				<div class="alert alert-danger" ng-show="showFailureAlert">
+					{{failureTextAlert}}</div>
+
+			</div>
+
+			<div class="col-sm-12 no-padding adjust-search-box">
+				<div class="card">
+					<div class="card-body">
+						<div class="row" role="form">
+							<div class="col-lg-3">
+								<select ng-model="vm.searchEntryObj.orgId"
+									ng-change="vm.removeOrgName(vm.category.orgId)"
+									class="form-control top10" id="sel1" place-holder="select Type">
+									<option value="" disabled>Select Organization</option>
+
+									<option
+										ng-repeat="organization in vm.organizations | orderBy:'name'"
+										value="{{organization.orgId}}">{{organization.orgName}}</option>
+								</select>
+							</div>
+							<div class="col-lg-3">
+								<input class="form-control" name="category"
+									ng-model="vm.searchEntryObj.catName"
+									placeholder="Function Name"
+									ng-change="vm.makeEnableButtionPrompt(vm.searchEntryObj.prompt)"
+									type="text" no-special-char>
+							</div>
+							<div class="col-lg-3">
+								<input class="form-control" name="table"
+									ng-model="vm.searchEntryObj.tblName" placeholder="Table Name"
+									ng-change="vm.makeEnableButtionPrompt(vm.searchEntryObj.prompt)"
+									type="text">
+							</div>
+							<div class="col-lg-3">
+								<button class="btn btn-primary"
+									ng-click="vm.searchEntry(vm.searchEntryObj)">Search</button>
+								<button type="button" class="btn btn-defaul btn-width"
+									ng-click="clearSearch()">Clear</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="content">
+			<div class='card'>
+				<div class="box-body table-responsive" style="">
+					<table class="table table-striped table-sm">
+						<thead class="thead_bg">
+							<tr>
+								<!--                                    <th>ID</th>-->
+								<!--                                    <th>Sequence</th>
+                                    <th>Prompt</th>
+                                    <th>Header Menu</th>
+                                    <th>Submenu</th>
+                                    <th>Function</th>-->
+								<!--                                    <th>Actions</th>-->
+								<th ng-click="sort('orgName')">Organization Name <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'orgName'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('catName')">Function Name <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'catName'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('tblName')">Table Name <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'tblName'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+								</th>
+								<th ng-click="sort('active')">Status <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'active'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr
+								dir-paginate="entry in vm.entryList|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+								ng-init="myIndex = $index" ng-click="selectRow($event, entry)"
+								ng-dblclick="editSelectedRowDetails()"
+								ng-class="{selected: isRowSelected(entry)}">
+								<!--<td>{{entry.id}}</td>-->
+								<td>{{entry.orgName}}</td>
+								<td>{{entry.catName}}</td>
+								<td>{{entry.tblName}}</td>
+								<td>{{entry.status}}</td>
+								<!--                                <td>
+                                        <div class="col-sm-12 lookup-action">
+                                            <i class="fa fa-eye" ng-click="vm.showViewEntryModal(entry)"></i>&nbsp; &nbsp; 
+                                            <i class="fa fa-pencil-square-o" ng-click="vm.showUpdateEntryModal(entry,$index)"></i>&nbsp; &nbsp;
+                                            <i class="fa fa-trash-o" aria-hidden="true" ng-click="vm.deleteEntry(entry)"></i>
+                                        </div>
+                                    </td>-->
+
+							</tr>
+						</tbody>
+
+					</table>
+					<div ng-if="!vm.entryList || vm.entryList.length == 0">
+						<h6 style="text-align: center; color: red;">No Records Found</h6>
+					</div>
+
+
+				</div>
+				<!-- /.box-body -->
+				<div class="col-sm-13 row">
+					<div class="col-sm-10">
+						<dir-pagination-controls max-size="8" direction-links="true"
+							boundary-links="true" on-page-change="clearSelectedRow()">
+						</dir-pagination-controls>
+					</div>
+					<div class="col-sm-2 adjust-crud-op">
+						<span ng-repeat="availOperations in availOperations"> <i
+							style="cursor: pointer;"
+							ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',
+                                                'glyphicon glyphicon-eye-open' : availOperations.name == 'View',
+                                                'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',
+                                                'disabled': disable_{{availOperations.name}}}"
+							ng-disabled="disable_{{availOperations.name}}"
+							ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+						</span>
+					</div>
+				</div>
+		</section>
+	</div>
+</div>
+
+<div ng-include="'views/category.html'"></div>
+<div ng-include="'views/categoryViewUpdate.html'"></div>
+
+
+
+<div ng-include="'views/category.html'"></div>
+<div ng-include="'views/categoryViewUpdate.html'"></div>
+

@@ -1,0 +1,278 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<div class="breadcrumb-holder">
+		<div class="container-fluid">
+			<ul class="breadcrumb">
+				<h1 class="h3 display">Look up</h1>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<header> </header>
+		<section class="forms">
+			<div class="row">
+				<div class="alert alert-success" ng-show="showSuccessAlert">
+					{{successTextAlert}}</div>
+				<div class="alert alert-danger" ng-show="showErrorAlert">
+					{{failureTextAlert}}</div>
+
+			</div>
+
+			<div class="col-sm-12 no-padding adjust-search-box">
+				<div class="card">
+					<div class="card-body">
+						<div class="row" role="form">
+							<div class="col-lg-4">
+								<input class="form-control" name="code" ng-Model="code"
+									placeholder="Lookup Code" type="text">
+							</div>
+							<div class="col-lg-4">
+								<input class="form-control input-height" name="name"
+									ng-model="name" placeholder="Lookup Name" type="text">
+							</div>
+							<div class="col-lg-4">
+								<button class="btn btn-primary" ng-click="searchLookups()">Search</button>
+								<button type="button" class="btn btn-defaul btn-width"
+									ng-click="clearSearch()">Clear</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="content">
+			<div class='card'>
+				<div class="box-body table-responsive" style="">
+					<table class="table table-striped table-sm">
+						<thead class="thead_bg">
+							<tr>
+								<th ng-click="sort('lookupCode')">Code <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'lookupCode'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('lookupName')">Name <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'lookupName'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('active')">Status <span
+									class="glyphicon sort-icon" ng-show="sortKey == 'active'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<!-- <th>Action</th> -->
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr
+								dir-paginate="item in lookupdata|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+								ng-class="{selected: item.id == isSelectedRow}"
+								ng-click="selectRow(item)"
+								ng-dblclick="editSelectedRowDetails(item, lookupdata)"
+								ng-init="myIndex = $index">
+								<input type="hidden" ng-model="id" value="item.id" />
+								<td>{{item.lookupCode}}</td>
+								<td>{{item.lookupName}}</td>
+								<td ng-if="item.active==1">Active</td>
+								<td ng-if="item.active==0">InActive</td>
+								<!-- <td>
+                                    <div class="col-sm-12 lookup-action">
+                                            <i class="fa fa-eye" ng-click="viewitem(item)"></i>&nbsp;
+                                            &nbsp; <i class="fa fa-pencil-square-o"
+                                                    ng-click="edititem(item)"></i>
+                                    </div>
+                            </td> -->
+							</tr>
+						</tbody>
+
+					</table>
+					<div ng-if="lookupdata.length == 0">
+						<h6 style="text-align: center; color: red;">No Records Found</h6>
+					</div>
+
+
+				</div>
+				<!-- /.box-body -->
+				<div class="col-sm-13 row">
+					<div class="col-sm-10">
+						<dir-pagination-controls max-size="8" direction-links="true"
+							boundary-links="true" on-page-change="clearSelectedRow()">
+						</dir-pagination-controls>
+					</div>
+					<div class="col-sm-2 adjust-crud-op">
+						<span ng-repeat="availOperations in availOperations"> <i
+							style="cursor: pointer;"
+							ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',
+                                                'glyphicon glyphicon-eye-open' : availOperations.name == 'View',
+                                                'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',
+                                                'disabled': disable_{{availOperations.name}}}"
+							ng-disabled="disable_{{availOperations.name}}"
+							ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+						</span>
+					</div>
+				</div>
+		</section>
+	</div>
+
+</div>
+<div class="modal fade" id="lookup-model" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="row">
+					<div class="col-lg-6">
+						<h4 class="modal-title">{{headername}}</h4>
+					</div>
+					<div class="col-lg-6 pull-right">
+						<button type="button" class="close modelCloseButton"
+							data-dismiss="modal">&times;</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal" role="form">
+					<div class="row" ng-if="isTrascError">
+						<div
+							ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+							ng-if="flash" ng-bind="flash.message"></div>
+					</div>
+					<div class="row">
+						<div class="col-lg-2 text-align-right">
+							<label for="name">Name </label>
+						</div>
+						<div class="col-lg-4">
+							<input class="form-control form-field-border"
+								ng-disabled="!iseditable" name="item" ng-model="lookupname"
+								placeholder="Enter Lookup Name" onFocus="this.placeholder = ''"
+								maxlength="50" onBlur="this.placeholder = 'Enter Lookup Name'"
+								type="text" special-char-underscore>
+						</div>
+						<div class="col-lg-2 text-align-right">
+							<label for="name">Code</label>
+						</div>
+						<div class="col-lg-4">
+							<input class="form-control form-field-border"
+								ng-disabled="!iseditable||!iscodeeditable" name="organization"
+								ng-model="lookupcode" maxlength="20" placeholder="Enter Code"
+								onFocus="this.placeholder = ''"
+								onBlur="this.placeholder = 'Enter Code'" type="text"
+								special-char-underscore uppercase="">
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-sm-2 text-align-right">
+							<b>Active</b>
+						</div>
+						<div class="col-lg-4">
+							<input type="checkbox" ng-disabled="!iseditable" id="cbk1"
+								ng-style="iseditable && {'background-color': 'white'}"
+								ng-model="isActive">
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<hr>
+					</div>
+					<div>
+						<table class="table table-responsive table-bordered table-striped">
+							<tr>
+								<th class="td_font" ng-show="iseditable"><input
+									type="checkbox" ng-model="isAllSelected"
+									ng-disabled="selectAll" ng-click="toggleAll()"
+									id="allSelect"></th>
+								<th>Sequence<font color="red">*</font></th>
+								<th>Value<font color="red">*</font></th>
+								<th>Description<font color="red">*</font></th>
+								<th>
+									<span class="glyphicon glyphicon-plus-sign addIcon"
+									ng-click="addRow()" ng-if="iseditable"></span>
+									<span class="glyphicon glyphicon-minus-sign minusIcon"
+									ng-click="removeRow()" ng-if="iseditable"></span>
+									<!-- <i class="fa fa-plus" ng-disabled="!iseditable"
+									ng-click="addRow()"></i>&nbsp;&nbsp;&nbsp; <i
+									class="fa fa-minus" ng-disabled="!iseditable"
+									ng-click="removeRow()" /></i> -->
+								</th> 
+							</tr>
+							<!-- | orderBy:'lookupSeqNum'  -->
+							<tr
+								ng-repeat="datum in valuedata track by $index"
+								ng-init="myIndex = $index">
+								<td class="td_font" ng-show="iseditable"
+									><input type="checkbox" ng-click="optionToggled()" 
+									ng-model="datum.selected" ng-init="datum.selected = false"
+									></td>
+									<!-- ng-if="datum.isselected == 'Y'" -->
+								<!-- <td class="td_font" ng-show="iseditable"
+									ng-if="datum.isselected == 'N' && datum.isCbkeditable =='N' "><input
+									type="checkbox" ng-model="datum.selected"
+									ng-init="datum.selected = false" ng-disabled="true"></td>
+								<td class="td_font" ng-show="iseditable"
+									ng-if="datum.isselected == 'N' && datum.isCbkeditable =='Y' "><input
+									type="checkbox" ng-model="datum.selected"
+									ng-init="datum.selected = false" ng-disabled="false"></td> -->
+								<td><input type="text" class="form-control" ng-disabled="!iseditable" 
+									ng-model="datum.lookupSeqNum" only-number maxlength="4"></td>
+								<td><input type="text" ng-disabled="!iseditable"
+									maxlength="50" class="form-control"
+									ng-model="datum.lookupvalue" placeholder="Value"
+									onFocus="this.placeholder = ''"
+									onBlur="this.placeholder = 'Value'" no-special-char></td>
+								<td><input type="hidden" ng-model="datum.id"> <input
+									type="text" ng-disabled="!iseditable" maxlength="500"
+									class="form-control" ng-model="datum.lookupdesc"
+									placeholder="Description" onFocus="this.placeholder = ''"
+									onBlur="this.placeholder = 'Description'"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<!-- <div class="modal-foot" align="right"
+					style="margin-top: 10px; float: left; width: 100%;">
+					<button type="button" class="btn btn-default btn-space pull-right"
+						data-dismiss="modal">Close</button>
+					<div ng-if="isUpdatable">
+						<button class="btn btn-primary modalButton"
+							ng-click="saveLookup()" ng-disabled="!iseditable">Update</button>
+					</div>
+					<div ng-if="!isUpdatable">
+						<button type="button" class="btn btn-primary modalButton"
+							ng-hide="!iseditable" ng-click="saveLookup()">Save</button>
+					</div>
+				</div> -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-space pull-right"
+						data-dismiss="modal">Close</button>
+					&nbsp;
+					<div ng-if="isUpdatable">
+						<button class="btn btn-primary modalButton"
+							ng-click="saveLookup()" ng-disabled="!iseditable">Update</button>
+						&nbsp;
+					</div>
+					<div ng-if="!isUpdatable">
+						<button type="button" class="btn btn-primary modalButton"
+							ng-hide="!iseditable" ng-click="saveLookup()">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- delete confirmation modal -->
+<div class="modal fade" id="lookup-delete-model" role="dialog">
+	<div class="modal-dialog modal-sm" style="width: 700px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close modelCloseButton"
+					data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Are you sure you want to delete?</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal" role="form">
+					<div class="modal-foot" align="center">
+						<button type="button" class="btn btn-primary"
+							ng-click="deleteLookup()">Yes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/osi-repos/testing_svn/!svn/ver/2497/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi
+END
+ActiveDirectory.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/osi-repos/testing_svn/!svn/ver/2411/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ActiveDirectory.java
+END
+RestservicesApplication.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/osi-repos/testing_svn/!svn/ver/169/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/RestservicesApplication.java
+END
+ServletInitializer.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/osi-repos/testing_svn/!svn/ver/130/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/ServletInitializer.java
+END
+BeanConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/osi-repos/testing_svn/!svn/ver/243/EMS/03_Execution/04_Coding/Development/EMS-API/restservices/src/main/java/com/osi/BeanConfiguration.java
+END

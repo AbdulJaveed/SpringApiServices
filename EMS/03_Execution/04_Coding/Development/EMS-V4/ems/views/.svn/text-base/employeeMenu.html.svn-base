@@ -1,0 +1,59 @@
+<script>
+	$(function () {
+	  /* $("#navbar ul li").click(function () {
+			$(this).next('a').removeClass("active");
+			$(this).removeClass("active");
+			$(this).next("a").toggleClass("active");
+			$(this).toggleClass("active");
+		 }); */
+		 $("#navbar ul li a").click(function () {
+			$("#navbar ul li a").removeClass("active");
+			$("#navbar ul li").removeClass("active");
+			$(this).removeClass("active");
+		   $(this).toggleClass("active");
+		   e.preventDefault(); /*ignores actual link*/
+	   });
+   });
+		</script>
+<div id="navbar">
+		<ul>
+			<li ng-if="profileAcessHR.profile"><a href="#/employeeInfo">Profile</a></li>
+			<li ng-if="profileAcessHR.profiles"><a href="#/employeeInfos">Profile</a></li>
+			<li ng-if="profileAcessHR.work" ng-show="currentEmployeeId"><a  id="job" href="#/employeeAssignments">@ Work</a></li>
+			<li  id="job" ng-show="!currentEmployeeId"><a onclick="alertProfilePage()">@ Work</a></li>
+			<li  id="job" ng-show="!currentEmployeeId"><a onclick="alertProfilePage()">Additional Info</a></li>
+			<li ng-if="profileAcessHR.personal || profileAcessHR.office  || profileAcessHR.passport  || profileAcessHR.bank || profileAcessHR.emergency " id="add-li" ng-show="currentEmployeeId"><a id="add">Additional Info</a>
+			  <ul>
+				<li ng-if="profileAcessHR.personal"><a id="personal" href="#/personalinfo">Personal</a></li>
+				<!--<li><a href="#/medicalInfo">Medical Info</a></li>-->
+				<li ng-if="profileAcessHR.office=='/officeInfo'"><a id="office" href="#/officeInfo">Office</a></li>
+				<li ng-if="profileAcessHR.office=='/officeInfo-admin'"><a id="office" href="#/officeInfo-admin">Office</a></li>
+				<li  ng-if="profileAcessHR.passport" ng-show="{{usOrg}}"><a id="passport" href="#/passportInfo">Passport</a></li>
+				<li ng-if="profileAcessHR.bank" ng-show="{{usOrg}}"><a id="bank" href="#/empBankList">Bank</a></li>
+				<li ng-if="profileAcessHR.emergency"><a  id="emergency" href="#/emergencyContacts">Emergency Contacts</a></li>
+			  </ul>
+			</li>
+			<li ng-if="profileAcessHR.skills || profileAcessHR.certifications" id="professional-li" ng-show="currentEmployeeId"><a id="professional">Professional</a>
+			  <ul>
+				<li ng-if="profileAcessHR.skills"><a  id="skills" href="#/skillDetails">Skills</a></li>
+				<li ng-if="profileAcessHR.certifications"><a id="certificates" href="#/certificationDetails">Certifications</a></li>
+			  </ul>			
+			</li>
+			<li id="professional-li" ng-show="!currentEmployeeId"><a  onclick="alertProfilePage()">Professional</a></li>
+			<li id="other-li" ng-if="profileAcessHR.additionalDocs" ng-show="currentEmployeeId"><a id="other">Other</a>
+			  <ul>
+				<li><a id="docs" href="#/additionalDocs">Additonal Docs</a></li>
+			  </ul>			
+			</li>
+			<li id="other-li" ng-show="!currentEmployeeId"><a  onclick="alertProfilePage()">Other</a></li>
+		  </ul>
+		</div>
+		<div class="modal fade" role="dialog" id="profilePopupModal" tabindex="-1" role="dialog"
+		aria-labelledby="profilePopupModal">
+	 <div ng-include="'views/alertPopupProfile.html'"></div>
+</div>
+<script>
+	function alertProfilePage(){
+		$('#profilePopupModal').modal('show');
+	}
+</script>

@@ -1,0 +1,478 @@
+
+<style>
+
+._720kb-datepicker-calendar{
+    position: absolute !important;
+    top: -256px !important;
+    left: 0 !important;
+}
+</style>
+<script>
+		setTimeout(function(){ $("#navbar ul li a:first").toggleClass("active"); }, 300);
+			
+			</script>
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="js/easy-responsive-tabs.css" rel="stylesheet" type="text/css">
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<div class="wrapper row-offcanvas row-offcanvas-left customScrollBar" style="height : auto !important;max-height : 620px !important;">
+		<div data-ng-include="'views/employeeMenu.html'"></div>
+    <div class="right-side">
+        <section class="content">
+			<div class="row" ng-if="isTrascError">
+							<div style="width: 100%;margin-left: 0px;"
+								ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+								ng-if="flash" ng-bind="flash.message">
+              </div>
+	</div>
+	
+	<form name="vm.empBasicInfo" novalidate>
+
+		 <div>
+
+			<!--	<h4>Basic Information</h4> -->
+		</div>
+		<fieldset data-ng-disabled="vm.infoView">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="organization" class=" control-label no-padding pull-right">
+								Organization<font color="red">*</font></label>
+						</div>
+						<div class="col-md-6">
+								<select class="form-control" id="orgName" name="orgName" ng-model="vm.basicInfo.orgId" required
+								ng-options="data.orgId as data.orgName for data in vm.osiOrganizations | orderBy:'orgName'" ng-disabled="!iseditable">
+								<option value="">-- Select Organization --</option></select>
+							<br />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="employeeNumber"
+								class=" control-label no-padding pull-right"> Employee Number <font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" id="employeeNumber" name="employeeNumber" ng-disabled="!iseditable"
+								ng-model="vm.basicInfo.employeeNumber" required
+								style="text-transform: uppercase" placeholder='Employee Number'
+								type="text" minlength="4" maxlength="10" no-special-char-space >
+							<br />
+						</div>
+					</div>
+					<div class="row"  ng-show="{{usOrgCode!=orgCode}}">
+						<div class="col-md-4 no-padding">
+							<label for="title"
+								class=" control-label no-padding pull-right"> Title <font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<select class="form-control" id="title" name="title" ng-model="vm.basicInfo.title" placeholder="Title" required
+								ng-options="data.lookupValue as data.lookupDesc for data in vm.titlesList  | orderBy:'lookupDesc'" ng-disabled="!iseditable">
+								<option value="">-- Select Title --</option></select>
+							<br/>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="`tName"
+								class=" control-label no-padding pull-right">First Name <font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" id="firstName" name="firstName" required
+								ng-model="vm.basicInfo.firstName" style="text-transform: uppercase" placeholder='First Name' ng-disabled="!iseditable"
+								type="text" maxlength="50" title-case no-special-char ng-blur="vm.setFullname(vm.basicInfo.firstName);">
+							<br/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="middleName"
+								class=" control-label no-padding pull-right"> Middle Name
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" id="middleName" name="middleName" ng-disabled="!iseditable"
+								title-case ng-model="vm.basicInfo.middleName" style="text-transform: uppercase" placeholder='Middle Name'
+								maxlength="50" type="text" no-special-char ng-blur="vm.setFullname(vm.basicInfo.middleName);">
+							<br>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="lastName"
+								class=" control-label no-padding pull-right"> Last Name <font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" id="lastName" name="lastName" ng-disabled="!iseditable"
+								title-case ng-model="vm.basicInfo.lastName" style="text-transform: uppercase" placeholder='Last Name' required
+								maxlength="50" type="text" no-special-char ng-blur="vm.setFullname(vm.basicInfo.lastName);">
+							<br />
+						</div>
+					</div>
+					
+					<div class="row"  ng-show="{{usOrgCode!=orgCode}}">
+						<div class="col-md-4 no-padding">
+							<label for="fullName"
+								class=" control-label no-padding pull-right"> Full Name <font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" id="fullName" name="fullName" ng-disabled="true" required
+								ng-model="vm.basicInfo.fullName" placeholder='Full Name'
+								maxlength="100" type="text" no-special-char >
+							<br />
+						</div>
+					</div>
+					<div class="row"   ng-show="{{usOrgCode!=orgCode}}">
+							<div class="col-md-4 no-padding">
+								<label for="nationality"
+									class=" control-label no-padding pull-right">Country/Nationality <font color="red">*</font>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<select class="form-control" id="nationality" name="nationality" ng-model="vm.basicInfo.nationality"
+									placeholder="Nationality" required
+									  ng-options="data.countryName as data.countryName for data in vm.countryList" ng-disabled="!iseditable">
+									<option value="">-- Select Nationality --</option></select>
+								<br/>
+							</div>
+						</div>
+						<div class="row"  ng-show="{{usOrgCode!=orgCode}}">
+								<div class="col-md-4 no-padding">
+					  <label for="onMilitaryService"
+										class=" control-label no-padding pull-right"> On Military Service
+									</label>
+								</div>
+								<div class="col-md-6">
+						<input class="form-check-input" id="onMilitaryService" type="checkbox" ng-model = "vm.onMilitaryService" ng-click="vm.isChecked()">
+						<br />
+						<br />
+								</div>
+							</div>
+							<div class="row" >
+									<div class="col-md-4 no-padding">
+										<label for="esd"
+											class=" control-label no-padding pull-right"> Termination Date
+										</label>
+									</div>
+									<div class="col-md-6">
+										<div class="col-md-10" style="padding:unset;">
+											<datepicker date-format="yyyy-MM-dd HH:mm:ss" selector="form-control" ><!--date-min-limit = "{{vm.minDOH}}" -->
+												<input class="form-control" name="esd" id="esd" required
+													ng-model="vm.basicInfo.terminationDate" ng-disabled="!iseditable"
+													style="text-transform: uppercase" placeholder='Termination Date' required>
+								<br />
+											</datepicker>
+										</div>
+										<div class="col-md-1" style="padding:unset;">
+											<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+												<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('esd')"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+										<div class="col-md-4 no-padding">
+											<label for="systemType"
+												class=" control-label no-padding pull-right"> System Type <font color="red">*</font>
+											</label>
+										</div>
+										<div class="col-md-6">
+											<select class="form-control" id="systemType" name="systemType" ng-model="vm.basicInfo.systemType" placeholder="systemType" required
+												ng-options="data.value as data.name for data in vm.systemTypes  | orderBy:'lookupDesc'" ng-disabled="!iseditable">
+												<option value="">-- System Type --</option></select>
+											<br/>
+										</div>
+									</div>
+          
+        
+         
+		
+        <!--  <div class="row">
+						<div class="col-md-4 no-padding">
+						</div>
+						<div class="col-md-6">
+              <label for="onMilitaryService" class=" control-label no-padding pull-right">
+                <input class="form-check-input" id="onMilitaryService" type="checkbox" ng-model = "vm.onMilitaryService" ng-change="vm.isChecked()">
+                On Military Service
+							</label>
+							<br/>
+						</div>
+					</div> -->
+				</div>
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="employeeType" class=" control-label no-padding pull-right">
+								Employee Type<font color="red">*</font></label>
+						</div>
+						<div class="col-md-6">
+								<select class="form-control" id="employeeType" name="employeeType" ng-model="vm.basicInfo.employeeType" required
+								ng-options="data.lookupValue as data.lookupDesc for data in vm.empTypesList  | orderBy:'lookupDesc'" ng-disabled="!iseditable">
+								<option value="">-- Select Employee Type --</option></select>
+							<br />
+						</div>
+					</div>
+					<div class="row"  ng-show="{{usOrgCode!=orgCode}}">
+						<div class="col-md-4 no-padding">
+							<label for="gender" class=" control-label no-padding pull-right">Gender <font color="red">*</font></label>
+						</div>
+						<div class="col-md-6">
+								<select class="form-control" id="gender" name="gender" ng-model="vm.basicInfo.gender" required
+								ng-options="data.lookupValue as data.lookupDesc for data in vm.gendersList  | orderBy:'lookupDesc'" ng-disabled="!iseditable">
+								<option value="">-- Select Gender --</option></select>
+							<br />
+						</div>
+					</div>
+					<div class="row"  ng-show="{{usOrgCode!=orgCode}}">
+						<div class="col-md-4 no-padding">
+							<label for="prefix"
+								class=" control-label no-padding pull-right"> Prefix
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" id="prefix" name="prefix" ng-disabled="!iseditable"
+							title-case ng-model="vm.basicInfo.prefix" placeholder='Prefix'
+								maxlength="20" type="text" no-special-char >
+							<br>
+						</div>
+					</div>
+					<div class="row"  ng-show="{{usOrgCode!=orgCode}}">
+						<div class="col-md-4 no-padding">
+							<label for="suffix"
+								class=" control-label no-padding pull-right"> Suffix
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" id="suffix" name="suffix" ng-disabled="!iseditable"
+							title-case ng-model="vm.basicInfo.suffix" placeholder='Suffix'
+								maxlength="20" type="text" no-special-char >
+							<br>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="doh"
+								class=" control-label no-padding pull-right"> Date of Hire <font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<div class="col-md-10" style="padding:unset;">
+								<datepicker date-format="yyyy-MM-dd" selector="form-control" ><!--date-min-limit = "{{vm.minDOH}}" -->
+									<input class="form-control" name="doh" id="doh" ng-disabled="!iseditable"
+										ng-model="vm.basicInfo.originalDateOfHire" required
+										style="text-transform: uppercase" placeholder='Date of Hire' required>
+								<br/>
+								</datepicker>
+
+							</div>
+							<div class="col-md-1" style="padding:unset;">
+								<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+									<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('doh')"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="doc"
+								class=" control-label no-padding pull-right"> Date of Confirmation <font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<datepicker date-format="dd-MMM-yyyy" selector="form-control" date-max-limit = "{{today}}">
+								<input class="form-control" name="doc" id="doc"
+									ng-model="vm.basicInfo.dateOfConfirmation" required
+									style="text-transform: uppercase" placeholder='Date of Confirmation' required>
+							<br>
+							</datepicker>
+						</div>
+					</div> -->
+				
+					<div class="row">
+							<div class="col-md-4 no-padding">
+											<label for="dob"
+												class=" control-label no-padding pull-right"> Date of Birth <font color="red">*</font>
+											</label>
+										</div>
+										<div class="col-md-6">
+											<div class="col-md-10" style="padding:unset;">
+												<datepicker date-format="yyyy-MM-dd " selector="form-control" date-max-limit = "{{vm.minDOH}}">
+													<input class="form-control" name="dob" id="dob" required
+														ng-model="vm.basicInfo.dateOfBirth" ng-disabled="!iseditable"
+									ng-change = "vm.calculateAge()"
+														style="text-transform: uppercase" placeholder='Date of Birth' required>
+									<br />
+												</datepicker>
+											</div>
+											<div class="col-md-1" style="padding:unset;">
+												<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+													<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('dob')"></i>
+												</span>
+							  </div>
+										</div>
+						  </div>
+          <div class="row">
+						<div class="col-md-4 no-padding">
+              <label for="age"
+								class=" control-label no-padding pull-right"> Age
+							</label>
+						</div>
+						<div class="col-md-6">
+                <input only-number type="text" maxlength="3" minlength="1" class="form-control" ng-model="vm.basicInfo.ageYears" ng-disabled="true">
+                <br />
+						</div>
+					</div>
+					<div class="row" ng-show="{{usOrgCode!=orgCode}}">
+							<div class="col-md-4 no-padding">
+								<label for="maritalStatus"
+									class=" control-label no-padding pull-right"> Marital Status <font color="red">*</font>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<select class="form-control" id="maritalStatus" name="maritalStatus" ng-model="vm.basicInfo.maritalStatus"
+									placeholder="Marital Status" required
+									ng-options="data.lookupValue as data.lookupDesc for data in vm.maritialstatusList | orderBy:'lookupDesc'" ng-disabled="!iseditable">
+									<option value="">-- Select Marital Status --</option>
+				  </select>
+								<br/>
+							</div>
+						</div>
+          <div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="bgCheck"
+								class=" control-label no-padding pull-right"> Background Check
+							</label>
+						</div>
+						<div class="col-md-8" style="height:40px">
+              <div class="col-md-3 no-padding">
+              <select class="form-control" id="bgCheck" name="bgCheck" ng-model="vm.basicInfo.backgroundCheckStatus"
+                convert-to-number
+								ng-options="data.value as data.name for data in vm.bgCheckList" ng-disabled="!iseditable">
+								<option value="">-- Select --</option>
+              </select>
+              </div>
+							<div class="col-md-6 no-padding" style="padding:unset;" ng-if="vm.basicInfo.backgroundCheckStatus == 1">
+                <div class="col-md-3 no-padding">
+                  <label for="bgCheck"
+    								class=" control-label pull-right"> Date <font color="red">*</font>
+    							</label>
+                </div>
+                <div class="col-md-3 no-padding">
+								<datepicker date-format="yyyy-MM-dd" selector="form-control" date-min-limit = "{{vm.minDOH}}">
+									<input class="form-control" style=" width: 120px;"  name="backgroundDateCheck" id="backgroundDateCheck"
+										ng-model="vm.basicInfo.backgroundDateCheck"  ng-disabled="!iseditable"
+										style="text-transform: uppercase" placeholder='Background Date Check' required>
+										<br />
+								</datepicker>
+                </div>
+							</div>
+							<div class="col-md-1" style="padding:unset;" ng-if="vm.basicInfo.backgroundCheckStatus == 1">
+								<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+									<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('backgroundDateCheck')"></i>
+								</span>
+							</div>
+						</div>
+		  </div>
+		  	<div class="row">
+				<div class="col-md-4 no-padding">
+					<label for="age" class=" control-label no-padding pull-right"> Employee Status </label>
+				</div>
+				<div class="col-md-6">
+					<input type="checkBox" class="form-control" ng-model="vm.empStatus" ng-disabled="!iseditable" ng-click = "vm.setEmpStatus()" ng-checked="vm.basicInfo.employeeStatus == 1">
+					<br />
+				</div>
+			</div>
+
+           <div class="row">
+						<!-- <div class="col-md-4 no-padding">
+							<label for="eed"
+								class=" control-label no-padding pull-right"> Effective End Date <font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<div class="col-md-10" style="padding:unset;">
+								<datepicker date-format="yyyy-MM-dd HH:mm:ss" selector="form-control" date-min-limit = "{{vm.minDOH}}">
+									<input class="form-control" name="eed" id="eed" required
+										ng-model="vm.basicInfo.effectiveEndDate"  ng-disabled="!iseditable"
+										style="text-transform: uppercase" placeholder='Effective End Date' required>
+										<br>
+								</datepicker>
+							</div>
+							<div class="col-md-1" style="padding:unset;">
+								<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+									<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('eed')"></i>
+								</span>
+							</div>
+						</div> -->
+
+            <div style="float:right;"><a href="" ng-click="vm.showFlexiFields();">[ .... ]</a></div>
+
+			</div>
+      </div>
+				<div class="col-md-2">
+					<div class="card" style="text-align: center;">
+
+						<div class="card-block" style="width: 64%; padding: 0px; margin-left: -10px;">
+            				<div ngf-change="vm.load(picFile)" ngf-select ngf-drop ng-model="picFile" required="" id="image" ng-if="vm.preview.content"
+            						class="drop-box" ngf-drop-available="dropAvailable" ngf-keep="false" ngf-multiple="false"
+            						style="width: 130%; height: 150px; color: #203b8a;" class="drop-box" ng-disabled="!iseditable">
+            					<span ng-show="dropAvailable"> Drag & Drop Image Here
+            						<br>
+            						<img ngf-src="vm.preview.content" class="thumb" style="width: 100%; height: 78%">
+            					<!--	{{vm.preview.name}} -->
+            					</span>
+							</div>
+							<div ngf-change="vm.load(picFile)" ngf-select ngf-drop ng-model="picFile" required="" id="image" ng-if="!vm.preview.content"
+							class="drop-box" ngf-drop-available="dropAvailable" ngf-keep="false" ngf-multiple="false"
+							style="width: 130%; height: 150px; color: #203b8a;border: dashed; " class="drop-box" ng-disabled="!iseditable">
+						<span ng-show="dropAvailable"> Drag & Drop Image Here
+							<br>
+							<img ngf-src="vm.preview.content" class="thumb" style="width: 100%; height: 78%">
+						<!--	{{vm.preview.name}} -->
+						</span>
+					</div>
+					</div>
+				</div>
+				<br>
+				</div>
+				<div ng-include="'views/flexifield-inline.html'" ></div>
+				<div class="col-md-5"></div>
+				<div class="col-md-5">
+				<div class="row pull-right" ng-if="iseditable">
+					<button type="button" ng-click="vm.clearBasicInfoData();" class="btn btn-primary">
+        				<span>Cancel</span>
+        			</button>
+					<button type="button" ng-if="vm.isNew" class="btn btn-primary" ng-click="vm.checkForValidDataOnSave();">
+            <span>Save</span>
+          </button>
+          <button type="button" ng-if="!vm.isNew" ng-disabled = "!nonEditable" class="btn btn-primary" ng-click="vm.checkForValidData();">
+        				<span>Submit</span>
+          </button>
+				</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+	<br>
+</section>
+</div>
+
+<div ng-include="'views/flexifield-modal.html'" ></div>
+<div class="modal fade" role="dialog" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModal">
+  <div ng-include="'views/confirmationPopup.html'"></div>
+</div>
+</div>
+<script>
+function getDatePicker(thiz){
+	document.getElementById(thiz).focus();
+}
+

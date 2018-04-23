@@ -1,0 +1,103 @@
+
+
+
+<div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+    <div class="row" ng-if="isTrascError">
+							<div
+								ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+								ng-if="flash" ng-bind="flash.message"></div>
+						</div> 
+<div class="wrapper row-offcanvas row-offcanvas-left customScrollBar">
+
+<div>
+ <h4 style="float:left;margin-left: 231px;">&nbsp;Operation Exclusion</h4>
+    <div class="right-side">
+        <section class="content">
+         <section class="content-header">
+        <div class="row" style="margin-right: 0px;">
+           
+        </div>
+    </section>
+    <form name="vm.operationExclForm">
+	<fieldset ng-disabled="vm.infoView">
+            <table class="table table-striped" style="overflow: scroll;">
+		<thead class="row">
+                    <tr>
+                        <th class="col-md-3"><h5><b>Function</b></h5></th>
+                        <th class="col-md-3"><h5><b>Available Operations</b></h5></th>
+                        <th class="col-md-1"></th>
+                        <th class="col-md-3"><h5><b>Excluded Operations</b></h5></th>
+                        <th class="col-md-2"></th>
+                    </tr>
+		</thead>
+		<tbody class="row">
+                    <tr ng-repeat="opnExcl in vm.selectedOpnExcls track by $index">
+                        <td class="col-md-3">
+                            <select class="form-control" ng-model="opnExcl.osiFunctions" 
+                                ng-change="vm.checkDuplicateAndGetOpns(opnExcl.osiFunctions, $index)"
+                                ng-options="func.funcName for func in vm.listOfFunctions | orderBy:'funcName' track by func.id">
+                                <option value="">Select Function</option></select>
+                        </td>
+                        <td class="col-md-3">
+                            <select name="from[]{{$index}}" id="multiselect" class="form-control"
+                                ng-model="vm.avaiableOps" size="5" multiple="multiple">
+                                <option ng-repeat="opn in opnExcl.availableOperationsNames | orderBy:'toString()' track by $index"
+                                    class="strippedOptions">{{opn}}</option>
+                            </select>
+                        </td>
+                        <td class="col-md-1 funcExcluMultiselect">
+                            <button type="button" id="js_right_All_1" ng-disabled="!opnExcl.osiFunctions" 
+                                ng-click="vm.addToExcludedALL($index)" class="btn btn-block">
+                                <i class="glyphicon glyphicon-forward"></i>
+                            </button>
+                            <button type="button" id="js_right_Selected_1" ng-disabled="!opnExcl.osiFunctions" 
+                                ng-click="vm.addToExcludedRepeat(vm.avaiableOps,$index)" class="btn btn-block">
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                            </button>
+                            <button type="button" id="js_left_Selected_1" ng-disabled="!opnExcl.osiFunctions" 
+                                ng-click="vm.removeFromExcludedRepeat(vm.excludedOps,$index)" class="btn btn-block">
+                                <i class="glyphicon glyphicon-chevron-left"></i>
+                            </button>
+                            <button type="button" id="js_left_All_1" ng-disabled="!opnExcl.osiFunctions" 
+                                ng-click="vm.removeFromExcludedALL($index)" class="btn btn-block">
+                                <i class="glyphicon glyphicon-backward"></i>
+                            </button>
+                        </td>
+                        <td class="col-md-3">
+                            <select name="to[]{{$index}}" id="multiselect_to"
+                                ng-model="vm.excludedOps" class="form-control" 
+                                size="5" multiple="multiple">
+                                <option ng-repeat="opn in opnExcl.excludedOperationNames | orderBy:'toString()' track by $index"
+                                    class="strippedOptions">{{opn}}</option>
+                            </select>
+                        </td>
+                        <td class="col-md-2" style="font-size: 24px;">
+                            <span ng-show="$last && !vm.infoView" class="glyphicon glyphicon-plus-sign minusIcon" 
+                                ng-click="vm.addRow($index+1)" ></span>
+                            <span ng-hide="vm.infoView" class="glyphicon glyphicon-minus-sign minusIcon" 
+                                ng-click="vm.removeRow($index)" ></span>
+                        </td>
+                    </tr>
+		</tbody>
+            </table>
+	</fieldset>
+    </form>
+    <div class="pull-right">
+     <button type="button" style="float: right;margin-left: 5px;" class="btn btn-primary"
+            ng-click="vm.backToEmpList()">
+            <span>Employee List</span>
+        </button>
+        <button type="button" ng-click="vm.clearOperationExclusion();" class="btn btn-primary" >
+        <span>Clear</span>
+        </button>
+        <button class="btn btn-primary" ng-click="vm.save()" ng-hide="vm.infoView"><span>Submit</span></button>
+        
+    </div>
+    <br>
+    </section></div></div>
+</div>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('#multiselect').multiselect();
+    });
+</script>

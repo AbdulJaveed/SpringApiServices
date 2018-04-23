@@ -1,0 +1,219 @@
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<div>
+	<form name="vm.osiUserIds" novalidate="">
+		<fieldset ng-disabled="vm.infoView">
+			<div class="col-md-14">
+				<div class="row" ng-repeat="data in vm.osiUser.osiEmpIdProofses">
+						<div class="col-md-2 no-padding" style="width: 12% !important;">
+							<label for="cardType{{$index+1}}"
+								class=" control-label no-padding pull-right"> {{data.cardType}}<font color="red" ng-if="data.isMandatory===1">*</font>
+							</label>
+
+						</div>
+						<div class="col-md-2">
+							<input class="form-control" name="cardName{{$index+1}}"
+								ng-model="data.name" ng-if="data.isMandatory===1"
+								style="text-transform: uppercase" placeholder='Name on Card'
+								type="text" maxlength="25" no-special-char 
+								required>
+							<input class="form-control" name="cardName{{$index+1}}"
+								ng-model="data.name" ng-if="data.isMandatory===0"
+								style="text-transform: uppercase" placeholder='Name on Card'
+								type="text" maxlength="25" no-special-char 
+								>
+							<!-- <div class="validation-error" style="color: red" ng-if="data.isMandatory===1"
+								ng-show="(vm.osiUserIds.cardName{{$index+1}}.$dirty || vm.submitted) && vm.osiUserIds.cardName{{$index+1}}.$error.required">
+								Name is required.</div> -->
+							<br />
+						</div>
+						<!-- Fathe Name field -->
+						<div class="col-md-2">
+							<input class="form-control" name="fatherName{{$index+1}}"
+								ng-model="data.fatherName" ng-if="data.isMandatory===1"
+								style="text-transform: uppercase" placeholder='Father Name on Card'
+								type="text" maxlength="25" no-special-char 
+								required>
+							<input class="form-control" name="fatherName{{$index+1}}"
+								ng-model="data.fatherName" ng-if="data.isMandatory===0"
+								style="text-transform: uppercase" placeholder='Father Name on Card'
+								type="text" maxlength="25" no-special-char 
+								>
+							<!-- <div class="validation-error" style="color: red" ng-if="data.isMandatory===1"
+								ng-show="(vm.osiUserIds.fatherName{{$index+1}}.$dirty || vm.submitted) && vm.osiUserIds.fatherName{{$index+1}}.$error.required">
+								Father Name is required.</div> -->
+							<br />
+						</div>
+						<div class="col-md-2">
+							<input class="form-control" name="cardNumber{{$index+1}}"
+								ng-model="data.idNumber" ng-if="data.isMandatory===1 && data.cardType==='PANCARD'"
+								style="text-transform: uppercase" placeholder='Card Number'
+								type="text" minlength="{{data.maxLength}}" maxlength="{{data.maxLength}}" no-special-char-space
+								required>
+								<input class="form-control" name="cardNumber{{$index+1}}"
+								ng-model="data.idNumber" ng-if="data.isMandatory===0 && data.cardType==='PANCARD'"
+								style="text-transform: uppercase" placeholder='Card Number'
+								type="text" minlength="{{data.maxLength}}" maxlength="{{data.maxLength}}" no-special-char-space 
+								>
+								
+								<input class="form-control" name="cardNumber{{$index+1}}"
+								ng-model="data.idNumber" ng-if="data.isMandatory===1 && data.cardType==='AADHAR'"
+								style="text-transform: uppercase" placeholder='Card Number'
+								type="text" minlength="{{data.maxLength}}" maxlength="{{data.maxLength}}" valid-onlynumber
+								required>
+								<input class="form-control" name="cardNumber{{$index+1}}"
+								ng-model="data.idNumber" ng-if="data.isMandatory===0 && data.cardType==='AADHAR'"
+								style="text-transform: uppercase" placeholder='Card Number'
+								type="text" minlength="{{data.maxLength}}" maxlength="{{data.maxLength}}" valid-onlynumber
+								>
+								
+								<input class="form-control" name="cardNumber{{$index+1}}"
+								ng-model="data.idNumber" ng-if="data.isMandatory===1 && data.cardType==='DRIVING LICENCE'"
+								style="text-transform: uppercase" placeholder='Card Number'
+								type="text" maxlength="{{data.maxLength}}" no-special-char-space
+								required>
+								<input class="form-control" name="cardNumber{{$index+1}}"
+								ng-model="data.idNumber" ng-if="data.isMandatory===0 && data.cardType==='DRIVING LICENCE'"
+								style="text-transform: uppercase" placeholder='Card Number'
+								type="text" maxlength="{{data.maxLength}}" no-special-char-space 
+								>
+							<!-- <div class="validation-error" style="color: red" ng-if="data.isMandatory===1"
+								ng-show="(vm.osiUserIds.cardNumber{{$index+1}}.$dirty || vm.submitted) && vm.osiUserIds.cardNumber{{$index+1}}.$error.required">
+								Number is required.</div> -->
+							<br />
+						</div>
+						<div class="col-md-2"  ng-if="data.isMandatory===0">
+								<datepicker date-format="dd-MMM-yyyy" selector="form-control" date-max-limit = "{{today}}">
+								<div class="input-group">
+								<input my-valid-date class="form-control" name="dob{{$index+1}}" id="dob{{$index+1}}"
+									ng-model="data.dob" ng-blur="vm.checkDate()" 
+									style="text-transform: uppercase" placeholder='Date of Birth' >
+									<span class="input-group-addon" style="cursor: pointer"> 
+										<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker(this)"></i>
+									</span>
+								</datepicker>
+							</div>
+						</div>
+						<div class="col-md-2"  ng-if="data.isMandatory===1" >
+							<datepicker date-format="dd-MMM-yyyy" selector="form-control" date-max-limit = "{{today}}">
+								<div class="input-group">								
+									<input my-valid-date class="form-control" name="dob{{$index+1}}" id="dob{{$index+1}}"
+										ng-model="data.dob" ng-blur="vm.checkDate()"
+										placeholder='Date of Birth'
+										required >
+										<span class="input-group-addon" style="cursor: pointer"> 
+											<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker(this)"></i>
+										</span>
+					        	</div>
+							</datepicker>							
+							<!-- <div class="validation-error" style="color: red"  ng-if="data.isMandatory===1"
+								ng-show="(vm.osiUserIds.dob{{$index+1}}.$dirty || vm.submitted) && vm.osiUserIds.dob{{$index+1}}.$error.required">
+								DOB is required.</div> -->
+						</div>
+				<div class="col-md-2" style="display:table !important;padding-right: 0px;">
+				<div class="input-group" style="display:table-cell !important;">
+							<input type="hidden" name="originalFileName" id="originalFileName{{$index+1}}" value="{{data.osiEmpIdProofCopieses[0].originalFileName}}">
+							<input type="hidden" name="fileType" id="fileType{{$index+1}}" value="{{data.osiEmpIdProofCopieses[0].fileType}}">
+														<button style="display:block;width:105px; height:30px;" class="btn btn-primary" id="e{{$index+1}}" onclick="uploadFile(this);">Upload Copy</button>
+							<input type="file" name="file" ngf-accept="'image/*'" onchange="handleFileSelect1(event, this);" id="{{$index+1}}" style="width: 85px;;display:none">
+							    				<input type="hidden" id="photo{{$index+1}}" name="fileContent" value="{{data.osiEmpIdProofCopieses[0].fileContent}}"/>
+							    			<!-- 	<i id="required{{$index+1}}" style="display:none;color:red" >Please upload Image</i>-->
+							    				<i id="maxSize{{$index+1}}" style="display:none;color:red" >Max size: 5MB</i>
+												<i id="pattern{{$index+1}}" style="display:none;color:red" >Invalid File Format</i> 
+							    				</div>	
+					<div class="input-group" style="display:table-cell !important;">
+							<img  ng-src="{{data.osiEmpIdProofCopieses[0].fileContent}}" id="photos{{$index+1}}" style="width:40%" alt="{{data.osiEmpIdProofCopieses[0].originalFileName}}"/>
+					</div>						    				
+				</div>
+				<br>
+			</div>
+			<br/>
+			<br/>
+			<div>
+			Note : File format should be JPEG, PNG, GIF or PDF. Maximum file size: 5MB</div>
+			<div class="row pull-right">
+		<button type="button" class="btn btn-primary"
+			ng-click="vm.previous('tab2');vm.submitted=true" ng-hide="vm.infoView">
+			<span>Previous</span>
+		</button>
+		<!-- <button type="button" class="btn btn-primary"
+			ng-click="vm.next('tab2');vm.submitted=true" ng-hide="vm.infoView">
+			<span>Save & Next</span>
+		</button> -->
+		<button type="button" class="btn btn-primary"
+                            ng-click="vm.saveOsiUser();">
+                            <span>Submit</span>
+                        </button>
+			</div>
+		</fieldset>
+	</form>
+	<br>
+</div>
+<script>
+var handleFileSelect1 = function(event, thiz) {
+	console.log('hanle file select..');
+	var idx = thiz.id;
+	//document.getElementById('pattern'+idx).style.display = 'none';
+	//document.getElementById('maxSize'+idx).style.display = 'none';
+    var reader = new FileReader();
+    reader.onload = function(){
+      $("#photo"+idx).val(reader.result);
+      var output = document.getElementById('photos'+idx);
+      output.src = reader.result;
+      console.log($("#photo"+idx).val());
+    }
+    console.log(event.target.files[0]);
+    console.log(event.target.files[0].name);
+    var fName = event.target.files[0].name;
+    document.getElementById('pattern'+idx).style.display = 'none';
+	document.getElementById('maxSize'+idx).style.display = 'none';
+    var fExtension = fName.substring(fName.lastIndexOf(".")).valueOf().toUpperCase();
+    console.log(fName.substring(fName.lastIndexOf("."))==".jpg");
+    console.log(fName.substring(fName.lastIndexOf(".")).valueOf());
+    if(fExtension==".JPG" || fExtension==".PNG" || fExtension==".GIF" || fExtension==".PDF") {
+    	if(event.target.files[0].size <= 5242880) {
+    		//document.getElementById('required'+idx).style.display = 'none';
+    		//document.getElementById('pattern'+idx).style.display = 'none';
+	    	//document.getElementById('maxSize'+idx).style.display = 'none';
+			$("#originalFileName"+idx).val(event.target.files[0].name);
+			$("#fileType"+idx).val(event.target.files[0].type);
+			reader.readAsDataURL(event.target.files[0]);
+    	}else{
+        	document.getElementById('maxSize'+idx).style.display = 'block';
+    	}
+    }else{
+    	document.getElementById('pattern'+idx).style.display = 'block';
+    	//document.getElementById('required'+idx).style.display = 'none';
+    	document.getElementById('maxSize'+idx).style.display = 'none';
+    }
+    
+  };
+  
+  	function getDatePicker(thiz){
+		document.getElementById('do'+thiz.id).focus();
+	}
+	function uploadFile(thiz){
+		var id = thiz.id
+		id = id.replace("e", "");
+	document.getElementById(id).click();
+}
+</script>
+<script>
+/* var loadFile = function(event) {
+
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('output');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }; */
+</script>
+<style>
+.col-md-2, .col-md-3
+{
+padding-right: 5px;
+padding-left: 5px;
+}
+</style>

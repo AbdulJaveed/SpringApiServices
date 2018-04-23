@@ -1,0 +1,29 @@
+<div class="row userProfilePadding">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-7">
+                <table class="tableBorder">
+                    <thead class="tableHead">
+                        <th class="tableText"> Responsibility </th>
+                        <th class="tableText"> Start Date </th>
+                        <th class="tableText"> End Date </th>
+                    </thead>
+                    <tbody>
+                        <tr class="tableBorder" ng-repeat="responsibility in vm.userResponsibility">
+                            <td class="tableText">
+                                {{responsibility.osiResponsibilities.respName}}
+                            </td>
+                            <td class="tableText">
+                                {{responsibility.osiResponsibilities.startDate | date: 'dd-MMM-yyyy'}}
+                            </td>
+                            <td class="tableText">
+                                {{responsibility.osiResponsibilities.endDate | date: 'dd-MMM-yyyy'}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-5"></div>
+        </div>
+    </div>
+</div>

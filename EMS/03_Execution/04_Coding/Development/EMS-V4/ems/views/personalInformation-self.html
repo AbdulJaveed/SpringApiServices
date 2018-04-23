@@ -1,0 +1,170 @@
+<script>
+    setTimeout(function(){
+    $("#add").toggleClass("active");
+    $("#personal").toggleClass("active");
+    $("#add-li").toggleClass("active");
+    }, 100);
+</script>
+<div data-ng-include="'views/employeeMenu-sf.html'"></div>
+<div class="container-fluid">
+    <div class="mt-3 col-md-12"></div>
+    <div class="mt-3 col-md-12"></div>
+    <div class="row" ng-if="isTrascErrorForPersonal">
+        <div
+            ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+            ng-if="flash" ng-bind="flash.message">
+        </div>
+    </div>
+    <fieldset>
+    <div class="row ml-0">
+        <section class="forms">
+            <div class="card">
+                <div class="card-body scroll">
+                    <form name="vm.personalInfoForm">
+                        <div class="row" data-ng-disabled="vm.infoView">
+                            <div class="col-md-2 col-sm-12 col-xs-12 border-top-0 border-bottom-0 border-left-0">
+                                <div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group row" ng-show="{{usOrg}}">
+                                    <label for="personalEmail" class="col-md-5 col-sm-12 text-align-right  col-form-label">
+                                        Personal
+                                        Email </label>
+                                    <input type="email" class="form-control form-control-sm col-md-5 col-sm-12 form-field-border ml-mr-15 border-left-width" maxlength="50" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" id="personalEmail" name="personalEmail" ng-model="vm.personalInfo.personalEmail"
+                                           ng-disabled="!iseditable">
+                                </div>
+                                <div class="form-group row" ng-show="{{usOrg}}">
+                                    <label for="bloodGroup" class="col-md-5 col-sm-12 text-align-right  col-form-label">Blood Group</label>
+                                    <select class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width" name="bloodGroup" ng-model="vm.personalInfo.bloodType" placeholder="Blood Group"
+                                            ng-options="osiBloodGroup.title as osiBloodGroup.title for osiBloodGroup in osiBloodGroups| orderBy:'title'" 
+                                            ng-disabled="!iseditable"
+                                            ><option value="">-- Select Blood Group --</option></select>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="mobileNumber" class="col-md-5 col-sm-12 text-align-right  col-form-label">Mobile
+                                        Number</label>
+                                    <select ng-disabled="!iseditable" class="form-control form-control-sm col-md-2 col-sm-12 ml-mr-15 form-field-border border-left-width adjust-select-date-alignment" ng-model="vm.personalInfo.countryCodeforMobile" style="width: 96px;"
+                                            id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as (state.countryCode+'('+state.countryCallingCode+')') for state in vm.countryCodeList| unique:'countryCallingCode' | orderBy:'countryCode'">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                    <input only-number maxlength="15" minlength="10" type="text" class="form-control form-control-sm col-md-3 col-sm-12 form-field-border ml-mr-15 border-left-width" id="mobileNumber" name="mobileNumber" ng-model="vm.personalInfo.mobileNumber"
+                                           ng-disabled="!iseditable" >
+                                </div>
+                                <div class="form-group row">
+                                    <label for="homeNumber" class="col-md-5 col-sm-12 text-align-right  col-form-label">Home
+                                        Number</label>
+                                    <select ng-disabled="!iseditable" class="form-control form-control-sm col-md-2 col-sm-12 ml-mr-15 border-left-width adjust-select-date-alignment" ng-model="vm.personalInfo.countryCodeforHome"
+                                            id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as (state.countryCode+'('+state.countryCallingCode+')') for state in vm.countryCodeList| unique:'countryCallingCode' | orderBy:'countryCode'">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                    <input only-number maxlength="15" minlength="10" type="text" class="form-control form-control-sm col-md-3 col-sm-12 ml-mr-15 border-left-width" id="homeNumber" name="homeNumber" ng-model="vm.personalInfo.homeNumber"
+                                           ng-disabled="!iseditable" >
+                                </div>
+                                <div class="form-group row">
+                                    <label for="alternateNumber" class="col-md-5 col-sm-12 text-align-right  col-form-label">Alternative
+                                        Number</label>
+                                    <select ng-disabled="!iseditable" class="form-control form-control-sm col-md-2 col-sm-12 ml-mr-15 border-left-width adjust-select-date-alignment" ng-model="vm.personalInfo.countryCodeforAlternateNumber"
+                                            id="state" name="state" data-style="btn" ng-options="state.countryCallingCode as (state.countryCode+'('+state.countryCallingCode+')') for state in vm.countryCodeList| unique:'countryCallingCode' | orderBy:'countryCode'">
+                                        <option value="">--Select--</option>
+                                    </select>
+                                    <input only-number type="text" class="form-control form-control-sm col-md-3 col-sm-12 ml-mr-15 border-left-width" id="alternateNumber" maxlength="15" name="alternateNumber" ng-model="vm.personalInfo.alternateNumber"
+                                           ng-disabled="!iseditable" >
+                                </div>
+
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group row">
+                                    <label for="knownAs" class="col-md-5 col-sm-12 text-align-right  col-form-label">Known As
+                                    </label>
+                                    <input type="text" no-special-char title-case class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width" maxlength="50" id="knownAs" name="knownAs" ng-model="vm.personalInfo.knownAs"
+                                           ng-disabled="!iseditable" >
+                                </div>
+                                <div class="form-group row" ng-show="{{usOrg}}">
+                                    <label for="previousLastName" class="col-md-5 col-sm-12 text-align-right  col-form-label">Previous
+                                        Last Name
+                                    </label>
+                                    <input type="text" title-case class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width" maxlength="50" id="previousLastName" name="previousLastName" ng-model="vm.personalInfo.previousLastName" no-special-char
+                                           ng-disabled="!iseditable" >
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="addressLink" class="col-md-5 col-sm-12 text-align-right  col-form-label">Address        </label>
+                                    <button data-toggle="modal" data-target="#addressModal" class="btn btn-primary" id="addressLink" name="addressLink">Add Address</button>
+                                </div>
+                                <div class="form-group row" ng-show="{{usOrg}}">
+                                    <label for="totalExp" class="col-md-5 col-sm-12 text-align-right  col-form-label">Total Prior Experience        </label>         
+                                    <input ng-disabled="!iseditable" type="text" class="form-control form-control-sm col-md-5 col-sm-12 ml-mr-15 border-left-width form-field-border" valid-decimal-number class="form-control col-lg-10" maxlength="50" id="totalExp" name="totalExp" ng-model="vm.personalInfo.totalExp">
+
+                                </div>
+                                <div class="form-group row" ng-show="{{usOrg}}">
+                                    <label for="resume" class="col-md-5 col-sm-12 text-align-right  col-form-label">Resume      </label>         
+                                    <div ngf-change="vm.load(picFile)" ngf-select ngf-drop ng-model="picFile"  id="image"
+                                     
+                                         class="drop-box drag-drop-border-sm" ngf-drop-available="dropAvailable" ngf-keep="false" ngf-multiple="false"
+                                         ng-disabled="!iseditable">
+                                        <span ng-show="dropAvailable"> Drag & Drop Here
+                                            <img src="img/upload.png" class="thumb upload-img-size"/>
+                                        </span>
+                                        <!-- <img ngf-src="vm.preview.content" class="thumb" style="margin-top: -34px;width: 100%; height: 100%"> -->
+                                    </div>
+                                    <a id='resume' style="display:none;" />
+                                    <a ng-click="downloadResume();" title='Resume.docx' class="col-md-9 col-sm-12 text-align-right  col-form-label" ng-disabled="!iseditable">{{vm.preview.name}}</a></div>    
+                            
+                               
+                                <div class="form-group row">
+                                        <div class="col-md-9 note">(<strong>Note:</strong> Allowed Resume formats are doc/docx/pdf <br/>and maximum file size should be less than 5MB)
+                                        </div>
+                                        </div>
+                                </div> 
+                        </div>
+                        <div class="row pull-right">
+                            <div class="col-sm-12">
+                                    <button type="button" class="btn btn-default" ng-click="cancelProfile()">
+                                            Cancel
+                                        </button>
+                                <button type="button" class="btn btn-primary" ng-click="vm.save('update');"
+                                        ng-disabled="!nonEditable || !iseditable" ng-hide="!iseditable" >
+                                    Save
+                                </button>
+                               
+                            </div>
+                        </div>        
+                    </form>
+                </div>
+                <!-- Address POPUP starts-->
+                <div class="modal fade" id="addressModal" style="margin-top: -16px;overflow-y: unset;" tabindex="-1" role="dialog" aria-labelledby="Address">
+                    <div class="modal-dialog" role="document" style="margin-bottom: 0px;margin-top: 20px;">
+                        <div class="modal-content" style="height: auto;width:558px">
+                            <div class="modal-header" style="    padding: 7px;">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+
+                                <h4 class="modal-title" id="exampleModalLabel" style="text-align: left;"><b>Address</b></h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="row" ng-if="isTrascError">
+                                    <div ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                                         ng-if="flash" ng-bind="flash.message">
+                                    </div>
+                                </div>
+                                <div ng-include="'views/common/address.html'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Address POPUP ends-->
+            </div>
+        </section>
+    </div>
+  </fieldset>      
+<div class="modal fade" id="confirmationModal" aria-hidden="true" tabindex="-1" role="dialog" aria-labelledby="confirmationModal">
+    <div ng-include="'views/confirmationPopup.html'"></div>
+</div>
+</div>
+<script>
+    function getDatePicker(thiz) {
+    document.getElementById(thiz).focus();
+    }
+</script>

@@ -1,0 +1,21 @@
+<!--  <a href="#/home">Home</a>
+  <a href="#/logout">Logout</a> -->
+  <div ng-cotroller="" >
+  <!-- <tree nodes='basicTree' options='basicOptions'></tree> -->
+  <div id="tree"></div>
+  </div>
+  <script type="text/javascript">
+$(function(){
+	 var scope = angular.element(document.getElementById("MainWrap")).scope();
+	var data = scope.basicTree;
+	console.log(data)
+		$("#tree").dynatree({
+			children: data,
+			autoCollapse: true,
+			onActivate: function(node) {
+					scope.availableOperations(node.data.functionId, node.data.url);
+				//$("#echoActive").text(node.data.title + "(" + node.data.key + ")");
+			}
+		});
+});
+</script>

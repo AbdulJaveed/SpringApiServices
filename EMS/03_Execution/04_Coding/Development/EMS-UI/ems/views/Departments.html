@@ -1,0 +1,49 @@
+<div class="modal fade" id="DepartmentsRollup" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Department Info
+                </h4>
+
+            </div>
+            <div class="modal-body">
+            	                <div class="row" ng-if="isTrascErrorDept">
+                    <div style="width: 65%;margin-left: 110px; margin-top: 2px;" ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}" ng-if="flash" ng-bind="flash.message">
+                    </div>
+                </div>
+            <form name="vm.osiRollUpsInfo" novalidate="">
+                        <div class="row"  ng-repeat="segmentStructure in osiSegmentStructure.osiSegmentStructureDetailses track by $index">
+						<div class="col-md-10">
+							<div class="col-md-4 no-padding">
+								<label for="organization"
+									class=" control-label no-padding pull-right">
+									{{segmentStructure.segmentStructureDetailsDesc}}<font color="red">*</font>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<select class="form-control" id="orgName{{$index}}" name="orgName" ng-init="segmentStructure.isSqlReqdForValidation !== 1 && (vm.empAssignment.deptId === undefined || vm.empAssignment.deptId === null ) ? vm.getDropDownData(vm.OsiRollUpsDept.segment[$index],segmentStructure.segmentStructureDetailsDesc,$index) :false"
+									ng-model="vm.OsiRollUpsDept.segment[$index]" required ng-change="vm.getDropDownDataList(vm.OsiRollUpsDept.segment[$index],segmentStructure.segmentStructureDetailsDesc,$index+1)"
+									ng-options="data.id as data.name for data in vm.osiSegment[$index]"
+									ng-disabled="!iseditable">
+									<option value="">-- Select {{segmentStructure.segmentStructureDetailsDesc}} --</option>
+								</select> 
+							<!-- 	 <div
+								ng-if="(vm.OsiRollUps.segment[$index] == '' || vm.OsiRollUps.segment[$index] == undefined  ||  vm.OsiRollUps.segment[$index] == null ) || vm.submitted) : isMandatory(true,{{segmentStructure.segmentStructureDetailsDesc}}) : isMandatory(false,{{segmentStructure.segmentStructureDetailsDesc}})">
+								Employee ID is required.</div>  -->
+								<br />
+							</div>
+						</div>
+					</div>
+         </form>
+                <div class="modal-footer">
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-click="vm.clearSegmentData();" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" ng-click="validateDeptData();" ng-disabled="!iseditable">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

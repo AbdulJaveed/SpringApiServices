@@ -1,0 +1,372 @@
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<div>
+	<form name="vm.osiUserInfo" novalidate="">
+		<fieldset ng-disabled="vm.infoView">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="empNumber"
+								class=" control-label no-padding pull-right"> Employee
+								ID <font color="red">*</font>
+							</label>
+
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="employeeId"
+								ng-model="vm.osiUser.employeeId"
+								style="text-transform: uppercase" placeholder='Employee Number'
+								type="text" maxlength="25" no-special-char-space ng-disabled="true"
+								required>
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.employeeId.$dirty || vm.submitted) && vm.osiUserInfo.employeeId.$error.required">
+								Employee ID is required.</div>
+							<br />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="title"
+								class=" control-label no-padding pull-right"> Title
+								<font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<select class="form-control" name="title" ng-model="vm.osiUser.title" placeholder="Title" 
+								ng-options="data.title as data.title for data in osiTitles" required
+								><option value="">-- Select Title --</option></select>
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.title.$dirty || vm.submitted) && vm.osiUserInfo.title.$error.required">
+								Title is required.</div>
+							<br/>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="firstName"
+								class=" control-label no-padding pull-right"> First Name
+								<font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="firstName"
+								ng-model="vm.osiUser.firstName" placeholder='First Name'  ng-disabled="true"
+								type="text" maxlength="100" no-special-char required>
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.firstName.$dirty || vm.submitted) && vm.osiUserInfo.firstName.$error.required">
+								First Name is required.</div>
+							</br>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="lastName"
+								class=" control-label no-padding pull-right"> Last Name
+								<font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="lastName"
+								ng-model="vm.osiUser.lastName" placeholder='Last Name'  ng-disabled="true"
+								maxlength="100" type="text" no-special-char required>
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.lastName.$dirty || vm.submitted) && vm.osiUserInfo.lastName.$error.required">
+								Last Name is required.</div>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="middleName"
+								class=" control-label no-padding pull-right"> Middle Name
+								<font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="middleName"
+								ng-model="vm.osiUser.middleName" placeholder='Middle Name'  ng-disabled="true"
+								maxlength="100" type="text" no-special-char >
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.middleName.$dirty || vm.submitted) && vm.osiUserInfo.middleName.$error.required">
+								Middle Name is required.</div>
+							<br>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="dob"
+								class=" control-label no-padding pull-right"> Date of Birth
+							</label>
+						</div>
+						<div class="col-md-6">
+							<datepicker date-format="dd-MM-yyyy" selector="form-control" date-max-limit = "{{today}}">
+								<input class="form-control" name="dob" id="dob"
+									ng-model="vm.osiUser.dob"  
+									style="text-transform: uppercase" placeholder='Date of Birth' required>
+								<div class="validation-error" style="color: red"
+									ng-show="(vm.osiUserInfo.dob.$dirty || vm.submitted) && vm.osiUserInfo.dob.$error.required">
+									Date of Birth is required.</div>
+							<br>
+							</datepicker>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+				<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="companyMailId"
+								class=" control-label no-padding pull-right"> Email Id 
+								<font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="companyMailId"  ng-disabled="true"
+								ng-model="vm.osiUser.companyMailId" placeholder='company mail id'
+								type="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+								required maxlength="50" />
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.companyMailId.$dirty || vm.submitted) && vm.osiUserInfo.companyMailId.$error.required">
+								Email Id is required.</div>
+							<div class="validation-error" style="color: red"
+								ng-show="vm.osiUserInfo.companyMailId.$dirty && vm.osiUserInfo.companyMailId.$invalid">
+								Invalid Email Id.</div>
+							<br>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="personalMailId"
+								class=" control-label no-padding pull-right"> Email Id 
+								<font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<input class="form-control" name="personalMailId" 
+								ng-model="vm.osiUser.personalMailId" placeholder='Personal Mail ID'
+								type="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+								required maxlength="50" />
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.personalMailId.$dirty || vm.submitted) && vm.osiUserInfo.personalMailId.$error.required">
+								Personal Mail Id is required.</div>
+							<div class="validation-error" style="color: red"
+								ng-show="vm.osiUserInfo.personalMailId.$dirty && vm.osiUserInfo.personalMailId.$invalid">
+								Invalid Email Id.</div>
+							<br>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="mobileNo"
+								class=" control-label no-padding pull-right"> Mobile Number <font color="red">*</font></label>
+						</div>
+						<!--Mob No 10 digit excluding starting 0 validation ng-pattern="/^((0091)|0?)[1-9]{1}\d{9}$/"-->
+						<div class="col-md-6">
+							<input class="form-control info"
+								ng-model="vm.osiUser.mobileNumber"
+								ng-pattern="/^[0-9]{1}[0-9]{9}$/" placeholder='Mobile Number'
+								minlength="10" maxlength="10" type="text" name="mobileNo"
+								only-Number  no-special-char-space /> <span
+								style="color: red" ng-show="vm.osiUserInfo.mobileNo.$error.pattern">Mobile
+								Number is not valid.</span>
+							<!--                           <div class="validation-error" style="color:red" 
+	             				ng-show="(vm.osiUser.mobileNo.$dirty || vm.submitted) && vm.osiUser.mobileNo.$error.required">
+	            				Mobile No is required.
+        					</div>-->
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.mobileNo.$dirty || vm.submitted) && (vm.osiUserInfo.mobileNo.$error.minlength || vm.osiUserInfo.mobileNo.$error.maxlength)">
+								Mobile Number should be 10 Digit.</div>
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.mobileNo.$dirty || vm.submitted) && (vm.osiUserInfo.mobileNo.$error.number)">
+								Mobile Number is not valid.</div>
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.mobileNo.$dirty || vm.submitted) && (vm.osiUserInfo.mobileNo.$error.min)">
+								Mobile Number should be greater than 0.</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="phoneExtension"
+								class=" control-label no-padding pull-right"> Phone Extension</label>
+						</div>
+						<!--Mob No 10 digit excluding starting 0 validation ng-pattern="/^((0091)|0?)[1-9]{1}\d{9}$/"-->
+						<div class="col-md-6">
+							<input class="form-control info"
+								ng-model="vm.osiUser.phoneExtension"
+								ng-pattern="/^[0-9]{1}[0-9]{3}$/" placeholder='Phone Extension'
+								minlength="4" maxlength="4" type="text" name="phoneExtension"
+								only-Number  no-special-char-space /> <span
+								style="color: red" ng-show="vm.osiUserInfo.phoneExtension.$error.pattern">Phone Extension
+								number is not valid.</span>
+							<!--                           <div class="validation-error" style="color:red" 
+	             				ng-show="(vm.osiUser.mobileNo.$dirty || vm.submitted) && vm.osiUser.mobileNo.$error.required">
+	            				Mobile No is required.
+        					</div>-->
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.phoneExtension.$dirty || vm.submitted) && (vm.osiUserInfo.phoneExtension.$error.minlength || vm.osiUserInfo.phoneExtension.$error.maxlength)">
+								Phone Extension should be 4 Digit.</div>
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.phoneExtension.$dirty || vm.submitted) && (vm.osiUserInfo.phoneExtension.$error.number)">
+								Phone Extension is not valid.</div>
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.phoneExtension.$dirty || vm.submitted) && (vm.osiUserInfo.phoneExtension.$error.min)">
+								Phone Extension should be greater than 0.</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="organization" class=" control-label no-padding pull-right">
+								Organization<font color="red">*</font></label>{{vm.osiUser.organization.orgName}}
+						</div>
+						<div class="col-md-6">
+							<!-- <input class="form-control" name="orgName" data-toggle="modal"
+								ng-model="vm.osiUser.osiOrganizations.orgName" placeholder='Organization'
+								maxlength="100" type="text" no-special-char required
+								data-target="#orgNameModal"> -->
+								<select class="form-control" name="orgName" ng-model="vm.osiUser.osiOrganizations.id"  
+								ng-options="data.id as data.orgName for data in osiOrganizations"  ng-disabled="true"
+								ng-change="vm.getLocations(vm.osiUser.osiOrganizations.id);vm.getCards(vm.osiUser.osiOrganizations.id)" 
+								required><option value="">-- Select Organization --</option></select>
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.orgName.$dirty || vm.submitted) && vm.osiUserInfo.orgName.$error.required">
+								Organization is required.</div>
+							<br />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="location" class=" control-label no-padding pull-right">
+								Location<font color="red">*</font></label>
+						</div>
+						<div class="col-md-6">
+							<select class="form-control" name="location" ng-model="vm.osiUser.osiLocations.locationId" placeholder="Location" 
+								ng-options="data.locationId as data.locationName for data in osiLocations"  ng-disabled="true"
+								ng-change="vm.getBuildings(vm.osiUser.osiLocations.locationId)" 
+								required><option value="">-- Select Location --</option></select>
+							<!-- <input class="form-control" name="location"
+								ng-model="vm.osiUser.location" placeholder='Location'
+								maxlength="100" type="text" no-special-char required> -->
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.location.$dirty || vm.submitted) && vm.osiUserInfo.location.$error.required">
+								Location is required.</div>
+							<br />
+						</div>
+					</div>
+					<div class="row" style="display:none;">
+						<div class="col-md-4 no-padding">
+							<label for="building" class=" control-label no-padding pull-right">
+								Building<font color="red">*</font></label>
+						</div>
+						<div class="col-md-6">
+							<select class="form-control" name="building" ng-model="vm.osiUser.osiBuildings.buildingId" 
+								ng-options="data.buildingId as data.buildingName for data in osiBuildings" required   ng-disabled="true"
+								><option value="">-- Select Building --</option></select>
+							<!-- <input class="form-control" name="building"
+								ng-model="vm.osiUser.building" placeholder='Building'
+								maxlength="100" type="text" no-special-char required> -->
+							<div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.building.$dirty || vm.submitted) && vm.osiUserInfo.building.$error.required">
+								Building is required.</div>
+							<br />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="card" style="text-align: center;">
+						<!-- <img id="output" class="card-img-top" alt="my Image"
+							style="width: 90%" src="{{myImage}}"> -->
+						<div class="card-block">
+							<input type="file" ngf-select="" ng-model="vm.osiUser.osiEmpAttachmentses[0].fileContent" name="file" required="" ngf-max-size='5MB'
+  									ngf-accept="'image/*'"  ngf-pattern="'.jpg/*,.gif,.jpeg,!.zip,!.rar,!.html,!.xlsx,!.txt,!.pdf'" 
+  									ng-change="uploadPic(vm.osiUser.osiEmpAttachmentses[0].fileContent)">
+							<img ngf-src="vm.osiUser.osiEmpAttachmentses[0].fileContent" id="photos" style="width:90%"/>
+							<!-- <input type="hidden" name="vm.osiUser.osiEmpAttachmentses[0].originalFileName" id="originalFileName" value="{{vm.osiUser.osiEmpAttachmentses[0].originalFileName}}">
+							<input type="hidden" name="vm.osiUser.osiEmpAttachmentses[0].fileType" id="fileType" value="{{vm.osiUser.osiEmpAttachmentses[0].fileType}}">
+							<font color="red">*</font>
+							<input type="file" style="width: 85px;" name="file" ngf-accept="'image/*'" onchange="handleFileSelect(event);" id="uploadFile" title="{{vm.osiUser.osiEmpAttachmentses[0].originalFileName}}"
+								ng-click="validateImage(event)">
+							<input type="hidden" id="photo" name="vm.osiUser.osiEmpAttachmentses[0].fileContent" value="{{vm.osiUser.osiEmpAttachmentses[0].fileContent}}"/> -->
+							<!-- <input id="uploadFile" type="file" class="custom-file-input" ng-model="myImage"
+								style="color: transparent; width: 64%; padding: 0px; margin-left: 25px;"
+								ng-file-select="vm.upload($files)" accept="image/*"
+								onchange="angular.element(this).scope().upload(event);" /><small
+								ng-show="vm.isFileError" style="color: red; font-size: 12px">Select
+								Image File Only</small> -->
+							<i id="required" style="display:none;color:red" >Please upload Image</i>
+							<i id="maxSize" style="display:none;color:red" >Max size: 5MB</i>
+							<i id="pattern" style="display:none;color:red" >Invalid File Format</i>
+						</div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</fieldset>
+	</form>
+	<br>
+	<div class="row pull-right">
+		<button type="button" class="btn btn-primary"
+			ng-click="vm.next();vm.submitted=true" ng-hide="vm.infoView">
+			<span>Save & Next</span>
+		</button>
+		<button type="button" class="btn btn-primary"
+                            ng-click="vm.saveOsiUser();">
+                            <span>Submit</span>
+                        </button> &nbsp;
+	</div>
+	<br>
+</div>
+<!-- <div class="modal fade" id="orgNameModal" role="dialog">
+<div style="width:50%;margin-left:25%;" ng-include="'./views/searchorgNameOsiEmployeesPopup.html'"></div>
+</div> -->
+<script>
+var handleFileSelect = function(event) {
+	document.getElementById('pattern').style.display = 'none';
+	document.getElementById('maxSize').style.display = 'none';
+    var reader = new FileReader();
+    reader.onload = function(){
+      $("#photo").val(reader.result);
+      var output = document.getElementById('photos');
+      output.src = "";
+      output.src = reader.result;
+      console.log($("#photo").val());
+    };
+    console.log(event.target.files[0]);
+    console.log(event.target.files[0].name);
+    var fName = event.target.files[0].name;
+    var fExtension = fName.substring(fName.lastIndexOf(".")).valueOf().toUpperCase();
+    console.log(fName.substring(fName.lastIndexOf("."))==".jpg");
+    console.log(fName.substring(fName.lastIndexOf(".")).valueOf());
+    if(fExtension==".JPG" || fExtension==".PNG" || fExtension==".GIF" || fExtension==".JPEG") {
+    	if(event.target.files[0].size <= 5242880) {
+    		document.getElementById('required').style.display = 'none';
+    		document.getElementById('pattern').style.display = 'none';
+	    	document.getElementById('maxSize').style.display = 'none';
+	    	$("#originalFileName").val(event.target.files[0].name);
+	    	$("#fileType").val(event.target.files[0].type);
+	    	reader.readAsDataURL(event.target.files[0]);
+    	}else{
+        	document.getElementById('maxSize').style.display = 'block';
+    	}
+    }else{
+    	document.getElementById('pattern').style.display = 'block';
+    	document.getElementById('required').style.display = 'none';
+    	document.getElementById('maxSize').style.display = 'none';
+    }
+    
+  };
+</script>
+<script>
+/*  var loadFile = function(event) {
+
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('output');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };  */
+</script>

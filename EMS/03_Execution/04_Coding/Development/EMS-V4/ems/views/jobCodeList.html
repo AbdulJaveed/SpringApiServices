@@ -1,0 +1,208 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+	<div class="breadcrumb-holder">
+		<div class="container-fluid">
+			<ul class="breadcrumb">
+				<h1 class="h3 display">Job Titles List</h1>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<header> </header>
+		<section class="forms">
+			<div class="row">
+				<div class="alert alert-success" ng-show="showSuccessAlert">
+					{{successTextAlert}}</div>
+				<div class="alert alert-danger" ng-show="showFailureAlert">
+					{{failureTextAlert}}</div>
+
+			</div>
+
+			<div class="col-sm-12 no-padding adjust-search-box">
+				<div class="card">
+					<div class="card-body">
+						<div class="row" role="form">
+							<div class="col-lg-4">
+								<input class="form-control" name="jobCodeName"
+									ng-Model="jobCodeName" placeholder="Job Title" type="text">
+							</div>
+							<div class="col-lg-4">
+								<button class="btn btn-primary" ng-click="searchOsiJobCodess()">Search</button>
+								<button type="button" class="btn btn-defaul btn-width"
+									ng-click="clearSearch()">Clear</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="content">
+			<div class='card'>
+				<div class="box-body table-responsive">
+					<table class="table table-striped table-sm">
+						<thead class="thead_bg">
+							<tr>
+								<th ng-click="sort('jobCodeName')">Job Title<span
+									class="glyphicon sort-icon" ng-show="sortKey == 'jobCodeName'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('jobCodeDescription')">Description<span
+									class="glyphicon sort-icon"
+									ng-show="sortKey == 'jobCodeDescription'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+								<th ng-click="sort('active')">Status<span
+									class="glyphicon sort-icon" ng-show="sortKey == 'active'"
+									ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr
+								dir-paginate="item in jobCodeList |orderBy:sortKey:reverse|itemsPerPage:rowSize "
+								ng-class="{selected: item.jobCodeId == isSelectedRow}"
+								ng-click="selectRow(item)"
+								ng-dblclick="editSelectedRowDetails(item)"
+								ng-init="myIndex = $index">
+								<input type="hidden" ng-model="item.jobCodeId"
+									value="{{item.jobCodeId}}" />
+								<td>{{item.jobCodeName|uppercase}}</td>
+								<td>{{item.jobCodeDescription|uppercase}}</td>
+								<td ng-show="item.active==1">ACTIVE</td>
+								<td ng-show="item.active==0">INACTIVE</td>
+							</tr>
+						</tbody>
+
+					</table>
+					<div ng-if="jobCodeList.length == 0">
+						<h6 style="text-align: center; color: red;">No Records Found</h6>
+					</div>
+
+
+				</div>
+				<!-- /.box-body -->
+				<div class="col-sm-13 row">
+					<div class="col-sm-10">
+						<dir-pagination-controls max-size="8" direction-links="true"
+							boundary-links="true" on-page-change="clearSelectedRow()">
+						</dir-pagination-controls>
+					</div>
+					<div class="col-sm-2 adjust-crud-op">
+						<span ng-repeat="availOperations in availOperations"> <i
+							style="cursor: pointer;"
+							ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create',
+                                                'glyphicon glyphicon-eye-open' : availOperations.name == 'View',
+                                                'glyphicon glyphicon-pencil' : availOperations.name == 'Edit',
+                                                'disabled': disable_{{availOperations.name}}}"
+							ng-disabled="disable_{{availOperations.name}}"
+							ng-click="operationsGenericFunction(availOperations.name, availOperations.url)"></i>&nbsp;&nbsp;
+						</span>
+					</div>
+				</div>
+		</section>
+	</div>
+
+</div>
+
+<div class="modal fade" id="OsiJobCodes-model" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="row">
+					<div class="col-lg-6">
+						<h4 class="modal-title">{{headername}}</h4>
+					</div>
+					<div class="col-lg-6 pull-right">
+						<button type="button" class="close modelCloseButton"
+							data-dismiss="modal">&times;</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal" role="form">
+					<div class="row" ng-if="isTrascError">
+						<div
+							ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+							ng-if="flash" ng-bind="flash.message"></div>
+					</div>
+					<div class="form-group">
+						<input class="form-control" ng-disabled="!iseditable"
+							name="jobCodeId" ng-model="OsiJobCodes.jobCodeId"
+							placeholder="Enter ID" type="hidden">
+					</div>
+					<div class="form-group">
+						<input class="form-control" ng-disabled="!iseditable" name="item"
+							ng-model="OsiJobCodes.version" placeholder="Enter Version"
+							type="hidden">
+					</div>
+					<div class="row">
+						<div class="col-md-2 pull-right">
+							<label for="jobCodeName" class="control-label pull-right">Job
+								Title </label>
+						</div>
+						<div class="col-sm-4">
+							<input class="form-control form-field-border"
+								ng-disabled="!iseditable" uppercase name="jobCodeName"
+								ng-model="OsiJobCodes.jobCodeName" maxlength="50" no-special-char 
+								placeholder="Enter Job Code" type="text" /></br>
+						</div>
+						<div class="col-md-2 pull-right">
+							<label for="orgId" class="control-label pull-right">Organization
+							
+						</div>
+						<div class="col-sm-4">
+							<!-- <select name="orgId" uppercase ng-disabled="!iseditable"
+								ng-model="OsiJobCodes.orgId" class="form-control input input-sm"
+								required>
+								<option ng-repeat="org  in organizations track by $index"
+									ng-selected="org.orgId == OsiJobCodes.orgId"
+									value="{{org.orgId}}">{{org.orgName|uppercase}}</option>
+							</select>  -->
+							<select name="orgId" ng-disabled="!iseditable"
+								ng-model="OsiJobCodes.orgId"
+								ng-options="org.orgId as (org.orgName|uppercase) for org  in organizations"
+								class="form-control input input-sm form-field-border" required>
+								<option value="" label="-- Select organization --"></option>
+							</select></br>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 pull-right">
+							<label for="jobCodeDescription" class="control-label pull-right">Description</label>
+						</div>
+						<div class="col-sm-4">
+							<textarea class="form-control" ng-disabled="!iseditable"
+								uppercase name="jobCodeDescription" maxlength="500"
+								ng-model="OsiJobCodes.jobCodeDescription"
+								placeholder="Enter Description" type="text"></textarea>
+							</br>
+						</div>
+						<div class="col-md-2 pull-right">
+							<label for="active" class="control-label pull-right">Active
+						</div>
+						<div class="col-sm-4">
+							<input type="checkbox" class="form-field-border"
+								ng-disabled="!iseditable" name="active"
+								ng-model="OsiJobCodes.active" ng-true-value=1 ng-false-value=0>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-space pull-right"
+						data-dismiss="modal">Close</button>
+					<div ng-if="isUpdatable">
+						<button class="btn btn-primary modalButton"
+							ng-click="saveOsiJobCodes(OsiJobCodes)" ng-disabled="!iseditable">Update</button>
+					</div>
+					<div ng-if="!isUpdatable">
+						<button type="button" class="btn btn-primary modalButton"
+							ng-hide="!iseditable" ng-click="saveOsiJobCodes(OsiJobCodes)">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,66 @@
+<div class="left-side sidebar-offcanvas" ng-controller="sidebarCtrl">
+	<!-- <div data-angular-treeview="true" data-tree-model="menuList"
+		data-node-id="menuId" data-node-label="title"
+		data-node-collapsed="collapsed" data-node-isFolder="isFolder"
+		data-node-children="children"></div> -->
+ 	<div id="tree"></div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		$( ".logo" ).click(function() {
+				$("#tree").dynatree("getRoot").visit(function(node){
+					node.deactivate();
+				});
+    		});
+		var scope = angular.element(document.getElementById("MainWrap")).scope();
+		var data = scope.basicTree;
+		$("#tree").dynatree({
+			children : data,
+			autoCollapse : true,
+                        persist: true,
+                        generateIds:true,
+			onActivate : function(node) {
+				
+				if(node.data.title.replace(/ /g,"_") !== 'Basic_Information' )
+						$(".Basic_Information").removeClass("dynatree-active");
+                                var isFolder = node.data.isFolder;
+				
+				if(!isFolder){                                    
+                                    scope.functionNavigation(node.data.functionId, node.data.url);
+                                    if(node.data.url.includes('reports')){
+                                        //node.data.rptGrpId report
+                                        var done = scope.reportGroupIdStorage(node.data.rptGrpId);
+                                    //    location.reload();
+                                    }
+                               }
+			},onRender: function(node, nodeSpan) {
+			
+				if(node.data.url !== undefined)
+					$(nodeSpan).attr("id",node.data.url.replace("/",""));
+			    $(nodeSpan).addClass(node.data.title.replace(/ /g,"_"));
+			}
+		});
+	});
+</script>
+
+<div class="modal fade" id="alertEmployee" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content" style="margin-top: 13%;">
+		<div class="modal-header">
+			<button type="button" class="close modelCloseButton" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title"></h4>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-lg-12">
+					<h5>Please Choose Employee from list</h5>
+				</div>
+				<div class="col-lg-10" style="float: right;padding-left: 400px;">
+					<button type="button" class="btn btn-defaul" data-dismiss="modal">OK</button>
+				</div>
+			</div>
+			<br>            
+		</div>
+	</div>
+	</div>
+</div>

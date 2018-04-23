@@ -1,0 +1,92 @@
+<script>
+        setTimeout(function(){ $("#add").toggleClass("active"); }, 100);
+            </script>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    	<div data-ng-include="'views/employeeMenu.html'"></div>
+<div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+    <div class="right-side">
+        <section class="content">
+            	
+        
+            <div class="row" style="margin-left: 0px;">
+                <div class="col-sm-11">
+                    <h4>Bank Information</h4>
+                </div>
+            </div>
+        </section>
+
+        <div class="row" ng-if="isTrascError">
+            <div ng-class="{ 'alert alertMT col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                         ng-if="flash"><span class="alertText" ng-bind="flash.message"></span> </div>
+        </div>
+        <div style="margin-top: 10px;">
+            <section class="content" style="height: 410px; overflow: auto;">
+                <div class="box1">                                
+                    <div class="box-body table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead_bg">
+                                <tr>
+                                    <th ng-click="sort('issReqNumber')">Account Holder Name<span class="glyphicon sort-icon" ng-show=" sortKey == 'issReqNumber'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    
+                                    <th ng-click="sort('invOrgName')">Account Number<span class="glyphicon sort-icon" ng-show=" sortKey == 'invOrgName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                    
+                                    <th ng-click="sort('createdDate')">Bank Name<span class="glyphicon sort-icon" ng-show=" sortKey == 'createdDate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th> 
+
+                                    <th ng-click="sort('issReqTotalAmt')">Branch Name<span class="glyphicon sort-icon" ng-show=" sortKey == 'issReqTotalAmt'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th> 
+
+                                    <th ng-click="sort('issReqHdrStatus')">IFSC Code<span class="glyphicon sort-icon" ng-show=" sortKey == 'issReqHdrStatus'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th> 
+
+                                    <th ng-click="sort('issReqHdrStatus')">Active<span class="glyphicon sort-icon" ng-show=" sortKey == 'issReqHdrStatus'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th> 
+
+                                </tr>
+                            </thead>
+                            <tbody >
+
+                                <tr  dir-paginate="bankDetails in vm.bankList|orderBy:sortKey:reverse|itemsPerPage:rowSize"
+                                     pagination-id="bankDetailsList" ng-class="{selected: isRowSelected(bankDetails)}"
+                                     ng-click="selectRow(bankDetails)"
+                                     ng-dblclick="editSelectedRowDetails(bankDetails)" ng-init="myIndex = $index">
+                                    <td>{{bankDetails.accountHolderName}}</td>
+                                    <td>{{bankDetails.accountNumber}}</td>
+                                    <td>{{bankDetails.bankName}}</td>
+                                    <td>{{bankDetails.branchName}}</td>
+                                    <td>{{bankDetails.ifscCode}}</td>
+                                    <td>{{bankDetails.active == 1? 'Active' : 'In Active'}}</td>
+                                    
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                        <div ng-if="vm.bankList.length == 0">
+                            <h6 style="text-align: center; color: red;">No Records Found</h6>
+                        </div>
+
+                    </div><!-- /.box-body -->
+                    <div style="float: right;">
+                        <span ng-repeat="availOperations in availOperations">
+                            <i style="cursor: pointer;"
+                               ng-class="{'glyphicon glyphicon-plus' : availOperations.name == 'Create', 
+                                          'glyphicon glyphicon-pencil' : availOperations.name == 'Edit' 
+                                          }"
+                               ng-disabled="disable_{{availOperations.name}}"
+                                ng-click="operationsGenericFunction(availOperations.name, availOperations.url)">
+                            </i>&nbsp;&nbsp;
+                        </span>	
+                    </div>
+                </div><!-- /.box -->
+                        
+            </section>
+            <!-- /.content -->
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <div style="float: left; margin-top: -10px;">
+                        <dir-pagination-controls pagination-id="bankDetailsList" max-size="rowSize" direction-links="true" boundary-links="true" on-page-change="clearSelectedRow()"> 
+                        </dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div><!-- /.right-side -->
+</div><!-- ./wrapper -->

@@ -1,0 +1,45 @@
+##db=h2
+##jdbc.driver=org.h2.Driver
+##jdbc.url=jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000
+##jdbc.username=sa
+##jdbc.password=
+
+
+
+########### My SQL DB properties: ##############
+##DB properties:
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/ems_prvt2
+jdbc.username=root
+jdbc.password=root
+
+
+########### MS SQL Server DB properties: ##############
+#jdbc.driverClassName=net.sourceforge.jtds.jdbc.Driver
+#jdbc.url=jdbc:jtds:sqlserver://192.168.32.157:1433/fas_wf;instance=SQLEXPRESS;sendStringParametersAsUnicode=false;
+#jdbc.username=sa
+#jdbc.password=admin$123
+
+jdbc.acquireIncrement=20
+jdbc.idleConnectionTestPeriod=60
+jdbc.minPoolSize=10
+jdbc.maxPoolSize=100
+jdbc.maxStatements=50
+jdbc.maxStatementsPerConnection=10
+
+################# Hibernate Configuration: #####################
+hibernate.cache.provider_class=net.sf.ehcache.hibernate.EhCacheProvider
+hibernate.cache.region.factory_class=org.hibernate.cache.ehcache.EhCacheRegionFactory
+hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+#hibernate.dialect=org.hibernate.dialect.SQLServer2012Dialect
+hibernate.cache.use_second_level_cache=true
+hibernate.cache.use_query_cache=true
+hibernate.hbm2ddl.auto=update
+hibernate.show_sql=true
+hibernate.jdbc.batch_size=10
+hibernate.jdbc.fetch_size=50
+hibernate.max_fetch_depth=3
+hibernate.order_updates=true
+hibernate.order_inserts=true
+#domainPackagesToScan=com.osi.fas.jpa.model
+domainPackagesToScan=com.osi

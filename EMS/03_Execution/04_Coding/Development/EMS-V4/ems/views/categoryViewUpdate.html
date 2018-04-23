@@ -1,0 +1,216 @@
+
+
+<div class="modal fade" id="category_Update_modal" role="dialog">
+	<div class="modal-dialog" style="width: 80%">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="row">
+					<div class="col-lg-6">
+						<span ng-if="vm.view">View</span><span ng-if="!vm.view">Edit</span>
+					</div>
+					<div class="col-lg-6 pull-right">
+						<button type="button" class="close modelCloseButton"
+							data-dismiss="modal" ng-click="vm.closeModal()">&times;</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-body">
+				<!--page------------------------------------------------------>
+
+				<div class="row" ng-if="isTrascError">
+					<div
+						ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+						ng-if="flash" ng-bind="flash.message"></div>
+				</div>
+
+				<form name="orgInventory" novalidate="">
+					<fieldset ng-disabled="vm.view">
+						<br>
+						<div class="row">
+							<div class="col-md-2 text-align-right">
+								<label for="orgNameTxt">Organization Name </label>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<select ng-model="vm.category.orgId"
+										ng-options="organization.orgId as organization.orgName for organization in vm.organizations "
+										class="form-control form-field-border" id="sel1" disabled>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-2 text-align-right">
+								<label for="screenNameTxt">Function Name </label>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<select ng-model="vm.category.catName"
+										class="form-control form-field-border" id="sel1"
+										place-holder="select Type">
+										<option value="" disabled>Select Function Name</option>
+
+										<option
+											ng-repeat="function in vm.functions | orderBy:'funcName'"
+											value="{{function.funcName}}">{{function.funcName}}</option>
+									</select>
+									<!-- <input type="text"
+                                        ng-model="vm.category.catName"
+                                        ng-init="vm.category.catName = ''" maxlength="100"
+                                        class="form-control top10" placeholder="Enter Screen Name"
+                                        only-Alphabets no-special-char uppercase disallow-spaces required>-->
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2 text-align-right">
+								<label for="orgNameTxt">Table Name </label>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<select ng-model="vm.category.tblName"
+										ng-change="vm.getColumnNamesByTableName(vm.category.tblName)"
+										class="form-control form-field-border" id="sel1"
+										place-holder="select Type">
+										<option value="" disabled>Select Table Name</option>
+										<option ng-repeat="table in vm.tables" value="{{table}}">{{table}}</option>
+
+									</select>
+								</div>
+							</div>
+							<div class="col-md-2 text-align-right">
+								<label for="acctive">Active</label>
+							</div>
+
+							<div class="col-md-4">
+								<input type="checkbox" ng-model="vm.category.active">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-2 text-align-right">
+								<label for="acctive">Display Type<font color="red">*</font>
+								</label>
+							</div>
+
+							<div class="col-md-1 ">
+								<label for="acctive" class=" control-label ">Inline</label>
+							</div>
+
+							<div class="col-md-1" style="width: 0px;">
+								<input style="margin: 0 0px 0px -22px;" type="radio"
+									ng-model="vm.category.inlineOrPopup" value="inline">
+							</div>
+							<div class="col-md-1 ">
+								<label for="acctive" class=" control-label ">Popup</label>
+							</div>
+
+							<div class="col-md-2">
+								<input style="margin: 0 0px 0px -22px;" type="radio"
+									ng-model="vm.category.inlineOrPopup" value="popup">
+							</div>
+						</div>
+
+						<br>
+						<div class="row" style="padding-left: 15px;">
+							<h4 class="no-margin">Columns</h4>
+						</div>
+						<hr class="no-padding"
+							style="margin: 0 0 3px 0; border-top: 1px solid #eee;">
+
+
+						<table class="table table-bordered table-striped table-responsive">
+							<thead class="thead_bg">
+								<tr>
+									<th style="width: 05%;">Sequence<font color="red">*</font></th>
+									<th style="width: 20%;">Column Name<font color="red">*</font></th>
+									<th style="width: 12.5%;">Column Value<font color="red">*</font></th>
+									<th style="width: 12.5%;">Column Type<font color="red">*</font></th>
+									<th style="width: 10%;">Column Source Type<font
+										color="red">*</font></th>
+									<th style="width: 10%;">Column Source</th>
+									<th style="width: 10%;">Is Mandatory<font color="red">*</font></th>
+									<th style="width: 10%;">JavaScript Validation</th>
+									<th style="width: 10%;">Actions</th>
+								</tr>
+							</thead>
+							<tr
+								ng-repeat="submenu in vm.category.osiCategoryFields track by $index ">
+
+								<td style="width: 05%;"><input type="text"
+									ng-model="submenu.seq" class="form-control"
+									ng-blur="vm.removeselectedseq(submenu,$index)" id="sequence"
+									maxlength="10" valid-onlynumber></td>
+								<td style="width: 20%;"><select class="form-control"
+									ng-model="submenu.colName"
+									ng-change="vm.removeselectedcol(submenu,$index)">
+										<option value="" disabled>Select Column Name</option>
+										<option ng-repeat="column in vm.columns">{{column.columnName}}</option>
+								</select></td>
+
+
+								<td style="width: 12.5%;"><input type="text"
+									ng-model="submenu.colValue" class="form-control" id="colValue"
+									no-special-char></td>
+								<td style="width: 12.5%;"><select class="form-control"
+									ng-model="submenu.colType"
+									ng-change="vm.changesourcetype(submenu.colType)">
+										<option value="" disabled>Select Column Type</option>
+										<option value="DECIMAL">NUMBER</option>
+										<option value="STRING">STRING</option>
+										<option value="DATE">DATE</option>
+								</select></td>
+
+								<td style="width: 10%;"><select class="form-control"
+									ng-model="submenu.colSrcType" ng-disabled="!submenu.colType">
+										<option value="" disabled>Select Column Source Type</option>
+										<option ng-repeat="colsrctype in vm.colSrcType ">{{colsrctype}}</option>
+
+								</select></td>
+								<td style="width: 10%;"><input type="text"
+									ng-model="submenu.colSrc" class="form-control" id="colSrc"
+									no-special-char></td>
+								<td style="width: 10%;"><select class="form-control"
+									ng-init="submenu.nullable=0" ng-model="submenu.nullable"
+									ng-options="nullable.id as nullable.name for nullable in vm.isMandatory ">
+										<option value="" disabled>Select Is Mandatory</option>
+
+								</select>
+								<td style="width: 05%;"><input type="text"
+									ng-model="submenu.srcpValid" class="form-control"
+									id="srcpValid"></td>
+
+								<td style="font-size: 24px; width: 10%;"><span
+									ng-show="$last" class="glyphicon glyphicon-plus-sign addIcon"
+									ng-click="vm.addColumn(submenu)"></span><span
+									ng-show="submenu.remove"
+									class="glyphicon glyphicon-minus-sign minusIcon"
+									ng-click="vm.removeColumn(submenu)"></span></td>
+
+							</tr>
+						</table>
+						<br>
+						<div class="modal-footer">
+							<button class="btn" ng-click="vm.closeModal()">Close</button>
+							&nbsp;
+							<div ng-if="!vm.view">
+								<button class="btn btn-primary"
+									ng-click="vm.update(vm.category)">Update</button>
+							</div>
+						</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+
+		</fieldset>
+		</form>
+
+		<!--/page------------------------------------------------------>
+		<!--                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>-->
+	</div>
+</div>
+</div>
+</div>
+
+
+

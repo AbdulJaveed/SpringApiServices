@@ -1,0 +1,256 @@
+
+
+<div class="modal fade" id="category_modal" role="dialog"
+ng-controller="categoryController as vm">
+<div class="modal-dialog modal-sm invmodal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close modelCloseButton"
+                data-dismiss="modal" ng-click="vm.resetcategory()">&times;</button>
+            <h4 class="modal-title">Create Category</h4>
+        </div>
+
+        <div class="modal-body categoryModalBody"
+            style="height: auto; width: 100%;">
+            <!--page------------------------------------------------------>
+
+            <div class="row" ng-if="isTrascError">
+                <div
+                    ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                    ng-if="flash" ng-bind="flash.message"></div>
+            </div>
+
+            <form name="orgInventory" novalidate="">
+                <fieldset ng-disabled="vm.view">
+
+                    <br>
+                    <div class="row categoryContainer">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+
+                            <div class="row mar-bot5">
+                                <div class="col-md-2 ">
+                                    <label for="orgNameTxt" class=" control-label "
+                                        >Organization Name<font
+                                        color="red">*</font></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select ng-model="vm.category.orgId"
+                                            ng-change="vm.removeOrgName(vm.category.orgId)"
+                                            class="form-control top10" id="sel1"
+                                            place-holder="select Type">
+                                            <option value="" disabled>Select Organization</option>
+                                           
+                                            <option ng-repeat="organization in vm.organizations | orderBy:'name'"
+                                                value="{{organization.orgId}}">{{organization.orgName}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row mar-bot5">
+                                <div class="col-md-2 ">
+                                    <label for="screenNameTxt" class=" control-label "
+                                       >Function Name<font
+                                        color="red">*</font></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                            <select ng-model="vm.category.catName"
+                                          
+                                            class="form-control top10" id="sel1"
+                                            place-holder="select Type">
+                                            <option value="" disabled>Select Function Name</option>
+                                           
+                                            <option ng-repeat="function in vm.functions | orderBy:'funcName'"
+                                                value="{{function.funcName}}">{{function.funcName}}</option>
+                                        </select>
+                                        <!--<input type="text"
+                                        ng-model="vm.category.catName"
+                                        ng-init="vm.category.catName = ''" maxlength="100"
+                                        class="form-control top10" placeholder="Enter Screen Name"
+                                        only-Alphabets no-special-char uppercase disallow-spaces required>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row mar-bot5">
+                                <div class="col-md-2 ">
+                                    <label for="tableTxt" class=" control-label "
+                                       >Table Name<font
+                                        color="red">*</font></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select ng-model="vm.category.tblName"
+                                            ng-change="vm.getColumnNamesByTableName(vm.category.tblName)"
+                                            class="form-control top10" id="sel1"
+                                            place-holder="select Type">
+                                            <option value="" disabled>Select Table Name</option>
+                                            <option ng-repeat="table in vm.tables" value="{{table}}">{{table}}</option>
+                                            <!--<option ng-repeat="table in vm.tables | orderBy:'name'"
+                                                value="{{name}}">{{table.name}}</option>-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                                
+                                 <div class="row mar-bot5">
+                                    <div class="col-md-2 ">
+                                            <label for="acctive" class=" control-label "
+                                           >Active<font
+                                            color="red">*</font></label>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <input  type="checkbox" ng-model="vm.category.active"> 
+                                    </div>
+                                </div>
+                                
+                            <br>
+                               <div class="row">
+                            
+                             <div class="col-md-2 ">
+                                            <label for="acctive" class=" control-label "
+                                           >Display Type<font
+                                            color="red">*</font></label>
+                                    </div>
+                                    
+                                    <div class="col-md-1 ">
+                                            <label for="acctive" class=" control-label "
+                                           >Inline</label>
+                                    </div>
+                                    
+                                    <div class="col-md-1" style="width: 0px;">
+                                        <input  style="margin: 0 0px 0px -22px;" type="radio" ng-model="vm.category.inlineOrPopup" value="inline"> 
+                                    </div>
+                                    <div class="col-md-1 ">
+                                            <label for="acctive" class=" control-label "
+                                           >Popup</label>
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <input style="margin: 0 0px 0px -22px;" type="radio" ng-model="vm.category.inlineOrPopup" value="popup"> 
+                                    </div>
+                                </div>
+                                
+                                
+                                 <br>
+                            <div class="row" style="padding-left: 15px;">
+                                <h4 class="no-margin">Columns</h4>
+                            </div>
+                            <hr class="no-padding"
+                                style="margin: 0 0 3px 0; border-top: 1px solid #eee;">
+
+ 
+                            <table class="table table-bordered table-striped table-responsive">
+                                <thead class="thead_bg">
+                                    <tr >
+                                        <th style="width:05%;">Sequence<font color="red">*</font></th>
+                                        <th style="width:20%;">Column Name<font color="red">*</font></th>
+                                        <th style="width:12.5%;">Column Value<font color="red">*</font></th>
+                                        <th style="width:12.5%;">Column Type<font color="red">*</font></th>
+                                        <th style="width:10%;">Column Source Type<font color="red">*</font></th>
+                                        <th style="width:10%;">Column Source</th>
+                                        <th style="width:10%;">Is Mandatory<font color="red">*</font></th>
+                                        <th style="width:10%;">JavaScript Validation</th>
+                                        <th style="width:10%;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tr 
+                                    ng-repeat="submenu in vm.category.osiCategoryFields track by $index">
+                                    <td  style="width:05%;"><input type="text"
+                                        ng-model="submenu.seq" ng-init="submenu.seq = 0" 
+                                        class="form-control" ng-blur="vm.removeselectedseq(submenu,$index)" id="sequence" maxlength="10"
+                                        valid-onlynumber></td>
+                                    <td style="width:20%;"><select class="form-control" ng-change="vm.removeselectedcol(submenu,$index)"
+                                        ng-model="submenu.colName"  > 
+                                        <option value="" disabled>Select Column Name</option>
+                                            <option ng-repeat="column in vm.columns track by $index">{{column.columnName}}</option>
+                                    </select></td>
+                                    
+
+                                    <td   style="width:12.5%;">
+                                        <input type="text"
+                                        ng-model="submenu.colValue"  
+                                        class="form-control" id="colValue" maxlength="100" no-special-char>
+                                    </td>
+                                    <td   style="width:12.5%;">
+                                        <select class="form-control"
+                                        ng-model="submenu.colType" ng-change="vm.changesourcetype(submenu.colType)">
+                                        <option value="" disabled>Select Column Type</option>
+                                        <option value="DECIMAL">NUMBER</option>
+                                        <option value="STRING" >STRING</option>
+                                        <option value="DATE" >DATE</option>
+                                    </select>
+                                    </td>
+                                  
+                                        <td   style="width:10%;">
+                                            <select class="form-control"
+                                            ng-model="submenu.colSrcType" ng-disabled="!submenu.colType">
+                                            <option value="" disabled>Select Column Source Type</option>
+                                            <option  ng-repeat="colsrctype in vm.colSrcType " >{{colsrctype}}</option>
+                                            
+                                        </select>
+                                        </td>
+                                        <td  style="width:10%;"><input type="text"
+                                            ng-model="submenu.colSrc" 
+                                            class="form-control" id="colSrc" maxlength="50" no-special-char ></td>
+                                            <td style="width:10%;" >
+                                                <select class="form-control"
+                                                ng-model="submenu.nullable" >
+                                                <option value="" disabled>Select Is Mandatory</option>
+                                                <option value="1" >YES</option>
+                                                <option value="0" >NO</option>
+                                            </select>
+                                            <td  style="width:05%;"><input type="text"
+                                                ng-model="submenu.srcpValid" maxlength="500"
+                                                class="form-control" id="srcpValid" no-special-char ></td>
+
+                                    <td   style="font-size: 24px;width:10%;"><span
+                                        ng-show="$last" class="glyphicon glyphicon-plus-sign addIcon"
+                                        ng-click="vm.addColumn(submenu)"></span> <span
+                                        class="glyphicon glyphicon-minus-sign minusIcon"
+                                        ng-click="vm.removeColumn(submenu)"></span></td>
+
+                                </tr>
+                            </table>
+
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4"></div>
+
+                                <div>
+                                    <button class="btn btn-default pull-right "
+                                        ng-click="vm.resetcategory()" data-dismiss="modal">Close</button>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary pull-right"
+                                        style="margin-right: 5px;" ng-click="vm.save(vm.category)">Save</button>
+                                </div>
+
+
+                                <!--                                                    <div class="col-md-2">
+                                                    <button class="btn" ng-click="vm.closeModal()">CANCEL</button>
+                                                </div>-->
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+            <!--/page------------------------------------------------------>
+            <!--                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>-->
+        </div>
+    </div>
+</div>
+</div>
+
+
+

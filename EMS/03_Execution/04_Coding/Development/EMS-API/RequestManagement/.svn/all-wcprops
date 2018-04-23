@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/.classpath
+END
+OSI_RM_connection.properties
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/OSI_RM_connection.properties
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/.project
+END

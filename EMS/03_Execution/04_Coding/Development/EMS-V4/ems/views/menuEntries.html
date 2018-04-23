@@ -1,0 +1,140 @@
+<div class="modal fade" id="menu_Entries_modal" role="dialog"
+	ng-controller="menuEntriesController as vm">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="row">
+					<div class="col-lg-1"></div>
+					<div class="col-lg-5">
+						<h4 class="modal-title">Create Menu Entries</h4>
+					</div>
+					<div class="col-lg-6 pull-right">
+						<button type="button" class="close modelCloseButton"
+							data-dismiss="modal">&times;</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-body">
+				<!--page------------------------------------------------------>
+
+				<div class="row" ng-if="isTrascError">
+					<div
+						ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+						ng-if="flash" ng-bind="flash.message"></div>
+				</div>
+
+				<form name="orgInventory" novalidate="">
+					<fieldset ng-disabled="vm.view">
+						<br>
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-lg-4 text-align-right">
+								<label for="orgNameTxt" class=" control-label "> Header
+									Menu<font color="red">*</font>
+								</label>
+							</div>
+							<div class="col-lg-4">
+								<select ng-model="vm.menuEntries.headerMenu"
+									ng-change="vm.removeHeaderMenu(vm.menuEntries.headerMenu)"
+									class="form-control top10 form-field-border" id="sel1" place-holder="select Type">
+									<option value="" disabled>Select Header Menu</option>
+									<option ng-repeat="menu in vm.menus | orderBy:'menuName'"
+										value="{{menu}}">{{menu.menuName}}</option>
+								</select>
+							</div>
+							<div class="col-sm-3"></div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-10">
+								<div class="row">
+									<h4 class="no-margin">Menu Entries</h4>
+								</div>
+								<hr class="no-padding">
+								<table
+									class="table table-responsive table-bordered table-striped">
+									<tr>
+										<th>Type<font color="red">*</font></th>
+										<th>Sequence<font color="red">*</font></th>
+										<th>Menu/Function<font color="red">*</font></th>
+										<th>Prompt<font color="red">*</font></th>
+										<th>Active<font color="red">*</font></th>
+										<th>Actions</th>
+									</tr>
+									<tr
+										ng-repeat="submenu in vm.menuEntries.subMenus track by $index">
+										<td><select class="form-control"
+											ng-model="submenu.selectedType"
+											ng-change="vm.typeChanged($index)"
+											ng-init="submenu.selectedType = 'Menu'">
+												<option ng-repeat="type in vm.types">{{type.type}}</option>
+										</select></td>
+										<td><input type="text" ng-model="submenu.seq"
+											ng-init="submenu.seq = 0"
+											ng-change="vm.checkDuplicateSeq(submenu.seq,submenu.selectedType,$index)"
+											class="form-control" id="sequence" maxlength="10"
+											valid-onlynumber></td>
+
+										<td ng-if="submenu.selectedType == 'Menu'"><select
+											ng-model="submenu.osiMenusBySubMenuId" class="form-control"
+											id="sel1" place-holder="select Type">
+												<option value="" disabled>Select Menu</option>
+												<option
+													ng-repeat="menu in vm.subMenuOptions | orderBy:'menuName'"
+													value="{{menu}}">{{menu.menuName}}</option>
+										</select></td>
+										<td ng-if="submenu.selectedType == 'Function'"><select
+											ng-model="submenu.osiFunctions" class="form-control top10"
+											id="sel1">
+												<option value="" disabled>Select Function</option>
+												<option
+													ng-repeat="func in vm.functions | orderBy:'funcName'"
+													value="{{func}}">{{func.funcName}}</option>
+										</select></td>
+
+										<td><input type="text" ng-model="submenu.menuPrompt"
+											ng-init="submenu.menuPrompt = ''" maxlength="100"
+											class="form-control top10" placeholder="Enter Prompt"
+											only-Alphabets no-special-char required></td>
+
+										<td><input type="checkbox" ng-model="submenu.active">
+											<br></td>
+
+										<td><span ng-show="$last"
+											class="glyphicon glyphicon-plus-sign addIcon"
+											ng-click="vm.addMenu(submenu)"></span> <span
+											class="glyphicon glyphicon-minus-sign minusIcon"
+											ng-click="vm.removeMenu(submenu)"></span></td>
+
+									</tr>
+								</table>
+							</div>
+							<br>
+						</div>
+						<div class="col-lg-1"></div>
+			</div>
+			</fieldset>
+			</form>
+			<div class="row">
+				<div class="col-lg-9"></div>
+				<div class="col-lg-1 pull-right">
+					<button class="btn btn-default pull-right "
+						ng-click="vm.resetMenuEntries()" data-dismiss="modal">Close</button>
+				</div>
+				<div class="col-lg-1 pull-right">
+					<button class="btn btn-primary pull-right"
+						style="margin-right: 5px;" ng-click="vm.save(vm.menuEntries)">Save</button>
+				</div>
+				<div class="col-lg-1"></div>
+			</div>
+			<br>
+
+		</div>
+	</div>
+</div>
+</div>
+
+
+

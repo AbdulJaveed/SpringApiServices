@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/reports/processor
+END
+JavaWrapperInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/reports/processor/JavaWrapperInterface.java
+END
+PurgeOSIRMRequestHistory.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/reports/processor/PurgeOSIRMRequestHistory.java
+END
+ExecuteOSIRMJRXMLFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/osi-repos/testing_svn/!svn/ver/1169/EMS/03_Execution/04_Coding/Development/EMS-API/RequestManagement/src/com/osi/rm/reports/processor/ExecuteOSIRMJRXMLFile.java
+END

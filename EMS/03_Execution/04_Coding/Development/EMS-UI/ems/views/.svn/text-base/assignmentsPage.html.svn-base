@@ -1,0 +1,294 @@
+<script> 
+
+function openSupervisorPopup(){
+	
+	  var scope = angular.element(document.getElementById('supId')).scope();
+      scope.$apply(function(){
+      	scope.openSupervisorPopup($("#supId").val());
+    })
+}
+function searchEmployeePopup(){
+	
+	  var scope = angular.element(document.getElementById('empId')).scope();
+    scope.$apply(function(){
+    	scope.searchEmployeePopup($("#empId").val());
+  })
+}
+setTimeout(function(){ $("#job").toggleClass("active"); }, 100);
+            </script>
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    	<div data-ng-include="'views/employeeMenu.html'"></div>
+    <div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+    <div class="right-side">
+             <div class="row" style="margin-right: 0px; margin-top: -20px;">
+                    <div class="col-sm-6">
+                        <h3>&nbsp;&nbsp;&nbsp;Assignments</h3>
+                    </div>
+            </div>
+            <div class="panel-body" style="max-height:450px; overflow-y: scroll; overflow-x: hidden;">
+                <div class="row" ng-if="isTrascError">
+                   <div ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+                           ngf-if="flash" ngf-bind="flash.message">{{flash.message}}
+                   </div>
+                 </div>
+                            <div class="row">
+                                <form class="form-horizontal" role="form" action="">
+                                    <div class="row">
+                                        <div class="col-sm-1"></div>
+                                        <div class="col-lg-10">
+                                            <table class="table borderless">
+                                                <tr>
+
+                                                    <td align="right"><label for="isManager" class=" control-label no-padding pull-right">Is Manager </label></td>
+                                                    <td style="width:35%;"><input type="checkbox" id="isManager" style="width:30px;height:20px;" ng-model="vm.empAssignment.isManager" ng-true-value="1" ng-false-value="0"/>&nbsp;
+                                                    </td>
+
+                                                    <td align="right"><label for="orgId" class=" control-label no-padding pull-right">Organization Location <font color="red">*</font></label></td>
+                                                        <td><select class="form-control"
+                                                                ng-model="vm.empAssignment.osiLocations"
+                                                                name="selectedOrgLocation" id="orgId"
+                                                                ng-options="orgLocation.locationId as orgLocation.locationName for orgLocation in orgLocations"
+                                                                ng-change="setLocationId()">
+                                                            <option value="" selected disabled="disabled">--Select Location--</option>
+                                                        </select></td>
+                                                    <!--<select class="form-control"
+                                                            name="yesOrNo"
+                                                            ng-model="vm.empAssignment.onProbation"
+                                                            ng-change="changeSelectedOnProbation(vm.empAssignment.onProbation)">
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+
+                                                    </select>-->
+                                                </tr>
+                                                <tr>
+                                                    <td align="right"><label for="employeeType" class=" control-label no-padding pull-right">Employee Type</label></td>
+                                                    <td>
+                                                        <input class="form-control" type="text"
+                                                               ng-model="vm.empAssignment.employeeType"
+                                                               id="employeeType"
+                                                               disabled=true/>
+                                                    </td>
+                                                    <td align="right"><label for="supId" class=" control-label no-padding pull-right">Supervisor <font color="red">*</font></label></td>
+                                                    <td>
+                                                        <!--<input class="form-control" ng-model="supervisor.employeeId" type="hidden"/>
+                                                        <input class="form-control" type="text" id="supId"
+                                                               ng-model="supervisor.fullName" ng-blur="searchSupervisor(supervisor.fullName)"
+                                                               placeholder="Enter Employee ID/Number" >-->
+                                                            <input class="form-control" ng-model="supervisor.employeeId" type="hidden"/>
+                                                            <input type="text" placeholder="Search Employee" id="supId"
+                                                                   class="form-control customer-search" name="supId" ng-model="supervisor.fullName"
+                                                                   onfocusout="openSupervisorPopup()" autocomplete="off"/>
+
+                                                         <!--    <div class="col-md-12" style="z-index:500; position: absolute; float: left; border: 1px #C7C7CC solid;
+                                                                 border-bottom-left-radius: 5px;
+                                                                 border-bottom-right-radius: 5px;
+                                                                 width: auto; background: white;" ng-if="supervisorList.length > 0">
+                                                                <div class="form-group" style="margin-bottom: 0;">
+                                                                    <fieldset class="scheduler-border">
+                                                                        <table class="table table-striped" style="margin-bottom:0;">
+                                                                            <thead>
+                                                                                <tr ng-repeat="cust in supervisorList | limitTo: 10 track by $index"  style="cursor: default;"
+                                                                                    ng-class="{'selected':$index == custRowItem}" ng-click="setCustRowItem($index)"
+                                                                                    ng-keyup="searchSupervisor($event, supervisor.fullName)"
+                                                                                    class="supervisor-option">
+                                                                                    <td class="text-left" style="width:275px;">
+                                                                                        <span class="form-control-static">{{cust.fullName}}</span>
+                                                                                    </td>
+                                                                                   <td class="col-md-4 text-left" >
+                                                                                        <span class="form-control-static">{{cust.employeeId}}</span>
+                                                                                    </td>
+                                                                                </tr>
+                                                                        </table>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div> -->
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td align="right"><label for="deptId" class=" control-label no-padding pull-right">Department <font color="red">*</font></label></td>
+                                                    <td>
+                                                          <input class="form-control"  ng-model="deptStructure" type="text" ng-click="openRollUpsPopup()">
+                                                   		
+                                                    </td>
+
+<!--                                                    <td align="right"><label for="probEndDate" class=" control-label no-padding pull-right">Probation End Date:</label></td>-->
+                                                    <td align="right"><label for="referredById" class=" control-label no-padding pull-right">Referred By</label></td>
+                                                    <td>
+                                                        <!--<input class="form-control" ng-model="searchParams.employeeId" type="hidden"/>
+                                                        <input class="form-control" type="text" id="referredById"
+                                                               ng-model="searchParams.fullName" ng-blur="searchEmployee(searchParams.fullName)"
+                                                               placeholder="Enter Employee ID/Number" />-->
+                                                        <input class="form-control" ng-model="searchParams.employeeId" type="hidden"/>
+                                                            <input type="text" placeholder="Search Employee" id="empId"
+                                                                   class="form-control customer-search" ng-model="searchParams.fullName"
+                                                                   onfocusout="searchEmployeePopup()" autocomplete="off"/>
+
+                                                            <!-- <div class="col-md-12" style="z-index:500; position: absolute; float: left; border: 1px #C7C7CC solid;
+                                                                 border-bottom-left-radius: 5px;
+                                                                 border-bottom-right-radius: 5px;
+                                                                 width: auto; background: white;" ng-if="searchParamsList.length > 0">
+                                                                <div class="form-group" style="margin-bottom: 0;">
+                                                                    <fieldset class="scheduler-border">
+                                                                        <table class="table table-striped" style="margin-bottom:0;">
+                                                                            <thead>
+                                                                                <tr ng-repeat="cust in searchParamsList | limitTo: 10 track by $index"  style="cursor: default;"
+                                                                                    ng-class="{'selected':$index == custRowItem}" ng-click="setCustRowsItem($index)"
+                                                                                    ng-keyup="searchEmployee($event, searchParams.fullName)"
+                                                                                    class="supervisor-option">
+                                                                                    <td class="text-left" style="width:275px;">
+                                                                                        <span class="form-control-static">{{cust.fullName}}</span>
+                                                                                    </td>
+                                                                                   <td class="col-md-4 text-left" >
+                                                                                        <span class="form-control-static">{{cust.employeeId}}</span>
+                                                                                    </td>
+                                                                                </tr>
+                                                                        </table>
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div> -->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td align="right"><label for="gradeId" class=" control-label no-padding pull-right">Grade <font color="red">*</font></label></td>
+                                                    <td><select class="form-control"
+                                                                ng-model="vm.empAssignment.osiGrades"
+                                                                name="selectedGrades" id="gradeId"
+                                                                ng-options="grade.gradeId as grade.gradeName for grade in grades">
+                                                            <option value="" selected disabled="disabled">--Select Grade--</option>
+                                                     </select></td>
+
+
+  													<td align="right"><label for="jobId" class="control-label no-padding pull-right">Job <font color="red">*</font></label></td>
+                                                    <td><select	class="form-control"
+                                                                ng-model="vm.empAssignment.osiJobCodes"
+                                                                name="selectedJob" id="jobId"
+                                                                ng-options="job.jobCodeId as job.jobCodeName for job in jobs">
+                                                            <option value="" selected disabled="disabled">--Select Job--</option>
+                                                    </select></td>
+
+  			                                               </tr>
+
+                                                <tr ng-if="isContractor">
+                                                 <td align="right"><label for="startDate" class=" control-label no-padding pull-right">Start Date <font color="red">*</font></label></td>
+                                                 <td>
+                                                     <div style="padding:0;">
+                                                         <datepicker date-format="yyyy-MM-dd" selector="form-control">
+                                                             <div class="input-group">
+                                                                 <input class="form-control" placeholder="yyyy-MM-dd"
+                                                                        ng-model="vm.empAssignment.contractStartDate" id="startDate"/>
+                                                                 <span name="" class="input-group-addon" style="cursor: pointer;">
+                                                                     <i class="fa fa-lg fa-calendar"></i>
+                                                                 </span>
+                                                             </div>
+                                                         </datepicker>
+                                                     </div>
+                                                 </td>
+                                                <td align="right" ><label for="endDate" class=" control-label no-padding pull-right">End Date <font color="red">*</font></label></td>
+                                                    <td><div style="padding:0;">
+                                                            <datepicker date-format="yyyy-MM-dd" selector="form-control">
+                                                                <div class="input-group">
+                                                                    <input class="form-control" placeholder="yyyy-MM-dd"
+                                                                           ng-model="vm.empAssignment.contractEndDate" id="endDate" />
+                                                                    <span name="" class="input-group-addon" style="cursor: pointer;">
+                                                                        <i class="fa fa-lg fa-calendar"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </datepicker>
+                                                        </div>
+                                                  </td>
+                                                </tr> <tr ng-show="{{usOrgCode!=orgCode}}">
+                                                    <td align="right" ng-if="vm.empAssignment.employeeType == 'EMPLOYEE'"><label for="onProbation">On Probation</label></td>
+                                                    <td ng-if="vm.empAssignment.employeeType === 'EMPLOYEE'">
+                                                    <!--     <label for="months" class="control-label no-padding" style="margin-top: -10px;"> -->
+                                                        <div class="row">
+                                                        <div class="col col-lg-1">
+                                                            <input type="checkbox" id="onProbation" style="width:30px;height:20px; margin-top: 7px;"
+                                                               ng-model="vm.empAssignment.onProbation"
+                                                               ng-change="changeOnProbation()"
+                                                               ng-true-value="1" ng-false-value="0"/>
+                                                               </div>
+                                                                 <div class="col col-lg-8">
+	                                                            <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Probation Period</label>
+	                                                               <select class="select-width"
+	                                                                        ng-model="vm.empAssignment.selectedPeriod"
+	                                                                        name="selectedMonth" id="months"
+	                                                                        ng-options="n.momentProp as n.name for n in probationPeriod"
+	                                                                        ng-change="changeSelectedDuration()"
+	                                                                        ng-disabled="undefined == vm.empAssignment.onProbation || vm.empAssignment.onProbation == 0">
+	                                                                </select>
+	                                                                </div>
+	                                                                  <div class="col col-lg-2">
+	                                                                 <input class="form-control" type="text" name="selectedDays" style="width: 54px;"
+	                                                          				  ng-model="vm.empAssignment.selectedPeriodValue" maxlength="2" only-number
+	                                                           				ng-disabled="undefined == vm.empAssignment.onProbation || vm.empAssignment.onProbation == 0" id="probEndDate"
+	                                                           			/> 
+	                                                           			</div>
+                                                           			</div>
+                                                              <!-- <select class="select-width"
+                                                                    ng-model="vm.empAssignment.selectedPeriodValue"
+                                                                    name="selectedDays"
+                                                                    ng-options="n as n for n in [] | range:1:31"
+                                                                    ng-change="changeSelectedDuration()"
+                                                                    ng-disabled="undefined == vm.empAssignment.onProbation || vm.empAssignment.onProbation == 0">
+                                                                </select>  -->
+                                                       <!--  </label> -->
+
+                                                        <!--<div class="row">-->
+                                                            <!--<div class="col-md-4">-->
+
+
+                                                            <!--</div>-->
+                                                            <!--<div class="col-md-3">-->
+
+                                                    </td>
+                                                    <td align="right"><label for="onProbation" ng-if="vm.empAssignment.employeeType === 'Employee'">Probation Date</label></td>
+                                                    <td ng-if="vm.empAssignment.employeeType === 'Employee'">
+                                                        <input class="form-control" type="text"
+                                                            ng-model="vm.empAssignment.probationEndDate"
+                                                            id="probEndDate"
+                                                            disabled=true/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td align="right"><label for="reason" class=" control-label no-padding pull-right">Reason for Change</label></td>
+                                                    <td colspan="3"><textarea  class="form-control" ng-model="vm.empAssignment.reasonForChange" id="reason" maxlength="120" style="width:100%;resize: none;" ></textarea></td>
+
+                                                </tr>
+
+                                            </table>
+
+                                            <div class="row">
+                                                <div class="pull-right">
+                                                    <div class="form-actions">
+                                                    <button type="button"
+                                                        ng-click="clear()"
+                                                        class="btn btn-primary" id="btnSubmit">Cancel</button>
+                                                    <button type="button"
+                                                        ng-click="validateFields()"
+                                                        class="btn btn-primary" id="btnSubmit">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+            </div>
+
+    <!-- /.right-side -->
+</div>
+
+</div>
+<!-- ./wrapper -->
+<div ng-include="'views/Departments.html'" ></div>
+<div ng-include="'views/supervisorPopup.html'" ></div>
+
+<div class="modal fade" role="dialog" id="confirmationForAssignments" tabindex="-1" aria-labelledby="co">
+    <div ng-include="'views/confirmationPopup.html'"></div>
+</div>

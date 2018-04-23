@@ -1,0 +1,129 @@
+<br>
+<h5 class="modal-title">
+    <B>Costing Information</B>
+</h5>
+<div class="modal-body">
+    <form name="vm.respForm" novalidate="">
+        <fieldset ng-disabled="userView">
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th>Organization
+                            <font size="3" color="red">*</font>
+                        </th>
+                        <th>Grade
+                            <font size="3" color="red">*</font>
+                        </th>
+                        <th>Cost per Month
+                            <font size="3" color="red">*</font>
+                        </th>
+                        <th>Cost per Hour
+                            <font size="3" color="red">*</font>
+                        </th>
+                        <th>Overhead %
+                            <font size="3" color="red">*</font>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="costing in vm.costingInfo track by $index">
+                        <input type="hidden" ng-model="costing.ccGradeId" />
+                        <td>
+                            <select class="form-control" ng-model="costing.orgId" ng-disabled="!iseditable" ng-options="data.orgId as data.orgName for data in vm.osiOrganizations | orderBy:'orgName'"
+                                ng-change="getAllGradesByOrgId(costing.orgId, $index)" required>
+                                <option value="">Select Organization</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-control" ng-model="costing.gradeId" ng-disabled="!iseditable" ng-change="checkDuplicateCosting(costing.orgId, costing.gradeId, $index);setValues(costing.gradeId, $index)"
+                                ng-options="resp.gradeId as resp.gradeName for resp in vm.osiGrades[$index] | orderBy:'gradeName'"
+                                required>
+                                <option value="">Select Grade</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input class="form-control" placeholder="Cost per Month" ng-disabled="!iseditable" maxlength="10" convert-decimal-number
+                                ng-model="costing.costPerMonth" required/>
+                        </td>
+                        <td>
+                            <input class="form-control" placeholder="Cost per Hour" ng-disabled="!iseditable" maxlength="10" convert-decimal-number ng-model="costing.costPerHour"
+                                required/>
+                        </td>
+                        <td>
+                            <input class="form-control" placeholder="Overhead %" ng-disabled="!iseditable" maxlength="10" only-number ng-model="costing.internalCostOverheadPct"
+                                required/>
+                        </td>
+                        <td style="font-size: 20px;">
+                            <span ng-if="$last && !userView" class="glyphicon glyphicon-plus-sign minusIcon" ng-click="addRow(costing)" style="cursor: pointer"
+                                ng-hide="!iseditable || isDuplicate">
+                            </span>
+                            <span class="glyphicon glyphicon-minus-sign minusIcon" ng-hide="userView || !iseditable" ng-click="removeRow($index)" style="cursor: pointer">
+                            </span>
+                            <span ng-if="isUpdatable" ng-hide="!iseditable" ng-click="getccGradesHistory(costing)" style="cursor: pointer">
+                                <i class="fa fa-history" style="font-size:19px;"></i>
+                            </span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</fieldset>
+</form>
+</div>
+
+<div class="modal fade" id="CCGradeHistModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width: auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                    <button type="button" class="close modelCloseButton" ng-click="closeCcGradeHistModal()">&times;</button>
+                    <h4 class="modal-title">{{locModelHeading}} </h4>
+            </div>
+            <div class="modal-body">
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-striped table-responsive">
+                        <thead class="thead_bg">
+                            <tr>
+
+                                <th ng-click="sort('orgName')">Organization
+                                    <span class="glyphicon sort-icon" ng-show="sortKey == 'orgName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th ng-click="sort('grade')">Grade
+                                    <span class="glyphicon sort-icon" ng-show="sortKey == 'grade'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th ng-click="sort('costPerMonth')">Cost Per Month
+                                    <span class="glyphicon sort-icon" ng-show="sortKey == 'costPerMonth'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th ng-click="sort('costPerHour')">Cost Per Hour
+                                    <span class="glyphicon sort-icon" ng-show="sortKey == 'costPerHour'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th ng-click="sort('internalCostOverheadPct')">Overhead
+                                    <span class="glyphicon sort-icon" ng-show="sortKey == 'internalCostOverheadPct'"
+                                        ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                                <th ng-click="sort('creationDate')">Effected Date
+                                    <span class="glyphicon sort-icon" ng-show="sortKey == 'creationDate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr dir-paginate="item in ccGradeHistList |orderBy:sortKey:reverse|itemsPerPage:rowSize ">
+                                <td>{{item.orgName|uppercase}}</td>
+                                <td>{{item.gradeName|uppercase}}</td>
+                                <td>{{item.costPerMonth|uppercase}}</td>
+                                <td>{{item.costPerHour|uppercase}}</td>
+                                <td>{{item.internalCostOverheadPct|uppercase}}</td>
+                                <td>{{item.creationDate| date : "yyyy-MM-dd hh:mm:ss"}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <div ng-if="ccGradeHistList.length == 0">
+                        <h6 style="text-align: center; color: red;">No Records Found</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

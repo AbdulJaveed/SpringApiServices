@@ -1,0 +1,118 @@
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<script>
+        setTimeout(function(){ $("#add").toggleClass("active"); }, 100);
+            </script>
+<div>
+	
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+			<div data-ng-include="'views/employeeMenu-sf.html'"></div>
+			<div data-ng-include="'views/BasicInfoTemplate.html'" ng-controller="myApp.basicInfoController as vm"></div>
+    <div class="right-side">
+        <section class="content">
+	<form name="vm.osiEmployees" novalidate="">
+		 <div class="row" ng-if="isTrascError">
+							<div
+								ng-class="{ 'alert col-md-offset-1 col-sm-10 text-center no-padding': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'}"
+								ng-if="flash" ng-bind="flash.message"></div>
+						</div>
+		<h4>Medical Information</h4><br>
+		<fieldset ng-disabled="vm.infoView">
+
+			<div class="row">
+				<div class="col-md-5">
+
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="bloodGroup"
+								class=" control-label no-padding pull-right"> Blood Group
+								<font color="red">*</font>
+							</label>
+						</div>
+						<div class="col-md-6">
+							<select class="form-control" name="bloodGroup" ng-model="vm.osiEmployees.bloodType" placeholder="Blood Group"
+								ng-options="osiBloodGroup.title as osiBloodGroup.title for osiBloodGroup in osiBloodGroups | orderBy:'title'" required
+								ng-disabled="!iseditable"
+								><option value="">-- Select Blood Group --</option></select>
+							<!-- <div class="validation-error" style="color: red"
+								ng-show="(vm.osiUserInfo.bloodGroup.$dirty || vm.submitted) && vm.osiUserInfo.bloodGroup.$error.required">
+								Blood Group is required.</div> -->
+							<br/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="mobileNo"
+								class=" control-label no-padding pull-right"> Last Test Date </label>
+						</div>
+						<!--Mob No 10 digit excluding starting 0 validation ng-pattern="/^((0091)|0?)[1-9]{1}\d{9}$/"-->
+						<div class="col-md-6">
+							<datepicker date-format="yyyy-MM-dd" selector="form-control" date-max-limit = "{{vm.maxDate}}">
+								<input class="form-control" style="width: 80%;" name="dob" id="dob"
+									ng-model="vm.osiEmployees.lastMedicalTestDate"  ng-change="vm.setDOB(vm.osiEmployees.lastMedicalTestDate)"
+									style="text-transform: uppercase" placeholder='Last Test Date' required
+									ng-disabled="!iseditable">
+
+							</datepicker>
+
+						</div>
+						<div class="col-md-1" style="padding:unset;margin-left: -58px;">
+								<span class="input-group-addon" style="cursor: pointer;height: 34px;">
+									<i class="fa fa-lg fa-calendar"  id="b{{$index+1}}" onclick="getDatePicker('dob')"></i>
+								</span>
+							</div>
+
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-md-4 no-padding">
+							<label for="lastTestBy"
+								class=" control-label no-padding pull-right"> Last Test By</label>
+						</div>
+						<!--Mob No 10 digit excluding starting 0 validation ng-pattern="/^((0091)|0?)[1-9]{1}\d{9}$/"-->
+						<div class="col-md-6">
+							<input class="form-control info" maxlength="50"
+								ng-model="vm.osiEmployees.lastMedicalTestBy"
+									placeholder='Last Test By '
+								 type="text" name="lastTestBy" required ng-disabled="!iseditable" />
+						</div>
+					</div>
+
+
+				</div>
+
+				<br>
+
+					<div class="col-md-8"  style="float: right;    margin-right: 45px;">
+				<div class="row pull-right">
+					<button type="button" style="float: right;margin-left: 14px;" class="btn btn-primary" ng-click="vm.checkForValidData();"
+						ng-disabled="!nonEditable || !iseditable">
+			            <span>Save</span>
+			        </button>
+
+        			 <button type="button" ng-click="vm.clearMedicalInfo();" style="float: right;margin-left: 14px;" class="btn btn-primary">
+			            <span>Cancel</span>
+			        </button>
+
+
+				</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+	</section>
+	</div>
+	</div>
+
+</div>
+
+<div class="modal fade" role="dialog" id="confirmationModelForMedical" tabindex="-1" role="dialog" aria-labelledby="co">
+			  <div ng-include="'views/confirmationPopup.html'"></div>
+</div>
+<script>
+function getDatePicker(thiz){
+	document.getElementById(thiz).focus();
+}
+</script>
